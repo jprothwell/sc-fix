@@ -1,0 +1,7 @@
+如果要重新生成PLMN列表，请在运行资源工具前：
+1. 确保application\mmi_customer\ResGenerator\plmnlist.txt 文件存在并格式正确
+2. 删除PlmnName.c中sPlmnsToDisplayName数组中的/* DONE */标志及其下的所有数据
+3. 删除PlmnEnum.h中STR_PLMN_LIST_ENUM枚举量中的/* DONE */标志及其下的所有数据
+4. 删除Res_MiscFramework.c中PopulatePLMNList函数中的/* DONE */标志及其下的所有数据
+5. 删除ref_list.txt中所有STR_PLMN_NAME_*开始的行
+6. make resgen运行工具

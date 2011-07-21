@@ -1,0 +1,312 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of COOLSAND Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("COOLSAND SOFTWARE")
+*  RECEIVED FROM COOLSAND AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. COOLSAND EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES COOLSAND PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE COOLSAND SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. COOLSAND SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY COOLSAND SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND COOLSAND'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE COOLSAND SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT COOLSAND'S OPTION, TO REVISE OR REPLACE THE COOLSAND SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  COOLSAND FOR SUCH COOLSAND SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*******************************************************************************
+ * Filename:
+ * ---------
+ *	DownloadDefs.h
+ *
+ * Project:
+ * --------
+ 
+ *
+ * Description:
+ * ------------
+ *	This file defines constant value, enum value and data structures for download application.
+ *
+ * Author:
+ * -------
+ * -------
+ *
+ *==============================================================================
+ * 				HISTORY
+ 
+ *------------------------------------------------------------------------------
+ *
+ *------------------------------------------------------------------------------
+ 
+ *==============================================================================
+ *******************************************************************************/
+
+/**************************************************************
+
+	FILENAME	: DownloadDefs.h
+
+  	PURPOSE		: Resource IDs for the FunAndGames Application
+
+ 
+
+ 
+
+	DATE		: 
+
+**************************************************************/
+
+#ifndef _MMI_DOWNLOADDEFS_H
+#define _MMI_DOWNLOADDEFS_H
+#include "mmi_data_types.h"
+#include "mmi_features.h"
+
+/* 
+** Define
+*/
+
+#define MAX_IMAGE_HEADER_LENGTH				6
+#define MAX_IMAGE_NAME_EXTENSION_WIDTH		(5*ENCODING_LENGTH)
+#define MAX_IMAGE_NAME_WIDTH				((13*ENCODING_LENGTH)	+	MAX_IMAGE_NAME_EXTENSION_WIDTH + ENCODING_LENGTH)
+#define MAX_IMAGE_NAME_PATH_WIDTH			(32*ENCODING_LENGTH) /* Update if a long path added */
+#define MAX_AUDIO_NAME_WIDTH				((13*ENCODING_LENGTH)	+	MAX_IMAGE_NAME_EXTENSION_WIDTH + ENCODING_LENGTH)
+#define MAX_SEARCH_STR_LENGTH				(15*ENCODING_LENGTH)
+
+
+
+#define PLAY_DOWNLOAD_AUDIO_TIMEOUT		2000
+
+
+#define		MAXIMUM_EMS_DOWNLOAD_IMELODY		5
+#define		MAXIMUM_DOWNLOAD_IMAGES				15
+#ifdef __MMI_PICTURE_EDITOR_SUPPORT__
+#define		MAXIMUM_PICTURE_EDITOR_IMAGES		5
+#endif
+#define		MAXIMUM_DOWNLOAD_AUDIO				15
+#define		MAXIMUM_DOWNLOAD_IMELODY			MAXIMUM_DOWNLOAD_AUDIO
+#define		MAXIMUM_COMPOSED_RINGTONE			5
+
+#define MAXIMUM_FULLSCREEN_FACTORY_IMAGES			7
+#define MAXIMUM_ASSOCIATED_FACTORY_IMAGES			5
+#define		MAXIMUM_FACTORY_TONES				5
+#define		MAXIMUM_FACTORY_IMELODY				5
+
+ 
+#ifdef __MMI_DOWNLOADABLE_THEMES_SUPPORT__
+#define         MAXIMUM_THEMES_TONES                 1    //ritesh
+#endif
+ 
+
+#define		FULLSCREEN_FACTORY_IMAGE_PATH		"C:\\def_image\\fullscreen\\"
+#define		ASSOCIATE_FACTORY_IMAGE_PATH		"C:\\def_image\\associate\\"
+#define		DOWNLOADED_IMAGE_PATH				"C:\\User\\image\\standard\\"
+
+#define		FACTORY_TONE_PATH					"C:\\def_sound\\other\\"
+#define		FACTORY_IMELODY_PATH				"C:\\def_sound\\imelody\\"
+#define		DOWNLOAD_TONE_PATH					"C:\\User\\sound\\other\\"
+#define		DOWNLOAD_IMELODY_PATH				"C:\\User\\sound\\imelody\\"
+#if defined(__MMI_FILE_MANAGER__)
+extern S16 RINGCOMPOSER_PATH[];
+#define		RNGC_PATH1					"User\\"
+#define		RNGC_PATH2					"sound\\"
+#define		RNGC_PATH3					"compose\\"
+#else
+#define		RINGCOMPOSER_PATH					"C:\\User\\sound\\compose\\"
+#endif
+#define		AST_SEARCH_STR						"*.*"
+
+
+#define		NV_RAM_FILE_IMAGE_ID_BASE_END		(NV_RAM_FILE_IMAGE_ID_BASE + 999)
+	
+#define		FULLSCREEN_FACTORY_IMAGE_BASE		(NV_RAM_FILE_IMAGE_ID_BASE)
+#define		FULLSCREEN_FACTORY_IMAGE_BASE_END	(FULLSCREEN_FACTORY_IMAGE_BASE + MAXIMUM_FULLSCREEN_FACTORY_IMAGES - 1)
+
+#define		ASSOCIATED_FACTORY_IMAGE_BASE		(FULLSCREEN_FACTORY_IMAGE_BASE_END + 1)
+#define		ASSOCIATED_FACTORY_IMAGE_BASE_END	(ASSOCIATED_FACTORY_IMAGE_BASE + MAXIMUM_ASSOCIATED_FACTORY_IMAGES - 1)
+
+#define		DOWNLOAD_IMAGE_BASE					(ASSOCIATED_FACTORY_IMAGE_BASE_END + 1)
+#define		DOWNLOAD_IMAGE_BASE_END				(DOWNLOAD_IMAGE_BASE + MAXIMUM_DOWNLOAD_IMAGES - 1)
+#ifdef __MMI_PICTURE_EDITOR_SUPPORT__
+#define		PICTURE_EDITOR_IMAGE_BASE			(DOWNLOAD_IMAGE_BASE_END + 1)
+#define		PICTURE_EDITOR_IMAGE_BASE_END		(PICTURE_EDITOR_IMAGE_BASE + MAXIMUM_PICTURE_EDITOR_IMAGES - 1)
+#define		PICTURE_EDITOR_PATH					"C:\\User\\Image\\Editor\\"
+#endif
+#define		FACTORY_TONES_BASE					(NV_RAM_FILE_IMAGE_ID_BASE)
+#define		FACTORY_TONES_BASE_END				(FACTORY_TONES_BASE + MAXIMUM_FACTORY_TONES - 1)
+
+#define		FACTORY_IMELODY_BASE				(FACTORY_TONES_BASE_END + 1)
+#define		FACTORY_IMELODY_BASE_END			(FACTORY_IMELODY_BASE + MAXIMUM_FACTORY_IMELODY - 1)
+
+#define		DOWNLOADED_TONE_BASE				(FACTORY_IMELODY_BASE_END + 1)
+#define		DOWNLOADED_TONE_BASE_END			(DOWNLOADED_TONE_BASE + MAXIMUM_DOWNLOAD_AUDIO - 1)
+
+#define		DOWNLOADED_IMELODY_BASE				(DOWNLOADED_TONE_BASE_END + 1)
+#define		DOWNLOADED_IMELODY_BASE_END			(DOWNLOADED_IMELODY_BASE + MAXIMUM_DOWNLOAD_IMELODY - 1)
+
+#define		COMPOSED_RINGTONE_BASE				(DOWNLOADED_IMELODY_BASE_END + 1)
+#define		COMPOSED_RINGTONE_BASE_END			(COMPOSED_RINGTONE_BASE + MAXIMUM_COMPOSED_RINGTONE - 1)
+
+#define		DOWNLOADED_EMS_IMELODY_BASE			(COMPOSED_RINGTONE_BASE_END + 1)
+#define		DOWNLOADED_EMS_IMELODY_BASE_END		(DOWNLOADED_EMS_IMELODY_BASE + MAXIMUM_EMS_DOWNLOAD_IMELODY - 1)
+
+#ifdef __MMI_DOWNLOADABLE_THEMES_SUPPORT__
+#define		THEME_V2_TONE_BASE                  (DOWNLOADED_EMS_IMELODY_BASE_END +1) //ritesh
+#define		THEME_V2_TONE_BASE_END              (THEME_V2_TONE_BASE +MAXIMUM_THEMES_TONES -1) //ritesh  
+#endif
+
+#define		FILESYSTEM_AUDIO_BASE				(NV_RAM_FILE_IMAGE_ID_BASE)
+#define		FILESYSTEM_AUDIO_BASE_END			(NV_RAM_FILE_IMAGE_ID_BASE + 999)
+
+#ifdef __MMI_DOWNLOADABLE_THEMES_SUPPORT__
+#define		CURRENT_THEME_INCOMING_CALL_TONE	THEME_V2_TONE_BASE
+#define		CURRENT_THEME_ALARM_EXPIRY_TONE		THEME_V2_TONE_BASE
+#endif
+/* 
+** Typedef 
+*/
+typedef struct
+{
+	U16 CurrAudioId;
+	U8	CurrHiliteImage;
+	U8	TotalFacAssoImages;
+	U8	TotalFacFullScrImages;
+	U8	TotalFacTones;
+	U8	TotalFacIMelodies;
+	U8	AddToHistFlag;
+#if defined(__MMI_WAP__)	
+	U8	TotalWapImages;
+	U8	TotalWapTones;
+#endif
+#if defined(__MMI_WAP__) && defined(__MMI_IMELODY_SUPPORT__)
+	U8	TotalWapIMelody;
+#endif
+}dwnl_context_struct;
+
+
+typedef struct
+{
+	U8 ImageName[MAX_IMAGE_NAME_WIDTH];
+	U16 ImagesId;
+}DYNIMAGEINFO;
+
+typedef struct
+{
+	U8 AudioName[MAX_AUDIO_NAME_WIDTH];
+	U16 AudioId;
+}DYNAUDIOINFO;
+
+typedef struct 
+{
+	union 
+	{
+		DYNIMAGEINFO	*ImageInfo;		
+		DYNAUDIOINFO	*AudioInfo;
+	}DYNINFOUNION;
+	U8 DynInfoType;		//IMAGEINFO, AUDIOINFO				
+	U8 NoOfEntries;
+}DYNAMICINFO;
+
+
+typedef enum	/* Please do not change the order */
+{
+	DWNL_WAP_IMAGE	=	0,
+	DWNL_WAP_IMELODY,		
+	DWNL_WAP_AUDIO,
+	DWNL_EMS_IMAGE,
+	DWNL_EMS_IMELODY
+}DWNL_TYPE_ENUM;
+
+typedef enum
+{
+	IMAGEINFO = 0,
+	AUDIOINFO
+}DynamicInfoType;
+#if defined(__DOWNLOAD__)
+typedef enum
+{
+	SCR_DOWNLOAD = DOWNLOAD_BASE +1,
+	SCR_IMAGE,
+	SCR_IMAGE_STANDARD,
+	SCR_IMAGEOPTION,
+	SCR_AUDIO,
+	SCR_AUDIO_IMELODY_OTHERS,
+	SCR_AUDIOOPTION,
+	SCR_CONFIRMIMAGEDELETE,
+	SCR_CONFIRMAUDIODELETE,
+	SCR_IMAGEVIEW
+
+}DOWNLOAD_SCREEN_ID;
+
+typedef enum
+{
+
+	STR_SCR_DOWNLOAD_CAPTION = DOWNLOAD_BASE +1,
+	STR_MENU3102_DOWNLOAD,
+	STR_DOWNLOAD_IMAGE,		
+	STR_DOWNLOAD_AUDIO,		
+	STR_DOWNLOAD_STANDARD,
+	STR_DOWNLOAD_EMS,
+#if defined(__MMI_IMELODY_SUPPORT__)		
+	STR_DOWNLOAD_IMELODY,
+	STR_DOWNLOAD_OTHERS,
+#endif
+
+	STR_SCR_IMAGE_CAPTION,	
+	STR_SCR_IMAGEOPTION_CAPTION,
+	STR_VIEW_IMAGE,
+	STR_DELETE_IMAGE,
+	STR_SCR_DELETECONFIRM_LSK,
+	STR_SCR_DELETECONFIRM_RSK,
+	STR_SCR_VIEWIMAGE_CAPTION,
+	STR_SCR_VIEWIMAGE_LSK,
+	STR_SCR_AUDIO_CAPTION,	
+	STR_SCR_AUDIOOPTION_CAPTION,	
+#if defined(__MMI_IMELODY_SUPPORT__)		
+	STR_EMS_AUDIO,
+#endif
+	STR_DELETE_AUDIO,
+	NO_PICTURE_AVAIL,
+	NO_AUDIO_AVAIL,
+	STR_DELETEPIC1_DOWNLOAD,
+	STR_DELETEPIC2_DOWNLOAD,
+	STR_DELETEAUDIO1_DOWNLOAD,
+	STR_DELETEAUDIO2_DOWNLOAD,
+	STR_DOWNLOAD_OPTION_LSK
+}DOWNLOAD_STRING_LIST;
+
+
+typedef enum
+{
+	IMG_MENU3102_DOWNLOAD = DOWNLOAD_BASE+1
+}DOWNLOAD_IMAGE_LIST;
+
+/* 
+** Extern Global Variable
+*/
+
+/* 
+** Extern Global Function
+*/
+
+#endif // __DOWNLOAD__
+#endif // #ifndef _MMI_DOWNLOADDEFS_H
+
+

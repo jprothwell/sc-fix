@@ -1,0 +1,821 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of COOLSAND Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("COOLSAND SOFTWARE")
+*  RECEIVED FROM COOLSAND AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. COOLSAND EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES COOLSAND PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE COOLSAND SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. COOLSAND SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY COOLSAND SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND COOLSAND'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE COOLSAND SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT COOLSAND'S OPTION, TO REVISE OR REPLACE THE COOLSAND SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  COOLSAND FOR SUCH COOLSAND SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+/*****************************************************************************
+ *
+ * Filename:
+ * ---------
+ *	 MMI_features_camera.h
+ *
+ * Project:
+ * --------
+ 
+ *
+ * Description:
+ * ------------
+ *  Define which Camera features should on/off
+ *
+ * Author:
+ * -------
+ *                      
+ *============================================================================
+ *             HISTORY
+ 
+ *------------------------------------------------------------------------------
+ * $Log:   O:/PSI_MMI/archives/2___work/Soft_11.13/soft/mmi/include/MMI_features_camera.h-arc  $
+ * 
+ *    Rev 1.3   Nov 30 2006 11:00:38   lin
+ * »Ö¸´CSW¸üÐÂÇ°µÄ°æ±¾
+ * 
+ *    Rev 1.1   Nov 24 2006 18:41:08   lin
+ * No change.
+ * 
+ *    Rev 1.0   Nov 13 2006 15:26:40   zhangxb
+ *
+ *------------------------------------------------------------------------------
+ 
+ *============================================================================
+ ****************************************************************************/
+#ifndef _CAMERA_FEATURES_H_
+#define _CAMERA_FEATURES_H_
+
+#include "mmi_features.h"
+#include "lcd_sw_inc.h"
+
+#ifdef __MMI_CAMERA__
+
+
+#if defined(CAMERA_MODULE)
+	#ifdef HORIZONTAL_CAMERA
+		#define __CAMERA_OSD_HORIZONTAL__	
+		#define __HORIZONTAL_CAMERA_WALLPAPER_ENABLE__
+	#endif
+
+#if 1
+	/***************************************************************************** 
+	*
+	* Start of default
+	*
+	*****************************************************************************/
+	/***************************************************************************** 
+	* OSD
+	*****************************************************************************/
+	/* Zooming */
+	#define __CAMERA_FEATURE_ZOOM__
+
+	#define CAMERA_FEATURE_ZOOM_COUNT			 (6) //   (3)   //modified by WeiD
+	#ifdef __MMI_CAMERA_ONLY__
+	extern int g_camera_feature_zoom[CAMERA_FEATURE_ZOOM_COUNT] = {1,2,3,4,5,6};
+	#else
+	extern int g_camera_feature_zoom[CAMERA_FEATURE_ZOOM_COUNT];
+	#endif
+	
+	/***************************************************************************** 
+	* Option Menu 
+	*****************************************************************************/
+	/* menu [Camera Setting] [Image Setting] [Effect Setting] [Restore Default] will always exist */
+
+#ifndef MEM_ULC_3216
+	#define __CAMERA_FEATURE_EFFECT__
+#if !defined (__MMI_RESOURCE_SLIM_ON_128X160__)	
+//define __CAMERA_FEATURE_ADD_FRAME__
+#endif
+	#define __CAMERA_FEATURE_CONT_SHOT__
+	#define __CAMERA_FEATURE_DELAY_TIMER__
+#endif
+
+	#if defined(__MMI_SUBLCD__) && defined(__MMI_SUBLCD_COLOR__)
+		#define __CAMERA_FEATURE_SELF_CAPTURE__
+	#endif
+
+	#if (defined(__MSDC_MS__) || defined(__MSDC_SD_MMC__))
+		#define __CAMERA_FEATURE_STORAGE__
+	#endif
+
+
+
+	/***************************************************************************** 
+	* Camera Setting
+	*****************************************************************************/
+	/********** settings  ***********/
+#ifndef MEM_ULC_3216
+	#define __CAMERA_FEATURE_WB__ //chenhe for jasper
+	//#define __CAMERA_FEATURE_FLASH__ //20100311,close for trunk
+	//#define __CAMERA_FEATURE_LED_HIGHLIGHT__
+	#define __CAMERA_FEATURE_EV__  //chenhe for jasper
+	#define __CAMERA_FEATURE_NIGHT__  //chenhe for jasper
+	//#define __CAMERA_FEATURE_CLOSEUP__
+	//#define __CAMERA_FEATURE_BANDING__ //chenhe for jaseper
+	#define __CAMERA_FEATURE_CONTRAST__   //add by WeiD
+	#define __CAMERA_FEATURE_BRIGHTNESS__ //add by WeiD
+#endif
+	#define __CAMERA_FEATURE_SHUTTER_SOUND__
+	#define __CAMERA_FEATURE_SHOT_MODE__ 
+
+	#ifdef __MMI_TOUCH_SCREEN__
+		#define __CAMERA_FEATURE_TOUCH_SCREEN__
+		#define __CAMERA_FEATURE_TOUCH_CLICKICON__
+		//#define __CAMERA_FEATURE_OSD_MENU__
+	#else
+		//#define __CAMERA_FEATURE_ICONBAR_PANEL__
+		//#define __CAMERA_FEATURE_OSD_MENU__
+	#endif 
+
+	#ifdef __CAMERA_FEATURE_SHOT_MODE__
+		#define __CAMERA_FEATURE_SHOT_MODE_AUTO__
+//		#define __CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI__
+//		#define __CAMERA_FEATURE_SHOT_MODE_APERTURE_PRI__
+//		#define __CAMERA_FEATURE_SHOT_MODE_PORTRAIT__		
+//		#define __CAMERA_FEATURE_SHOT_MODE_LANDSCAPE__
+//		#define __CAMERA_FEATURE_SHOT_MODE_SPORT__
+//		#define __CAMERA_FEATURE_SHOT_MODE_FLOWER__
+		#define __CAMERA_FEATURE_SHOT_MODE_NIGHT__
+
+		/***************************************************************************** 
+		* Shot Mode : Shutter Priority Setting
+		*****************************************************************************/
+
+		#define __CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_0__
+		#define __CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_1__
+		#define __CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_2__
+		#define __CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_3__
+		#define __CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_4__
+
+		#define CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_0			(4000)
+		#define CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_1			(2000)
+		#define CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_2			(1000)		
+		#define CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_3			(500)
+		#define CAMERA_FEATURE_SHOT_MODE_SHUTTER_PRI_4			(250)
+		/***************************************************************************** 
+		* Shot Mode : Aperture Priority Setting
+		*****************************************************************************/
+
+		#define __CAMERA_FEATURE_SHOT_MODE_APERTURE_PRI_0__
+		#define __CAMERA_FEATURE_SHOT_MODE_APERTURE_PRI_1__
+		#define __CAMERA_FEATURE_SHOT_MODE_APERTURE_PRI_2__
+		
+		#define CAMERA_FEATURE_SHOT_MODE_APERTURE_PRI_0			(28)
+		#define CAMERA_FEATURE_SHOT_MODE_APERTURE_PRI_1			(40)
+		#define CAMERA_FEATURE_SHOT_MODE_APERTURE_PRI_2			(56)
+	#endif
+
+
+
+	/******** customizable wb *********/
+	#define __CAMERA_FEATURE_WB_AUTO__
+	#define __CAMERA_FEATURE_WB_DAYLIGHT__
+	#define __CAMERA_FEATURE_WB_TUNGSTEN__ 
+	#define __CAMERA_FEATURE_WB_FLUORESCENT__
+	#define __CAMERA_FEATURE_WB_CLOUD__
+	#define __CAMERA_FEATURE_WB_INCANDESCENCE__
+
+	/******** customizable flash *********/
+	//#define __CAMERA_FEATURE_FLASH_AUTO__
+
+	/******** customizable led highlight *********/
+	#define __CAMERA_FEATURE_LED_HIGHLIGHT_ON_OFF__
+	//#define __CAMERA_FEATURE_LED_HIGHLIGHT_7_COLOR__
+
+	/******* customizable shutter sound *********/
+//	#define __CAMERA_FEATURE_SHUTTER_SOUND_OFF__
+	#define __CAMERA_FEATURE_SHUTTER_SOUND_1__
+#if !defined(MEM_ULC_3216)
+	#define __CAMERA_FEATURE_SHUTTER_SOUND_2__
+	#define __CAMERA_FEATURE_SHUTTER_SOUND_3__
+#endif
+
+	/******* customizable ev *********/
+	/* default will have off [ev 0] and [ev +1] [ev -1] menu if __CAMERA_FEATURE_EV__ is turn on */
+	#define __CAMERA_FEATURE_EV_2__
+	//#define __CAMERA_FEATURE_EV_3__
+	//#define __CAMERA_FEATURE_EV_4__
+
+
+	/***************************************************************************** 
+	* Image Setting
+	*****************************************************************************/
+	/* Notice, [Image Size] and [Image Qty] will always exist */
+
+	/******* customizable image size *********/
+#if !defined(MEM_ULC_3216) && !defined(__PRJ_WITH_SPICAM__)// memory not enough for large image size
+	#define __CAMERA_FEATURE_IMAGE_SIZE_LL__MEM_3216_CAMERA_LARGE_MODE
+	#define __CAMERA_FEATURE_IMAGE_SIZE_L__
+#endif
+	#define __CAMERA_FEATURE_IMAGE_SIZE_M__
+	#define __CAMERA_FEATURE_IMAGE_SIZE_S__
+	#define __CAMERA_FEATURE_IMAGE_SIZE_SS__
+
+	/******* customizable image size *********/
+	/* size */
+	#if ((LCD_WIDTH == 128) && (LCD_HEIGHT == 128))
+	
+		#define __CAMERA_FEATURE_IMAGE_SIZE_LL__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_L__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_M__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_S__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_SS__
+	
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(640)
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 			(480)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(320)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(240)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(160)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(80)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(60)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(128)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 			(128)
+	
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(96)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 			(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(96)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 			(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(96)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 			(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(96)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(128)
+		
+		#define CAMERA_FEATURE_PREVIEW_LL_ZOOM_LIMIT			(10)
+		#define CAMERA_FEATURE_PREVIEW_L_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_M_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_S_ZOOM_LIMIT			(40)
+		#define CAMERA_FEATURE_PREVIEW_SS_ZOOM_LIMIT			(40)
+
+		#define CAMERA_FEATURE_PREVIEW_TILE_ZOOM_LIMIT		(40)	
+
+		#define CAMERA_FEATURE_CONT_SHOT_BURST_IMAGE_IDX	(2)  	/* SS, S, [M], L, LL */
+		
+	#elif ((LCD_WIDTH == 128) && (LCD_HEIGHT == 160))//gugogi  GreenStone
+	
+#if defined(MEM_3216_CAMERA_LARGE_MODE) // memory not enough for large image size
+#ifndef __PRJ_WITH_SPICAM__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_LL__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_L__
+#endif        
+#endif
+		#define __CAMERA_FEATURE_IMAGE_SIZE_M__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_S__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_SS__
+
+#ifndef __PRJ_WITH_SPICAM__		
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(1280)
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 		(1024)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(640)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(480)
+#endif        
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(g_camera_image_is_convert?480:640)//(480)//(640) //128x160
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(g_camera_image_is_convert?640:480)//(640)//(480) //128x160
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(g_camera_image_is_convert?240:320)//(240)//(320) //128x160
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(g_camera_image_is_convert?320:240)//(320)//(240) //128x160
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(176)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(220)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(128)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 			(160)
+		
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(96)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(96)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(96)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(160)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(160)
+
+		#define CAMERA_FEATURE_PREVIEW_LL_ZOOM_LIMIT			(10)
+		#define CAMERA_FEATURE_PREVIEW_L_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_M_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_S_ZOOM_LIMIT			(40)
+		#define CAMERA_FEATURE_PREVIEW_SS_ZOOM_LIMIT			(20)
+
+		#define CAMERA_FEATURE_PREVIEW_TILE_ZOOM_LIMIT		(20)	
+
+		#define CAMERA_FEATURE_CONT_SHOT_BURST_IMAGE_IDX	(2)  	/* SS, S, [M], L, LL */
+	#elif ((LCD_WIDTH == 160) && (LCD_HEIGHT == 128))
+        #if defined(MEM_3216_CAMERA_LARGE_MODE) // memory not enough for large image size
+#ifndef __PRJ_WITH_SPICAM__        
+		#define __CAMERA_FEATURE_IMAGE_SIZE_LL__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_L__ 
+#endif        
+        #endif
+		#define __CAMERA_FEATURE_IMAGE_SIZE_M__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_S__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_SS__
+
+#ifndef __PRJ_WITH_SPICAM__        
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(1280)
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 		(1024)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(640)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(480)
+#endif        
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(320)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(240)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(220)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(176)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(160)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 		(128)
+		
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(160)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 		(160)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 		(160)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 		(160)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(128)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(160)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(128)
+
+		#define CAMERA_FEATURE_PREVIEW_LL_ZOOM_LIMIT		(10)
+		#define CAMERA_FEATURE_PREVIEW_L_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_M_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_S_ZOOM_LIMIT			(40)
+		#define CAMERA_FEATURE_PREVIEW_SS_ZOOM_LIMIT		(20)
+
+		#define CAMERA_FEATURE_PREVIEW_TILE_ZOOM_LIMIT		(20)	
+
+		#define CAMERA_FEATURE_CONT_SHOT_BURST_IMAGE_IDX	(2)  	
+	#elif ( (LCD_WIDTH == 176) && (LCD_HEIGHT == 220) )
+	
+		#define __CAMERA_FEATURE_IMAGE_SIZE_LL__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_L__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_M__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_S__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_SS__
+#if 0	//chenhe comment for jasper
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(640)
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 			(480)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(320)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(240)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(160)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(80)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(60)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(176)	
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 			(220)	
+	
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(220)
+#else
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(1280)
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 		(1024)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(640)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(480)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(320)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(240)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(160)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(176)	
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 			(220)	
+	
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(220)
+#endif
+		#define CAMERA_FEATURE_PREVIEW_LL_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_L_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_M_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_S_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_SS_ZOOM_LIMIT			(20)		
+
+		#define CAMERA_FEATURE_PREVIEW_TILE_ZOOM_LIMIT		(20)	
+		
+		#define CAMERA_FEATURE_CONT_SHOT_BURST_IMAGE_IDX	(2)  	/* SS, S, [M], L, LL */
+
+	#elif ( (LCD_WIDTH == 220) && (LCD_HEIGHT == 176) )
+	
+		#define __CAMERA_FEATURE_IMAGE_SIZE_LL__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_L__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_M__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_S__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_SS__
+#if 0	//chenhe comment for jasper
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(640)
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 			(480)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(320)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(240)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(160)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(80)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(60)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(176)	
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 			(220)	
+	
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 			(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(132)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(176)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(220)
+#else
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(1280)
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 		(1024)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(640)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(480)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(320)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(240)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(160)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(220)	
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 		(176)	
+	
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(220)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(164)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 		(220)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(164)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 		(220)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(164)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 		(220)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(164)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(220)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(176)
+#endif
+		#define CAMERA_FEATURE_PREVIEW_LL_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_L_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_M_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_S_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_SS_ZOOM_LIMIT			(20)		
+
+		#define CAMERA_FEATURE_PREVIEW_TILE_ZOOM_LIMIT		(20)	
+		
+		#define CAMERA_FEATURE_CONT_SHOT_BURST_IMAGE_IDX	(2)  	/* SS, S, [M], L, LL */
+
+	#elif ( (LCD_WIDTH == 240) && (LCD_HEIGHT == 320) )
+	
+		#define __CAMERA_FEATURE_IMAGE_SIZE_LL__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_L__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_M__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_S__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_SS__
+	
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(1280)//(640)chenhe
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 		(1024)	//(480)chenhe
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(640)//(320)chenhe
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(480)//(240)chenhe
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(320)//(160)chenhe
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(240)//(120)chenhe
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(176)//(80) chenhe
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(220)//(60) chenhe
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(240)//chenhe for jasper//(176)	
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 		(320) //chenhe for jasper//(220)	
+	
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(240)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(180)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 		(240)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(180)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 		(240)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(180)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 		(240)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(320)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(240)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(320)
+
+		#define CAMERA_FEATURE_PREVIEW_LL_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_L_ZOOM_LIMIT			(20)
+		#define CAMERA_FEATURE_PREVIEW_M_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_S_ZOOM_LIMIT			(40)	
+		#define CAMERA_FEATURE_PREVIEW_SS_ZOOM_LIMIT			(20)		
+
+		#define CAMERA_FEATURE_PREVIEW_TILE_ZOOM_LIMIT		(20)	
+		
+		#define CAMERA_FEATURE_CONT_SHOT_BURST_IMAGE_IDX	(2)  	/* SS, S, [M], L, LL */
+		
+	#else /* other LCD size */
+	
+		#define __CAMERA_FEATURE_IMAGE_SIZE_LL__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_L__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_M__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_S__
+		#define __CAMERA_FEATURE_IMAGE_SIZE_SS__
+	
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_WIDTH 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_LL_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_WIDTH 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_L_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_WIDTH 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_M_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_WIDTH 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_S_HEIGHT 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_WIDTH 			(120)
+		#define CAMERA_FEATURE_IMAGE_SIZE_SS_HEIGHT 			(120)
+	
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_WIDTH 		(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_LL_HEIGHT 		(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_WIDTH 			(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_L_HEIGHT 		(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_WIDTH 			(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_M_HEIGHT 		(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_WIDTH 			(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_S_HEIGHT 		(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_WIDTH 		(120)
+		#define CAMERA_FEATURE_PREVIEW_SIZE_SS_HEIGHT 		(120)
+		
+		#define CAMERA_FEATURE_PREVIEW_LL_ZOOM_LIMIT			(10)
+		#define CAMERA_FEATURE_PREVIEW_L_ZOOM_LIMIT			(10)
+		#define CAMERA_FEATURE_PREVIEW_M_ZOOM_LIMIT			(10)	
+		#define CAMERA_FEATURE_PREVIEW_S_ZOOM_LIMIT			(10)	
+		#define CAMERA_FEATURE_PREVIEW_SS_ZOOM_LIMIT			(10)	
+
+		#define CAMERA_FEATURE_PREVIEW_TILE_ZOOM_LIMIT		(10)	
+		
+		#define CAMERA_FEATURE_CONT_SHOT_BURST_IMAGE_IDX	(2)  	/* SS, S, [M], L, LL */
+		
+	#endif /* (LCD_WIDTH == XXX && LCD_HEIGHT == xxx) */
+
+		#define CAMERA_FEATURE_CONT_SHOT_BURST_IMAGE_IDX	(2)  	/* not used */
+		
+	#if defined(__MMI_SUBLCD__) && defined(__MMI_SUBLCD_COLOR__)
+		#define CAMERA_FEATURE_SUBLCD_PREVIEW_SIZE_WIDTH 	(SUBLCD_WIDTH)
+		#define CAMERA_FEATURE_SUBLCD_PREVIEW_SIZE_HEIGHT 	(SUBLCD_HEIGHT)
+	#endif 
+
+	/******* customizable image qty *********/
+	//#define __CAMERA_FEATURE_IMAGE_QTY_FINE__
+	#define __CAMERA_FEATURE_IMAGE_QTY_HIGH__
+	#define __CAMERA_FEATURE_IMAGE_QTY_NORMAL__
+	//#define __CAMERA_FEATURE_IMAGE_QTY_LOW__
+
+
+#ifndef MEM_ULC_3216
+	/******* customizable effect ***sum=7 gugogi******/  
+	  #define    __CAMERA_FEATURE_EFFECT_NORMAL__  //Õý³£
+         #define    __CAMERA_FEATURE_EFFECT_ANTIQUE__//¸´¹Å
+	  #define    __CAMERA_FEATURE_EFFECT_REDRISH__      // Æ«ºì
+	  #define    __CAMERA_FEATURE_EFFECT_GREENRISH__//Æ«ÂÌ
+	  #define   __CAMERA_FEATURE_EFFECT_BLUERISH__ //Æ«À¶
+	  #define   __CAMERA_FEATURE_EFFECT_BLACKWHITE__ //ºÚ°×
+	  #define   __CAMERA_FEATURE_EFFECT_NEGATIVE__   //¸ºÆ¬
+	/******* customizable add frame *********/
+#if !defined (__MMI_RESOURCE_SLIM_ON_128X160__)	
+	#define __CAMERA_FEATURE_ADD_FRAME_1__
+	#define __CAMERA_FEATURE_ADD_FRAME_2__
+	#define __CAMERA_FEATURE_ADD_FRAME_3__
+	#define __CAMERA_FEATURE_ADD_FRAME_4__
+#endif
+//	#define __CAMERA_FEATURE_ADD_FRAME_5__  //deleted by WeiD
+//	#define __CAMERA_FEATURE_ADD_FRAME_6__  //deleted by WeiD
+//	#define __CAMERA_FEATURE_ADD_FRAME_7__  //deleted by WeiD
+//	#define __CAMERA_FEATURE_ADD_FRAME_8__  //deleted by WeiD
+//	#define __CAMERA_FEATURE_ADD_FRAME_9__  //deleted by WeiD
+//	#define __CAMERA_FEATURE_ADD_FRAME_10__ //deleted by WeiD
+	//#define __CAMERA_FEATURE_ADD_FRAME_CUSTOM_1__
+	//#define __CAMERA_FEATURE_ADD_FRAME_CUSTOM_2__
+	//#define __CAMERA_FEATURE_ADD_FRAME_CUSTOM_3__
+	//#define __CAMERA_FEATURE_ADD_FRAME_CUSTOM_4__
+	//#define __CAMERA_FEATURE_ADD_FRAME_CUSTOM_5__
+#endif	  
+		
+
+	/******* customizable cont shot *********/
+	/* Notice, [Cont shot Off] and [Cont shot 1] will always exist if turn on __CAMERA_FEATURE_CONT_SHOT__*/
+	#define __CAMERA_FEATURE_CONT_SHOT_2__
+	#define __CAMERA_FEATURE_CONT_SHOT_3__
+	//#define __CAMERA_FEATURE_CONT_SHOT_BURST__
+	//#define __CAMERA_FEATURE_CONT_SHOT_TILE__	/* only MT6219 or after support */
+
+	#define CAMERA_FEATURE_CONT_SHOT_1_COUNT					(1)
+	#define CAMERA_FEATURE_CONT_SHOT_2_COUNT					(3)
+	#define CAMERA_FEATURE_CONT_SHOT_3_COUNT					(5)
+	#define CAMERA_FEATURE_CONT_SHOT_BURST_COUNT 			(0)	/* not used */
+	#define CAMERA_FEATURE_CONT_SHOT_BURST_SAVE_ROW			(0)	/* not used */
+	#define CAMERA_FEATURE_CONT_SHOT_BURST_SAVE_COL			(0)	/* not used */
+
+	/******* customizable delay timer *********/
+	/* Notice, [Delay Timer Off] and [Delay Timer 1] will always exist if turn on __CAMERA_FEATURE_DELAY_TIMER__*/
+	#define __CAMERA_FEATURE_DELAY_TIMER_2__
+	#define __CAMERA_FEATURE_DELAY_TIMER_3__
+
+	#define CAMERA_FEATURE_DELAY_TIMER_1_DURATION	(5)
+	#define CAMERA_FEATURE_DELAY_TIMER_2_DURATION	(10)
+	#define CAMERA_FEATURE_DELAY_TIMER_3_DURATION	(15)
+
+
+	/* Misc define */
+	#define CAMERA_SHUTTER_SOUND_VOLUMN			(LEVEL5)			/* LEVEL1 - LEVEL7 */
+	#define CAMERA_SHORTCUT_KEY					(KEY_CAMERA)	
+    #ifdef __MMI_BLACKBERRY_QWERTY__
+    #define CAMERA_CAPTURE_KEY						(KEY_ENTER)
+    #else
+	#define CAMERA_CAPTURE_KEY						(KEY_SEND)//(KEY_CAMERA)  modified by WeiD
+    #endif
+    #define CAMERA_CAPTURE_EXTRA_KEY				(KEY_IP)//	modified by WeiD		/* if no extra, set -1 */
+	#define CAMERA_CAPTURE_OK_KEY				(CAMERA_SHORTCUT_KEY)
+	#define CAMERA_TOGGLE_SELF_CAPTURE_KEY		(KEY_STAR)
+	#define CAMERA_TOGGLE_HIDE_OSD_KEY			(KEY_POUND)	
+	#define CAMERA_EFFECT_KEY						(KEY_1)			/* if no use hotkey, set -1 */
+	#define CAMERA_WB_KEY							(KEY_3)     //modified by WeiD
+	#define CAMERA_CT_KEY                           (KEY_2) 
+	#define CAMERA_FLASH_KEY						(KEY_8)
+	#define CAMERA_NIGHT_KEY						(-1)
+	#define CAMERA_LED_HIGHLIGHT_KEY				(KEY_8)
+	#define CAMERA_CONT_SHOT_KEY					(KEY_5)
+	#define CAMERA_DELAY_TIMER_KEY				(KEY_4)
+	#define CAMERA_IMAGE_QTY_KEY					(KEY_6)
+	#define CAMERA_IMAGE_SIZE_KEY					(KEY_7)
+	#define CAMERA_SHOT_MODE_KEY					(-1)			
+	#define CAMERA_ISO_KEY							(-1)	
+	#define CAMERA_AE_METER_KEY					(-1)		
+	#define CAMERA_STORAGE_KEY						(-1)	
+	//#define CAMERA_SWITCH_SENSOR					(KEY_8)
+
+#ifdef __MMI_DISABLE_DUAL_SENSOR__
+	#define CAMERA_SWITCH_SENSOR					(-1)
+#else
+	#define CAMERA_SWITCH_SENSOR					(KEY_0)
+#endif
+	/***************************************************************************** 
+	* Default Setting 
+	*****************************************************************************/
+	/*********** Preview ***********/
+	#define CAMERA_DEFAULT_SETTING_ZOOM_IDX			(0)	/* index - start from 0 */
+	#define CAMERA_DEFAULT_SETTING_WB					CAMERA_SETTING_WB_AUTO
+	#define CAMERA_DEFAULT_SETTING_FLASH				(0)
+	#define CAMERA_DEFAULT_SETTING_LED_HIGHLIGHT		CAMERA_SETTING_LED_HIGHLIGHT_OFF
+	#define CAMERA_DEFAULT_SETTING_SHUTTER_SOUND		CAMERA_SETTING_SHUTTER_SOUND_1
+	#define CAMERA_DEFAULT_SETTING_EV					CAMERA_SETTING_EV_0	
+	#define CAMERA_DEFAULT_SETTING_NIGHT				CAMERA_SETTING_NIGHT_OFF
+	#define CAMERA_DEFAULT_SETTING_CLOSEUP				(0)
+	#define CAMERA_DEFAULT_SETTING_BANDING				CAMERA_SETTING_BANDING_60HZ
+	#ifdef MEM_ULC_3216
+	#define CAMERA_DEFAULT_SETTING_EFFECT				(0)
+	#else
+	#define CAMERA_DEFAULT_SETTING_EFFECT				CAMERA_SETTING_EFFECT_NORMAL
+	#endif
+	#define CAMERA_DEFAULT_SETTING_ADD_FRAME			CAMERA_SETTING_ADD_FRAME_OFF
+	#define CAMERA_DEFAULT_SETTING_CONT_SHOT			CAMERA_SETTING_CONT_SHOT_OFF
+	#define CAMERA_DEFAULT_SETTING_DELAY_TIMER		CAMERA_SETTING_DELAY_TIMER_OFF
+	#define CAMERA_DEFAULT_SETTING_AE_METER			(0)
+	#define CAMERA_DEFAULT_SETTING_ISO					(0)
+	#define CAMERA_DEFAULT_SETTING_SHOT_MODE			CAMERA_SETTING_SHOT_MODE_AUTO			
+	#define CAMERA_DEFAULT_SETTING_STORAGE				CAMERA_SETTING_STORAGE_PHONE
+
+	/* custom fx */
+	/*gaosh modify for default feature 20070816 */
+	#define CAMERA_DEFAULT_SETTING_BRIGHTNESS			(2)//(4) //chenhe comment
+	/*gaosh modify for default feature 20070816*/
+	#define CAMERA_DEFAULT_SETTING_SATURATION			(128)	
+	#define CAMERA_DEFAULT_SETTING_CONTRAST			       (1)  //(2)   //(128)//chenhe comment	 //add by WeiD
+	#define CAMERA_DEFAULT_SETTING_HUE					(0)	
+
+	/* led highlight/flash value */
+	#define CAMERA_DEFAULT_PREVIEW_LED_VALUE			(80)	
+	#define CAMERA_DEFAULT_CAPTURE_LED_VALUE			(80)	
+	#define CAMERA_DEFAULT_PREVIEW_FLASH_VALUE		(100)	
+	#define CAMERA_DEFAULT_CAPTURE_FLASH_VALUE		(100)	
+
+	/* capture */
+	#define CAMERA_DEFAULT_SETTING_IMAGE_SIZE			CAMERA_SETTING_IMAGE_SIZE_SS
+	#define CAMERA_DEFAULT_SETTING_IMAGE_QTY			CAMERA_SETTING_IMAGE_QTY_NORMAL
+
+	/* preview rotation */
+	#if defined(SENSOR_ON_BODY)
+		#if defined(SENSOR_ROTATE_0)
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_0
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_0_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_0_MIRROR
+		#elif defined(SENSOR_ROTATE_180)
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_180
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_180_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_180_MIRROR
+		#else
+		/* rotate 90, 270 not used yet */
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_0
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_0_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_0_MIRROR
+	#endif
+	#elif defined(SENSOR_ON_COVER)
+		#if defined(SENSOR_ROTATE_0)
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_0
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_0_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_180_MIRROR
+		#elif defined(SENSOR_ROTATE_180)
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_180
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_180_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_0_MIRROR
+		#else
+			/* rotate 90, 270 not used yet */	
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_0
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_0_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_180_MIRROR
+		#endif
+	#else /* not define SENSOR_LCATION */
+		#if defined(SENSOR_ROTATE_0)
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_0
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_0_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_180_MIRROR
+		#elif defined(SENSOR_ROTATE_180)
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_180
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_180_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_0_MIRROR
+		#else
+			/* rotate 90, 270 not used yet */
+			#define CAMERA_PREVIEW_MAINLCD_ROTATE				CAMERA_PREVIEW_ROTATE_0
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_OPEN_ROTATE	CAMERA_PREVIEW_ROTATE_0_MIRROR
+			#define CAMERA_PREVIEW_SUBLCD_CLAM_CLOSE_ROTATE CAMERA_PREVIEW_ROTATE_180_MIRROR
+		#endif				
+	#endif /* SENSOR_LOCATION */		
+
+	/* lcd rotate */
+	#ifdef HORIZONTAL_CAMERA
+		#define CAMERA_LCM_MAINLCD_ROTATE							CAMERA_LCM_RORATE_270	
+	#else
+		#define CAMERA_LCM_MAINLCD_ROTATE							CAMERA_LCM_ROTATE_0	
+	#endif
+	#define CAMERA_LCM_SUBLCD_CLAM_OPEN_ROTATE				CAMERA_LCM_ROTATE_180
+	#define CAMERA_LCM_SUBLCD_CLAM_CLOSE_ROTATE				CAMERA_LCM_ROTATE_0
+
+	/* display rotate */
+	#define CAMERA_DISPLAY_ROTATE_0								CAMERA_PREVIEW_ROTATE_0			
+	#define CAMERA_DISPLAY_ROTATE_90								CAMERA_PREVIEW_ROTATE_90					
+	#define CAMERA_DISPLAY_ROTATE_180							CAMERA_PREVIEW_ROTATE_180 				
+	#define CAMERA_DISPLAY_ROTATE_270							CAMERA_PREVIEW_RORATE_270		
+	#define CAMERA_DISPLAY_ROTATE_RESET							255		
+
+	/* Factory mode */
+	#if ((LCD_WIDTH == 128) && (LCD_HEIGHT == 128))
+		#define CAMERA_FACTORY_PREVIEW_WIDTH		 		(128)
+		#define CAMERA_FACTORY_PREVIEW_HEIGHT 				(128)
+	#elif ((LCD_WIDTH == 128) && (LCD_HEIGHT == 160))
+		#define CAMERA_FACTORY_PREVIEW_WIDTH		 		(128)
+		#define CAMERA_FACTORY_PREVIEW_HEIGHT 				(160)
+    #elif ((LCD_WIDTH == 160) && (LCD_HEIGHT == 128))
+	    #define CAMERA_FACTORY_PREVIEW_WIDTH		 		(160)
+		#define CAMERA_FACTORY_PREVIEW_HEIGHT 				(128)   
+	#elif ( (LCD_WIDTH == 176) && (LCD_HEIGHT == 220) )
+		#define CAMERA_FACTORY_PREVIEW_WIDTH		 		(176)
+		#define CAMERA_FACTORY_PREVIEW_HEIGHT 				(220)
+	#elif ( (LCD_WIDTH == 220) && (LCD_HEIGHT == 176) )
+		#define CAMERA_FACTORY_PREVIEW_WIDTH		 		(220)
+		#define CAMERA_FACTORY_PREVIEW_HEIGHT 				(176)	
+	#elif ( (LCD_WIDTH == 240) && (LCD_HEIGHT == 320) )
+		#define CAMERA_FACTORY_PREVIEW_WIDTH		 		(240)
+		#define CAMERA_FACTORY_PREVIEW_HEIGHT 				(320)
+	#else /* other LCD size */
+		#define CAMERA_FACTORY_PREVIEW_WIDTH		 		(128)
+		#define CAMERA_FACTORY_PREVIEW_HEIGHT 				(96)
+	#endif /* (LCD_WIDTH == XXX && LCD_HEIGHT == xxx) */
+
+	#endif /* Camera module type */
+
+
+
+#endif /* ISP_SUPPORT, CAMERA_MODULE */
+
+
+#endif /* __MMI_CAMERA__ */
+#endif /* _CAMERA_FEATURES_H_ */
+
+

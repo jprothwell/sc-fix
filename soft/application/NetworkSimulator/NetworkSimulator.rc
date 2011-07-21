@@ -1,0 +1,448 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\NetworkSimulator.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "NetworkSimulator DLL\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "NetworkSimulator\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2008\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "NetworkSimulator.DLL\0"
+            VALUE "ProductName", "NetworkSimulator Dynamic Link Library\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       ID_MENU_EXIT
+    END
+    POPUP "Message"
+    BEGIN
+        MENUITEM "&Send Messages",              IDM_SEND_MESSAGES
+        MENUITEM "Modify &Bootup Message Sequence", IDM_MODIFY_BOOT_MSG
+        MENUITEM "&Modify Async Messages Sequence", 
+                                                IDM_MODIFY_ASYNC_MESSAGES_SEQUENCE
+
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents",                   ID_HELP_CONTENTS
+        MENUITEM "&About",                      ID_ABOUT_ME
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 15
+BEGIN
+    BUTTON      ID_BUTTON_MSG1
+    BUTTON      ID_BUTTON_MSG2
+    BUTTON      ID_BUTTON_MSG3
+    BUTTON      ID_BUTTON_MSG4
+    BUTTON      ID_BUTTON_MSG5
+    BUTTON      ID_BUTTON_MSG6
+    BUTTON      ID_BUTTON_MSG7
+    BUTTON      ID_BUTTON_MSG8
+    BUTTON      ID_BUTTON_MSG9
+    BUTTON      ID_BUTTON_MSG10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP  DISCARDABLE     "Toolbar.bmp"
+IDB_BITMAP_CAL_HIST     BITMAP  DISCARDABLE     "ToolBitmap\\call_hist.bmp"
+IDB_BITMAP_2ND_CALL     BITMAP  DISCARDABLE     "ToolBitmap\\2ndCall.bmp"
+IDB_BITMAP_BATTERY      BITMAP  DISCARDABLE     "ToolBitmap\\battery.bmp"
+IDB_BITMAP_BOOTUP       BITMAP  DISCARDABLE     "ToolBitmap\\bootup.bmp"
+IDB_BITMAP_CAL_BAR_RESP BITMAP  DISCARDABLE     "ToolBitmap\\call_barr_resp.bmp"
+IDB_BITMAP_CALL_FWD     BITMAP  DISCARDABLE     "ToolBitmap\\call_fwd.bmp"
+IDB_BITMAP_DROP         BITMAP  DISCARDABLE     "ToolBitmap\\dropcall.bmp"
+IDB_BITMAP_CBSMS        BITMAP  DISCARDABLE     "ToolBitmap\\CBSMS.bmp"
+IDB_BITMAP_CHLD         BITMAP  DISCARDABLE     "ToolBitmap\\CHLD.bmp"
+IDB_BITMAP_CLASS0       BITMAP  DISCARDABLE     "ToolBitmap\\class0.bmp"
+IDB_BITMAP_CPHS         BITMAP  DISCARDABLE     "ToolBitmap\\cphs.bmp"
+IDB_BITMAP_DIAL_IND     BITMAP  DISCARDABLE     "ToolBitmap\\dial_ind.bmp"
+IDB_BITMAP_LI           BITMAP  DISCARDABLE     "ToolBitmap\\li.bmp"
+IDB_BITMAP_DTMF         BITMAP  DISCARDABLE     "ToolBitmap\\dtmf.bmp"
+IDB_BITMAP1_FWD_RESP    BITMAP  DISCARDABLE     "ToolBitmap\\fwd_resp.bmp"
+IDB_BITMAP_GPIO         BITMAP  DISCARDABLE     "ToolBitmap\\gpio.bmp"
+IDB_BITMAP_INCALL       BITMAP  DISCARDABLE     "ToolBitmap\\incall.bmp"
+IDB_BITMAP_PBOOK        BITMAP  DISCARDABLE     "ToolBitmap\\PBook.bmp"
+IDB_BITMAPNEW_SMS       BITMAP  DISCARDABLE     "ToolBitmap\\new_sms.bmp"
+IDB_BITMAP_NO_SIM       BITMAP  DISCARDABLE     "ToolBitmap\\no_sim.bmp"
+IDB_BITMAP_NW_TZ_CHG_INFO BITMAP  DISCARDABLE     "ToolBitmap\\NWTZCHGINFO.bmp"
+IDB_BITMAPOUTGOING_CONNECT BITMAP  DISCARDABLE     "ToolBitmap\\outgoing_connect.bmp"
+IDB_BITMAP_SAT_INPUT    BITMAP  DISCARDABLE     "ToolBitmap\\sat_input.bmp"
+IDB_BITMAP_PLNM_STATUS  BITMAP  DISCARDABLE     "ToolBitmap\\plnm_status.bmp"
+IDB_BITMAP_PNLIND       BITMAP  DISCARDABLE     "ToolBitmap\\pnl_ind.bmp"
+IDB_BITMAP_SAT          BITMAP  DISCARDABLE     "ToolBitmap\\SAT.bmp"
+IDB_BITMAP_SAT_DISP     BITMAP  DISCARDABLE     "ToolBitmap\\sat_disp.bmp"
+IDB_BITMAP_SAT_INKEY    BITMAP  DISCARDABLE     "ToolBitmap\\sat_inkey.bmp"
+IDB_BITMAP_WAITING_MSG  BITMAP  DISCARDABLE     "ToolBitmap\\wtg_msg.bmp"
+IDB_BITMAP_SAT_SEL      BITMAP  DISCARDABLE     "ToolBitmap\\sat_sel.bmp"
+IDB_BITMAP_SGT_IND      BITMAP  DISCARDABLE     "ToolBitmap\\sgt_ind.bmp"
+IDB_BITMAP_SL_IND       BITMAP  DISCARDABLE     "ToolBitmap\\sl_ind.bmp"
+IDB_BITMAP_SS_NOT       BITMAP  DISCARDABLE     "ToolBitmap\\SS_Not.bmp"
+IDB_BITMAP_USB          BITMAP  DISCARDABLE     "ToolBitmap\\USB.bmp"
+IDB_BITMAP_USSD         BITMAP  DISCARDABLE     "ToolBitmap\\USSD.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_GENERIC_INPUT DIALOG DISCARDABLE  0, 0, 406, 167
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Input Dialog"
+FONT 10, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Send",ID_BUTTON_MAKEBUFFER,7,148,46,12
+    CONTROL         "",IDC_LIST_DATASET_DETAILS,"SysListView32",LVS_REPORT | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,59,392,83
+    EDITTEXT        IDC_EDIT_OUTGOING_MSG_NAME,305,18,89,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_OUTGOING_MSGID,305,32,89,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_INCOMING_MSG_NAME,105,18,89,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_INCOMING_MSG_ID,105,32,89,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    LTEXT           "Outgoing Message Name",IDC_STATIC_OUTGOING_MSG_NAME,211,
+                    19,89,8
+    LTEXT           "Outgoing Message ID",IDC_STATIC_OUTGOING_MSG_ID,211,33,
+                    89,8
+    LTEXT           "Incoming Message Name",IDC_STATIC_INCOMING_MSG_NAME,14,
+                    19,89,8
+    LTEXT           "Incoming Message ID",IDC_STATIC_INCOMING_MSG_ID,14,33,
+                    89,8
+    LTEXT           "DataSet Details",IDC_STATIC_DS_DETAILS,7,49,38,8
+    GROUPBOX        "Incoming Message Details",IDC_STATIC_INC_MSG_DETAILS,7,
+                    7,192,41
+    GROUPBOX        "OutGoing Message Details",
+                    IDC_STATIC_OUTGOING_MSG_DETAILS,207,7,192,41
+    PUSHBUTTON      "Close",IDC_BUTTON_ONCLOSE,353,148,46,12
+END
+
+IDD_DLG_ASYNC_MESSAGE DIALOG DISCARDABLE  0, 0, 260, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 10, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Save",IDOK,203,128,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,203,145,50,14
+    LISTBOX         IDC_LISTE_STOCK_MESSAGE,7,20,84,139,LBS_MULTIPLESEL | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LISTE_ASYNC_MESSAGE,115,20,84,139,LBS_MULTIPLESEL | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      ">>",IDC_BTN_ADD,93,20,20,14,WS_DISABLED
+    PUSHBUTTON      "<<",IDC_BTN_DELETE,93,37,20,14,WS_DISABLED
+    LTEXT           "Stock Message",IDC_STATIC,7,7,51,8
+    COMBOBOX        IDC_COMBO_AYSNC_NAME,115,7,84,76,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Add",IDC_BTN_ADD_MESSAGE,203,20,50,14
+    PUSHBUTTON      "&Delete",IDC_BTN_DELETE_MESSAGE,203,37,50,14
+END
+
+IDD_DLG_BOOT_MESSAGE DIALOG DISCARDABLE  0, 0, 261, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bootup Messages"
+FONT 10, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Static",IDC_STATIC_GROUP,7,7,247,135
+    CONTROL         "Tree1",IDC_TREE_BOOT,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | 
+                    TVS_CHECKBOXES | WS_BORDER | WS_TABSTOP,13,20,233,114
+    DEFPUSHBUTTON   "Save",IDOK,7,147,46,12
+    PUSHBUTTON      "Close",IDCANCEL,208,147,46,12
+END
+
+IDD_DLG_SEND_MESSAGE DIALOG DISCARDABLE  0, 0, 261, 166
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Send Messages"
+FONT 10, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Static",IDC_STATIC_GROUP,7,7,247,135
+    CONTROL         "Tree1",IDC_TREE_BOOT,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | 
+                    WS_BORDER | WS_TABSTOP,13,20,233,114
+    DEFPUSHBUTTON   "Send",IDOK,7,147,46,12
+    PUSHBUTTON      "Close",IDCANCEL,208,147,46,12
+END
+
+IDD_DLG_NETWORK_SIMULATOR DIALOG DISCARDABLE  0, 0, 393, 246
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Network Simulator"
+MENU IDR_MAINFRAME
+FONT 10, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Incoming Messages coming from MMI",IDC_STATIC_INC_MSGS,
+                    1,18,391,110
+    CONTROL         "List1",IDC_LIST_INCOMING_MESSAGES,"SysListView32",
+                    LVS_REPORT | WS_BORDER | WS_TABSTOP,7,30,379,92
+    GROUPBOX        "Outgoing Messages send to MMI",IDC_STATIC_OUTGOING_MSGS,
+                    1,129,391,110
+    CONTROL         "List1",IDC_LIST_OUTGOING_MESSAGES,"SysListView32",
+                    LVS_REPORT | WS_BORDER | WS_TABSTOP,7,142,379,92
+END
+
+IDD_DLG_SELECT_MESSAGE DIALOG DISCARDABLE  0, 0, 195, 124
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Select Message"
+FONT 10, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Send",IDOK,7,105,43,12
+    PUSHBUTTON      "&Close",IDCANCEL,145,105,43,12
+    EDITTEXT        IDC_EDIT_MESSAGE_ID,15,28,163,12,ES_AUTOHSCROLL | 
+                    WS_DISABLED
+    COMBOBOX        IDC_COMBO_MSG_RESPONSE,15,57,164,58,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Response Message",IDC_STATIC_RESP_MSG,15,47,142,9
+    LTEXT           "Message ID",IDC_STATIC_MSGID,15,18,34,8
+    COMBOBOX        IDC_COMBO_MSG_RESPONSE_VALUE,15,84,164,58,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Response Value",IDC_STATIC_RESP_VAL,15,73,142,9
+    GROUPBOX        "Message Detail",IDC_STATIC_MSG_DETAIL,7,7,181,95
+    COMBOBOX        IDC_COMBO_MSG_RESPONSE2,15,57,164,58,CBS_DROPDOWN | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DIALOG_GENERIC_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 399
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 160
+    END
+
+    IDD_DLG_ASYNC_MESSAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 253
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+
+    IDD_DLG_BOOT_MESSAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+
+    IDD_DLG_SEND_MESSAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 159
+    END
+
+    IDD_DLG_NETWORK_SIMULATOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 392
+        BOTTOMMARGIN, 239
+        HORZGUIDE, 18
+    END
+
+    IDD_DLG_SELECT_MESSAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 188
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 117
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows 通信端口初始化失败。"
+    IDR_MAINFRAME           "NetworkSimulator"
+    IDC_TREECTRL            "Tree Ctrl"
+    IDS_STRING_MSG_ID       "Message ID"
+    IDS_STRING_MSG_NAME     "Message Name"
+    IDS_STRING_MSG_TIME     "Message Time"
+    IDS_STRING_MSG_NAME_NOT_SUPPORTED "Message Not Supported"
+    IDS_STRING_FROM_MESSAGE_ID "From Message ID"
+    IDS_STRING_MESSAGE_NAME "Message Name"
+    IDS_STRING_MESSAGE_TIME "Message Time"
+    IDS_STRING_DLG_NWS      "Network Simulator"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STRING_SEND_MESSAGE_ID "Send Message ID"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    CG_ID_VIEW_MYDIALOGBAR  "Show or hide My Dialog Bar\nToggle My Dialog Bar"
+    IDS_STRING_UPDATE_SCRIPT_FAILD "Update the script file failed."
+    IDS_STRING_WANT_TO_SAVE_CHANGES "Do you want to save changes?"
+    IDS_STRING_MODI_BOOT_SEQ_TITLE_TEXT "Modify Bootup Message Sequence"
+    IDS_STRING_MODI_BOOT_SEQ_GRP_BOX_TEXT 
+                            "Please Select the Async Message and Click Save Button"
+    IDS_STRING_SAVE         "&Save"
+    IDS_STRING_CLOSE        "&Close"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STRING_UPDATE_BOOTUP_FAILED "Update bootup failed."
+    IDS_STRING_SEND_MESSAGE "Asyncronous Messages"
+    IDS_STRING_DLG_SEND_EVENTS "Send Messages To MMI"
+    IDS_STRING_SEND         "&Send"
+    IDS_STRING_PLEASE_SELECT_MESSAGES "Please select Some Messages."
+    IDS_STRING_PLEASE_SELECT_ITEM "Please select some item from tree viewer"
+    IDS_STRING_EMPTY        " "
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\NetworkSimulator.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

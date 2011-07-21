@@ -1,0 +1,36 @@
+1.复制"NetWorkSimulator.lib"文件到相应的工程目录下
+2.复制"SimulatorStart.h"和"QueueGProt.h"文件到相应的工程目录下
+3.在需要调用"NetWorkSimulator.lib"库文件的工程目录下添加如下代码
+
+#include "SimulatorStart.h"	// Added by ClassView
+#ifdef _DEBUG
+#pragma comment(lib,"Lib\\NetWorkSimulatorD.lib")
+#else
+#pragma comment(lib,"Lib\\NetWorkSimulator.lib")
+#endif
+
+说明:"NetWorkSimulatorD.lib"为Debug版本,"SimulatorStart.h"需要"QueueGProt.h"文件
+
+4.声明变量
+
+CSimulatorStart m_SimulatorStart;
+
+5.代码实现
+
+  if (m_SimulatorStart.IsInit())
+  {
+    m_SimulatorStart.ShowSimulator();
+  }
+  else
+  {
+    m_SimulatorStart.SetReadQueueHandler(OslReceiveMsgExtQ);
+    m_SimulatorStart.SetWriteQueueHandler(OslMsgSendExtQueue);
+    m_SimulatorStart.SetReadQueueHandle(task_info_g1[10].task_ext_qid);
+    m_SimulatorStart.SetWriteQueueHandle(task_info_g1[MOD_PRT].task_ext_qid);
+    
+    CRect rect;
+    GetWindowRect(&rect);
+    m_SimulatorStart.InitSimulator(rect.BottomRight().x,rect.TopLeft().y);
+  }
+
+5.最后复制"NetWorkSimulator.dll"到可执行目录下.
