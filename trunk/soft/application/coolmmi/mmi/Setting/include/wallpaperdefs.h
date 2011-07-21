@@ -1,0 +1,296 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of COOLSAND Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("COOLSAND SOFTWARE")
+*  RECEIVED FROM COOLSAND AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. COOLSAND EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES COOLSAND PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE COOLSAND SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. COOLSAND SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY COOLSAND SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND COOLSAND'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE COOLSAND SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT COOLSAND'S OPTION, TO REVISE OR REPLACE THE COOLSAND SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  COOLSAND FOR SUCH COOLSAND SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*******************************************************************************
+ * Filename:
+ * ---------
+ *  WallpaperDefs.h
+ *
+ * Project:
+ * --------
+ 
+ *
+ * Description:
+ * ------------
+ *  
+ *
+ * Author:
+ * -------
+ *  
+ *
+ *==============================================================================
+ * 				HISTORY
+ 
+ *------------------------------------------------------------------------------
+ *
+ *
+ *
+ *------------------------------------------------------------------------------
+ 
+ *==============================================================================
+ *******************************************************************************/
+
+/**************************************************************
+
+	FILENAME	: ScreenSaverDefs.h
+
+  	PURPOSE		: Resource IDs for the FunAndGames Application
+
+ 
+
+ 
+
+	DATE		: 
+
+**************************************************************/
+
+#ifndef WALLPAPER_H
+#define WALLPAPER_H
+
+#include "mmi_features.h"  
+
+#include "mmi_data_types.h"
+
+#if defined(__MMI_RESOURCE_SLIM_ON_128X160__)
+#ifndef __MMI_WALLPAPER_NUM__
+#define __MMI_WALLPAPER_NUM__ 2
+#endif
+#elif defined(__MMI_RESOURCE_SLIM__)
+#ifndef __MMI_WALLPAPER_NUM__
+#define __MMI_WALLPAPER_NUM__ 3
+#endif
+#else
+#ifndef __MMI_WALLPAPER_NUM__
+#define __MMI_WALLPAPER_NUM__ 8
+#endif
+#endif
+
+#if defined(__PROJECT_GALLITE_C01__)
+#undef __MMI_WALLPAPER_NUM__
+#define __MMI_WALLPAPER_NUM__ 3
+#endif
+
+#ifdef __MMI_WALLPAPER_NUM__
+#define MAX_SYSTEM_WALLPAPER  __MMI_WALLPAPER_NUM__
+#else
+typedef enum {
+SYSTEM_WALLPAPER_1,
+SYSTEM_WALLPAPER_2,
+#if !defined( __MMI_RESOURCE_SLIM_ON_128X160__	)	
+SYSTEM_WALLPAPER_3,
+#ifndef __MMI_RESOURCE_SLIM__
+SYSTEM_WALLPAPER_4,
+SYSTEM_WALLPAPER_5,
+#endif
+#if 0 //将墙纸个数减少到5个 //deleted by zhoumn@2007/07/23
+SYSTEM_WALLPAPER_6,
+SYSTEM_WALLPAPER_7,
+SYSTEM_WALLPAPER_8,
+#endif
+#endif
+MAX_SYSTEM_WALLPAPER
+} NUM_WALLPAPER_ENUM;
+#endif
+
+#define MAX_SYSTEM_SCREENSAVER MAX_SYSTEM_WALLPAPER
+#define MAX_OTHER_SCREENSAVER MAX_OTHER_WALLPAPER            
+
+#if defined(MAX_SCREENSAVER_VIDEO) && defined(MAX_ONOFF_VIDEO)
+#define MAX_SYSTEM_VIDEO (MAX_SCREENSAVER_VIDEO + MAX_ONOFF_VIDEO)
+#elif	defined (MAX_ONOFF_VIDEO)
+#define MAX_SYSTEM_VIDEO (MAX_ONOFF_VIDEO)
+#elif defined (MAX_SCREENSAVER_VIDEO)
+#define MAX_SYSTEM_VIDEO (MAX_SCREENSAVER_VIDEO)
+#else
+#define MAX_SYSTEM_VIDEO 0
+#endif
+
+#ifdef __MMI_THEMES_V2_SUPPORT__
+#define MAX_SYS_WPSS_NUMBERS    (MAX_SYSTEM_WALLPAPER+ MAXIMUM_FULLSCREEN_FACTORY_IMAGES + MAX_OTHER_WALLPAPER + MAX_SYSTEM_VIDEO+1)// +1 for theme wallpaper
+#else
+#define MAX_SYS_WPSS_NUMBERS    (MAX_SYSTEM_WALLPAPER+ MAXIMUM_FULLSCREEN_FACTORY_IMAGES + MAX_OTHER_WALLPAPER + MAX_SYSTEM_VIDEO)
+#endif
+#define MAX_DL_WPSS_NUMBERS		MAXIMUM_DOWNLOAD_IMAGES
+
+
+typedef enum {
+	SCR_MAIN_WALLPAPER = WALLPAPER_BASE + 1,
+	SCR_MAIN_WALLPAPER_FIX,
+	SCR_WALLPAPER_SYSTEM_LIST,
+	SCR_WALLPAPER_DOWNLOAD_LIST,
+	SCR_WALLPAPER_VIEW,
+	SCR_WALLPAPER_DOWNLOAD_VIEW,
+	SCR_ID_PHNSET_IDLE_CLOCK_TYPE
+} SCR_WALLPAPER;
+
+typedef enum{
+/*Please Dont Change This Sequence*/
+	STR_WALLPAPER_1 = WALLPAPER_BASE+1,
+	STR_WALLPAPER_2,
+	STR_WALLPAPER_3,
+	STR_WALLPAPER_4,
+	STR_WALLPAPER_5,
+	STR_WALLPAPER_6,
+	STR_WALLPAPER_7,
+	STR_WALLPAPER_8,
+	STR_WALLPAPER_9,
+	STR_WALLPAPER_10,
+	STR_WALLPAPER_11,
+	STR_WALLPAPER_12,
+	STR_WALLPAPER_13,
+	STR_WALLPAPER_14,
+	STR_WALLPAPER_15,
+	STR_WALLPAPER_16,
+#ifdef __MMI_SUB_WALLPAPER__
+	STR_SUB_WALLPAPER_1,
+	STR_SUB_WALLPAPER_2,
+	STR_SUB_WALLPAPER_3,
+	STR_SUB_WALLPAPER_4,
+	STR_SUB_WALLPAPER_5,
+	STR_SUB_WALLPAPER_6,
+	STR_SUB_WALLPAPER_7,
+	STR_SUB_WALLPAPER_8,
+	STR_SUB_WALLPAPER_9,
+	STR_SUB_WALLPAPER_10,
+#endif
+/*Please Dont Chnage This Sequence*/
+#if defined(__MMI_UI_TECHNO_IDLESCREEN_BAR__)
+	STR_ID_IDLE_CLOCK_TYPE,
+#endif	
+#ifdef __MMI_ANALOG_CLOCK__
+	STR_WALLPAPER_ANALOG,
+#endif
+
+#ifdef __MMI_DIGITAL_CLOCK__	
+	STR_WALLPAPER_DIGITAL,
+#endif
+
+/*为了解决墙纸下级界面标题名字不正确的bug，暂时将STR_WALLPAPER_CAPTION移至STR_WALLPAPER_FIX和
+STR_WALLPAPER_ROTATE之后*/
+	STR_WALLPAPER_FIX,
+	STR_WALLPAPER_ROTATE,
+	STR_WALLPAPER_CAPTION,//modified by zhoumn for bug 10524 @2007/03/15
+	STR_WALLPAPER_SYSTEM,
+	STR_WALLPAPER_DOWNLOAD,
+
+//	STR_SET_WALLPAPER_LSK,
+//	STR_WALLPAPER_ANALOG,
+//	STR_WALLPAPER_DIGITAL,
+
+//	STR_WALLPAPER_EMPTY,
+	STR_WALLPAPER_SELECT_CAPTION,
+//	STR_VIEW_WALLPAPER,
+
+	STR_WPSS_IMG_ERR_TYPE,  /* Type not support */
+	STR_WPSS_IMG_ERR_FILE,  /* Image Decode error */
+	STR_WPSS_IMG_ERR_SIZE,  /* Image file size too large */
+	STR_WPSS_IMG_ERR_DIMESION,  /* Image dimesion not fit */
+
+	STR_IDLE_WP_DECODE_ERR /* Error message when display wallpaper in idle screen*/
+#ifdef __MMI_THEMES_V2_SUPPORT__
+	,STR_CURR_WALLPAPER
+#endif
+}STR_WALLPAPER ;
+
+typedef enum
+{
+
+/*Please Dont Change This Sequence*/	
+	WALLPAPER_1 = WALLPAPER_BASE + 1,
+	WALLPAPER_2,
+#if defined(__PROJECT_GALLITE_C01__)
+	WALLPAPER_3,
+#endif
+#if !defined( __MMI_RESOURCE_SLIM_ON_128X160__)
+	WALLPAPER_3,
+	#if !defined(__MMI_RESOURCE_SLIM__)
+	WALLPAPER_4,
+	WALLPAPER_5,
+	WALLPAPER_6,
+	WALLPAPER_7,
+	WALLPAPER_8,
+	WALLPAPER_9,
+	#endif
+#endif	
+	#ifdef __MMI_SUB_WALLPAPER__
+	SUB_WALLPAPER_1,
+	SUB_WALLPAPER_2,
+	SUB_WALLPAPER_3,
+	SUB_WALLPAPER_4,
+	SUB_WALLPAPER_5,
+	SUB_WALLPAPER_6,
+	SUB_WALLPAPER_7,
+	SUB_WALLPAPER_8,
+	SUB_WALLPAPER_9,
+	SUB_WALLPAPER_10,
+	#endif
+	
+  IMG_MAX_WALLPAPER,
+/*Please Dont Change This Sequence*/
+#ifdef __MMI_ANALOG_CLOCK__
+	ANALOG_CLOCK_WALLPAPER  ,
+#endif
+
+#ifdef __MMI_DIGITAL_CLOCK__
+	DIGITAL_CLOCK_WALLPAPER ,
+#endif
+
+	IMG_WALLPAPER_SYSTEM ,
+	IMG_WALLPAPER_DOWNLAOD,
+	IMG_WALLPAPER_CAPTION,
+	IMG_MENU_BG_PIC,	
+#ifdef __MMI_THEMES_V2_SUPPORT__
+	,CURRENT_THEME_WALLPAPER
+#endif
+} IMG_WALLPAPER ;
+
+#if defined(__MMI_MAINLCD_220X176__)
+#define MAX_OTHER_WALLPAPER      0
+#else
+#define MAX_OTHER_WALLPAPER      (IMG_WALLPAPER_SYSTEM-IMG_MAX_WALLPAPER - 1) /*modify for fixing 12871 by liuxl on 20090630*/
+#endif
+#define MAX_OTHER_SCREENSAVER    MAX_OTHER_WALLPAPER        
+#define MAX_WALLPAPER_IMG        (__MMI_WALLPAPER_NUM__ + MAX_OTHER_WALLPAPER )
+
+#ifdef __MMI_SUB_WALLPAPER__
+#define WALLPAPER_MAIN 0
+#define WALLPAPER_SUB   1
+#define MAX_SYSTEM_SUB_WALLPAPER 10
+#endif
+
+extern const U16 PHNSET_PREDEFINED_WP_PATH_JPG[];
+extern const U16 PHNSET_PREDEFINED_WP_PATH_PBM[];
+
+#endif

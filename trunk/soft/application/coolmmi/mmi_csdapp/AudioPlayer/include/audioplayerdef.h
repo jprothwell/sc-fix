@@ -1,0 +1,759 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of COOLSAND Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("COOLSAND SOFTWARE")
+*  RECEIVED FROM COOLSAND AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. COOLSAND EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES COOLSAND PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE COOLSAND SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. COOLSAND SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY COOLSAND SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND COOLSAND'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE COOLSAND SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT COOLSAND'S OPTION, TO REVISE OR REPLACE THE COOLSAND SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  COOLSAND FOR SUCH COOLSAND SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*******************************************************************************
+* Filename:
+* ---------
+*	AudioPlayerDef.h
+*
+* Project:
+* --------
+ 
+*
+* Description:
+* ------------
+*   Audio player main screen
+*
+* Author:
+* -------
+ 
+*
+*==============================================================================
+* 				HISTORY
+ 
+ *------------------------------------------------------------------------------
+ * 
+ *
+ *------------------------------------------------------------------------------
+ 
+*==============================================================================
+*******************************************************************************/
+#include "mmi_features.h"
+#include "gui_data_types.h"
+#ifndef AUDIO_PLAYER_DEF_H
+#define AUDIO_PLAYER_DEF_H
+
+/*
+ * Need to include:
+ * (1) FrameworkStruct.h
+ * (2) GlobalConstants.h
+ * (3) FileMgr.h
+ */
+
+#ifdef __MMI_AUDIO_PLAYER__
+
+typedef enum {
+	STR_ID_AUDPLY_BASE = AUDIO_PLAYER_BASE+1,
+	STR_ID_AUDPLY_TITLE,
+	STR_ID_AUDPLY_LIST,
+	STR_ID_AUDPLY_PLAYLIST,
+	STR_ID_AUDPLY_LIST_FROM_CARD,
+	STR_ID_AUDPLY_LIST_FROM_PHONE,
+	STR_ID_AUDPLY_OPTION_PLAY,
+	STR_ID_AUDPLY_OPTION_ADD,
+	STR_ID_AUDPLY_OPTION_DETAIL,
+	STR_ID_AUDPLY_OPTION_ADD_TO_RINGS,
+	STR_ID_AUDPLY_OPTION_REMOVE,
+	STR_ID_AUDPLY_OPTION_REMOVE_ALL,
+	STR_ID_AUDPLY_OPTION_REGEN_LIST,
+	STR_ID_AUDPLY_OPTION_SETTINGS,
+#ifdef __MMI_AUDIO_PLAYER_LYRIC_DISPLAY__	
+ #endif
+	STR_ID_AUDPLY_SETTINGS_SKIN1,   //30365
+#ifndef __MMI_SLIM_AUDIO_PLAYER__
+	STR_ID_AUDPLY_SETTINGS_SKIN2,
+	STR_ID_AUDPLY_SETTINGS_SKIN3,
+#endif
+	STR_ID_AUDPLY_SETTINGS_ON,
+	STR_ID_AUDPLY_SETTINGS_OFF,
+	STR_ID_AUDPLY_SETTINGS_ONE,
+	STR_ID_AUDPLY_SETTINGS_ALL,
+	STR_ID_AUDPLY_SETTINGS_LIST_AUTO_GEN,
+	STR_ID_AUDPLY_SETTINGS_PREFER_LIST,
+	STR_ID_AUDPLY_SETTINGS_SKIN,    //30374
+	STR_ID_AUDPLY_SETTINGS_REPEAT,
+	STR_ID_AUDPLY_SETTINGS_SHUFFLE,
+	STR_ID_AUDPLY_SETTINGS_BACKGROUND_PLAY,
+#ifdef __MMI_AUDIO_SPECTRUM_DISPLAY__
+	STR_ID_AUDPLY_SETTINGS_SPECTRUM_DISPLAY_STYLE,
+	STR_ID_AUDPLY_SETTINGS_SPECTRUM_DISPLAY_STYLE_1,
+	STR_ID_AUDPLY_SETTINGS_SPECTRUM_DISPLAY_STYLE_2,
+	STR_ID_AUDPLY_SETTINGS_SPECTRUM_DISPLAY_STYLE_3,
+#endif // __MMI_AUDIO_SPECTRUM_DISPLAY__
+#ifdef __MMI_AUDIO_PLAYER_LYRIC_DISPLAY__
+#endif // __MMI_AUDIO_SPECTRUM_DISPLAY__
+#ifdef __MMI_AUDIO_PLAYER_A2DP_BLOCK_SPECTRUM__
+    STR_ID_AUDPLY_A2DP_BLOCK_SPECTRUM,
+#endif
+    STR_ID_AUDPLY_SETTINGS_BT_A2DP_OUTPUT,
+    STR_ID_AUDPLY_SETTINGS_BT_A2DP_HEADSET,
+    STR_ID_AUDPLY_SETTINGS_ERR_MUST_SELECT_HEADSET,
+    STR_ID_AUDPLY_SETTINGS_ERR_CANNOT_USE_BLUETOOTH_IN_FLIGHT_MODE,
+#if defined(__MMI_NOKIA_STYLE_N800__)||defined(CAM_MD_SUPPORT)
+    STR_ID_AUDPLY_SETTINGS_ROTATED_CONTROL,
+#endif
+	STR_ID_AUDPLY_DETAIL_SIZE,
+	STR_ID_AUDPLY_DETAIL_TIME,
+	STR_ID_AUDPLY_DETAIL_TITLE,
+	STR_ID_AUDPLY_DETAIL_ARTIST,
+	STR_ID_AUDPLY_DETAIL_ALBUM,
+	STR_ID_AUDPLY_DETAIL_GENRE,
+	STR_ID_AUDPLY_DETAIL_YEAR,
+#ifdef __MMI_AUDIO_PLAYER_DETAIL_SHOW_MORE_INFO__
+	STR_ID_AUDPLY_DETAIL_CHANNEL,
+	STR_ID_AUDPLY_DETAIL_QUALITY,
+	STR_ID_AUDPLY_DETAIL_MONO,
+	STR_ID_AUDPLY_DETAIL_STEREO,
+#endif
+	STR_ID_AUDPLY_FILENAME_TOO_LONG,
+	STR_ID_AUDPLY_RING_TONGS_FULL,
+	STR_ID_AUDPLY_CANNOT_UPDATE_LIST_DISK_FULL,
+	STR_ID_AUDPLY_CANNOT_UPDATE_LIST_FS_FAIL,
+	STR_ID_AUDPLY_FILE_IN_DIFFERENT_STORAGE,
+	STR_ID_AUDPLY_LIST_EMPTY,
+	STR_ID_AUDPLY_LIST_FULL,
+	STR_ID_AUDPLY_OPEN_FILE_ERROR,
+	STR_ID_AUDPLY_NO_CARD,
+	STR_ID_AUDPLY_COMMAND_ERROR,
+	STR_ID_AUDPLY_DEVICE_BUSY,
+	STR_ID_AUDPLY_BAD_FORMAT,
+	STR_ID_AUDPLY_INVALID_FORMAT,
+	STR_ID_AUDPLY_NO_SPACE,
+	STR_ID_AUDPLY_ERROR,
+	STR_ID_AUDPLY_UNSUPPORTED_CHANNEL,
+	STR_ID_AUDPLY_UNSUPPORTED_FREQ,
+	STR_ID_AUDPLY_UNSUPPORTED_TYPE,
+	STR_ID_AUDPLY_FILE_DESTROYED,
+	STR_ID_AUDPLY_CANNOT_PAUSE,
+	STR_ID_AUDPLY_PROCESSING,
+	STR_ID_AUDPLY_UNSUPPORTED_SPEED,
+	STR_ID_AUDPLY_SPEED,	
+	STR_ID_AUDPLY_SPEED_NORMAL,
+	STR_ID_AUDPLY_SPEED_FAST1,	
+	STR_ID_AUDPLY_SPEED_FAST2,
+	STR_ID_AUDPLY_SPEED_SLOW2,
+	STR_ID_AUDPLY_SPEED_SLOW1,	
+	STR_ID_AUDPLY_BLUETOOTH_SETTINGS,
+/*+ zhouqin modify for dual t-flash card 20110503*/
+#if defined(DUAL_TFLASH_SUPPORT)
+	STR_ID_AUDPLY_LIST_FROM_SEC_CARD,
+#endif
+/*- zhouqin modify for dual t-flash card 20110503*/
+	NO_OF_STR_ID_AUDPLY
+} audply_str_id_enum;
+
+typedef enum {
+	IMG_ID_AUDPLY_BASE = AUDIO_PLAYER_BASE+1,
+	IMG_ID_AUDPLY_ICON,
+	IMG_ID_AUDPLY_DONE,
+	IMG_ID_AUDPLY_SETTINGS_LIST_AUTO_GEN,
+	IMG_ID_AUDPLY_SETTINGS_PREFER_LIST,
+	IMG_ID_AUDPLY_SETTINGS_SKIN, //30356
+	IMG_ID_AUDPLY_SETTINGS_REPEAT,
+	IMG_ID_AUDPLY_SETTINGS_SHUFFLE,
+	IMG_ID_AUDPLY_SETTINGS_BACKGROUND_PLAY,
+	IMG_ID_AUDPLY_SETTINGS_SPEED,  //30360
+#ifdef __MMI_AUDIO_SPECTRUM_DISPLAY__
+	IMG_ID_AUDPLY_SETTINGS_SPECTRUM_DISPLAY_STYLE,
+#endif // __MMI_AUDIO_SPECTRUM_DISPLAY__
+#ifdef __MMI_AUDIO_PLAYER_LYRIC_DISPLAY__
+    //IMG_ID_AUDPLY_SETTINGS_LYRICS_DISPLAY_STYLE,
+#endif
+	/* play animation gif */
+	IMG_ID_AUDPLY_PLAY_ANIMATION,
+	IMG_ID_AUDPLY_STOP_ANIMATION,
+	/* detail */
+	IMG_ID_AUDPLY_DETAIL_FILE,
+	IMG_ID_AUDPLY_DETAIL_TIME,
+	IMG_ID_AUDPLY_DETAIL_TITLE,
+	IMG_ID_AUDPLY_DETAIL_ARTIST,
+	IMG_ID_AUDPLY_DETAIL_ALBUM,
+	IMG_ID_AUDPLY_DETAIL_GENRE,
+	IMG_ID_AUDPLY_DETAIL_YEAR, //30369
+#ifdef __MMI_AUDIO_PLAYER_DETAIL_SHOW_MORE_INFO__
+	IMG_ID_AUDPLY_DETAIL_FILENAME,
+	IMG_ID_AUDPLY_DETAIL_CHANNEL,
+	IMG_ID_AUDPLY_DETAIL_QUALITY,
+#endif
+	/* audio file types */
+	IMG_ID_AUDPLY_FILE_WAV_ICON,
+	IMG_ID_AUDPLY_FILE_AMR_ICON,
+	IMG_ID_AUDPLY_FILE_AUD_ICON,
+	IMG_ID_AUDPLY_FILE_AAC_ICON,
+	IMG_ID_AUDPLY_FILE_MID_ICON,
+	IMG_ID_AUDPLY_FILE_IMY_ICON,
+	IMG_ID_AUDPLY_FILE_AWB_ICON,
+    IMG_ID_AUDPLY_FILE_AIF_ICON,
+    IMG_ID_AUDPLY_FILE_AIFF_ICON,
+    IMG_ID_AUDPLY_FILE_AIFC_ICON,
+    IMG_ID_AUDPLY_FILE_AU_ICON,
+    IMG_ID_AUDPLY_FILE_SND_ICON,
+    IMG_ID_AUDPLY_FILE_M4A_ICON,
+    IMG_ID_AUDPLY_FILE_MMF_ICON,
+    IMG_ID_AUDPLY_FILE_WMA_ICON,
+    IMG_ID_AUDPLY_FILE_3GP_ICON,
+    IMG_ID_AUDPLY_FILE_MP4_ICON,
+	/* skin 1 */
+	IMG_ID_AUDPLY_MAIN_SKIN1_BASE,  //30380
+	IMG_ID_AUDPLY_MAIN_SKIN1_BG,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PLAYLIST_PHONE_ICON,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PLAYLIST_CARD_ICON,
+	IMG_ID_AUDPLY_MAIN_SKIN1_VOLUME_INDICATOR,
+    IMG_ID_AUDPLY_MAIN_SKIN1_PROGRESSBAR,
+    IMG_ID_AUDPLY_MAIN_SKIN1_PROGRESSBAR_FAIL,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PREV_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PREV_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PREV_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PREV_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN1_NEXT_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN1_NEXT_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN1_NEXT_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN1_NEXT_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PLAY_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PLAY_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PLAY_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PLAY_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PAUSE_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN1_PAUSE_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN1_STOP_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN1_STOP_OFF,  //30400
+	IMG_ID_AUDPLY_MAIN_SKIN1_STOP_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN1_STOP_DOWN,
+#if defined(__PROJECT_GALLITE_C01__)
+	IMG_ID_AUDPLY_MAIN_SKIN1_VOLUME_INC_DISABLE,	
+	IMG_ID_AUDPLY_MAIN_SKIN1_VOLUME_DEC_DISABLE,	
+#endif
+#ifdef __MMI_AUDIO_PLAYER_ANIMATION__
+	IMG_ID_AUDPLY_MAIN_SKIN1_ANIMATION,
+#endif
+#ifdef __MMI_AUDIO_PLAYER_SKIN_SHOW_REPEAT_SHUFFLE__
+    IMG_ID_AUDPLY_MAIN_SKIN1_REPEAT_OFF_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN1_REPEAT_ALL_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN1_REPEAT_ONE_UP,
+#ifdef __MMI_TOUCH_SCREEN__
+    IMG_ID_AUDPLY_MAIN_SKIN1_REPEAT_OFF_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN1_REPEAT_ALL_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN1_REPEAT_ONE_DOWN,
+#endif /*__MMI_TOUCH_SCREEN__*/
+    IMG_ID_AUDPLY_MAIN_SKIN1_SHUFFLE_OFF_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN1_SHUFFLE_ON_UP,
+#ifdef __MMI_TOUCH_SCREEN__
+    IMG_ID_AUDPLY_MAIN_SKIN1_SHUFFLE_OFF_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN1_SHUFFLE_ON_DOWN,
+#endif /*__MMI_TOUCH_SCREEN__*/
+#endif
+#if defined(__MMI_TOUCH_SCREEN__) || defined(__PROJECT_GALLITE_C01__)
+	IMG_ID_AUDPLY_MAIN_SKIN1_VOLUME_INC_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN1_VOLUME_INC_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN1_VOLUME_DEC_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN1_VOLUME_DEC_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN1_SETTING_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN1_SETTING_DOWN,
+#endif
+#ifndef __MMI_SLIM_AUDIO_PLAYER__
+	/* skin 2 */
+	IMG_ID_AUDPLY_MAIN_SKIN2_BASE,
+	IMG_ID_AUDPLY_MAIN_SKIN2_BG,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PLAYLIST_PHONE_ICON,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PLAYLIST_CARD_ICON,
+	IMG_ID_AUDPLY_MAIN_SKIN2_VOLUME_INDICATOR,
+    IMG_ID_AUDPLY_MAIN_SKIN2_PROGRESSBAR,
+    IMG_ID_AUDPLY_MAIN_SKIN2_PROGRESSBAR_FAIL,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PREV_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PREV_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PREV_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PREV_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN2_NEXT_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN2_NEXT_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN2_NEXT_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN2_NEXT_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PLAY_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PLAY_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PLAY_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PLAY_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PAUSE_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN2_PAUSE_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN2_STOP_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN2_STOP_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN2_STOP_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN2_STOP_DOWN,
+#ifdef __MMI_AUDIO_PLAYER_ANIMATION__
+	IMG_ID_AUDPLY_MAIN_SKIN2_ANIMATION,
+#endif
+#ifdef __MMI_AUDIO_PLAYER_SKIN_SHOW_REPEAT_SHUFFLE__
+    IMG_ID_AUDPLY_MAIN_SKIN2_REPEAT_OFF_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN2_REPEAT_ALL_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN2_REPEAT_ONE_UP,
+#ifdef __MMI_TOUCH_SCREEN__
+    IMG_ID_AUDPLY_MAIN_SKIN2_REPEAT_OFF_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN2_REPEAT_ALL_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN2_REPEAT_ONE_DOWN,
+#endif /*__MMI_TOUCH_SCREEN__*/
+    IMG_ID_AUDPLY_MAIN_SKIN2_SHUFFLE_OFF_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN2_SHUFFLE_ON_UP,
+#ifdef __MMI_TOUCH_SCREEN__
+    IMG_ID_AUDPLY_MAIN_SKIN2_SHUFFLE_OFF_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN2_SHUFFLE_ON_DOWN,
+#endif /*__MMI_TOUCH_SCREEN__*/
+#endif
+#ifdef __MMI_TOUCH_SCREEN__
+	IMG_ID_AUDPLY_MAIN_SKIN2_VOLUME_INC_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN2_VOLUME_INC_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN2_VOLUME_DEC_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN2_VOLUME_DEC_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN2_SETTING_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN2_SETTING_DOWN,
+#endif
+	/* skin 3 */
+	IMG_ID_AUDPLY_MAIN_SKIN3_BASE,
+	IMG_ID_AUDPLY_MAIN_SKIN3_BG,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PLAYLIST_PHONE_ICON,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PLAYLIST_CARD_ICON,
+	IMG_ID_AUDPLY_MAIN_SKIN3_VOLUME_INDICATOR,
+    IMG_ID_AUDPLY_MAIN_SKIN3_PROGRESSBAR,
+    IMG_ID_AUDPLY_MAIN_SKIN3_PROGRESSBAR_FAIL,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PREV_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PREV_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PREV_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PREV_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN3_NEXT_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN3_NEXT_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN3_NEXT_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN3_NEXT_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PLAY_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PLAY_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PLAY_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PLAY_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PAUSE_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN3_PAUSE_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN3_STOP_ON,
+	IMG_ID_AUDPLY_MAIN_SKIN3_STOP_OFF,
+	IMG_ID_AUDPLY_MAIN_SKIN3_STOP_DISABLED,
+	IMG_ID_AUDPLY_MAIN_SKIN3_STOP_DOWN,
+#ifdef __MMI_AUDIO_PLAYER_ANIMATION__
+	IMG_ID_AUDPLY_MAIN_SKIN3_ANIMATION,
+#endif
+#ifdef __MMI_AUDIO_PLAYER_SKIN_SHOW_REPEAT_SHUFFLE__
+    IMG_ID_AUDPLY_MAIN_SKIN3_REPEAT_OFF_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN3_REPEAT_ALL_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN3_REPEAT_ONE_UP,
+#ifdef __MMI_TOUCH_SCREEN__
+    IMG_ID_AUDPLY_MAIN_SKIN3_REPEAT_OFF_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN3_REPEAT_ALL_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN3_REPEAT_ONE_DOWN,
+#endif /*__MMI_TOUCH_SCREEN__*/
+    IMG_ID_AUDPLY_MAIN_SKIN3_SHUFFLE_OFF_UP,
+    IMG_ID_AUDPLY_MAIN_SKIN3_SHUFFLE_ON_UP,
+#ifdef __MMI_TOUCH_SCREEN__
+    IMG_ID_AUDPLY_MAIN_SKIN3_SHUFFLE_OFF_DOWN,
+    IMG_ID_AUDPLY_MAIN_SKIN3_SHUFFLE_ON_DOWN,
+#endif /*__MMI_TOUCH_SCREEN__*/
+#endif
+#ifdef __MMI_TOUCH_SCREEN__
+	IMG_ID_AUDPLY_MAIN_SKIN3_VOLUME_INC_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN3_VOLUME_INC_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN3_VOLUME_DEC_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN3_VOLUME_DEC_DOWN,
+	IMG_ID_AUDPLY_MAIN_SKIN3_SETTING_UP,
+	IMG_ID_AUDPLY_MAIN_SKIN3_SETTING_DOWN,
+#endif
+#endif
+	NO_OF_AUDIO_PLAYER_ICON
+} audply_img_id_enum;
+//#define IMG_ID_MP4_MAIN_SKIN1_BG IMG_ID_AUDPLY_MAIN_SKIN2_BASE
+
+typedef enum {
+	SCR_ID_AUDPLY_BASE = AUDIO_PLAYER_BASE+1,
+	SCR_ID_AUDPLY_MAIN,
+	SCR_ID_AUDPLY_PLAYLIST,
+	SCR_ID_AUDPLY_OPTION,
+	SCR_ID_AUDPLY_SETTINGS,
+    SCR_ID_AUDPLY_PLAYER_SETTINGS,
+    SCR_ID_AUDPLY_DISPLAY_SETTINGS,
+#if defined(__MMI_AUDIO_EQUALIZER__) || defined(__MMI_AUDIO_TIME_STRETCH__) || defined(__MMI_AUDIO_REVERB_EFFECT__) || defined(__MMI_AUDIO_SURROUND_EFFECT__)
+    SCR_ID_AUDPLY_SOUND_EFFECT_SETTINGS,
+#endif
+    SCR_ID_AUDPLY_BLUETOOTH_SETTINGS,
+    SCR_ID_AUDPLY_BT_A2DP_HEADSET_LIST,
+	SCR_ID_AUDPLY_DETAIL,
+	SCR_ID_AUDPLY_REMOVE_CONFIRM,
+	SCR_ID_AUDPLY_REMOVE_ALL_CONFIRM,
+	SCR_ID_AUDPLY_PLAY_ANIMATION,
+	SCR_ID_AUDPLY_Add_FILES,
+	SCR_ID_AUDPLY_POSSELECTION, //yanghong 20060530 add
+	NO_OF_SCR_AUDPLY
+} audply_scr_id_enum;
+
+typedef enum
+{
+	LIST_FROM_PHONE,
+	LIST_FROM_CARD,
+/*+ zhouqin modify for dual t-flash card 20110503*/
+#if defined(DUAL_TFLASH_SUPPORT)
+    LIST_FROM_SEC_CARD,
+#endif
+/*- zhouqin modify for dual t-flash card 20110503*/
+	NO_OF_LIST
+} audply_playlist_enum;
+
+typedef enum
+{
+	SKIN1,
+#ifndef __MMI_SLIM_AUDIO_PLAYER__
+	SKIN2,
+	SKIN3,
+#endif
+	NO_OF_SKIN
+} audply_skin_enum;
+
+typedef enum
+{
+	REPEAT_OFF,
+	REPEAT_ONE,
+	REPEAT_ALL
+} audply_repeat_enum;
+
+typedef enum
+{
+	SHUFFLE_OFF,
+	SHUFFLE_ON
+} audply_shuffle_enum;
+
+typedef enum {
+	AUDPLY_MAIN_DISABLED = -1,
+	AUDPLY_MAIN_PLAY = 0,
+	AUDPLY_MAIN_PREV,
+	AUDPLY_MAIN_NEXT,
+	AUDPLY_MAIN_STOP,
+	NO_OF_AUDPLY_MAIN_BUTTONS,
+	AUDPLY_MAIN_PAUSE,
+	AUDPLY_MAIN_BACKWARD_LONG_PRESS,
+	AUDPLY_MAIN_FORWARD_LONG_PRESS
+} audply_main_buttons_enum;
+
+#ifdef __MMI_AUDIO_PLAYER_LYRIC_DISPLAY__
+#define  AUDPLY_LYRIC_MAX_LINE_COUNT      200   /* pre-defined number of lyirc lines */
+#define  AUDPLY_LYRIC_STR_BUFF_MAX_SIZE   5000   
+#define  AUDPLY_LYRIC_TMP_BUFF_MAX_SIZE   128    
+typedef enum
+{
+    NON_UCS2,
+    UCS2_LITTLE_ENDIAN,
+    UCS2_BIG_ENDIAN
+} audply_UCS2_encode_enum;
+
+typedef enum
+{
+    LINE_START,
+    LINE_END,
+    TAG_START,
+    TAG_END,
+    TAG_LYRIC1,
+    TAG_TIME1,
+    TAG_TIME2,
+    TAG_TIME3,
+    TAG_MS,
+    TAG_ID_AR,
+    TAG_ID_TI,
+    TAG_ID_AL,
+    TAG_ID_BY,
+    TAG_ID_OFFSET
+} audply_lyric_parse_status_enum;
+
+#endif /* __MMI_AUDIO_PLAYER_LYRIC_DISPLAY__ */ 
+#define MAX_DAF_VIEW_FIELDS	10
+
+#define MAX_PLAY_LIST_NUM	1024
+#define MAX_PLAY_LIST_BYTES	(MAX_PLAY_LIST_NUM/8)
+
+#ifdef __MMI_SLIM_AUDIO_PLAYER__
+#define PLAY_LIST_BUFF_SIZE	8
+#else
+#define PLAY_LIST_BUFF_SIZE	7  //16 
+#endif
+
+#define PLAY_LIST_RECORD_SIZE ((FMGR_MAX_PATH_LEN+1)*ENCODING_LENGTH)
+#define MUSIC_FOLDER "My Music\\"
+
+typedef enum {
+	AUDPLY_AUDIO_FILE_TYPE_WAV,
+	AUDPLY_AUDIO_FILE_TYPE_AMR,
+#ifdef AAC_DECODE
+	AUDPLY_AUDIO_FILE_TYPE_AAC,
+#endif
+#ifdef DAF_DECODE
+	AUDPLY_AUDIO_FILE_TYPE_DAF,
+#endif
+	AUDPLY_AUDIO_FILE_TYPE_MID,
+	AUDPLY_AUDIO_FILE_TYPE_IMY,
+	AUDPLY_AUDIO_FILE_TYPE_VM,
+#ifdef AMRWB_DECODE
+	AUDPLY_AUDIO_FILE_TYPE_AWB,
+#endif
+	AUDPLY_AUDIO_FILE_TYPE_AIF,
+	AUDPLY_AUDIO_FILE_TYPE_AIFF,
+	AUDPLY_AUDIO_FILE_TYPE_AIFC,
+	AUDPLY_AUDIO_FILE_TYPE_AU,
+	AUDPLY_AUDIO_FILE_TYPE_SND,
+#if defined( MP4_CODEC ) && defined( AAC_DECODE )
+	AUDPLY_AUDIO_FILE_TYPE_M4A,
+#endif
+#ifdef MMF_DECODE
+	AUDPLY_AUDIO_FILE_TYPE_MMF,
+#endif
+#ifdef WMA_DECODE
+	AUDPLY_AUDIO_FILE_TYPE_WMA,
+#endif
+	NO_AUDIO_FILE_TYPES
+} audply_audio_file_type_enum;
+
+#ifdef __MMI_TOUCH_SCREEN__
+typedef struct
+{
+	S16 x;
+	S16 y;
+} audply_point_struct;
+
+typedef struct
+{
+	const audply_point_struct* points;
+	S16 num;
+} audply_polygon_area_struct;
+#endif
+
+typedef struct
+{
+	U16 bg_image_id;
+	U8 text_border_color_r, text_border_color_g, text_border_color_b;
+	U8 text_fg_color_r, text_fg_color_g, text_fg_color_b;
+	U8 text_bg_color_r, text_bg_color_g, text_bg_color_b;
+	S16 title_x, title_y;
+	S16 title_w, title_h;
+	S16 time_x, time_y;
+	S16 time_w, time_h;
+	S16 file_index_x, file_index_y;
+	S16 file_index_w, file_index_h;
+	S16 playlisticon_x, playlisticon_y;
+	U16 playlisticon_images_id[NO_OF_LIST];
+	S16 volumebar_x, volumebar_y, volumebar_ind_left;
+	U16 volumebar_ind_image_id;
+	S16 progressbar_x, progressbar_y;
+       U16 progressbar_image_id;
+       U16 progressbar_fail_image_id;
+	S16 prev_button_x, prev_button_y;
+	U16 prev_button_on_image_id, prev_button_off_image_id, prev_button_disabled_image_id, prev_button_down_image_id;
+	S16 next_button_x, next_button_y;
+	U16 next_button_on_image_id, next_button_off_image_id, next_button_disabled_image_id, next_button_down_image_id;
+	S16 play_button_x, play_button_y;
+	U16 play_button_on_image_id, play_button_off_image_id, play_button_disabled_image_id, play_button_down_image_id;
+	U16 pause_button_on_image_id, pause_button_down_image_id;
+	S16 stop_button_x, stop_button_y;
+	U16 stop_button_on_image_id, stop_button_off_image_id, stop_button_disabled_image_id, stop_button_down_image_id;
+#if defined(__PROJECT_GALLITE_C01__) && !defined(__MMI_TOUCH_SCREEN__)
+	S16 volume_inc_x, volume_inc_y;
+	U16 volume_inc_up_image_id, volume_inc_down_image_id;
+	S16 volume_dec_x, volume_dec_y;
+	U16 volume_dec_up_image_id, volume_dec_down_image_id;
+#endif
+#ifdef __MMI_AUDIO_PLAYER_ANIMATION__
+	S16 animation_x, animation_y;
+	U16 animation_image_id;
+#endif
+#ifdef __MMI_AUDIO_SPECTRUM_DISPLAY__
+	S16 spectrum_display_x, spectrum_display_y;
+	S16 spectrum_display_w, spectrum_display_h;
+#endif
+#ifdef __MMI_AUDIO_PLAYER_LYRIC_DISPLAY__
+    S8 lyric_fg_color_r, lyric_fg_color_g, lyric_fg_color_b;
+    S8 lyric_border_color_r, lyric_border_color_g, lyric_border_color_b;
+    S16 lyric_display_x, lyric_display_y;
+    S16 lyric_display_w, lyric_display_h;
+#endif
+#ifdef __MMI_AUDIO_PLAYER_SKIN_SHOW_REPEAT_SHUFFLE__
+    S16 repeat_x, repeat_y;
+    U16 repeat_off_up_image_id, repeat_all_up_image_id, repeat_one_up_image_id;
+#ifdef __MMI_TOUCH_SCREEN__
+    U16 repeat_off_down_image_id, repeat_all_down_image_id, repeat_one_down_image_id;
+#endif
+    S16 shuffle_x, shuffle_y;
+    U16 shuffle_off_up_image_id, shuffle_on_up_image_id;
+#ifdef __MMI_TOUCH_SCREEN__
+    U16 shuffle_off_down_image_id, shuffle_on_down_image_id;    
+#endif
+#endif /* __MMI_AUDIO_PLAYER_SKIN_SHOW_REPEAT_SHUFFLE__ */ 
+#ifdef __MMI_TOUCH_SCREEN__
+	S16 volume_inc_x, volume_inc_y;
+	U16 volume_inc_up_image_id, volume_inc_down_image_id;
+	S16 volume_dec_x, volume_dec_y;
+	U16 volume_dec_up_image_id, volume_dec_down_image_id;
+	S16 setting_x, setting_y;
+	U16 setting_up_image_id, setting_down_image_id;
+	audply_polygon_area_struct seek_area;
+	audply_polygon_area_struct volume_inc_area;
+	audply_polygon_area_struct volume_dec_area;
+	audply_polygon_area_struct prev_button_area;
+	audply_polygon_area_struct next_button_area;
+	audply_polygon_area_struct play_button_area;
+	audply_polygon_area_struct stop_button_area;
+	audply_polygon_area_struct setting_area;
+	#ifdef __MMI_AUDIO_PLAYER_SKIN_SHOW_REPEAT_SHUFFLE__
+	audply_polygon_area_struct repeat_area;
+	audply_polygon_area_struct shuffle_area;
+	#endif
+#endif
+	U8 up_key_mapping, down_key_mapping, left_key_mapping, right_key_mapping;
+} audply_skin_struct;
+
+/*+ zhouqin modify for dual t-flash card 20110503*/
+#if defined(DUAL_TFLASH_SUPPORT)
+#define PRESENT_LIST_FILE ((g_audply.present_list == LIST_FROM_PHONE) ? phone_list_name: ((g_audply.present_list == LIST_FROM_CARD) ? card_list_name: sec_card_list_name))
+#define PRESENT_LIST_ROOT ((g_audply.present_list == LIST_FROM_PHONE) ? root_dir_phone: ((g_audply.present_list == LIST_FROM_CARD) ? root_dir_card: root_dir_sec_card))
+#define PRESENT_LIST_FILE_MP4 ((g_mp4ply.present_list == LIST_FROM_PHONE) ? phone_list_name: ((g_mp4ply.present_list == LIST_FROM_CARD) ? card_list_name: sec_card_list_name))
+#define PRESENT_LIST_ROOT_MP4 ((g_mp4ply.present_list == LIST_FROM_PHONE) ? root_dir_phone: ((g_mp4ply.present_list == LIST_FROM_CARD) ? root_dir_card: root_dir_sec_card))
+#define MARK_DRIVE(path) ((path)[0] = (UI_character_type)((g_audply.present_list == LIST_FROM_CARD) ? cardDrvLetter : ((g_audply.present_list == LIST_FROM_SEC_CARD) ? seccardDrvLetter : phoneDrvLetter)))
+#define MARK_DRIVE_MP4(path) ((path)[0] = (UI_character_type)((g_mp4ply.present_list == LIST_FROM_CARD) ? cardDrvLetter : ((g_mp4ply.present_list == LIST_FROM_SEC_CARD) ? seccardDrvLetter : phoneDrvLetter)))
+#else
+#define PRESENT_LIST_FILE ((g_audply.present_list == LIST_FROM_PHONE) ? phone_list_name: card_list_name)
+#define PRESENT_LIST_ROOT ((g_audply.present_list == LIST_FROM_PHONE) ? root_dir_phone: root_dir_card)
+#define PRESENT_LIST_FILE_MP4 ((g_mp4ply.present_list == LIST_FROM_PHONE) ? phone_list_name: card_list_name)
+#define PRESENT_LIST_ROOT_MP4 ((g_mp4ply.present_list == LIST_FROM_PHONE) ? root_dir_phone: root_dir_card)
+#define MARK_DRIVE(path) ((path)[0] = (UI_character_type)((g_audply.present_list == LIST_FROM_CARD) ? cardDrvLetter : phoneDrvLetter))
+#define MARK_DRIVE_MP4(path) ((path)[0] = (UI_character_type)((g_mp4ply.present_list == LIST_FROM_CARD) ? cardDrvLetter : phoneDrvLetter))
+#endif
+/*- zhouqin modify for dual t-flash card 20110503*/
+#define MARK_LNAME(path) ((path)[0] = _T_MMI'L')
+#define MARK_SNAME(path) ((path)[0] = _T_MMI'S')
+#define MARK_LNAME2(path) ((path)[0] = 'L',(path)[1] = 0)
+#define MARK_SNAME2(path) ((path)[0] = 'S',(path)[1] = 0)
+#define IS_LNAME(path) ((path)[0] == _T_MMI'L')
+#define IS_SNAME(path) ((path)[0] == _T_MMI'S')
+#define IS_LNAME2(path) ((path)[0] == 'L' && (path)[1] == 0)
+#define IS_SNAME2(path) ((path)[0] == 'S' && (path)[1] == 0)
+#define EOS(nob) ((nob)>1 ? ((nob)>>1)-1: 0)
+
+#else /* __MMI_AUDIO_PLAYER__ */
+
+typedef enum {
+	STR_ID_AUDPLY_BASE = AUDIO_PLAYER_BASE+1,
+	STR_ID_AUDPLY_TITLE,
+	STR_ID_AUDPLY_LIST_FULL,
+	STR_ID_AUDPLY_OPEN_FILE_ERROR,
+	STR_ID_AUDPLY_NO_CARD,
+	STR_ID_AUDPLY_COMMAND_ERROR,
+	STR_ID_AUDPLY_DEVICE_BUSY,
+	STR_ID_AUDPLY_BAD_FORMAT,
+	STR_ID_AUDPLY_INVALID_FORMAT,
+	STR_ID_AUDPLY_NO_SPACE,
+	STR_ID_AUDPLY_ERROR,
+	STR_ID_AUDPLY_UNSUPPORTED_CHANNEL,
+	STR_ID_AUDPLY_UNSUPPORTED_FREQ,
+	STR_ID_AUDPLY_UNSUPPORTED_TYPE,
+	STR_ID_AUDPLY_UNSUPPORTED_SPEED,
+
+	NO_OF_STR_ID_AUDPLY
+} audply_str_id_enum;
+
+typedef enum {
+	IMG_ID_AUDPLY_BASE = AUDIO_PLAYER_BASE+1,
+	/* play animation gif */
+	IMG_ID_AUDPLY_PLAY_ANIMATION,
+	IMG_ID_AUDPLY_STOP_ANIMATION,
+
+	NO_OF_AUDIO_PLAYER_ICON
+} audply_img_id_enum;
+
+typedef enum {
+	SCR_ID_AUDPLY_BASE = AUDIO_PLAYER_BASE+1,
+	SCR_ID_AUDPLY_PLAY_ANIMATION,
+
+	NO_OF_SCR_AUDPLY
+} audply_scr_id_enum;
+
+#endif /* __MMI_AUDIO_PLAYER__ */
+
+#ifndef MAX_VOL_LEVEL
+#define MAX_VOL_LEVEL 7
+#endif
+typedef enum
+{
+	STATE_IDLE,
+	STATE_PLAY,
+	STATE_PAUSED,
+	NO_OF_STATE
+} audply_state_enum;
+
+typedef enum
+{
+	AUDPLY_SETTING_STORAGE,
+	AUDPLY_SETTING_LIST_AUTO_GEN,
+#ifndef __MMI_SLIM_AUDIO_PLAYER__
+	AUDPLY_SETTING_SKIN,
+#endif
+	AUDPLY_SETTING_REPEAT,
+	AUDPLY_SETTING_SHUFFLE,
+#ifndef __MMI_AUDIO_PLAYER_ON_SUBLCD__    	
+	AUDPLY_SETTING_BACKGROUND_PLAY,
+#endif
+#ifdef __MMI_AUDIO_EQUALIZER__
+    AUDPLY_SETTING_EQUALIZER,
+#endif
+#ifdef __MMI_AUDIO_TIME_STRETCH__
+    AUDPLY_SETTING_TIME_STRETCH,
+#endif
+#ifdef __MMI_AUDIO_REVERB_EFFECT__
+    AUDPLY_SETTING_3D_EFFECT,
+#endif
+#ifdef __MMI_AUDIO_SURROUND_EFFECT__
+    AUDPLY_SETTING_AUDIO_SURROUND,
+#endif
+#ifdef __MMI_AUDIO_SPECTRUM_DISPLAY__
+    AUDPLY_SETTING_SPECTRUM_DISPLAY,
+#endif
+#ifdef __MMI_AUDIO_PLAYER_LYRIC_DISPLAY__
+    AUDPLY_SETTING_LYRICS_DISPLAY,
+#endif
+#ifdef __MMI_A2DP_SUPPORT__
+    AUDPLY_SETTING_BLUETOOTH_A2DP_OUTPUT,
+    AUDPLY_SETTING_BLUETOOTH_A2DP_HEADSET,
+#endif /* __MMI_A2DP_SUPPORT__ */
+#ifdef __MMI_NOKIA_STYLE_N800__
+     AUDPLY_SETTING_ROTATED_ENABLE,
+#endif     
+    AUDPLY_SETTING_ITEM_COUNT
+} AUDPLY_SETTING_ITEM_ENUM;
+
+#endif /* AUDIO_PLAYER_DEF_H */
+
+

@@ -1,0 +1,25 @@
+/*gen_win32.c*/
+
+#include "cswtype.h"
+
+//////////////////////////////////////////////////////////////////////////
+#ifdef __VIBRATOR__
+
+VOID vibrator_open(VOID)
+{
+
+}
+
+VOID vibrator_close(VOID)
+{
+
+}
+
+BOOL vibrator_status(VOID)
+{
+  return FALSE;
+}
+
+#endif __VIBRATOR__
+
+//////////////////////////////////////////////////////////////////////////

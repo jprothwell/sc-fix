@@ -1,0 +1,357 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of COOLSAND Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("COOLSAND SOFTWARE")
+*  RECEIVED FROM COOLSAND AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. COOLSAND EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES COOLSAND PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE COOLSAND SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. COOLSAND SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY COOLSAND SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND COOLSAND'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE COOLSAND SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT COOLSAND'S OPTION, TO REVISE OR REPLACE THE COOLSAND SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  COOLSAND FOR SUCH COOLSAND SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*****************************************************************************
+ *
+ * Filename:
+ * ---------
+ * IdleAppDef.h
+ *
+ * Project:
+ * --------
+ 
+ *
+ * Description:
+ * ------------
+ *   This file is isle screen application
+ * Author:
+ * -------
+ * -------
+ *
+ *============================================================================
+ *             HISTORY
+ 
+ *------------------------------------------------------------------------------
+ *
+ *
+ *------------------------------------------------------------------------------
+ 
+ *============================================================================
+ ****************************************************************************/
+
+/**********************************************************************************
+	Filename:		IdleAppDef.h
+	Author:			
+	Date Created:	September-13-2002
+	Contains:		
+**********************************************************************************/
+
+#ifndef __IDLE_H__
+#define __IDLE_H__
+
+#include "mmi_features.h" 
+
+#define GSM_SERVICE_TYPE				1
+#define GPRS_SERVICE_TYPE				2
+#define MAX_DIAL_PAD 					41
+//#define INVALID_LOCATION_SCR_TIMEOUT	1200
+//#define NO_PHONE_NUM_SCR_TIMEOUT		1200
+
+#define KEYPAD_LOCK_TIMEOUT				2000
+#define TOGGLE_PROFILE_TIMEOUT			500
+
+#define SET_CURRENT_PROFILE				0
+#define SET_SILENT_PROFILE				1
+#if  (defined  __MMI_WGUI_CSK_ENABLE__) && (defined __MMI_TOUCH_SCREEN__) 
+#define MAX_IDLE_SCREEN_DIGITS		14
+#else
+#define MAX_IDLE_SCREEN_DIGITS		13
+#endif
+#define MAX_SPEED_DIAL_KEYS			9
+//start 
+#ifdef __MMI_TOUCH_DIAL_SCREEN__
+#define MAX_TOUCH_DIAL_PAD_KEYS		13
+#endif
+//end 
+
+#define MAX_LOCATION_DIGITS			3
+
+#define NORMAL_SCREEN_SAVER						0
+#define ANALOG_SCREEN_SAVER						1
+#define DIGITAL_SCREEN_SAVER						2
+
+/*Shifted from MiscFunctions.c*/
+/*	0: Images are enabled. 1: Images are disabled	*/
+#define DEMO_DISABLE_IMAGES					0
+
+/*	Demo timeout values								*/
+#define DEMO_OPENING_ANIMATION_TIMEOUT		100
+#define DEMO_OPENING_WAIT_TIMEOUT			1000
+#define DEMO_OPENING_COPYRIGHT_TIMEOUT		5000
+#define DEMO_OPENING_CUSTOM_LOGO_TIMEOUT	2000
+
+#define DEMO_ABOUT_SCREENID					904
+#define DEMO_UNDERCONSTRUCTION_SCREENID		905
+
+#define DEMO_UNER_CONS_TEXT					DEMO_APP_BASE+1
+//#define	DEMO_RSK_BACK_TEXT					DEMO_APP_BASE+2
+#define DEMO_ICON_TEXT						DEMO_APP_BASE+3
+#define DEMO_CONSTRUCTION_IMAGE_ID			DEMO_APP_BASE+4
+#define DEMO_UNDER_CONSTRUCTION_TITLE_ICON	DEMO_APP_BASE+5
+#define DEMO_TEST_BMP_IMAGE_ID				DEMO_APP_BASE+6
+#define DEMO_TEST_GIF_IMAGE_ID				DEMO_APP_BASE+7
+//#define DEMO_EDIT_TEXT						DEMO_APP_BASE+8
+#if !defined(__MMI_POWER_ON_OFF_DISPLAY__)
+#define IMG_ID_PHNSET_ON_ANIMATION_DEFAULT1			DEMO_APP_BASE+9
+#endif
+ 
+/*Shifted from MiscFunctions.c*/
+
+
+ 
+#define ICON_WIDTH 16
+#define MAX_DISPLAY_CHAR 20
+
+
+enum STR_IDLE_SCREEN_LIST
+{
+	IDLE_SCREEN_LSK_TEXT		=	IDLE_APP_BASE+1,			
+
+	DIAL_PAD_MO_CALL_LSK_STR_ID,		
+
+	IDLE_SCREEN_RSK_TEXT,			
+	STR_IDLE_NETWORK_SRCH_SCR,
+	STR_INVALID_LOCATION,
+	STR_NO_PHONE_NUM,
+	STR_NO_SPEED_DIAL_NUM_SAVED,
+	STR_DATE_TIME_UPDATE_REMINDER,
+	KEYPAD_LOCKED_RSK_TEXT
+
+    ,STR_IDLE_MAINMENU_SHORCUT,
+    STR_IDLE_MESSAGE_SHORTCUT,
+    STR_IDLE_PHONEBOOK_SHORTCUT,
+    //STR_IDLE_MSN_SCREEN_SHORTCUT,//mym
+    STR_IDLE_WAP_SHORTCUT,
+    STR_IDLE_IMGVIEW_SHORTCUT//mym
+
+#ifdef __MMI_TOUCH_SCREEN__
+	,SCREEN_LOCKED_TEXT
+#endif
+/*+ zhouqin 2011-02-16 modify for q6 320X240 */
+#if defined(__MMI_MAINLCD_220X176__) || defined(__MMI_STYLE_E71_QCIF_S__)
+/*- zhouqin 2011-02-16 modify for q6 320X240 */
+	,STR_E71_UNLOCK_INFO
+#endif
+
+/*+ zhouqin 2011-02-16 modify for q6 320X240 */
+#if defined(__MMI_BLACK_BERRY_IDLE_STYLE__)
+	,STR_IDLE_BLACK_BERRY_STRING1
+	,STR_IDLE_BLACK_BERRY_STRING2
+	,STR_IDLE_BLACK_BERRY_STRING3
+	,STR_IDLE_BLACK_BERRY_STRING4
+	,STR_IDLE_BLACK_BERRY_STRING5
+	,STR_IDLE_BLACK_BERRY_STRING6
+	,STR_IDLE_BLACK_BERRY_STRING7
+	,STR_IDLE_BLACK_BERRY_STRING8
+#endif
+
+#if defined(__MMI_SYMBIAN_STYLE_SUPPORT__)
+	,STR_IDLE_SYMBIAN_STRING1
+	,STR_IDLE_SYMBIAN_STRING2
+	,STR_IDLE_SYMBIAN_STRING3
+	,STR_IDLE_SYMBIAN_STRING4
+	,STR_IDLE_SYMBIAN_STRING5
+	,STR_IDLE_SYMBIAN_STRING6
+	,STR_IDLE_SYMBIAN_STRING7
+	,STR_IDLE_SYMBIAN_STRING8
+
+#endif
+
+#if defined(__MMI_BLACK_BERRY_IDLE_STYLE__)||defined(__MMI_SYMBIAN_STYLE_SUPPORT__)
+	,STR_IDLE_SYMBIAN_STRING9
+	,STR_IDLE_SYMBIAN_STRING10
+	,STR_ID_YESTERDAY
+	,STR_ID_TODAY
+	,STR_ID_TOMORROW
+#endif 
+/*- zhouqin 2011-02-16 modify for q6 320X240 */
+
+
+};
+
+enum IMG_IDLE_SCREEN_LIST
+{
+	IDLE_SCREEN_LSK_ICON		=	IDLE_APP_BASE+1,			
+
+	DIAL_PAD_MO_CALL_LSK_IMG_ID,		
+	DIAL_PAD_MO_CALL_RSK_IMG_ID,		
+
+	IDLE_SCREEN_RSK_ICON,			
+	IMG_IDLE_NETWORK_SRCH_SCR,
+	POWER_ON_ANIMATION_IMAGE_ID	
+	#if defined(__MMI_SYMBIAN_STYLE_IDLE__)
+
+	,IMG_IDLE_SYMBIAN_MATRIX1,
+	IMG_IDLE_SYMBIAN_MATRIX2,
+	IMG_IDLE_SYMBIAN_MATRIX3,
+	IMG_IDLE_SYMBIAN_MATRIX4,
+	IMG_IDLE_SYMBIAN_MATRIX5,
+	IMG_IDLE_SYMBIAN_MATRIX6,
+	IMG_IDLE_SYMBIAN_SETTING1,
+	IMG_IDLE_SYMBIAN_SETTING1_1,
+	IMG_IDLE_SYMBIAN_SETTING1_2,
+	IMG_IDLE_SYMBIAN_SETTING1_3,
+	IMG_IDLE_SYMBIAN_SETTING1_4,
+	IMG_IDLE_SYMBIAN_SETTING1_5,
+	IMG_IDLE_SYMBIAN_SETTING1_6,
+	IMG_IDLE_SYMBIAN_SETTING2,
+	IMG_IDLE_SYMBIAN_SETTING3,
+	IMG_IDLE_SYMBIAN_SETTING4,
+	IMG_IDLE_SYMBIAN_SETTING5,
+	IMG_IDLE_SYMBIAN_MATRIX_HILIGHT,
+	IMG_IDLE_SYMBIAN_MATRIX_HILIGHT1,
+	IMG_IDLE_SYMBIAN_MATRIX_HILIGHT2,
+
+	IMG_IDLE_SYMBIAN_MATRIX1_ANI,
+	IMG_IDLE_SYMBIAN_MATRIX2_ANI,
+	IMG_IDLE_SYMBIAN_MATRIX3_ANI,
+	IMG_IDLE_SYMBIAN_MATRIX4_ANI,
+	IMG_IDLE_SYMBIAN_MATRIX5_ANI,
+	IMG_IDLE_SYMBIAN_MATRIX6_ANI,
+	IMG_IDLE_SYMBIAN_SETTING1_ANI,
+	IMG_IDLE_SYMBIAN_SETTING1_ANI_1,
+	IMG_IDLE_SYMBIAN_SETTING1_ANI_2,
+	IMG_IDLE_SYMBIAN_SETTING1_ANI_3,
+	IMG_IDLE_SYMBIAN_SETTING1_ANI_4,
+	IMG_IDLE_SYMBIAN_SETTING1_ANI_5,
+	IMG_IDLE_SYMBIAN_SETTING1_ANI_6,
+	IMG_IDLE_SYMBIAN_SETTING2_ANI,
+	IMG_IDLE_SYMBIAN_SETTING3_ANI,
+	IMG_IDLE_SYMBIAN_SETTING4_ANI,
+	IMG_IDLE_SYMBIAN_SETTING5_ANI,
+	IMG_IDLE_SYMBIAN_NETWORK_ICON,
+	IMG_IDLE_SYMBIAN_SMS_ICON,
+	IMG_IDLE_SYMBIAN_CALL_ICON,
+	IMG_IDLE_SYMBIAN_TDL_ICON,
+
+	IMG_IDLE_SYMBIAN_TIME_NUM0,
+   	IMG_IDLE_SYMBIAN_TIME_NUM1,
+    IMG_IDLE_SYMBIAN_TIME_NUM2,
+    IMG_IDLE_SYMBIAN_TIME_NUM3,
+    IMG_IDLE_SYMBIAN_TIME_NUM4,
+    IMG_IDLE_SYMBIAN_TIME_NUM5,
+    IMG_IDLE_SYMBIAN_TIME_NUM6,
+    IMG_IDLE_SYMBIAN_TIME_NUM7,
+    IMG_IDLE_SYMBIAN_TIME_NUM8,
+    IMG_IDLE_SYMBIAN_TIME_NUM9,
+    IMG_IDLE_SYMBIAN_TIME_DIAN,
+	IMG_IDLESCREEN_SUNDAY,
+	IMG_IDLESCREEN_MONDAY,
+	IMG_IDLESCREEN_TUESDAY,
+	IMG_IDLESCREEN_WEDNESDAY,
+	IMG_IDLESCREEN_THURSDAY,
+	IMG_IDLESCREEN_FRIDAY,
+	IMG_IDLESCREEN_SATURDAY,
+	IMG_IDLESCREEN_SUNDAY_EN,
+	IMG_IDLESCREEN_MONDAY_EN,
+	IMG_IDLESCREEN_TUESDAY_EN,
+	IMG_IDLESCREEN_WEDNESDAY_EN,
+	IMG_IDLESCREEN_THURSDAY_EN,
+	IMG_IDLESCREEN_FRIDAY_EN,
+	IMG_IDLESCREEN_SATURDAY_EN,
+	IMG_IDLE_SYMBIAN_TIME_AM,
+	IMG_IDLE_SYMBIAN_TIME_PM,
+	IMG_IDLE_SYMBIAN_TITLE_BACKGROUND,
+	IMG_IDLE_SYMBIAN_STATUS_BACKGROUND,
+
+	IMG_IDLE_SYMBIAN_LINE1_HIGHLIGHT,
+	IMG_IDLE_SYMBIAN_LINE2_HIGHLIGHT,
+	IMG_IDLE_SYMBIAN_LINE3_HIGHLIGHT
+
+#endif
+};
+ 
+enum SCR_IDLE_SCREEN_LIST
+{
+	IDLE_SCREEN_ID			=	IDLE_APP_BASE+1,					
+	IDLE_SCREEN_DIGIT_HANDLER_ID,
+	IDLE_SCREEN_SCREENSAVER_ID, 
+	IDLE_SCREEN_DUMMY_ID,
+	SCREEN_SAVER_PARTIAL_ON_ID,
+	POPUP_SCREENID,
+	SCREEN_DAIL_OPTION,
+	SHOW_IN_PROGRESS_SCREEN
+};
+ 
+ //Lisen 05062004 for gIsSubLcdOnIdleScreen
+enum SUBLCD_STATE_ENUM
+{
+   SUBLCD_NOT_ON_IDLE=0,
+   SUBLCD_ON_IDLE_NORMAL,
+   SUBLCD_ON_IDLE_INSERT_SIM,
+   SUBLCD_ON_IDLE_SIM_BLOCKED
+} ;   
+
+enum EMFM_MODE
+{
+   NORMAL_MODE=0,
+   ENGINEERING_MODE,
+   FACTORY_MODE
+} ;   
+
+typedef struct 
+{
+   U8    IsOnIdleScreen; 			// This variable tells that current screen is idle screen.
+   U8    IsSubLcdOnIdleScreen; 
+   U8 	 IsOnDialerScreen;		// It tells that current screen is Dialer Screen
+   U8	 IsOnSimErrorScreen;
+   U8	 IsOnSimErrorDialerScreen;
+   U8	 IsScrSvrSleepIn;				/* is the screensaver exit because lcd sleep-in */
+   U8    IsRSKPressOnScreenSaver;	//This variable tells that Is RSK pressed on Screen saver screen 
+   U8    LongPressEnable;	 
+   U8    AvoidHistoryofDialerScreen; 	//If the value of this variable is one then don't save the history of dialer screen.
+   U8    ScreenSaverRunFlag;		// 0 for False, 1 for True
+   U8    ToNameScrFromIdleApp; 
+   #ifdef	__MMI_KEYPAD_LOCK_PATTERN_2__   
+   U8    ToMainMenuScrFromIdleApp; 
+   #endif
+   U8	 RskPressedFromIdleApp; // This variable tells that RSK has been pressed from idle screen. this is used for manual keypad lock.
+
+   S16 	 IdleScreenDigitKeyCode;	// For digit handlig on dialing screens, it stores the keycode on press of any key on idle screen.
+   pBOOL ToggleProfile; 			// This varible stored current status of Toggle profile
+
+   U32   AutoLockTimeOut; 		// This carries the timeout period of Autokeypad lock
+
+   S8 	 DialPadCallBuffer[MAX_DIAL_PAD * ENCODING_LENGTH];	// This buffer stores all dialled digits from idle screen
+} idle_context_struct; 
+
+extern idle_context_struct  g_idle_context;
+
+/*gaosh Add Start For 6435 and 6437 Ver: TBM780_T_20070823_2145  on 2007-8-24 14:22 */
+extern void DisplayLockUnlockPopupScreen(void);
+/*gaosh Add End  For 6435 and 6437 Ver: TBM780_T_20070823_2145  on 2007-8-24 14:22 */
+
+#endif
+

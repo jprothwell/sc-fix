@@ -1,0 +1,538 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of MediaTek Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("MEDIATEK SOFTWARE")
+*  RECEIVED FROM MEDIATEK AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. MEDIATEK EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES MEDIATEK PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE MEDIATEK SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. MEDIATEK SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY MEDIATEK SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND MEDIATEK'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE MEDIATEK SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT MEDIATEK'S OPTION, TO REVISE OR REPLACE THE MEDIATEK SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  MEDIATEK FOR SUCH MEDIATEK SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*****************************************************************************
+ *
+ * Filename:
+ * ---------
+ *    lcd.c
+ *
+ * Project:
+ * --------
+ *   Maui_Software
+ *
+ * Description:
+ * ------------
+ *   This Module defines the LCD driver.
+ *
+ * Author:
+ * -------
+ * -------
+ *
+ *============================================================================
+ *             HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ * removed!
+ * removed!
+ * removed!
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *============================================================================
+ ****************************************************************************/
+//#include "drv_comm.h"
+//
+#include <csw.h>   // zrx add 20060516
+#include "lcd_sw_inc.h"
+#include "lcd_sw.h"
+#include "lcd_hw.h"
+/*Serial interface*/
+//#include "eint.h"
+#include "kal_non_specific_general_types.h"
+#include "mmi.h"
+//#define LCD_DMAENABLE
+
+
+//extern void GPIO_ModeSetup(kal_uint16 pin, kal_uint16 conf_dada);
+//extern void GPIO_WriteIO(char data, char port);
+//extern void PWM2_level(kal_uint8 level);
+
+
+
+UINT32 drv_lcd_main_cs_base;
+PRIVATE BOOL g_main_lcd_init_is_ok  = FALSE;
+
+//tangjie add 20060518
+PRIVATE BOOL main_lcd_power_on ( VOID)
+{
+    // Power On Sequence
+    
+	// Delay 20ms
+	DM_Wait(6);
+	LCD_MAIN_WR_REG(0x07, 0x0004);
+	LCD_MAIN_WR_REG(0x0d, 0x0203);
+	LCD_MAIN_WR_REG(0x0e, 0x1115);
+    
+	// Delay 20ms
+	DM_Wait(6);
+    
+	LCD_MAIN_WR_REG(0x01, 0x0113);
+	LCD_MAIN_WR_REG(0x02, 0x0700);
+	LCD_MAIN_WR_REG(0x05, 0x1230);
+	LCD_MAIN_WR_REG(0x06, 0x0000);
+	LCD_MAIN_WR_REG(0x0b, 0x4000);
+	LCD_MAIN_WR_REG(0x0c, 0x0003);
+	LCD_MAIN_WR_REG(0x03, 0x0488);
+	LCD_MAIN_WR_REG(0x04, 0x0000);
+    
+	// Delay 40ms
+	DM_Wait(11); // 11*1/256
+    
+	LCD_MAIN_WR_REG(0x0e, 0x3115);
+	LCD_MAIN_WR_REG(0x0d, 0x0213);
+	LCD_MAIN_WR_REG(0x21, 0x0000);
+	LCD_MAIN_WR_REG(0x30, 0x0000);
+	LCD_MAIN_WR_REG(0x31, 0x0205);
+	LCD_MAIN_WR_REG(0x32, 0x0202);
+	LCD_MAIN_WR_REG(0x33, 0x0000);
+	LCD_MAIN_WR_REG(0x34, 0x0504);
+	LCD_MAIN_WR_REG(0x35, 0x0205);
+	LCD_MAIN_WR_REG(0x36, 0x0707);
+	LCD_MAIN_WR_REG(0x37, 0x0000);
+	LCD_MAIN_WR_REG(0x0f, 0x0000);
+	LCD_MAIN_WR_REG(0x11, 0x0000);
+	LCD_MAIN_WR_REG(0x14, 0x9f00);
+	LCD_MAIN_WR_REG(0x15, 0x0000);
+	LCD_MAIN_WR_REG(0x16, 0x7f00);
+	LCD_MAIN_WR_REG(0x17, 0x9f00);
+	LCD_MAIN_WR_REG(0x3a, 0x1000);
+	LCD_MAIN_WR_REG(0x3b, 0x000b);
+	LCD_MAIN_WR_REG(0x07, 0x0005);
+    
+	// Delay 20ms
+	DM_Wait(6);
+    
+	LCD_MAIN_WR_REG(0x07, 0x0025);
+	LCD_MAIN_WR_REG(0x07, 0x0027);
+	LCD_MAIN_WR_REG(0x07, 0x0037);
+	LCD_MAIN_WR_REG(0x21, 0x0000);
+
+    return TRUE;
+}
+//tangjie add begin 20060518
+void LCD_Delay(UINT16 time)
+{
+       
+}
+
+void spi_ini(void)
+{
+	//#if ( (defined(MT6205B)) || (defined(MT6218)) )
+		/* Data size = 8bits, SPO = 1 and SPH = 1, SCR = LCD_CTRL0_SCRDiv16 */
+		//DRV_WriteReg(LCD_SCON,(LCD_SCON_SPH|LCD_SCON_SPO));
+		//DRV_Reg(DRVPDN_CON1) &= (~DRVPDN_CON1_LCD);
+	//#endif   /*MT6205B,MT6218*/
+
+	
+}
+
+
+/***********************S6B33B1X********************************/
+/*Samsung, 64k Color LCD, Parallel Interface, KLM development board*/
+
+void LCD_EnterSleep_H0181N03(void)
+{
+   
+}
+
+void LCD_ExitSleep_H0181N03(void)
+{
+   
+}
+
+void LCD_Partial_On_H0181N03(kal_uint16 start_page,kal_uint16 end_page)
+{
+	
+}
+
+void LCD_Partial_Off_H0181N03(void)
+{
+	
+}
+
+UINT8 LCD_Partial_line_H0181N03(void)
+{
+	return 1;		/* partial display in 1 line alignment */
+}
+
+void LCD_Set_Y_Addr_S6B33B1X(kal_uint16 start_row, kal_uint16 end_row)
+{
+   
+}
+
+void LCD_Set_X_Addr_S6B33B1X(kal_uint16 start_column, kal_uint16 end_column)
+{
+  
+}
+
+void LCD_blockClear_S6B33B1X(kal_uint16 x1,kal_uint16 y1,kal_uint16 x2,kal_uint16 y2,kal_uint16 data)
+{
+   
+}
+
+void LCD_ClearAll_S6B33B1X(kal_uint16 data)
+{
+   
+}
+// zrx add begin 20060516
+ void main_lcd_clear_color(kal_uint32 bkground) 
+{
+	UINT8 x,y;
+    
+	for(y=0;y<DRV_MAIN_LCD_MAX_ROWS;y++)
+		for(x=0;x<DRV_MAIN_LCD_MAX_COLS;x++)
+		U_PIXEL16(x,y, bkground);
+    
+	//return ERR_SUCCESS;
+}
+// zrx add end
+void LCD_Init_H0181N03(kal_uint32 bkground, void **buf_addr)
+{
+	DRV_MEM_CFG MemoryCfg;
+    	
+	MemoryCfg.writeAllow      = TRUE;
+	MemoryCfg.writeByteEnable = FALSE;
+	MemoryCfg.waitMode        = FALSE;
+	MemoryCfg.pageSize        = DRV_MEMORY_NO_PAGE;
+	MemoryCfg.tACS            = DRV_MEMORY_1_CYCLE;
+	MemoryCfg.tCAH            = DRV_MEMORY_1_CYCLE;
+	MemoryCfg.tCOS            = DRV_MEMORY_0_CYCLE;
+	MemoryCfg.tOCH            = DRV_MEMORY_0_CYCLE;
+	MemoryCfg.tACC            = 15;
+	MemoryCfg.tPMACC          = 0;
+    
+	drv_lcd_main_cs_base = (UINT32) DRV_MemorySetupCS(DRV_MEMORY_CS2, &MemoryCfg);
+    
+    	g_main_lcd_init_is_ok  = TRUE;
+        
+    	main_lcd_power_on();
+
+    //
+    // Start to display
+    //
+   	 LCD_MAIN_WR_REG(0x07, 0x0005);
+	// Delay 20ms
+	LCD_MAIN_WR_REG(0x07, 0x0025);
+	LCD_MAIN_WR_REG(0x07, 0x0027);
+	// Delay 20ms
+	LCD_MAIN_WR_REG(0x07, 0x0037);
+    
+       main_lcd_clear_color( bkground);
+    
+	g_main_lcd_init_is_ok = 1;
+}
+
+void LCD_PWRON_H0181N03(kal_bool on)
+{
+   if(on)
+   {
+      LCD_ExitSleep_H0181N03();
+   }
+   else
+   {
+      LCD_EnterSleep_H0181N03();
+   }
+}
+
+void LCD_SetContrast_H0181N03(kal_uint8 level)
+{
+  
+}
+
+
+void LCD_SetNBlockInv_S6B33B1X(kal_uint8 level)
+{
+		
+}
+
+void LCD_ON_H0181N03(kal_bool on)
+{
+   if (on)
+   {
+      ;
+   }
+   else
+   {
+      ;
+   }
+} 
+extern UINT32 gdi_base_layer_buffer_pool[];  // tangjie add 20060607
+
+void LCD_BlockWrite_H0181N03(kal_uint16 startx,kal_uint16 starty,kal_uint16 endx,kal_uint16 endy)
+{
+	
+	//UINT32 ret = ERR_SUCCESS;    
+	UINT16 *frame_addr;
+	UINT16 *pBmp;
+	UINT16 XDest,YDest, YEnd, XEnd;
+       UINT16 i, j;
+        
+	XDest = startx;
+	YDest = starty;
+	YEnd  = endy;
+
+
+	
+	XEnd  = endx;
+   	pBmp  = (UINT16 *)get_lcd_frame_buffer_address();
+	// pBmp  = (UINT16 *)gdi_base_layer_buffer_pool;
+	if((XDest>=LCD_WIDTH)|(YDest>=LCD_HEIGHT)|(XEnd>=LCD_WIDTH)|(YEnd>=LCD_HEIGHT))
+	{
+		return ;
+	}
+
+   	 for(i=YDest; i<=YEnd; i++)
+    	{
+       	 frame_addr=pBmp+i*LCD_WIDTH+XDest;
+        	for(j=XDest;j<=XEnd;j++)
+		{
+              	U_PIXEL16(j,i,(UINT16)*frame_addr);
+			frame_addr++;
+		}
+    	}
+	
+}
+
+
+
+
+void LCD_Size_H0181N03(kal_uint16 *out_LCD_width,kal_uint16 *out_LCD_height)
+{
+    	*out_LCD_width = LCD_WIDTH;
+	*out_LCD_height = LCD_HEIGHT;
+}
+
+/*Engineering mode*/
+kal_uint8 LCD_GetParm_H0181N03(lcd_func_type type)
+{
+
+   
+}
+
+void LCD_SetBias_H0181N03(kal_uint8 *bias)
+{
+   
+}
+
+void LCD_Contrast_H0181N03(kal_uint8 *contrast)
+{
+   
+}
+
+void LCD_LineRate_H0181N03(kal_uint8 *linerate)
+{
+	
+}
+
+void LCD_Temp_Compensate_H0181N03(kal_uint8 *compensate)
+{
+  
+}
+
+
+void LCD_memcpy(void *dst /*s1*/, const void *src /*s2*/, kal_uint16 size)
+{
+   
+}
+
+
+LCD_Funcs LCD_func_H0181N03 = {
+   LCD_Init_H0181N03,
+   LCD_PWRON_H0181N03,
+   LCD_SetContrast_H0181N03,
+   LCD_ON_H0181N03,
+   LCD_BlockWrite_H0181N03,
+   LCD_Size_H0181N03,
+   LCD_EnterSleep_H0181N03,
+   LCD_ExitSleep_H0181N03,
+   LCD_Partial_On_H0181N03,
+   LCD_Partial_Off_H0181N03,
+   LCD_Partial_line_H0181N03,
+   /*Engineering mode*/
+   LCD_GetParm_H0181N03,
+   LCD_SetBias_H0181N03,
+   LCD_Contrast_H0181N03,
+   LCD_LineRate_H0181N03,
+   LCD_Temp_Compensate_H0181N03
+};
+
+
+
+void LCD_FunConfig(void)
+{
+   MainLCD = &LCD_func_H0181N03 ;
+   #ifdef DUAL_LCD
+   	SubLCD = &LCD_func_S6B0724;
+   #endif
+}

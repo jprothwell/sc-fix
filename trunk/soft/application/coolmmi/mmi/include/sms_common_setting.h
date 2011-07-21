@@ -1,0 +1,74 @@
+
+#ifndef _SMS_COMMON_SETTING_H
+#define _SMS_COMMON_SETTING_H
+
+#include "mmi_features.h"
+#if defined(__MMI_MESSAGES_TEMPLATE__)
+#define		NUM_TEMPLATES					10
+#define		MAX_TEMPLATE_LENGTH			40
+typedef enum
+{
+	MSG_TEMPLATE_LANG_ENGLISH,
+	#ifdef __MMI_LANG_SM_CHINESE__
+	MSG_TEMPLATE_LANG_SIMCHINESE,
+	#endif
+	#ifdef __MMI_LANG_FRENCH__
+	MSG_TEMPLATE_LANG_FRENCH,
+	#endif
+	#ifdef __MMI_LANG_TURKISH__
+	MSG_TEMPLATE_LANG_TURKISH,
+	#endif
+	#ifdef __MMI_LANG_INDONESIAN__
+	MSG_TEMPLATE_LANG_INDONESIAN,
+	#endif
+	#ifdef __MMI_LANG_ARABIC__
+	MSG_TEMPLATE_LANG_ARABIC,
+	#endif
+	#ifdef __MMI_LANG_PERSIAN__
+	MSG_TEMPLATE_LANG_PERSIAN,
+	#endif
+	#ifdef __MMI_LANG_RUSSIAN__
+	MSG_TEMPLATE_LANG_RUSSIAN,
+	#endif
+	#ifdef __MMI_LANG_VIETNAMESE__
+	MSG_TEMPLATE_LANG_VIETNAMESE,
+	#endif
+	#ifdef __MMI_LANG_TR_CHINESE__
+	MSG_TEMPLATE_LANG_TRACHINESE,
+	#endif
+	#ifdef __MMI_LANG_THAI__
+	MSG_TEMPLATE_LANG_THAI,
+	#endif
+	#ifdef __MMI_LANG_ITALIAN__
+	MSG_TEMPLATE_LANG_ITALIAN,
+	#endif
+	#ifdef __MMI_LANG_HINDI__
+	MSG_TEMPLATE_LANG_HINDI,
+	#endif
+	#ifdef __MMI_LANG_GERMAN__
+	MSG_TEMPLATE_LANG_GERMAN,
+	#endif
+	#ifdef __MMI_LANG_SPANISH__
+	MSG_TEMPLATE_LANG_SPANISH,
+	#endif
+	#ifdef __MMI_LANG_MALAY__
+	MSG_TEMPLATE_LANG_MALAY,
+	#endif	
+	TOTAL_TEMPLATE_LANGUAGE
+}msg_template_lang_enum;
+
+#ifndef NVRAM_SMS_TEMPL_RECORD_SIZE
+#define NVRAM_SMS_TEMPL_RECORD_SIZE	     84
+#endif
+#ifndef	NVRAM_SMS_RECORD_TOTAL
+//kecx modify on 20080625
+#if defined  _MUTILANG_TEMPLATE_
+#define NVRAM_SMS_RECORD_TOTAL			(TOTAL_TEMPLATE_LANGUAGE*NUM_TEMPLATES+1)
+#else
+#define NVRAM_SMS_RECORD_TOTAL			31
+#endif
+//kecx modify on 20080625
+#endif
+
+#endif
+#endif

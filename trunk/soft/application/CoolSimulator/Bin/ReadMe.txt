@@ -1,0 +1,1 @@
+Please decompressing files from "mfclib.rar" file by yourself if you lost some mfc library files .

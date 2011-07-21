@@ -1,0 +1,4087 @@
+/*****************************************************************************
+*  Copyright Statement:
+*  --------------------
+*  This software is protected by Copyright and the information contained
+*  herein is confidential. The software may not be copied and the information
+*  contained herein may not be used or disclosed except with the written
+*  permission of COOLSAND Inc. (C) 2005
+*
+*  BY OPENING THIS FILE, BUYER HEREBY UNEQUIVOCALLY ACKNOWLEDGES AND AGREES
+*  THAT THE SOFTWARE/FIRMWARE AND ITS DOCUMENTATIONS ("COOLSAND SOFTWARE")
+*  RECEIVED FROM COOLSAND AND/OR ITS REPRESENTATIVES ARE PROVIDED TO BUYER ON
+*  AN "AS-IS" BASIS ONLY. COOLSAND EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES,
+*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
+*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NONINFRINGEMENT.
+*  NEITHER DOES COOLSAND PROVIDE ANY WARRANTY WHATSOEVER WITH RESPECT TO THE
+*  SOFTWARE OF ANY THIRD PARTY WHICH MAY BE USED BY, INCORPORATED IN, OR
+*  SUPPLIED WITH THE COOLSAND SOFTWARE, AND BUYER AGREES TO LOOK ONLY TO SUCH
+*  THIRD PARTY FOR ANY WARRANTY CLAIM RELATING THERETO. COOLSAND SHALL ALSO
+*  NOT BE RESPONSIBLE FOR ANY COOLSAND SOFTWARE RELEASES MADE TO BUYER'S
+*  SPECIFICATION OR TO CONFORM TO A PARTICULAR STANDARD OR OPEN FORUM.
+*
+*  BUYER'S SOLE AND EXCLUSIVE REMEDY AND COOLSAND'S ENTIRE AND CUMULATIVE
+*  LIABILITY WITH RESPECT TO THE COOLSAND SOFTWARE RELEASED HEREUNDER WILL BE,
+*  AT COOLSAND'S OPTION, TO REVISE OR REPLACE THE COOLSAND SOFTWARE AT ISSUE,
+*  OR REFUND ANY SOFTWARE LICENSE FEES OR SERVICE CHARGE PAID BY BUYER TO
+*  COOLSAND FOR SUCH COOLSAND SOFTWARE AT ISSUE. 
+*
+*  THE TRANSACTION CONTEMPLATED HEREUNDER SHALL BE CONSTRUED IN ACCORDANCE
+*  WITH THE LAWS OF THE STATE OF CALIFORNIA, USA, EXCLUDING ITS CONFLICT OF
+*  LAWS PRINCIPLES.  ANY DISPUTES, CONTROVERSIES OR CLAIMS ARISING THEREOF AND
+*  RELATED THERETO SHALL BE SETTLED BY ARBITRATION IN SAN FRANCISCO, CA, UNDER
+*  THE RULES OF THE INTERNATIONAL CHAMBER OF COMMERCE (ICC).
+*
+*****************************************************************************/
+
+/*****************************************************************************
+ *
+ * Filename:
+ * ---------
+ * CustCoordinates.C
+ *
+ * Project:
+ * --------
+ *   MAUI
+ *
+ * Description:
+ * ------------
+ *   This file is intends for define control sets and coordinate sets.
+ *
+ * Author:
+ * -------
+ * Leo Hu (CSD00563)
+ *
+ *============================================================================
+ *             HISTORY
+ * Below this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *------------------------------------------------------------------------------
+ * $Log:   O:/PSI_MMI/archives/2___work/Soft_11.13/soft/mmi_customer/CustResource/src/CustCoordinates.c-arc  $
+ * 
+ *    Rev 1.5   Mar 13 2007 17:53:50   lin
+ * 支持文件管理
+ * 
+ *    Rev 1.4   Jan 16 2007 11:59:30   lin
+ * 支持FMGR模块和MMIFS模块
+ * 
+ *    Rev 1.3   Nov 30 2006 11:04:10   lin
+ * 恢复CSW更新前的版本
+ * 
+ *    Rev 1.1   Nov 24 2006 18:44:28   lin
+ * No change.
+ * 
+ *    Rev 1.0   Nov 13 2006 15:29:20   zhangxb
+ * Initial revision.
+ * Revision 1.1.1.1  2006/08/02 02:23:22  sushipeng
+ * del .h in the include
+ *
+ * Revision 1.1.1.1  2006/07/22 08:00:45  sushipeng
+ * second change new platform 
+ * ssp 20060722
+ *
+ * Revision 1.1.1.1  2006/07/19 03:49:03  sushipeng
+ * change coolsand platform
+ * ssp 20060719
+ *
+ * Revision 1.2  2006/06/21 07:08:42  wangbei
+ * Update Resource
+ *
+ *
+ * Jan 16 2006 CSD01136
+ * [MAUI_00167403] MMI-In idle screen,click the pannel.After 5sec,the Screen Saver will work
+ * Add control area for category 123
+ *
+ * Jan 9 2006 CSD00658
+ * [MAUI_00165840] Support IMPS and Tab bar in 240x320
+ * 
+ *
+ * Jan 3 2006 CSD00658
+ * [MAUI_00165612] Camera-The Add frame1~frame10 is display abnormal
+ * 
+ *
+ * Dec 20 2005 CSD00563
+ * [MAUI_00161406] Camera-The filename and counter "41/41" and icon "△" will overlap
+ * 
+ *
+ * Dec 19 2005 CSD00658
+ * [MAUI_00161829] MMI-Status bar will disappear after play Video file
+ * 
+ *
+ * Dec 9 2005 CSD00885
+ * [MAUI_00217800] MMI_characters and title bar are overlap
+ * 
+ *
+ * Dec 8 2005 CSD00563
+ * [MAUI_00160141] [1]Fatal Error:msg-send-ext-queue() failed  -L4
+ * 
+ *
+ * Dec 4 2005 CSD00658
+ * [MAUI_00159007] Video Player_play *mp4 video and Alarm work, then the video screen display stripe
+ * 
+ *
+ * Dec 1 2005 CSD00563
+ * [MAUI_00158215] [MMI][DM]Use Common Coordinates Constants to reduce ROM size.
+ * 
+ *
+ * Nov 28 2005 CSD00563
+ * [MAUI_00151953] MMI-Can't lock keypad without SIM
+ * 
+ *
+ *
+ * Nov 28 2005 CSD00885
+ * [MAUI_00158505] [MMI]change 176x220 touch screen calendar arrow size
+ * 
+ *
+ * Nov 28 2005 CSD00563
+ * [MAUI_00158215] [MMI][DM]Use Common Coordinates Constants to reduce ROM size.
+ * 
+ *
+ * Nov 28 2005 CSD00658
+ * [MAUI_00158413] Screen Rotation for 240x320 and fix some architecture issue in old branch.
+ * 
+ *
+ * Nov 21 2005 CSD00563
+ * [MAUI_00157148] [MMI][IMAGEVIEWER] UI change.
+ * 
+ *
+ * Nov 7 2005 CSD00563
+ * [MAUI_00153760] ImageViewer-Pull the red frame to right (or left or up or down) then the red frame's
+ * 
+ *
+ * Oct 31 2005 CSD00885
+ * [MAUI_00153505] [MMI]wallpaper setting shows arrows
+ * 
+ *
+ * Oct 31 2005 CSD00885
+ * [MAUI_00153505] [MMI]wallpaper setting shows arrows
+ * 
+ *
+ * Oct 29 2005 CSD00866
+ * [MAUI_00217090] STK_It display incomplete message
+ * 
+ *
+ * Oct 28 2005 CSD00866
+ * [MAUI_00153468] [MMI][DRAW_MANAGER][BugFix]Fix Compile Error of MAUI_00152512
+ * 
+ *
+ * Oct 28 2005 CSD00563
+ * [MAUI_00152512] Multimedia-Long Filename is out of screen at vertical mode
+ * 
+ *
+ * Oct 27 2005 CSD00563
+ * [MAUI_00217090] STK_It display incomplete message
+ * 
+ *
+ * Oct 27 2005 CSD00563
+ * [MAUI_00152923] STK-The status bar can't display at dial out confirm screen
+ * 
+ *
+ * Oct 26 2005 CSD00563
+ * [MAUI_00152420] Setting_network setup_preferred networks_press "OK" overlap
+ * 
+ *
+ * Oct 24 2005 CSD00563
+ * [MAUI_00217067] Call_The call menu word is mixed with incoming call screen
+ * 
+ *
+ * Oct 24 2005 CSD00563
+ * [MAUI_00152099] Multimedia-Filename will be cut at horizontal mode under full screen
+ * 
+ *
+ * Oct 24 2005 CSD00563
+ * [MAUI_00148990] Camera-Click"Back",the "Back" string background will display a block
+ * 
+ *
+ * Oct 24 2005 CSD01166
+ * [MAUI_00152105] Multimedia-Zoom frame is out of screen at horizontal mode
+ * 
+ *
+ * Oct 23 2005 CSD00658
+ * [MAUI_00151529] Make touch screen work on Popup Dialog
+ * 
+ *
+ * Oct 23 2005 CSD00563
+ * [MAUI_00143975] MMI-All icons will disappear when "Insert SIM"
+ * 
+ *
+ * Oct 23 2005 CSD00563
+ * [MAUI_00149077] Camera-The filename "ド聑.gif" and counter "7/7" will overlap
+ * 
+ *
+ * Oct 22 2005 CSD00885
+ * [MAUI_00217168] Font-Greeting text location isn't in screen center
+ * 
+ *
+ * Oct 22 2005 CSD00885
+ * [MAUI_00151862] [MMI]New BMI result screen
+ * 
+ *
+ * Oct 21 2005 CSD00658
+ * [MAUI_00217099] MMI_screen overlap
+ * 
+ *
+ * Oct 21 2005 CSD00658
+ * [MAUI_00217086] chat_lsk and rsk missed
+ * 
+ *
+ * Oct 20 2005 CSD00885
+ * [MAUI_00217088] STK_see the picture 10.18-1.jpg
+ * 
+ *
+ * Oct 17 2005 CSD00563
+ * [MAUI_00137330] Chat-There is a blank block between remote number and chat's content
+ * 
+ *
+ * Oct 17 2005 CSD00563
+ * [MAUI_00143960] Multimedia-Icon will overlap under horizontal mode
+ * 
+ *
+ * Oct 15 2005 CSD00885
+ * [MAUI_00013206] When any File is Forwarded to IrDA, A white patch displays on the Send Pop up.
+ * modified cat 66 for 240x320
+ *
+ * Oct 14 2005 CSD00563
+ * [MAUI_00137372] MMI-Click  "Back", the background button will display unusual
+ * 
+ *
+ * Oct 13 2005 CSD00563
+ * [MAUI_00129986] [MMI][DM]Fine tune 128x128 and 128x160 screens.
+ * 
+ *
+ * Oct 11 2005 CSD00563
+ * [MAUI_00130092] MMI-Passcode stripe is out of screen
+ * 
+ *
+ * Oct 9 2005 CSD00563
+ * [MAUI_00129986] [MMI][DM]Fine tune 128x128 and 128x160 screens.
+ * 
+ *
+ * Oct 7 2005 CSD00563
+ * [MAUI_00127534] Extra_No Keypad can touch to enter numbers and press RSK Back cannot back to main menu in Currency Converter
+ * 
+ *
+ * Oct 3 2005 CSD00563
+ * [MAUI_00126981] [MMI][GUI]Revise Category257 for currency convertor
+ * 
+ *
+ * Oct 3 2005 CSD00563
+ * [MAUI_00126960] [MMI][GUI] Fine tune Category200 screen
+ * 
+ *
+ * Oct 3 2005 CSD00563
+ * [MAUI_00126810] [MMI][DM] Turn on Draw Manager.
+ * 
+ *
+ * Oct 1 2005 CSD00563
+ * [MAUI_00126659] [MMI][GUI]New category screen for image viewer.
+ * 
+ *
+ * Sep 30 2005 CSD00563
+ * [MAUI_00126393] [MMI][DM]Revise DM for sublcd wallpaper multilayer display.
+ * 
+ *
+ * Sep 29 2005 CSD00563
+ * [MAUI_00126384] [MMI][DM]fix draw manager compile
+ * 
+ *
+ * Sep 28 2005 CSD00563
+ * [MAUI_00126189] Message_Inbox and Outbox messages cannot display
+ * 
+ *
+ * Sep 26 2005 CSD00885
+ * [MAUI_00125778] [MMI]revise the popup screen on wallpapaer and screen saver screens
+ * 
+ *
+ * Sep 24 2005 CSD00885
+ * [MAUI_00125526] [MMI]revise category 66 as a small screen for 240x320 with draw manager
+ * category 66
+ *
+ * Sep 23 2005 CSD00885
+ * [MAUI_00012886] Organizer: Calendar: LSK CAption on Main Calendar Screen is partially cut.
+ * softkey width for calendar
+ *
+ * Sep 20 2005 CSD00563
+ * [MAUI_00124904] [MMI][GUI] Add Category226 horizontal type
+ * 
+ *
+ * Sep 20 2005 CSD00658
+ * [MAUI_00123561] Enhance GUI screen rotation
+ * 
+ *
+ * Sep 20 2005 CSD00563
+ * [MAUI_00123869] [MMI][DM]Revise code
+ * 
+ *
+ * Sep 12 2005 CSD00658
+ * [MAUI_00123257] Screen rotation for menu, popup, and confirmation dialog for Camera
+ * 
+ *
+ * Sep 8 2005 CSD00563
+ * [MAUI_00012507] PEN Caliberation: MMI crashes when alarm is expired and LSK Stop is clicked on the PEN Caliberation Screen.
+ * 
+ *
+ * Sep 6 2005 CSD00563
+ * [MAUI_00121812] [MMI][GUI] Add new Category screen for image viewer.
+ * 
+ *
+ *------------------------------------------------------------------------------
+ * Upper this line, this part is controlled by PVCS VM. DO NOT MODIFY!!
+ *============================================================================
+ ****************************************************************************/
+#include "mmi_features.h"
+/*WUZC Add Start For FMGR Ver:    on 2007-2-7 15:7 */
+#define __MMI_DRAW_MANAGER__
+/*WUZC Add End  For FMGR Ver:    on 2007-2-7 15:7 */
+#ifdef __MMI_DRAW_MANAGER__
+#include "kal_non_specific_general_types.h"
+#include "custdatares.h"
+#include "gui_setting.h"
+#include "wgui.h"
+#include "callmanagementiddef.h"
+#include "todolistenum.h"
+#include "callhistoryenum.h"
+#include "wgui_calendar.h"
+#include "composeringtonedefs.h"
+#include "messagesresourcedata.h"
+#include "messagesresourcedata.h"
+#include "phonebookdef.h"
+#include "callsetupenum.h"
+#include "settingdefs.h"
+#include "callsetupenum.h"
+
+#include "commonscreens.h"
+#include "quickaccessmenuitem_def.h"
+#include "simdetectiondef.h"
+#include "engineermodedef.h"
+#include "funandgamesdefs.h"
+#include "custom_nvram_editor_data_item.h"
+#include "custom_data_account.h"
+/*WUZC Del Start For MMIFS Ver:    on 2007-1-12 17:51 */
+#if 0
+#include "dataaccount.h"
+#endif
+/*WUZC Del End  For MMIFS Ver:    on 2007-1-12 17:51 */
+#include "alarmdef.h"
+#include "currencyconvertor.h"
+#include "calorie.h"
+#include "healthmenstural.h"
+#include "bmi.h"
+#include "screensaverdefs.h"
+#include "scheduledpoweronoff.h"
+#include "networksetupgprot.h"
+#include "calendardef.h"
+#include "factorymodedef.h"
+/*WUZC Del Start For MMIFS Ver:    on 2007-1-12 17:51 */
+#if 0
+#include "soundrecorderdef.h"
+#endif
+/*WUZC Del End  For MMIFS Ver:    on 2007-1-12 17:51 */
+#include "debuginitdef.h"
+#include "wgui_draw_manager.h"
+#include "gui.h"
+#include "wgui.h"
+/*WUZC Del Start For MMIFS Ver:    on 2007-1-12 17:51 */
+#if 0
+#include "phoedtscrenum.h"
+#endif
+/*WUZC Del End  For MMIFS Ver:    on 2007-1-12 17:51 */
+#ifdef __MMI_SCREEN_ROTATE__
+#include "screenrotationgprot.h"
+#if !defined(__MMI_MAINLCD_176X220__) && !defined(__MMI_MAINLCD_240X320__) // wangmg
+#error "Only 176x220 is supported"
+#endif 
+#endif /* __MMI_SCREEN_ROTATE__ */
+	
+/* Had to Create new define as the previous ones now use variable in wgui.h */
+#define DM_MMI_POP_UP_DIALOG_WIDTH				(MAIN_LCD_DEVICE_WIDTH-40)
+#define DM_MMI_POP_UP_DIALOG_HEIGHT			(MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_TITLE_HEIGHT-MMI_TITLE_Y-20)
+#define DM_MMI_POP_UP_DIALOG_X				((MAIN_LCD_DEVICE_WIDTH>>1)-(DM_MMI_POP_UP_DIALOG_WIDTH>>1))
+#define DM_MMI_POP_UP_DIALOG_Y				(MMI_TITLE_Y+(MMI_TITLE_HEIGHT+10))
+#define DM_MMI_POP_UP_DIALOG_FULL_HEIGHT			DM_MMI_POP_UP_DIALOG_HEIGHT
+
+#define DM_MMI_CONTENT_WIDTH_WITH_H_TAB				(MMI_CONTENT_WIDTH)
+#define DM_MMI_CONTENT_HEIGHT_WITH_H_TAB				(MMI_CONTENT_HEIGHT + MMI_TITLE_HEIGHT - MMI_HORIZONTAL_TAB_BAR_TAB_AREA_HEIGHT - MMI_HORIZONTAL_TAB_BAR_HINT_AREA_HEIGHT)
+#define DM_MMI_CONTENT_X_WITH_H_TAB						(MMI_CONTENT_X)
+#define DM_MMI_CONTENT_Y_WITH_H_TAB						(MMI_CONTENT_Y + MMI_HORIZONTAL_TAB_BAR_TAB_AREA_HEIGHT + MMI_HORIZONTAL_TAB_BAR_HINT_AREA_HEIGHT - MMI_TITLE_HEIGHT)
+
+	
+#ifdef MMI_ON_WIN32
+#define SUBLCD_WIDTH 96
+#define SUBLCD_HEIGHT 64
+#endif
+
+/***************************************************************************** 
+* Global Variable
+*****************************************************************************/
+#define CONTROL_SET_START
+#if defined ( __MMI_UI_STYLE_3__) || defined ( __MMI_UI_STYLE_4__)
+const U8 dm_base_control_set[]=
+{
+		3,
+		DM_STATUS_BAR1,
+		DM_TITLE1,
+		DM_BUTTON_BAR1
+};
+const s16 dm_base_coordinate_set[]=
+{
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		DM_DEFAULT_TITLE_BAR_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+#else
+const U8 dm_base_control_set[]=
+{
+		2,
+		DM_TITLE1,
+		DM_BUTTON_BAR1
+};
+const s16 dm_base_coordinate_set[]=
+{
+		DM_DEFAULT_TITLE_BAR_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#endif
+
+
+#if defined(__MMI_SCREEN_ROTATE__)
+#if !defined(__MMI_WALLPAPER_ON_BOTTOM__)
+const U8 dm_base_rotated_control_set[]=
+{
+		3,
+		DM_SCR_BG,
+		DM_TITLE1,
+		DM_BUTTON_BAR1
+};
+#else /* !defined(__MMI_WALLPAPER_ON_BOTTOM__) */ 
+const U8 dm_base_rotated_control_set[] = 
+{
+    2,
+    DM_TITLE1,
+    DM_BUTTON_BAR1
+};
+#endif /* !defined(__MMI_WALLPAPER_ON_BOTTOM__) */ 
+const s16 dm_base_rotated_coordinate_set[]=
+{
+		DM_DEFAULT_TITLE_BAR_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_ROTATED_SOFTKEY_WIDTH
+};
+#endif
+
+
+const U8 dm_base_control_set2[]=
+{
+		2,
+		DM_STATUS_BAR1,
+		DM_BUTTON_BAR1
+};
+const s16 dm_base_coordinate_set2[]=
+{
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+
+const U8 category_controlled_set[]=
+{
+		1,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+const s16 category_controlled_coordinate_set[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE
+};
+
+
+const U8 list_menu_category[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_LIST1
+};
+const U8 category_control_category_normal[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+const U8 category_control_category_normal_bg[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+const s16 common_coordinate_set[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y
+};
+#if defined( __MMI_SCREEN_ROTATE__) // TODO: revise
+const s16 common_rotated_coordinate_set[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,	
+};
+#endif /* __MMI_SCREEN_ROTATE__ */
+
+
+const U8 base_control_set_with_list_and_category_control[]=
+{
+	5,
+	DM_BASE_LAYER_START,
+	DM_SCR_BG,
+	DM_BASE_CONTROL_SET1,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_LIST1
+};
+const s16 coordinate_set_base_control_set_with_list_and_category_control[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_CONTENT_COORDINATE_FLAG
+};
+
+
+const U8 category_control_category_status_icon[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 category_control_coordinate_set_status_icon[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+
+
+
+const U8 category5[]=
+{
+		5, 
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_MULTILINE_INPUTBOX1,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+const s16 coordinate_set5[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG
+};
+
+
+const U8 category6[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_LIST1
+};
+const s16 coordinate_set6[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG
+};
+
+
+const U8 category7[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_MULTILINE_INPUTBOX1
+};
+const s16 coordinate_set7[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0, MMI_TITLE_HEIGHT, MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_TITLE_HEIGHT-MMI_BUTTON_BAR_HEIGHT,DM_NO_FLAGS
+};
+
+
+const U8 category9[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set9[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+
+
+const U8 category12[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_LIST1
+};
+const s16 coordinate_set12[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG
+};
+
+
+const U8 category14_list[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_LIST1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set14_List_Page[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DEFAULT_BUTTON_BAR,	DM_BUTTON_BAR_UP_ARROW|DM_BUTTON_BAR_DOWN_ARROW,MMI_SOFTKEY_WIDTH
+};
+
+
+const U8 category14_matrix[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_MATRIX_MENU1,
+		//DM_BUTTON_BAR1
+};
+const s16 coordinate_set14_Matrix[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+#ifdef __PRODUCT_QPAD__
+		/*No title .*/
+		MMI_CONTENT_X, MMI_TITLE_Y, MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_STATUS_BAR_HEIGHT-MMI_BUTTON_BAR_HEIGHT	,DM_NO_FLAGS,
+#else
+		DM_CONTENT_COORDINATE_FLAG,
+#endif		
+		//DM_DEFAULT_BUTTON_BAR,	DM_BUTTON_BAR_LEFT_ARROW|DM_BUTTON_BAR_RIGHT_ARROW|DM_BUTTON_BAR_UP_ARROW|DM_BUTTON_BAR_DOWN_ARROW,MMI_SOFTKEY_WIDTH
+};
+
+#if defined(__MMI_SCREEN_ROTATE__) // wangmg[2]: new added
+const S16 rotated_coordinate_set14_Matrix[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    DM_CONTENT_COORDINATE_FLAG,
+};
+#endif
+const U8 category14_circular_3d[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_CIRCULAR_MENU1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set14_Circular[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_CONTENT_X, 0, MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT	,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR, DM_BUTTON_BAR_LEFT_ARROW|DM_BUTTON_BAR_RIGHT_ARROW|DM_BUTTON_BAR_UP_ARROW|DM_BUTTON_BAR_DOWN_ARROW,MMI_SOFTKEY_WIDTH
+};
+
+const s16 coordinate_set14_Rotate[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_CONTENT_X, 0, MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT	,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR,
+#ifdef ROTATE_HORI
+		DM_BUTTON_BAR_LEFT_ARROW|DM_BUTTON_BAR_RIGHT_ARROW,
+#else
+		DM_BUTTON_BAR_UP_ARROW|DM_BUTTON_BAR_DOWN_ARROW,
+#endif
+		MMI_SOFTKEY_WIDTH
+};
+
+
+const U8 category15_matrix[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_MATRIX_MENU1
+};
+
+
+
+#if defined (__MMI_UI_STYLE_4__) && defined (__MMI_TOUCH_DIAL_SCREEN__)
+const U8 category16[]=
+{
+		6,
+		DM_NEW_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_DIALER_INPUT_BOX1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set16[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_DIALING_KEYPAD_LAYER_X,MMI_DIALING_KEYPAD_LAYER_Y,MMI_DIALING_KEYPAD_LAYER_WIDTH,(MAIN_LCD_DEVICE_HEIGHT-MMI_STATUS_BAR_HEIGHT-MMI_BUTTON_BAR_HEIGHT),DM_NO_FLAGS,
+		0,0,MAIN_LCD_DEVICE_WIDTH/*MMI_DIALING_KEYPAD_LAYER_WIDTH*/,MAIN_LCD_DEVICE_HEIGHT /*MMI_DIALING_KEYPAD_LAYER_HEIGHT*/,DM_NO_FLAGS,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		MMI_DIALING_KEYPAD_LAYER_X,(MMI_DIALING_KEYPAD_LAYER_Y-MMI_DIALING_BOX_HEIGHT),MMI_DIALING_KEYPAD_LAYER_WIDTH,MMI_DIALING_BOX_HEIGHT,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#elif defined (__MMI_UI_STYLE_3__) && defined (__MMI_TOUCH_DIAL_SCREEN__)
+const U8 category16[]=
+{
+		6,
+		DM_NEW_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_DIALER_INPUT_BOX1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set16[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_DIALING_KEYPAD_LAYER_X,MMI_DIALING_KEYPAD_LAYER_Y,MMI_DIALING_KEYPAD_LAYER_WIDTH,MMI_DIALING_KEYPAD_LAYER_HEIGHT,DM_NO_FLAGS,
+		0,0,MMI_DIALING_KEYPAD_LAYER_WIDTH,150,DM_NO_FLAGS,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		0,MMI_STATUS_BAR_HEIGHT,MAIN_LCD_DEVICE_WIDTH,32,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#elif defined(__MMI_UI_STYLE_2__)
+#ifdef TOUCH_PANEL_SUPPORT
+const U8 category16[]=
+{
+		6,
+		DM_NEW_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BASE_LAYER_START,
+		DM_DIALER_INPUT_BOX1,
+		DM_STATUS_BAR1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set16[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_DIALING_KEYPAD_LAYER_X,MMI_DIALING_KEYPAD_LAYER_Y,MMI_DIALING_KEYPAD_LAYER_WIDTH,MMI_DIALING_KEYPAD_LAYER_HEIGHT,DM_NO_FLAGS,
+		0,0,MMI_DIALING_KEYPAD_LAYER_WIDTH,MMI_DIALING_KEYPAD_LAYER_HEIGHT,DM_NO_FLAGS,
+		MMI_DIALING_KEYPAD_LAYER_X,MMI_DIALING_KEYPAD_LAYER_Y-MMI_DIALING_BOX_HEIGHT,MMI_DIALING_KEYPAD_LAYER_WIDTH,MMI_DIALING_BOX_HEIGHT,DM_NO_FLAGS,
+		DM_DEFAULT_STATUS_BAR,DM_SPECIFIC_HIDE_STATUS_BAR,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#else //else TOUCH_PANEL_SUPPORT
+
+const U8 category16[] = 
+{
+    6,
+    DM_NEW_LAYER_START,
+    DM_CATEGORY_CONTROLLED_AREA2,
+    DM_BASE_LAYER_START,
+    DM_CATEGORY_CONTROLLED_AREA,
+    DM_STATUS_BAR1,
+    DM_BUTTON_BAR1
+};
+const S16 coordinate_set16[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    DM_DUMMY_COORDINATE,
+    DM_DEFAULT_STATUS_BAR, DM_SPECIFIC_HIDE_STATUS_BAR,
+    DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+
+};
+#endif
+#else
+const U8 category16[]=
+{
+		6,
+		DM_NEW_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA2,
+		DM_BASE_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_STATUS_BAR1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set16[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_STATUS_BAR,DM_SPECIFIC_HIDE_STATUS_BAR,
+		DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH	
+};
+#endif
+
+
+const U8 category18[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set18[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+
+const U8 category19[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_LIST1,
+		DM_STATUS_BAR1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set19[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0,MMI_STATUS_BAR_HEIGHT,0,MAIN_LCD_DEVICE_HEIGHT-MMI_TITLE_HEIGHT-MMI_BUTTON_BAR_HEIGHT,DM_NO_FLAGS,
+		0,0,0,0,DM_CATEGORY_CONTROL_COORDINATES,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#ifdef __MMI_SCREEN_ROTATE__
+const S16 coordinate_set19_rotate[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    0, MMI_ROTATED_TITLE_Y, 0, MAIN_LCD_DEVICE_HEIGHT - MMI_TITLE_HEIGHT - MMI_ROTATED_TITLE_Y, DM_NO_FLAGS,
+    0, 0, 0, 0, DM_CATEGORY_CONTROL_COORDINATES,
+    DM_DEFAULT_STATUS_BAR_FLAG,
+    DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+#endif
+const U8 category20[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set20[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH	
+};
+
+
+const U8 category21[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_MULTILINE_INPUTBOX1
+};
+
+const U8 category22[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_MATRIX_MENU1
+};
+const s16 coordinate_set22[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+};
+
+
+const U8 category28[]=
+{
+	5, 
+	DM_BASE_LAYER_START,
+	DM_SCR_BG,
+	DM_BASE_CONTROL_SET1,
+	DM_EMS_INPUTBOX1,
+	DM_CATEGORY_CONTROLLED_AREA
+};
+
+#ifdef PRODUCT_QPAD
+const U8 category32[]=
+{
+		6,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_SCR_BG,
+		DM_MULTILINE_INPUTBOX1,
+		DM_LIST1,
+		DM_BUTTON_BAR1
+};
+const S16 coordinate_set32[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,			
+		0,MMI_STATUS_BAR_HEIGHT,MAIN_LCD_DEVICE_WIDTH,0,DM_NO_FLAGS,
+		0,MMI_STATUS_BAR_HEIGHT,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT-MMI_STATUS_BAR_HEIGHT-MMI_BUTTON_BAR_HEIGHT,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#else
+const U8 category32[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_MULTILINE_INPUTBOX1,
+		DM_LIST1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set32[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0,0,MAIN_LCD_DEVICE_WIDTH,MMI_TITLE_HEIGHT<<1,DM_NO_FLAGS,
+		0,MMI_TITLE_HEIGHT<<1,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT-(MMI_TITLE_HEIGHT<<1)-MMI_BUTTON_BAR_HEIGHT,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#ifdef __MMI_SCREEN_ROTATE__
+const S16 coordinate_set32_rotate[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    0, 0, MMI_ROTATED_LCD_WIDTH, MMI_ROTATED_TITLE_Y << 1, DM_NO_FLAGS,
+    0, 21, MMI_ROTATED_LCD_WIDTH,
+        MMI_ROTATED_LCD_HEIGHT - (MMI_ROTATED_TITLE_HEIGHT << 1) - MMI_ROTATED_BUTTON_BAR_HEIGHT, DM_NO_FLAGS,
+    DM_DEFAULT_BUTTON_BAR_FLAG, MMI_ROTATED_SOFTKEY_WIDTH
+};
+
+#endif
+#endif
+const U8 category33[]=
+{
+		4,
+		DM_WALL_PAPER,
+		DM_BASE_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set33[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0,0,MAIN_LCD_DEVICE_WIDTH-MMI_BUTTON_BAR_HEIGHT,MAIN_LCD_DEVICE_HEIGHT,	DM_NO_FLAGS,
+#if defined (__MMI_IDLE_FULL_SCREEN__)
+			0, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, MAIN_LCD_DEVICE_WIDTH, MMI_BUTTON_BAR_HEIGHT, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH
+#else
+			DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH,
+#endif
+};
+
+#ifdef __MMI_SCREEN_ROTATE__
+const S16 coordinate_set33_rotate[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    0, 0, MMI_ROTATED_LCD_WIDTH, MMI_ROTATED_LCD_HEIGHT - MMI_ROTATED_BUTTON_BAR_HEIGHT, DM_NO_FLAGS,
+    DM_DEFAULT_BUTTON_BAR_FLAG, MMI_ROTATED_SOFTKEY_WIDTH,
+
+};
+#endif
+const U8 category35[]=
+{
+	4, 
+	DM_BASE_LAYER_START,
+	DM_SCR_BG,
+	DM_MULTILINE_INPUTBOX1,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_STATUS_BAR1,
+};
+const s16 coordinate_set35[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,(MMI_STATUS_BAR_HEIGHT + MMI_TITLE_HEIGHT)<<1, MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_TITLE_HEIGHT - MMI_STATUS_BAR_HEIGHT, DM_NO_FLAGS,
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+
+
+const U8 category39[]=
+{
+		3, 
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+#if(UI_DISABLE_EMS_INPUT_BOX)
+		DM_MULTILINE_INPUTBOX1
+#else
+		DM_EMS_INPUTBOX1
+#endif
+};
+
+
+const U8 category57[]=	
+{
+		5, 
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_INLINE_FIXED_LIST1
+
+};
+const s16 coordinate_set57[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+};
+/* Should be revised for 240x320 screen*/
+const s16 coordinate_set57_top_infobox[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_CONTENT_X,MMI_CONTENT_Y,MAIN_LCD_DEVICE_WIDTH,96,DM_NO_FLAGS,
+		0, 0, MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT,DM_PREVIOUS_CONTROL_END_Y|DM_HEIGHT_OFFSET_PREVIOUS_CONTROL_END_Y	
+};
+
+#ifdef __MMI_SCREEN_ROTATE__
+const S16 coordinate_set57_top_infobox_rotate[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    MMI_ROTATED_CONTENT_X, MMI_ROTATED_CONTENT_Y, MMI_ROTATED_LCD_WIDTH, 96, DM_NO_FLAGS,
+    0, 0, MMI_ROTATED_LCD_WIDTH, MMI_ROTATED_LCD_HEIGHT - MMI_ROTATED_BUTTON_BAR_HEIGHT,
+        DM_PREVIOUS_CONTROL_END_Y | DM_HEIGHT_OFFSET_PREVIOUS_CONTROL_END_Y
+};
+
+#endif
+const U8 category61[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set61[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X,
+		DM_FULL_SCREEN_COORDINATE,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		0,MAIN_LCD_DEVICE_HEIGHT>>1,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT>>1,DM_NO_FLAGS
+};
+#ifdef __MMI_SCREEN_ROTATE__
+const S16 coordinate_set61_rotate[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    DM_FULL_SCREEN_COORDINATE, DM_CENTRE_ALIGN_X,
+    DM_FULL_SCREEN_COORDINATE, DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM | DM_ALLIGNED_AREA_NO_BACK_FILL,
+    0, MMI_ROTATED_LCD_HEIGHT>> 1, MMI_ROTATED_LCD_WIDTH, MMI_ROTATED_LCD_HEIGHT >> 1, DM_NO_FLAGS
+};
+
+#endif
+
+const U8 category62[]=
+{
+		6, 
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set62[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_POPUP_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE_FLAG
+};
+
+const U8 category64[]=
+{
+		7, 
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_ALIGNED_AREA_START,
+		DM_IMAGE,
+		DM_MULTILINE_INPUTBOX1,
+		DM_ALIGNED_AREA_END,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+const s16 coordinate_set64[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,			//Category Screen Coordinates//092005 grayscale Calvin
+		MMI_POP_UP_DIALOG_X+5,MMI_POP_UP_DIALOG_Y+2,MMI_POP_UP_DIALOG_WIDTH-10,MMI_POP_UP_DIALOG_FULL_HEIGHT-4,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_POPUP_SCREEN_COORDINATE_FLAG
+};
+#if defined( __MMI_SCREEN_ROTATE__)
+const s16 rotated_coordinate_set64[] = 
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE_FLAG,
+		MMI_ROTATED_POP_UP_DIALOG_X+5,MMI_ROTATED_POP_UP_DIALOG_Y+2,MMI_ROTATED_POP_UP_DIALOG_WIDTH-10,MMI_ROTATED_POP_UP_DIALOG_FULL_HEIGHT-4,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_POPUP_SCREEN_COORDINATE_FLAG
+};
+#endif /* __MMI_SCREEN_ROTATE__ */
+
+
+
+#ifdef __MMI_UI_STYLE_4__
+const U8 category66_normal[]=
+{
+		7,
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set66_normal[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,
+		MMI_POP_UP_DIALOG_X+6,MMI_POP_UP_DIALOG_Y+6,MMI_POP_UP_DIALOG_WIDTH-12,MMI_POP_UP_DIALOG_FULL_HEIGHT-12,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+#else
+const U8 category66_normal[]=
+{
+#ifdef PRODUCT_QPAD
+		7,
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+#else
+		6,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+#endif
+
+};
+const s16 coordinate_set66_normal[]=
+{
+#ifdef PRODUCT_QPAD
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,
+		//0,MMI_CONTENT_Y,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT,DM_NO_FLAGS,
+		MMI_POP_UP_DIALOG_X+1,MMI_POP_UP_DIALOG_Y+1,MMI_POP_UP_DIALOG_WIDTH-2,MMI_POP_UP_DIALOG_FULL_HEIGHT-2,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+#else
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0,MMI_CONTENT_Y,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT,DM_NO_FLAGS,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+#endif
+};
+#endif
+
+#if defined( __MMI_SCREEN_ROTATE__)
+const s16 coordinate_set66_normal_rotated[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	DM_POPUP_SCREEN_COORDINATE,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,
+	MMI_ROTATED_POP_UP_DIALOG_X+6,MMI_ROTATED_POP_UP_DIALOG_Y+6,MMI_ROTATED_POP_UP_DIALOG_WIDTH-12,MMI_ROTATED_POP_UP_DIALOG_FULL_HEIGHT-12,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+	DM_DUMMY_COORDINATE,
+	DM_DUMMY_COORDINATE
+};
+#endif /* __MMI_SCREEN_ROTATE__ */
+
+
+#ifdef __MMI_UI_STYLE_4__
+const U8 category66_status_icon[]=
+{
+		8,
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_STATUS_BAR1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set66_status_icon[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		DM_POPUP_SCREEN_COORDINATE,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,
+		MMI_POP_UP_DIALOG_X+6,MMI_POP_UP_DIALOG_Y+6,MMI_POP_UP_DIALOG_WIDTH-12,MMI_POP_UP_DIALOG_FULL_HEIGHT-12,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#else
+const U8 category66_status_icon[]=
+{
+		7,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set66_status_icon[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		0,MMI_STATUS_BAR_HEIGHT,MMI_CONTENT_WIDTH,MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_STATUS_BAR_HEIGHT,0,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#endif
+
+#ifdef __MMI_UI_STYLE_4__
+const U8 category66_none[]=
+{
+		7,
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set66_none[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,
+		MMI_POP_UP_DIALOG_X+6,MMI_POP_UP_DIALOG_Y+6,MMI_POP_UP_DIALOG_WIDTH-12,MMI_POP_UP_DIALOG_FULL_HEIGHT-12,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#else
+const U8 category66_none[]=
+{
+		6,
+		DM_BASE_LAYER_START,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set66_none[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0,MMI_TITLE_HEIGHT,MMI_CONTENT_WIDTH,MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_TITLE_HEIGHT,DM_NO_FLAGS,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+#endif
+
+
+const U8 category69[]=
+{
+		7,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,//071205 Calvin added
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_SINGLELINE_INPUTBOX1,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set69[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+
+const U8 category74[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_MULTILINE_INPUTBOX1
+};
+const s16 coordinate_set74[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG
+};
+//qiff modify for bug 9077 start
+const U8 category75[] = 
+{
+    4,
+    DM_BASE_LAYER_START,
+    DM_SCR_BG,
+    DM_BASE_CONTROL_SET1,
+    DM_CATEGORY_CONTROLLED_AREA
+};
+const S16 coordinate_set75[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    DM_CONTENT_COORDINATE_FLAG
+};
+
+//qiff modify for bug 8945 start
+#ifdef  __MMI_TOUCH_SCREEN__
+const U8 category77[] = 
+{
+    2,
+    DM_BASE_LAYER_START,
+    DM_CATEGORY_CONTROLLED_AREA
+};
+#else
+const U8 category77[] = 
+{
+    2,
+    DM_BASE_LAYER_START,
+    DM_MULTILINE_INPUTBOX1
+};
+#endif
+
+const S16 coordinate_set77[] = 
+{
+    DM_FULL_SCREEN_COORDINATE_FLAG,
+    DM_FULL_SCREEN_COORDINATE_FLAG
+};
+//qiff modify for bug 8945 end
+#ifdef PRODUCT_QPAD
+ const U8 category80[]=
+ {
+		4,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,		
+		DM_CALENDAR,
+		DM_BUTTON_BAR1
+};
+#else
+ const U8 category80[]=
+ {
+		3,
+		DM_BASE_LAYER_START,
+		DM_CALENDAR,
+		DM_BUTTON_BAR1
+};
+#endif
+#if defined(__MMI_UI_STYLE_4__)
+	#ifdef __MMI_UI_CALENDAR_WITH_INFO_BOX__
+		const s16 coordinate_set80[]=
+		{
+				 /*Category Screen Coordinates*/
+ 				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/*Calendar Control*/
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/*Calendar Title 1: year*/
+				MMI_CALENDAR_X,20,115,20, DEFAULT_FONT,
+				/*Calendar Title 1: month */
+				MMI_CALENDAR_X+115,20,115,20, DEFAULT_FONT,TRUE,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,	
+				/* info box */
+				MMI_CALENDAR_X, MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3, MMI_CALENDAR_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-(MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3)-2, 3, FALSE,
+				/*Button Bar*/
+				DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH
+		};
+	#else
+		const s16 coordinate_set80[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,20,230,20, DEFAULT_FONT,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,	
+				/* Button Bar*/
+				DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH
+		};
+	#endif
+
+#elif defined( __MMI_UI_STYLE_3__)
+
+	#ifdef __MMI_UI_CALENDAR_WITH_INFO_BOX__
+		const s16 coordinate_set80[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1: year */
+				MMI_CALENDAR_X,28,76,28, DEFAULT_FONT,
+				/* Calendar Title 1: month */
+				88,28,76,28, DEFAULT_FONT,TRUE,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/*Calendar Title 3 */
+				178,54,0,0,FALSE,	
+				/* info box */
+				MMI_CALENDAR_X, MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3, MMI_CALENDAR_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-(MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3)-2, 3, FALSE,
+				/* Button Bar*/
+				DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH
+		};
+	#else
+	#ifdef PRODUCT_QPAD
+		const s16 coordinate_set80[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Status Bar*/
+				DM_DEFAULT_STATUS_BAR_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,28,167,28, DEFAULT_FONT,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,
+				/* Button Bar*/
+				DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH
+		};
+	#else
+		const s16 coordinate_set80[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,28,167,28, DEFAULT_FONT,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,
+				/* Button Bar*/
+				DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH
+		};
+	#endif
+	#endif
+
+#elif defined (__MMI_UI_STYLE_2__)
+	const s16 coordinate_set80[]=
+	{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Calendar Control */
+			0,35,126,91,DM_NO_FLAGS,17,126,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+			/* Calendar Title 1 */
+			0,0,128,16, DEFAULT_FONT,
+			/* Calendar Title 2 */
+			0,16,109,16,FALSE,
+			/* Calendar Title 3 */
+			109,16,19,16,FALSE,
+			/* Button Bar */
+			DM_DEFAULT_BUTTON_BAR, DM_NO_FLAGS,MMI_SOFTKEY_WIDTH
+	};
+#elif defined (__MMI_UI_STYLE_1__)
+	const s16 coordinate_set80[]=
+	{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Calendar Control */
+			1,35,126,60,DM_NO_FLAGS,17,126,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+			/* Calendar Title 1 */
+			0,0,128,16, DEFAULT_FONT,
+			/* Calendar Title 2 */
+			0,16,109,16,TRUE,
+			/* Calendar Title 3 */
+			109,16,19,16,TRUE,
+			/* Button Bar */
+			DM_DEFAULT_BUTTON_BAR, DM_NO_FLAGS,MMI_SOFTKEY_WIDTH
+	};
+#else
+#error "No UI style is specified"
+#endif
+
+#ifdef PRODUCT_QPAD
+const U8 category81[]=
+{
+		10,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_CALENDAR,
+		DM_BACK_FILL_AREA,
+		DM_RECTANGLE,
+		DM_STRING,
+		DM_BACK_FILL_AREA,
+		DM_RECTANGLE,
+		DM_STRING,
+		DM_BUTTON_BAR1
+};
+#else
+const U8 category81[]=
+{
+		9,
+		DM_BASE_LAYER_START,
+		DM_CALENDAR,
+		DM_BACK_FILL_AREA,
+		DM_RECTANGLE,
+		DM_STRING,
+		DM_BACK_FILL_AREA,
+		DM_RECTANGLE,
+		DM_STRING,
+		DM_BUTTON_BAR1
+};
+#endif
+#if defined(__MMI_UI_STYLE_4__)
+	#ifdef __MMI_UI_CALENDAR_WITH_INFO_BOX__
+		const s16 coordinate_set81[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1: year */
+				MMI_CALENDAR_X,20,115,20, DEFAULT_FONT,
+				/* Calendar Title 1: month */
+				MMI_CALENDAR_X+115,20,115,20, DEFAULT_FONT,TRUE,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,
+				/* info box */
+				MMI_CALENDAR_X, MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3, MMI_CALENDAR_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-(MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3)-2, 3, FALSE,
+				/* DM_BACK_FILL_AREA */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				MMI_CALENDAR_X+10,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BACK_FILL_AREA */
+				MMI_CALENDAR_X+115,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				MMI_CALENDAR_X+115,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				MMI_CALENDAR_X+125,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BUTTON_BAR1 */
+				#if defined( __MMI_UI_STYLE_3__) || defined(__MMI_UI_STYLE_4__)
+					DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH
+				#else
+					DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+				#endif
+		};
+	#else
+		const s16 coordinate_set81[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,20,230,20, DEFAULT_FONT,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,	
+				/* DM_BACK_FILL_AREA */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				MMI_CALENDAR_X+10,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BACK_FILL_AREA */
+				MMI_CALENDAR_X+115,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				MMI_CALENDAR_X+115,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				MMI_CALENDAR_X+125,MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+2,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BUTTON_BAR1 */
+				#if defined( __MMI_UI_STYLE_3__) || defined(__MMI_UI_STYLE_4__)
+					DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH
+				#else
+					DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+				#endif
+		};
+	#endif
+
+#elif defined( __MMI_UI_STYLE_3__)
+	#ifdef __MMI_UI_CALENDAR_WITH_INFO_BOX__
+		const s16 coordinate_set81[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1: year */
+				MMI_CALENDAR_X,38,76,18, DEFAULT_FONT,
+				/* Calendar Title 1: month */
+				88,38,76,18, DEFAULT_FONT,TRUE,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,
+				/* info box */
+				MMI_CALENDAR_X, MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3, MMI_CALENDAR_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-(MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3)-2, 3, FALSE,
+				/* DM_BACK_FILL_AREA */
+				0,19,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				0,19,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				MMI_CALENDAR_X,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BACK_FILL_AREA */
+				64,19,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				64,19,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				76,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BUTTON_BAR1 */
+				#if defined( __MMI_UI_STYLE_3__) || defined(__MMI_UI_STYLE_4__)
+					DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH
+				#else
+					DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+				#endif
+		};
+	#else
+	#ifdef PRODUCT_QPAD
+		const s16 coordinate_set81[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Status Bar*/
+				DM_DEFAULT_STATUS_BAR_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,38,167,18, DEFAULT_FONT,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,	
+				/* DM_BACK_FILL_AREA */
+				MMI_CALENDAR_X + 5,19,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				MMI_CALENDAR_X + 5,19,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				MMI_CALENDAR_X + 5 + 20,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BACK_FILL_AREA */
+				MMI_CALENDAR_X + 5 + 20 + 58,19,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				MMI_CALENDAR_X + 5 + 20 + 58,19,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				MMI_CALENDAR_X + 5 + 20 + 58 + 20,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BUTTON_BAR1 */
+				#if defined( __MMI_UI_STYLE_3__) || defined(__MMI_UI_STYLE_4__)
+					DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH
+				#else
+					DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+				#endif
+		};
+	#else
+		const s16 coordinate_set81[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,38,167,18, DEFAULT_FONT,
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,54,167,0,FALSE,
+				/* Calendar Title 3 */
+				178,54,0,0,FALSE,	
+				/* DM_BACK_FILL_AREA */
+				0,19,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				0,19,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				MMI_CALENDAR_X,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BACK_FILL_AREA */
+				64,19,10,14,DM_NO_FLAGS,
+				/* DM_RECTANGLE */
+				64,19,10,14,DM_NO_FLAGS,
+				/* DM_STRING */
+				76,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+				/* DM_BUTTON_BAR1 */
+				#if defined( __MMI_UI_STYLE_3__) || defined(__MMI_UI_STYLE_4__)
+					DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH
+				#else
+					DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+				#endif
+		};
+	#endif
+	#endif
+
+#elif defined (__MMI_UI_STYLE_2__)
+	const s16 coordinate_set81[]=
+	{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Calendar Control */
+			1,50,126,91,DM_NO_FLAGS,35,126,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+			/* Calendar Title 1 */
+			0,0,127,15,DEFAULT_FONT,
+			/* Calendar Title 2 */
+			0,16,108,16,TRUE,
+			/* Calendar Title 3 */
+			109,16,19,16,TRUE,
+			/* DM_BACK_FILL_AREA */
+			0,19,10,14,DM_NO_FLAGS,
+			/* DM_RECTANGLE */
+			0,19,10,14,DM_NO_FLAGS,
+			/* DM_STRING */
+			12,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+			/* DM_BACK_FILL_AREA */
+			64,19,10,14,DM_NO_FLAGS,
+			/* DM_RECTANGLE */
+			64,19,10,14,DM_NO_FLAGS,
+			/* DM_STRING */
+			76,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+			/* DM_BUTTON_BAR1 */
+			DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+	};
+#else
+	const s16 coordinate_set81[]=
+	{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Calendar Control */
+			0,48,126,60,DM_NO_FLAGS,35,121,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+			/* Calendar Title 1 */
+			0,0,127,15, DEFAULT_FONT,
+			/* Calendar Title 2 */
+			0,16,108,31,FALSE,
+			/* Calendar Title 3 */
+			0,0,0,0,FALSE,	
+			/* DM_BACK_FILL_AREA */
+			0,19,10,14,DM_NO_FLAGS,
+			/* DM_RECTANGLE */
+			0,19,10,14,DM_NO_FLAGS,
+			/* DM_STRING */
+			16,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+			/* DM_BACK_FILL_AREA */
+			64,19,10,14,DM_NO_FLAGS,
+			/* DM_RECTANGLE */
+			64,19,10,14,DM_NO_FLAGS,
+			/* DM_STRING */
+			76,19,DM_CALCULATED_WIDTH,DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y|DM_STRING_BORDERED,
+			/* DM_BUTTON_BAR1 */
+			DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+	};
+#endif
+
+#ifdef PRODUCT_QPAD
+const U8 category82[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_CALENDAR,
+		DM_BUTTON_BAR1
+};	     	
+#else
+const U8 category82[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_CALENDAR,
+		DM_BUTTON_BAR1
+};
+#endif
+#if defined(__MMI_UI_STYLE_4__)
+	#ifdef __MMI_UI_CALENDAR_WITH_INFO_BOX__
+	const s16 coordinate_set82[]=
+	{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Calendar Control */
+			MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+			/* Calendar Title 1 */
+			MMI_CALENDAR_X,0,230,20,SMALL_FONT,
+			/* Calendar Title 1: Month */
+			MMI_CALENDAR_X+104,20,104,20,SMALL_FONT,TRUE,
+			/* Calendar Title 2: Year */
+			MMI_CALENDAR_X,20,104,20,TRUE,
+			/* Calendar Title 3 */
+			MMI_CALENDAR_X+208,20,22,20,TRUE,	
+			/* info box */
+			MMI_CALENDAR_X, MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3, MMI_CALENDAR_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-(MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3)-2, 3, FALSE,
+			/* Button Bar*/
+			DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH
+	};
+	#else
+	const s16 coordinate_set82[]=
+	{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Calendar Control */
+			MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+			/* Calendar Title 1 */
+			MMI_CALENDAR_X,0,230,20,SMALL_FONT,
+			/* Calendar Title 2 */
+			MMI_CALENDAR_X,20,188,20,TRUE,
+			/* Calendar Title 3 */
+			MMI_CALENDAR_X+208,20,22,20,TRUE,	
+			/* Button Bar*/
+			DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH
+	};
+	#endif
+
+#elif defined( __MMI_UI_STYLE_3__)
+	#ifdef __MMI_UI_CALENDAR_WITH_INFO_BOX__
+		const s16 coordinate_set82[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,16,164,20,SMALL_FONT,	
+				/* Calendar Title 1: Month */
+				MMI_CALENDAR_X+67,36,66,19,SMALL_FONT,TRUE,
+				/* Calendar Title 2: Year */
+				MMI_CALENDAR_X,36,67,19,TRUE,
+				/* Calendar Title 3 */
+				MMI_CALENDAR_X+133,36,21,19,TRUE,	
+				/* info box */
+				MMI_CALENDAR_X, MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3, MMI_CALENDAR_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-(MMI_CALENDAR_Y+MMI_CALENDAR_HEIGHT+3)-2, 3, FALSE,
+				/* Button Bar */
+				DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND,MMI_SOFTKEY_WIDTH
+		};
+	#else
+	#ifdef PRODUCT_QPAD
+		const s16 coordinate_set82[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Status Bar*/
+				DM_DEFAULT_STATUS_BAR_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,18,164,18,SMALL_FONT,	
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,36,154,19,TRUE,
+				/* Calendar Title 3 */
+				MMI_CALENDAR_X+133,36,21,19,TRUE,	
+				/* Button Bar */
+				DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH
+		};
+	#else
+		const s16 coordinate_set82[]=
+		{
+				/* Category Screen Coordinates */
+				DM_FULL_SCREEN_COORDINATE_FLAG,
+				/* Calendar Control */
+				MMI_CALENDAR_X,MMI_CALENDAR_Y,MMI_CALENDAR_WIDTH,MMI_CALENDAR_HEIGHT,DM_NO_FLAGS,MMI_CALENDAR_LIMIT_Y,MMI_CALENDAR_LIMIT_HEIGHT,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+				/* Calendar Title 1 */
+				MMI_CALENDAR_X,16,164,20,SMALL_FONT,	
+				/* Calendar Title 2 */
+				MMI_CALENDAR_X,36,154,19,TRUE,
+				/* Calendar Title 3 */
+				MMI_CALENDAR_X+133,36,21,19,TRUE,	
+				/* Button Bar */
+				DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH
+		};
+	#endif
+	#endif
+
+#elif defined (__MMI_UI_STYLE_2__)
+	const s16 coordinate_set82[]=
+	{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Calendar Control */
+			0,45,126,91,DM_NO_FLAGS,32,108,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+			/* Calendar Title 1 */
+			0,0,127,15,SMALL_FONT,
+			/* Calendar Title 2 */
+			0,16,108,16,TRUE,
+			/* Calendar Title 3 */
+			109,16,19,16,TRUE,
+			/* Button Bar */
+			/*dongwg Modify Start For 6137 Ver: TBM780  on 2007-8-27 16:38 */
+			DM_DEFAULT_BUTTON_BAR,DM_NO_FLAGS/*DM_BUTTON_DISABLE_BACKGROUND*/, MMI_SOFTKEY_WIDTH	
+			/*dongwg Modify End  For 6137 Ver: TBM780  on 2007-8-27 16:38 */
+	};
+#else
+	const s16 coordinate_set82[]=
+	{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Calendar Control */
+			1,45,126,64,DM_NO_FLAGS,32,93,CALENDAR_N_COLUMNS,CALENDAR_N_ROWS,
+			/* Calendar Title 1 */
+			0,0,127,15,SMALL_FONT,
+			/* Calendar Title 2 */
+			0,16,108,16,TRUE,
+			/* Calendar Title 3 */
+			109,16,19,16,TRUE,
+			/* Button Bar */
+			DM_DEFAULT_BUTTON_BAR,DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH	
+	};
+#endif
+
+
+#ifdef __MMI_WALLPAPER_ON_BOTTOM__
+	const U8 category86[]=
+	{
+			6,
+			DM_BASE_LAYER_START,
+			DM_SCR_BG,
+			DM_BASE_CONTROL_SET1,
+			DM_BUTTON,
+			DM_BUTTON,
+			DM_CATEGORY_CONTROLLED_AREA
+	};
+	const s16 coordinate_set86[]=
+	{
+			0,0,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT,DM_NO_FLAGS,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y
+	};
+#else
+	const U8 category86[]=
+	{
+			7,
+			DM_NEW_LAYER_START,
+			DM_IMAGE,
+			DM_BASE_LAYER_START,
+			DM_BASE_CONTROL_SET1,
+			DM_BUTTON,
+			DM_BUTTON,
+			DM_CATEGORY_CONTROLLED_AREA
+	};
+	#if defined(__MMI_MAINLCD_176X220__) || defined(__MMI_MAINLCD_240X320__)
+		const s16 coordinate_set86[]=
+		{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y
+	};
+	/*cong.li added for product QPAD[220*176] on 2009.08.11. */
+	#elif defined(__MMI_MAINLCD_220X176__)
+		const s16 coordinate_set86[]=
+		{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y
+	};	
+	#else
+		const s16 coordinate_set86[]=
+		{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y
+	};
+	#endif
+#endif
+
+
+const U8 category87[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_SLIDE_CONTROL,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+const s16 coordinate_set87[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_CONTENT_X,(MAIN_LCD_DEVICE_HEIGHT>>1)-15,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+		MMI_CONTENT_X,10,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_PREVIOUS_CONTROL_END_Y|DM_CENTRE_ALIGN_X
+};
+
+
+const U8 category88[]=
+{
+		8,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_STRING,
+		DM_SLIDE_CONTROL,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_STRING,
+		DM_SLIDE_CONTROL,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+#ifdef __MMI_UI_STYLE_1__
+	const s16 coordinate_set88[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			MMI_CONTENT_X,MAIN_LCD_DEVICE_HEIGHT>>1,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+			DM_DUMMY_COORDINATE,
+			MMI_CONTENT_X,MAIN_LCD_DEVICE_HEIGHT>>1,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+			DM_DUMMY_COORDINATE
+	};
+#elif defined (__MMI_UI_STYLE_2__)
+	const s16 coordinate_set88[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			MMI_CONTENT_X,MAIN_LCD_DEVICE_HEIGHT>>1,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+			DM_DUMMY_COORDINATE,
+			MMI_CONTENT_X,MAIN_LCD_DEVICE_HEIGHT>>1,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+			DM_DUMMY_COORDINATE
+	};
+#elif defined (__MMI_UI_STYLE_3__) || defined (__MMI_UI_STYLE_4__)
+	const s16 coordinate_set88[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			MMI_CONTENT_X,MMI_CONTENT_Y+10,MMI_CONTENT_WIDTH,20,DM_CENTRE_ALIGN_X,
+			MMI_CONTENT_X,MMI_CONTENT_Y+30,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+			DM_DUMMY_COORDINATE,
+			MMI_CONTENT_X,MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-70,MMI_CONTENT_WIDTH,20,DM_CENTRE_ALIGN_X,
+			MMI_CONTENT_X,MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-50,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+			DM_DUMMY_COORDINATE
+	};
+#else
+	const s16 coordinate_set88[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			MMI_CONTENT_X,MAIN_LCD_DEVICE_HEIGHT>>1,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+			MMI_CONTENT_X,10,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_PREVIOUS_CONTROL_END_Y|DM_CENTRE_ALIGN_X
+	};
+#endif
+
+
+
+
+const U8 category91[]=
+{
+	4, 
+	DM_BASE_LAYER_START,
+	DM_RECTANGLE,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_BASE_CONTROL_SET1,
+};
+const s16 coordinate_set91[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,MMI_STATUS_BAR_HEIGHT , MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_STATUS_BAR_HEIGHT, DM_NO_FLAGS,
+	DM_CONTENT_COORDINATE_FLAG
+};
+
+#if (0) /* unused */
+/* 070505 Calvin modified */
+const U8 category101[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_LIST1
+};
+#endif
+
+
+#if defined (__MMI_TOUCH_SCREEN__) && defined(__MMI_WALLPAPER_ON_BOTTOM__)//070505 Calvin modified
+const U8 category105[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET2,
+		DM_BUTTON,
+		DM_BUTTON
+};
+const s16 coordinate_set105[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		35, 68, 42, 29, DM_NO_FLAGS,
+		35, 233, 42, 29, DM_NO_FLAGS
+};
+#elif defined (__MMI_TOUCH_SCREEN__)&& defined(__MMI_MAINLCD_240X320__)
+const U8 category105[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_IMAGE,
+		DM_BUTTON,
+		DM_BUTTON
+};
+const s16 coordinate_set105[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE,DM_NO_FLAGS,
+		72, 83, 31, 28, DM_NO_FLAGS,
+		105, 83, 31, 28, DM_NO_FLAGS
+};
+#elif defined (__MMI_WALLPAPER_ON_BOTTOM__)
+const U8 category105[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_IMAGE
+};
+const s16 coordinate_set105[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE,DM_NO_FLAGS
+};
+#else
+const U8 category105[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_IMAGE
+};
+const s16 coordinate_set105[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE,DM_NO_FLAGS
+};
+#endif
+
+#ifdef __MMI_TOUCH_SCREEN__
+	const U8 category111[]=
+	{
+		     	7,
+		     	DM_BASE_LAYER_START,
+			DM_SCR_BG,
+		     	DM_BASE_CONTROL_SET1,
+		     	DM_MULTILINE_INPUTBOX1,
+		     	DM_SINGLELINE_INPUTBOX1,
+		     	DM_STRING,
+		     	DM_CATEGORY_CONTROLLED_AREA
+	};
+	const s16 coordinate_set111[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			4,MMI_CONTENT_Y,MAIN_LCD_DEVICE_WIDTH-8,44,DM_NO_FLAGS,
+			4,10,MAIN_LCD_DEVICE_WIDTH-8,MMI_MENUITEM_HEIGHT,DM_PREVIOUS_CONTROL_END_Y,
+			4,10,MAIN_LCD_DEVICE_WIDTH-8,MMI_MENUITEM_HEIGHT,DM_PREVIOUS_CONTROL_END_Y,
+			0,10,MAIN_LCD_DEVICE_WIDTH,20,DM_PREVIOUS_CONTROL_END_Y
+	};
+#elif (defined __MMI_UI_STYLE_3__) || (defined __MMI_UI_STYLE_4__)
+	const U8 category111[]=
+	{
+		     	8,
+		     	DM_BASE_LAYER_START,
+			DM_SCR_BG,
+		     	DM_BASE_CONTROL_SET1,
+			DM_ALIGNED_AREA_START,
+			DM_MULTILINE_INPUTBOX1,
+		     	DM_SINGLELINE_INPUTBOX1,
+		     	DM_STRING,
+			DM_ALIGNED_AREA_END
+	};
+	const s16 coordinate_set111[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			MMI_CONTENT_X+4, MMI_CONTENT_Y, MMI_CONTENT_WIDTH-8, MMI_CONTENT_HEIGHT,DM_NO_FLAGS,
+			DM_DUMMY_COORDINATE,
+			DM_DUMMY_COORDINATE,
+			DM_DUMMY_COORDINATE
+	};
+
+#else
+	const U8 category111[]=
+	{
+		     	8,
+		     	DM_BASE_LAYER_START,
+		     	DM_STATUS_BAR1,
+			DM_BUTTON_BAR1,
+			DM_ALIGNED_AREA_START,
+			DM_MULTILINE_INPUTBOX1,
+		     	DM_SINGLELINE_INPUTBOX1,
+		     	DM_STRING,
+			DM_ALIGNED_AREA_END
+	};
+	const s16 coordinate_set111[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_DEFAULT_STATUS_BAR_FLAG,
+			DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH,
+			MMI_CONTENT_X+4, MMI_CONTENT_Y, MMI_CONTENT_WIDTH-8, MMI_CONTENT_HEIGHT,DM_NO_FLAGS,
+			DM_DUMMY_COORDINATE,
+			DM_DUMMY_COORDINATE,
+			DM_DUMMY_COORDINATE
+	};
+#endif
+
+
+const U8 category119[]=
+{
+		6,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET2,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set119[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+
+
+
+const U8 category120[]=
+{
+	     6,
+	     	DM_BASE_LAYER_START,
+	     	DM_STATUS_BAR1,
+	     	DM_DATE_TIME_DISPLAY,
+	     	DM_MULTILINE_INPUTBOX1,
+	     	DM_IMAGE,
+	     	DM_BUTTON_BAR1
+};
+#if  defined(__MMI_UI_STYLE_4__)
+	const s16 coordinate_set120[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_DEFAULT_STATUS_BAR_FLAG,
+			0, 45, MAIN_LCD_DEVICE_WIDTH, MMI_CONTENT_HEIGHT,DM_NO_FLAGS,
+			0, 65+8, MAIN_LCD_DEVICE_WIDTH, MMI_CONTENT_HEIGHT,DM_CENTRE_ALIGN_X,
+			DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+	};
+#elif defined (__MMI_UI_STYLE_2__)
+	const s16 coordinate_set120[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_DEFAULT_STATUS_BAR_FLAG,
+			0, 25, MAIN_LCD_DEVICE_WIDTH, MMI_CONTENT_HEIGHT,DM_NO_FLAGS,
+			0, 55, MAIN_LCD_DEVICE_WIDTH, MMI_CONTENT_HEIGHT,DM_CENTRE_ALIGN_X,
+			DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+	};
+#else
+	const s16 coordinate_set120[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_DEFAULT_STATUS_BAR_FLAG,
+			0, 20, MAIN_LCD_DEVICE_WIDTH, MMI_CONTENT_HEIGHT,DM_NO_FLAGS,
+			0, 60, MAIN_LCD_DEVICE_WIDTH, MMI_CONTENT_HEIGHT,DM_CENTRE_ALIGN_X,
+			DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+	};
+#endif
+
+
+const U8 category121[]=
+{
+		7, 
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END,
+};
+const s16 coordinate_set121[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_NO_FLAGS,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+
+
+const U8 category122[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA,
+};
+const s16 coordinate_set122[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG
+};
+
+
+const U8 category123[]=
+{
+		9, // Justin
+		DM_BASE_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA, // Justin: first item is processed last in pen handler
+		DM_POPUP_BACKGROUND,
+		DM_STATUS_BAR1,
+		DM_ALIGNED_AREA_START,
+		DM_IMAGE,
+		DM_MULTILINE_INPUTBOX1,
+		DM_ALIGNED_AREA_END,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set123[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG, // Justin: for category controlled area
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_NO_FLAGS,
+		DM_DEFAULT_STATUS_BAR_FLAG,	
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_NO_FLAGS,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+
+#ifdef __MMI_WALLPAPER_ON_BOTTOM__
+	const U8 category128[]=
+	{
+			6,
+			DM_BASE_LAYER_START,
+			DM_SCR_BG,
+			DM_BASE_CONTROL_SET1,
+			DM_BUTTON,
+			DM_BUTTON,
+			DM_CATEGORY_CONTROLLED_AREA
+	};
+	const s16 coordinate_set128[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,	
+	};
+
+#else
+	const U8 category128[]=
+	{
+			7,
+			DM_NEW_LAYER_START,
+			DM_IMAGE,
+			DM_BASE_LAYER_START,
+			DM_BASE_CONTROL_SET1,
+			DM_BUTTON,
+			DM_BUTTON,
+			DM_CATEGORY_CONTROLLED_AREA
+	};
+	#if defined(__MMI_MAINLCD_176X220__) || defined(__MMI_MAINLCD_240X320__)
+		const s16 coordinate_set128[]=
+		{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y
+		};
+	/*cong.li added for product QPAD[220*176] on 2009.08.11. */
+	#elif defined(__MMI_MAINLCD_220X176__)
+		const s16 coordinate_set128[]=
+		{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y
+		};	
+	#else
+		const s16 coordinate_set128[]=
+		{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			DM_CONTENT_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y
+		};
+	#endif
+#endif
+
+
+
+#ifdef __MMI_WALLPAPER_ON_BOTTOM__
+	const U8 category129[]=
+	{
+			5,
+			DM_BASE_LAYER_START,
+			DM_SCR_BG,
+			DM_BASE_CONTROL_SET1,
+			DM_BUTTON,
+			DM_BUTTON
+	};
+	const s16 coordinate_set129[]=
+	{
+			0,0,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT,DM_NO_FLAGS,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS
+	};
+#else
+	const U8 category129[]=
+	{
+			6,
+			DM_NEW_LAYER_START,
+			DM_IMAGE,
+			DM_BASE_LAYER_START,
+			DM_BASE_CONTROL_SET1,
+			DM_BUTTON,
+			DM_BUTTON
+	};
+	#if defined(__MMI_MAINLCD_176X220__) || defined(__MMI_MAINLCD_240X320__)
+	const s16 coordinate_set129[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS
+	};
+	/*cong.li added for product QPAD[220*176] on 2009.08.11. */
+	#elif defined(__MMI_MAINLCD_220X176__)
+	const s16 coordinate_set129[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS
+	};	
+	#else
+	const s16 coordinate_set129[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			MMI_TITLEBAR_BUTTON_GAP,(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+			(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS
+	};
+	#endif
+#endif
+
+#ifdef __MMI_WALLPAPER_ON_BOTTOM__
+	const s16 coordinate_set129_no_button[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_NULL_COORDINATE,
+			DM_NULL_COORDINATE
+	};
+#else
+	const s16 coordinate_set129_no_button[]=
+	{
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			DM_FULL_SCREEN_COORDINATE,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+			DM_NULL_COORDINATE,
+			DM_NULL_COORDINATE
+	};
+#endif
+
+
+const U8 category131[]=
+{
+	2,
+	DM_BASE_LAYER_START,
+	DM_CATEGORY_CONTROLLED_AREA
+};
+
+
+const U8 category141_normal[]=
+{
+		6,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set141[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+
+
+const U8 category141_status_icon[]=
+{
+		7,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set141_status_icon[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		0,MMI_STATUS_BAR_HEIGHT,MMI_CONTENT_WIDTH,MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_STATUS_BAR_HEIGHT,DM_NO_FLAGS,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+
+
+const U8 category150[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_LIST1
+};
+
+const U8 category151[]=
+{
+		8, 
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_STATUS_BAR1,
+		DM_ALIGNED_AREA_START,
+		DM_IMAGE,
+		DM_MULTILINE_INPUTBOX1,
+		DM_ALIGNED_AREA_END,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set151[]=
+{
+#ifdef PRODUCT_QPAD
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_NO_FLAGS,			
+		0,0,0,0,MAIN_LCD_DEVICE_WIDTH,MMI_STATUS_BAR_HEIGHT,DM_NO_FLAGS,
+		MMI_POP_UP_DIALOG_X+2,MMI_POP_UP_DIALOG_Y+4,MMI_POP_UP_DIALOG_WIDTH-4,MMI_POP_UP_DIALOG_HEIGHT-4,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL|DM_ALLIGNED_AREA_MULTILINE_SCROLL_IF_REQUIRED,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+#else
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_NO_FLAGS,			
+		0,0,0,0,MAIN_LCD_DEVICE_WIDTH,MMI_STATUS_BAR_HEIGHT,DM_NO_FLAGS,
+		MMI_POP_UP_DIALOG_X+6,MMI_POP_UP_DIALOG_Y+4,MMI_POP_UP_DIALOG_WIDTH-12,MMI_POP_UP_DIALOG_HEIGHT-4,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL|DM_ALLIGNED_AREA_MULTILINE_SCROLL_IF_REQUIRED,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+#endif
+
+};
+
+const U8 category152[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_MULTILINE_INPUTBOX1
+};
+const s16 coordinate_set152[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG
+};
+
+
+const U8 category155[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_IMAGE,
+		DM_SLIDE_CONTROL,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+const s16 coordinate_set155[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		MMI_CONTENT_X,MAIN_LCD_DEVICE_HEIGHT>>1,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+		MMI_CONTENT_X,10,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT>>1,DM_PREVIOUS_CONTROL_END_Y|DM_CENTRE_ALIGN_X
+};
+
+
+const U8 category157[]=
+{
+		4, 
+		DM_BASE_LAYER_START, 
+		DM_BASE_CONTROL_SET1,
+		DM_NEW_LAYER_START,
+		DM_INLINE_FIXED_LIST1
+};
+const s16 coordinate_set157[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG
+};
+
+const U8 category162[]=
+{
+		7, 
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_MULTILINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set162[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+
+
+const U8 category164[]=
+{
+		7, 
+		DM_BASE_LAYER_START,
+		DM_POPUP_BACKGROUND,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_IMAGE,
+		DM_MULTILINE_INPUTBOX1,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set164[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,
+		MMI_POP_UP_DIALOG_X,MMI_POP_UP_DIALOG_Y,MMI_POP_UP_DIALOG_WIDTH,MMI_POP_UP_DIALOG_HEIGHT,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+#if defined( __MMI_SCREEN_ROTATE__)
+const s16 rotated_coordinate_set164[] = 
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_ROTATED_POP_UP_DIALOG_X,MMI_ROTATED_POP_UP_DIALOG_Y,MMI_ROTATED_POP_UP_DIALOG_WIDTH,MMI_ROTATED_POP_UP_DIALOG_HEIGHT,DM_POPUP_BACKGROUND_GREYSCALE|DM_DRAW_POPUP_BACKGROUND_3D,
+		MMI_ROTATED_POP_UP_DIALOG_X,MMI_ROTATED_POP_UP_DIALOG_Y,MMI_ROTATED_POP_UP_DIALOG_WIDTH,MMI_ROTATED_POP_UP_DIALOG_HEIGHT,DM_ALLIGNED_AREA_EQUAL_SPACE_TOP_AND_BOTTOM|DM_ALLIGNED_AREA_NO_BACK_FILL,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+#endif
+
+
+const U8 category166[]=
+{
+		2,
+		DM_BASE_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+const s16 coordinate_set166[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG
+};
+
+
+const U8 category171[]=
+{
+	4, 
+	DM_BASE_LAYER_START,
+	DM_SCR_BG,
+	DM_BASE_CONTROL_SET1,
+	DM_MULTILINE_INPUTBOX1
+};
+const s16 coordinate_set171[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	DM_CONTENT_COORDINATE_FLAG
+};
+
+
+const U8 category184[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_DYNAMIC_LIST1
+};
+
+const U8 category186[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_DYNAMIC_LIST1
+};
+
+const U8 category200[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_SINGLELINE_INPUTBOX1
+};
+#ifdef __MMI_UI_STYLE_4__
+const s16 coordinate_set200[] =
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		22, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_SINGLELINE_INPUTBOX_HEIGHT-2, MAIN_LCD_DEVICE_WIDTH-29, MMI_SINGLELINE_INPUTBOX_HEIGHT,DM_NO_FLAGS			//Single Line Input box
+};
+#else
+const s16 coordinate_set200[] =
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		22, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_SINGLELINE_INPUTBOX_HEIGHT-2, MAIN_LCD_DEVICE_WIDTH-24, MMI_SINGLELINE_INPUTBOX_HEIGHT,DM_NO_FLAGS			//Single Line Input box
+};
+#endif
+
+
+const U8 category204[]=
+{
+		6,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_SINGLELINE_INPUTBOX1,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set204[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+
+
+const U8 category205[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_IMAGE,
+		DM_MULTILINE_INPUTBOX1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set205[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0,MAIN_LCD_DEVICE_HEIGHT>>1,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT>>1,DM_CENTRE_ALIGN_X,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+
+
+const U8 category212[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_DYNAMIC_LIST1
+};
+const s16 coordinate_set212[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		0,1,MMI_CONTENT_WIDTH,MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-1,DM_PREVIOUS_CONTROL_END_Y|DM_HEIGHT_OFFSET_PREVIOUS_CONTROL_END_Y
+};
+
+const U8 category213[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA,
+};
+
+const U8 category214[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA,
+};
+
+const U8 category221[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set221[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG,MMI_SOFTKEY_WIDTH
+};
+
+#if defined( __MMI_SCREEN_ROTATE__)
+
+const s16 rotated_coordinate_set221[] = 
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,			//Category Screen Coordinates
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_ROTATED_SOFTKEY_WIDTH		//Button Bar
+};
+
+#endif /* __MMI_SCREEN_ROTATE__ */
+
+const U8 category222[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA,
+};
+
+
+const U8 category257[]=
+{
+		6, 
+		DM_BASE_LAYER_START, 
+		DM_SCR_BG,
+		DM_BASE_CONTROL_SET1,
+		DM_RECTANGLE,
+		DM_IMAGE,
+		DM_INLINE_FIXED_LIST1
+};
+#ifdef PRODUCT_QPAD
+const s16 coordinate_set257[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		0, MMI_CONTENT_Y, DM_CALCULATED_WIDTH, DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y,
+		MMI_CONTENT_X,0,MMI_CONTENT_WIDTH,MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT,DM_PREVIOUS_CONTROL_END_Y|DM_HEIGHT_OFFSET_PREVIOUS_CONTROL_END_Y
+};
+#else
+const s16 coordinate_set257[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		3, MMI_CONTENT_Y, DM_CALCULATED_WIDTH, DM_CALCULATED_HEIGHT,DM_LEFT_ALIGN_X|DM_TOP_ALIGN_Y,
+		MMI_CONTENT_X,0,MMI_CONTENT_WIDTH,MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT,DM_PREVIOUS_CONTROL_END_Y|DM_HEIGHT_OFFSET_PREVIOUS_CONTROL_END_Y
+};
+#endif
+
+const U8 categoryNSM275[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_setNSM275[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+
+const U8 category_asyndynamic_list[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_ASYNCDYNAMIC_LIST1
+};
+
+
+const U8 category263[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_ASYNCDYNAMIC_LIST1
+};
+const s16 coordinate_set263[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		MMI_CONTENT_X, 0, MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT ,DM_PREVIOUS_CONTROL_END_Y|DM_HEIGHT_OFFSET_PREVIOUS_CONTROL_END_Y //List Menu
+};
+
+const U8 category264[]=
+{
+	4,
+	DM_BASE_LAYER_START,
+	DM_POPUP_BACKGROUND,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_IMAGE
+};
+const s16 coordinate_set264[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE_FLAG,
+		DM_POPUP_SCREEN_COORDINATE_FLAG,
+		MMI_POP_UP_DIALOG_X+((MMI_POP_UP_DIALOG_WIDTH-20)>>1),MMI_POP_UP_DIALOG_Y+20, 20,20,DM_NO_FLAGS
+};
+
+
+const U8 category275[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set275[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+
+#ifdef __MMI_SUBLCD__
+const U8 category301[]= 
+{	
+	4,
+	DM_BASE_LAYER_START,
+	DM_STATUS_BAR1,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_IMAGE,
+};
+const s16 coordinate_set301[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,0,0,0,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_WIDTH,DM_NO_FLAGS,
+	0,0,SUB_LCD_DEVICE_WIDTH-1,SUB_LCD_DEVICE_HEIGHT-1,DM_NO_FLAGS,
+	0,0,SUB_LCD_DEVICE_WIDTH,DM_CALCULATED_HEIGHT,DM_CENTRE_ALIGN_X|DM_PREVIOUS_CONTROL_END_Y,
+};
+
+
+const U8 category303[]= 
+{	4,
+	DM_BASE_LAYER_START,
+	DM_STATUS_BAR1,
+	DM_DATE_TIME_DISPLAY,
+	DM_CATEGORY_CONTROLLED_AREA,
+};
+const s16 coordinate_set303[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,0,0,0,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_WIDTH,DM_NO_FLAGS,
+	0,0,SUB_LCD_DEVICE_WIDTH-1,SUB_LCD_DEVICE_HEIGHT-1,DM_NO_FLAGS,
+};
+
+
+#ifndef __MMI_SUBLCD_CHARGING_HIDE_STATUS_BAR__
+const U8 category304[]= 
+{
+	3,
+	DM_BASE_LAYER_START,
+	DM_STATUS_BAR1,
+	DM_IMAGE
+};
+const s16 coordinate_set304[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,0,0,0,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_WIDTH,DM_NO_FLAGS,
+	0,14,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_HEIGHT-14,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+};
+#else
+const U8 category304[]= 
+{
+	2,
+	DM_BASE_LAYER_START,
+	DM_IMAGE
+};
+const s16 coordinate_set304[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,0,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_HEIGHT,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+};
+#endif
+
+const U8 category310[]= 
+{
+	2,
+	DM_BASE_LAYER_START,
+	DM_STRING
+};
+const s16 coordinate_set310[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,0,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_HEIGHT,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+};
+
+
+const U8 category311[]= 
+{	4,
+	DM_BASE_LAYER_START,
+	DM_STATUS_BAR1,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_IMAGE,
+};
+const s16 coordinate_set311[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,0,0,0,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_WIDTH,DM_NO_FLAGS,
+	0,0,SUB_LCD_DEVICE_WIDTH-1,SUB_LCD_DEVICE_HEIGHT-1,DM_NO_FLAGS,
+	0,0,SUB_LCD_DEVICE_WIDTH,DM_CALCULATED_HEIGHT,DM_CENTRE_ALIGN_X|DM_PREVIOUS_CONTROL_END_Y,
+};
+
+
+const U8 category312[]= 
+{	4,
+	DM_BASE_LAYER_START,
+	DM_STATUS_BAR1,
+	DM_DATE_TIME_DISPLAY,
+	DM_STRING
+};
+const s16 coordinate_set312[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,0,0,0,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_WIDTH,DM_NO_FLAGS,
+	0,0,SUB_LCD_DEVICE_WIDTH,DM_CALCULATED_HEIGHT,DM_CENTRE_ALIGN_X|DM_PREVIOUS_CONTROL_END_Y_OFFSET_HEIGHT,
+};
+
+
+const U8 category313[]= 
+{
+	2,
+	DM_BASE_LAYER_START,
+	DM_IMAGE
+};
+const s16 coordinate_set313[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	0,0,SUB_LCD_DEVICE_WIDTH,SUB_LCD_DEVICE_HEIGHT,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+};
+
+#endif
+
+
+
+const U8 category305[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set305[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+#ifdef PRODUCT_QPAD
+const U8 category306[]=
+{
+	4, 
+	DM_BASE_LAYER_START,
+	DM_STATUS_BAR1,
+	DM_NWAY_STOPWATCH,
+	DM_BUTTON_BAR1
+};
+#else
+const U8 category306[]=
+{
+	3, 
+	DM_BASE_LAYER_START,
+	DM_NWAY_STOPWATCH,
+	DM_BUTTON_BAR1
+};
+#endif
+
+#if defined (__MMI_UI_STYLE_1__)
+const s16 coordinate_set306[]=
+{
+	/* Category Screen Coordinates */
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	/*  Stop Watch */
+	0,0 ,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, DM_NO_FLAGS,
+	/*Way_maintimer_start */
+	0, 0,
+	/* nWay_maintimer_end */
+	MAIN_LCD_DEVICE_WIDTH, MMI_MENUITEM_HEIGHT,
+	/*nWay_dialog_start */
+	0, MMI_MENUITEM_HEIGHT,
+	/*nWay_dialog_end */
+	MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-3,
+	/* Separator Height */
+	0,
+	/* Button Bar */
+	DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+#elif defined (__MMI_UI_STYLE_2__)
+const s16 coordinate_set306[]=
+{
+	/* Category Screen Coordinates */
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	/* Stop Watch */
+	0,0 ,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, DM_NO_FLAGS,
+	/* Way_maintimer_start */
+	0, 0,
+	/* nWay_maintimer_end */
+	MAIN_LCD_DEVICE_WIDTH, MMI_MENUITEM_HEIGHT,
+	/* nWay_dialog_start */
+	0, MMI_MENUITEM_HEIGHT,
+	/* nWay_dialog_end */
+	MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-3,
+	/* Separator Height */
+	MMI_MENUITEM_HEIGHT,
+	/* Button Bar */
+	DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+
+};
+#elif defined (__MMI_UI_STYLE_3__) || defined (__MMI_UI_STYLE_4__)
+#ifdef PRODUCT_QPAD
+const s16 coordinate_set306[]=
+{
+	/* Category Screen Coordinates */
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	/* Status Bar*/
+	DM_DEFAULT_STATUS_BAR_FLAG,
+	/* Stop Watch */
+	0,MMI_STATUS_BAR_HEIGHT,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_STATUS_BAR_HEIGHT, DM_NO_FLAGS, 
+	/* Way_maintimer_start */
+	9, 0,
+	/* nWay_maintimer_end */
+	MAIN_LCD_DEVICE_WIDTH - 11, 40,
+	/* nWay_dialog_start */
+	9, 30,
+	/* nWay_dialog_end */
+	MAIN_LCD_DEVICE_WIDTH - 11, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_STATUS_BAR_HEIGHT,
+	/* Separator Height */
+	20,
+	/* Button Bar */
+	DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+	
+};
+#else
+const s16 coordinate_set306[]=
+{
+	/* Category Screen Coordinates */
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	/* Stop Watch */
+	0,0 ,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, DM_NO_FLAGS, 
+	/* Way_maintimer_start */
+	10, 10,
+	/* nWay_maintimer_end */
+	MAIN_LCD_DEVICE_WIDTH - 10, 40,
+	/* nWay_dialog_start */
+	10, 40,
+	/* nWay_dialog_end */
+	MAIN_LCD_DEVICE_WIDTH - 10, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-10,
+	/* Separator Height */
+	30,
+	/* Button Bar */
+	DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+
+};
+#endif
+#endif
+
+
+#if defined(__MMI_UI_STYLE_4__)
+	const U8 category307[]=
+	{
+		4, 
+		DM_BASE_LAYER_START,
+		DM_SCR_BG,
+		DM_TYPICAL_STOPWATCH,
+		DM_BASE_CONTROL_SET2
+	};
+	const s16 coordinate_set307[]=
+	{
+		/* Category Screen Coordinates */
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		/* Stop Watch */
+		0,MMI_STATUS_BAR_HEIGHT ,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_STATUS_BAR_HEIGHT-MMI_BUTTON_BAR_HEIGHT, DM_NO_FLAGS,
+		/* typ_timer */
+		(MAIN_LCD_DEVICE_WIDTH>>1), (MMI_MENUITEM_HEIGHT<<2)+ 70,
+		/* typ_milsec */
+		(MAIN_LCD_DEVICE_WIDTH>>1), (MMI_MENUITEM_HEIGHT<<2)+ 90,
+		/* typ_history_height */
+		(MMI_MENUITEM_HEIGHT<<2) + 2
+	};
+#else
+#ifdef PRODUCT_QPAD
+	const U8 category307[]=
+	{
+		4, 
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_TYPICAL_STOPWATCH,
+		DM_BUTTON_BAR1
+	};
+#else
+	const U8 category307[]=
+	{
+		3, 
+		DM_BASE_LAYER_START,
+		DM_TYPICAL_STOPWATCH,
+		DM_BUTTON_BAR1
+	};
+#endif
+	#if defined (__MMI_UI_STYLE_1__)
+	const s16 coordinate_set307[]=
+	{
+		/* Category Screen Coordinates */
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		/* Stop Watch */
+		0,0 ,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, DM_NO_FLAGS,
+		/* typ_timer */
+		(MAIN_LCD_DEVICE_WIDTH>>1), 70,
+		/* typ_milsec */
+		(MAIN_LCD_DEVICE_WIDTH>>1), 85,
+		/* typ_history_height */
+		((MMI_MENUITEM_HEIGHT<<1) + 2),
+		/* Button Bar */
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+	};
+	#elif defined (__MMI_UI_STYLE_2__)
+	const s16 coordinate_set307[]=
+	{
+		/* Category Screen Coordinates */
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		/* Stop Watch */
+		0,0 ,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, DM_NO_FLAGS,
+		/* typ_timer */
+		(MAIN_LCD_DEVICE_WIDTH>>1), 88,
+		/* typ_milsec */
+		(MAIN_LCD_DEVICE_WIDTH>>1), 105,
+		/* typ_history_height */
+		40, //qiff modify for 10571((MMI_MENUITEM_HEIGHT<<1) + 2),
+		/* Button Bar */
+		0, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, MAIN_LCD_DEVICE_WIDTH, MMI_BUTTON_BAR_HEIGHT, DM_NO_FLAGS, MMI_SOFTKEY_WIDTH
+	};
+	#elif defined (__MMI_UI_STYLE_3__)
+	#ifdef PRODUCT_QPAD
+		const s16 coordinate_set307[]=
+		{
+			/* Category Screen Coordinates */
+			DM_FULL_SCREEN_COORDINATE_FLAG,
+			/* Status Bar*/
+			DM_DEFAULT_STATUS_BAR_FLAG,
+			/* Stop Watch */
+			0,MMI_STATUS_BAR_HEIGHT,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-MMI_STATUS_BAR_HEIGHT, DM_NO_FLAGS,
+			/* typ_timer */
+			(MAIN_LCD_DEVICE_WIDTH>>1), (MMI_MENUITEM_HEIGHT<<2)+ 26,
+			/* typ_milsec */
+			(MAIN_LCD_DEVICE_WIDTH>>1), (MMI_MENUITEM_HEIGHT<<2)+ 38,
+			/* typ_history_height */
+			((MMI_MENUITEM_HEIGHT<<2) + 2),
+			/* Button Bar */
+			DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+		};
+	#else
+	const s16 coordinate_set307[]=
+	{
+		/* Category Screen Coordinates */
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		/* Stop Watch */
+		0,0 ,MAIN_LCD_DEVICE_WIDTH, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, DM_NO_FLAGS,
+		/* typ_timer */
+		(MAIN_LCD_DEVICE_WIDTH>>1), (MMI_MENUITEM_HEIGHT<<2)+ 61,
+		/* typ_milsec */
+		(MAIN_LCD_DEVICE_WIDTH>>1), (MMI_MENUITEM_HEIGHT<<2)+ 73,
+		/* typ_history_height */
+		((MMI_MENUITEM_HEIGHT<<2) + 2),
+		/* Button Bar */
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+	};
+	#endif
+	#endif
+
+#endif
+
+
+
+const U8 category414[]=
+{
+		7,
+		DM_NEW_LAYER_START,
+		DM_IMAGE,
+		DM_BASE_LAYER_START,
+		DM_TITLE1,
+		DM_LIST1,
+		DM_BUTTON_BAR1,
+		DM_CATEGORY_CONTROLLED_AREA
+};
+#if defined(__MMI_UI_STYLE_4__)
+const s16 coordinate_set414[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0,0,MAIN_LCD_DEVICE_WIDTH,MMI_TITLE_HEIGHT,DM_NO_FLAGS,
+		MMI_CONTENT_X, MMI_TITLE_HEIGHT, 65, MAIN_LCD_DEVICE_HEIGHT-MMI_TITLE_HEIGHT-MMI_BUTTON_BAR_HEIGHT	,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND|DM_BUTTON_BAR_LEFT_ARROW|DM_BUTTON_BAR_RIGHT_ARROW|DM_BUTTON_BAR_UP_ARROW|DM_BUTTON_BAR_DOWN_ARROW, MMI_SOFTKEY_WIDTH,
+		65,MMI_TITLE_HEIGHT,MAIN_LCD_DEVICE_WIDTH-65,MAIN_LCD_DEVICE_HEIGHT-MMI_TITLE_HEIGHT-MMI_BUTTON_BAR_HEIGHT	,DM_NO_FLAGS
+};
+#else
+const s16 coordinate_set414[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		0,0,MAIN_LCD_DEVICE_WIDTH,MMI_TITLE_HEIGHT,DM_NO_FLAGS,
+		MMI_CONTENT_X, MMI_TITLE_HEIGHT, 40, MAIN_LCD_DEVICE_HEIGHT-MMI_TITLE_HEIGHT-MMI_BUTTON_BAR_HEIGHT	,DM_NO_FLAGS,
+		DM_DEFAULT_BUTTON_BAR, DM_BUTTON_DISABLE_BACKGROUND|DM_BUTTON_BAR_LEFT_ARROW|DM_BUTTON_BAR_RIGHT_ARROW|DM_BUTTON_BAR_UP_ARROW|DM_BUTTON_BAR_DOWN_ARROW, MMI_SOFTKEY_WIDTH,
+		40,MMI_TITLE_HEIGHT,MAIN_LCD_DEVICE_WIDTH-50,MAIN_LCD_DEVICE_HEIGHT-MMI_TITLE_HEIGHT-MMI_BUTTON_BAR_HEIGHT	,DM_NO_FLAGS
+};
+#endif
+
+const U8 category420[]=
+{
+		3,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_MULTILINE_INPUTBOX1
+};
+const s16 coordinate_set420[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG
+};
+
+#if defined(__MMI_MAINLCD_176X220__)
+
+const U8 category425[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_HORIZONTAL_TAB_BAR,
+		DM_ASYNCDYNAMIC_LIST1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set425[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		MMI_HORIZONTAL_TAB_BAR_X, MMI_HORIZONTAL_TAB_BAR_Y, MMI_HORIZONTAL_TAB_BAR_WIDTH, MMI_HORIZONTAL_TAB_BAR_TAB_AREA_HEIGHT+MMI_HORIZONTAL_TAB_BAR_HINT_AREA_HEIGHT, DM_NO_FLAGS,			
+		DM_MMI_CONTENT_X_WITH_H_TAB, DM_MMI_CONTENT_Y_WITH_H_TAB, DM_MMI_CONTENT_WIDTH_WITH_H_TAB, DM_MMI_CONTENT_HEIGHT_WITH_H_TAB, DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,				
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+/*cong.li added for product QPAD[220*176] on 2009.08.11. */
+#elif defined(__MMI_MAINLCD_220X176__)
+
+const U8 category425[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_HORIZONTAL_TAB_BAR,
+		DM_ASYNCDYNAMIC_LIST1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set425[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		MMI_HORIZONTAL_TAB_BAR_X, MMI_HORIZONTAL_TAB_BAR_Y, MMI_HORIZONTAL_TAB_BAR_WIDTH, MMI_HORIZONTAL_TAB_BAR_TAB_AREA_HEIGHT+MMI_HORIZONTAL_TAB_BAR_HINT_AREA_HEIGHT, DM_NO_FLAGS,			
+		DM_MMI_CONTENT_X_WITH_H_TAB, DM_MMI_CONTENT_Y_WITH_H_TAB, DM_MMI_CONTENT_WIDTH_WITH_H_TAB, DM_MMI_CONTENT_HEIGHT_WITH_H_TAB, DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,				
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+#else /* __MMI_MAINLCD_176X220__ */
+
+const U8 category425[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_HORIZONTAL_TAB_BAR,
+		DM_ASYNCDYNAMIC_LIST1,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set425[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_HORIZONTAL_TAB_BAR_X, MMI_HORIZONTAL_TAB_BAR_Y, MMI_HORIZONTAL_TAB_BAR_WIDTH, MMI_HORIZONTAL_TAB_BAR_TAB_AREA_HEIGHT+MMI_HORIZONTAL_TAB_BAR_HINT_AREA_HEIGHT, DM_NO_FLAGS,			
+		DM_MMI_CONTENT_X_WITH_H_TAB, DM_MMI_CONTENT_Y_WITH_H_TAB, DM_MMI_CONTENT_WIDTH_WITH_H_TAB, DM_MMI_CONTENT_HEIGHT_WITH_H_TAB, DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,				
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+#endif /* __MMI_MAINLCD_176X220__ */
+
+#if defined(__MMI_MAINLCD_176X220__)
+
+const U8 category435[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_HORIZONTAL_TAB_BAR,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set435[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		MMI_HORIZONTAL_TAB_BAR_X, MMI_HORIZONTAL_TAB_BAR_Y, MMI_HORIZONTAL_TAB_BAR_WIDTH, MMI_HORIZONTAL_TAB_BAR_TAB_AREA_HEIGHT+MMI_HORIZONTAL_TAB_BAR_HINT_AREA_HEIGHT, DM_NO_FLAGS,
+		DM_MMI_CONTENT_X_WITH_H_TAB, DM_MMI_CONTENT_Y_WITH_H_TAB, DM_MMI_CONTENT_WIDTH_WITH_H_TAB, DM_MMI_CONTENT_HEIGHT_WITH_H_TAB, DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+/*cong.li added for product QPAD[220*176] on 2009.08.11. */
+#elif defined(__MMI_MAINLCD_220X176__)
+
+const U8 category435[]=
+{
+		5,
+		DM_BASE_LAYER_START,
+		DM_STATUS_BAR1,
+		DM_HORIZONTAL_TAB_BAR,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set435[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_DEFAULT_STATUS_BAR_FLAG,
+		MMI_HORIZONTAL_TAB_BAR_X, MMI_HORIZONTAL_TAB_BAR_Y, MMI_HORIZONTAL_TAB_BAR_WIDTH, MMI_HORIZONTAL_TAB_BAR_TAB_AREA_HEIGHT+MMI_HORIZONTAL_TAB_BAR_HINT_AREA_HEIGHT, DM_NO_FLAGS,
+		DM_MMI_CONTENT_X_WITH_H_TAB, DM_MMI_CONTENT_Y_WITH_H_TAB, DM_MMI_CONTENT_WIDTH_WITH_H_TAB, DM_MMI_CONTENT_HEIGHT_WITH_H_TAB, DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+#else /* __MMI_MAINLCD_176X220__ */
+
+const U8 category435[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_HORIZONTAL_TAB_BAR,
+		DM_CATEGORY_CONTROLLED_AREA,
+		DM_BUTTON_BAR1
+};
+const s16 coordinate_set435[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_HORIZONTAL_TAB_BAR_X, MMI_HORIZONTAL_TAB_BAR_Y, MMI_HORIZONTAL_TAB_BAR_WIDTH, MMI_HORIZONTAL_TAB_BAR_TAB_AREA_HEIGHT+MMI_HORIZONTAL_TAB_BAR_HINT_AREA_HEIGHT, DM_NO_FLAGS,
+		DM_MMI_CONTENT_X_WITH_H_TAB, DM_MMI_CONTENT_Y_WITH_H_TAB, DM_MMI_CONTENT_WIDTH_WITH_H_TAB, DM_MMI_CONTENT_HEIGHT_WITH_H_TAB, DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,
+		DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+#endif /* __MMI_MAINLCD_176X220__ */
+
+const U8 categoryEMS[]=
+{
+		4,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_SINGLELINE_INPUTBOX1,
+		DM_MATRIX_MENU1,
+
+};
+const s16 coordinate_setEMS[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		MMI_CONTENT_X,MMI_CONTENT_Y+10,MMI_CONTENT_WIDTH,20,DM_CENTRE_ALIGN_X,
+		MMI_CONTENT_X,10,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT-40,DM_PREVIOUS_CONTROL_END_Y
+};
+
+
+
+const U8 category620[]=
+{
+		7,
+		DM_BASE_LAYER_START,
+		DM_BASE_CONTROL_SET1,
+		DM_ALIGNED_AREA_START,
+		DM_STRING,
+		DM_STRING,
+		DM_IMAGE,
+		DM_ALIGNED_AREA_END
+};
+const s16 coordinate_set620[]=
+{
+		DM_FULL_SCREEN_COORDINATE_FLAG,
+		DM_CONTENT_COORDINATE_FLAG,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE,
+		DM_DUMMY_COORDINATE
+};
+
+
+const U8 categoryWcScreen[]=
+{
+	3,
+	DM_BASE_LAYER_START,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_BUTTON_BAR1
+};
+const s16 coordinate_WcScreen[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	DM_DUMMY_COORDINATE,
+	DM_DEFAULT_BUTTON_BAR_FLAG, MMI_SOFTKEY_WIDTH
+};
+
+
+const U8 categoryVdoScreen[]=
+{
+	3,
+	DM_BASE_LAYER_START,
+	DM_BASE_CONTROL_SET1,
+	DM_CATEGORY_CONTROLLED_AREA
+};
+const s16 coordinate_VdoScreen[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	DM_DUMMY_COORDINATE
+};
+
+
+const U8 categoryVdoScreen_button[]=
+{
+	5,
+	DM_BASE_LAYER_START,
+	DM_BASE_CONTROL_SET1,
+	DM_BUTTON,
+	DM_BUTTON,
+	DM_CATEGORY_CONTROLLED_AREA
+};
+#if defined(__MMI_MAINLCD_176X220__) || defined(__MMI_MAINLCD_240X320__)//120605 preview arrow Calvin added
+const s16 coordinate_VdoScreen_button[]=
+{
+	0,0,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT,	DM_NO_FLAGS,
+	MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+	(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+	DM_DUMMY_COORDINATE
+};
+/*cong.li added for product QPAD[220*176] on 2009.08.11. */
+#elif defined(__MMI_MAINLCD_220X176__)
+const s16 coordinate_VdoScreen_button[]=
+{
+	0,0,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT,	DM_NO_FLAGS,
+	MMI_TITLEBAR_BUTTON_GAP,(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+	(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_STATUS_BAR_HEIGHT)+(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+	DM_DUMMY_COORDINATE
+};
+#else
+const s16 coordinate_VdoScreen_button[]=
+{
+	0,0,MAIN_LCD_DEVICE_WIDTH,MAIN_LCD_DEVICE_HEIGHT,	DM_NO_FLAGS,
+	MMI_TITLEBAR_BUTTON_GAP,(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+	(MAIN_LCD_DEVICE_WIDTH)-(MMI_TITLEBAR_BUTTON_GAP)-(MMI_TITLEBAR_BUTTON_WIDTH),(MMI_TITLE_HEIGHT>>1)-(MMI_TITLEBAR_BUTTON_HEIGHT>>1),MMI_TITLEBAR_BUTTON_WIDTH,MMI_TITLEBAR_BUTTON_HEIGHT,DM_NO_FLAGS,
+	DM_DUMMY_COORDINATE
+};
+#endif
+const U8 category226Screen[]=
+{
+	15,
+	DM_NEW_LAYER_START,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_NEW_LAYER_START,
+	DM_CATEGORY_CONTROLLED_AREA2,
+	DM_BASE_LAYER_START,
+	DM_IMAGE,
+	DM_SCROLL_TEXT,
+	DM_STRING,
+	DM_BUTTON,
+	DM_BUTTON,
+	DM_BUTTON,
+	DM_BUTTON,
+	DM_BUTTON,
+	DM_BUTTON,
+	DM_BUTTON_BAR1
+};
+const s16 coordinate_set226[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	4,3,62,56,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	4,3,62,56,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA*/
+	5,65,166,133,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	5,65,166,133,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA2*/
+	0,0,(MAIN_LCD_DEVICE_WIDTH),MAIN_LCD_DEVICE_HEIGHT,DM_NO_FLAGS,/*DM_IMAGE*/
+	70,2,(MAIN_LCD_DEVICE_WIDTH-72),16,DM_SCROLL_TEXT_CENTRE_ALIGN_X|DM_SCROLL_TEXT_CENTER_ALIGN_Y|DM_SCROLL_TEXT_USE_FONT_HEIGHT,/*DM_STRING*/
+	80,22,80,20,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,/*DM_STRING*/
+	70,20,20,17,DM_NO_FLAGS,
+	153,20,20,17,DM_NO_FLAGS,
+	71,39,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	97,39,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	123,39,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	149,39,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	0, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, MAIN_LCD_DEVICE_WIDTH, MMI_BUTTON_BAR_HEIGHT, DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH/*DM_BUTTON_BAR1*/
+
+};
+
+const s16 coordinate_set226_1[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	-1,-1,-1,-1,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	-1,-1,-1,-1,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA2*/
+	0,0,(MAIN_LCD_DEVICE_WIDTH),MAIN_LCD_DEVICE_HEIGHT,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	0,0,(MAIN_LCD_DEVICE_WIDTH),MAIN_LCD_DEVICE_HEIGHT,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA*/
+	-1,-1,-1,-1,DM_NO_FLAGS,/*DM_IMAGE*/
+	10,2,(MAIN_LCD_DEVICE_WIDTH-20),20,DM_SCROLL_TEXT_CENTRE_ALIGN_X|DM_SCROLL_TEXT_CENTER_ALIGN_Y|DM_SCROLL_TEXT_USE_FONT_HEIGHT,/*DM_STRING*/
+	0,22,MAIN_LCD_DEVICE_WIDTH,20,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y|DM_STRING_BORDERED,/*DM_STRING*/
+	25,23,19,17,DM_NO_FLAGS,
+	126,23,19,17,DM_NO_FLAGS,
+	47,(MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-22),20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	78,(MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-22),20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	109,(MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT-22),20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	DM_NULL_COORDINATE,/*DM_BUTTON*/
+	0, MAIN_LCD_DEVICE_HEIGHT-MMI_BUTTON_BAR_HEIGHT, MAIN_LCD_DEVICE_WIDTH, MMI_BUTTON_BAR_HEIGHT, DM_BUTTON_DISABLE_BACKGROUND, MMI_SOFTKEY_WIDTH/*DM_BUTTON_BAR1*/
+
+};
+
+#if defined( __MMI_SCREEN_ROTATE__)
+const s16 coordinate_set226_rotate[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	4,4,50,48,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	4,4,50,48,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA*/
+	27,58,156,117,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	27,58,156,117,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA2*/
+	0,0,(MMI_ROTATED_LCD_WIDTH),MMI_ROTATED_LCD_HEIGHT,DM_NO_FLAGS,/*DM_IMAGE*/
+	59,9,(MAIN_LCD_DEVICE_WIDTH-61),20,DM_SCROLL_TEXT_CENTRE_ALIGN_X|DM_SCROLL_TEXT_CENTER_ALIGN_Y|DM_SCROLL_TEXT_USE_FONT_HEIGHT,/*DM_STRING*/
+	59,33,(MAIN_LCD_DEVICE_WIDTH-59),20,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,/*DM_STRING*/
+	59,33,19,17,DM_NO_FLAGS,/*DM_BUTTON*/
+	161,33,19,17,DM_NO_FLAGS,/*DM_BUTTON*/
+	5,63,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	5,91,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	5,119,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	5,147,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	MMI_ROTATED_LCD_WIDTH-MMI_ROTATED_SOFTKEY_WIDTH, 0, MMI_ROTATED_LCD_HEIGHT, MMI_ROTATED_BUTTON_BAR_HEIGHT, DM_BUTTON_DISABLE_BACKGROUND, MMI_ROTATED_SOFTKEY_WIDTH/*DM_BUTTON_BAR1*/
+};
+
+const s16 coordinate_set226_rotate_1[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	-1,-1,-1,-1,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	-1,-1,-1,-1,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA2*/
+	0,0,MMI_ROTATED_LCD_WIDTH,MMI_ROTATED_LCD_HEIGHT,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	0,0,MMI_ROTATED_LCD_WIDTH,MMI_ROTATED_LCD_HEIGHT,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA*/
+	-1,-1,-1,-1,DM_NO_FLAGS,/*DM_IMAGE*/
+	MMI_ROTATED_SOFTKEY_WIDTH,5,(MMI_ROTATED_LCD_WIDTH-(MMI_ROTATED_SOFTKEY_WIDTH<<1)),16,DM_SCROLL_TEXT_CENTRE_ALIGN_X|DM_SCROLL_TEXT_CENTER_ALIGN_Y|DM_SCROLL_TEXT_USE_FONT_HEIGHT,/*DM_STRING*/
+	45,24,118,20,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y|DM_STRING_BORDERED,/*DM_STRING*/
+	26,24,20,17,DM_NO_FLAGS,/*DM_BUTTON*/
+	144,24,20,17,DM_NO_FLAGS,/*DM_BUTTON*/
+	52,152,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	80,152,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	107,152,20,20,DM_NO_FLAGS,/*DM_BUTTON*/
+	DM_NULL_COORDINATE,/*DM_BUTTON*/
+	MMI_ROTATED_LCD_WIDTH-MMI_ROTATED_SOFTKEY_WIDTH, 0, MMI_ROTATED_BUTTON_BAR_WIDTH, MMI_ROTATED_BUTTON_BAR_HEIGHT, DM_BUTTON_DISABLE_BACKGROUND, MMI_ROTATED_SOFTKEY_WIDTH/*DM_BUTTON_BAR1*/
+};
+#endif
+
+const U8 category227Screen[]=
+{
+	7,
+	DM_NEW_LAYER_START,
+	DM_CATEGORY_CONTROLLED_AREA,
+	DM_BASE_LAYER_START,
+	DM_BASE_CONTROL_SET1,
+	DM_SCROLL_TEXT,
+	DM_BUTTON,
+	DM_BUTTON,
+};
+const s16 coordinate_set227[]=
+{
+	DM_FULL_SCREEN_COORDINATE_FLAG,
+	MMI_CONTENT_X,MMI_CONTENT_Y,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT,DM_NO_FLAGS,/*DM_NEW_LAYER_START*/
+	0,0,MMI_CONTENT_WIDTH,MMI_CONTENT_HEIGHT,DM_NO_FLAGS,/*DM_CATEGORY_CONTROLLED_AREA*/
+	MMI_CONTENT_X+50, MMI_CONTENT_Y,MMI_CONTENT_WIDTH-100, 25,DM_CENTRE_ALIGN_X|DM_CENTER_ALIGN_Y,/*DM_SCROLL_TEXT*/
+	MMI_CONTENT_X+20, MMI_CONTENT_Y, 25, 25, DM_NO_FLAGS,/* DM_BUTTON */
+	MMI_CONTENT_X+MMI_CONTENT_WIDTH-20, MMI_CONTENT_Y, 25,25 ,DM_BUTTON_RIGHT_ALIGN/* DM_BUTTON */
+};
+
+const dm_category_id_control_set_map_struct g_categories_controls_map[]=
+/* The sequence of category id should be listed in ascending order */
+{
+	{MMI_CATEGORY5_ID,(U8*)category5,(s16*)coordinate_set5,NULL},
+	{MMI_CATEGORY6_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY7_ID,(U8*)category7,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY9_ID,(U8*)category9,(s16*)coordinate_set9,NULL},
+	{MMI_CATEGORY12_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY14_LIST_ID,(U8*)category14_list,(s16*)coordinate_set14_List_Page,NULL},
+#if defined(__MMI_SCREEN_ROTATE__) // wangmg[4]
+    {MMI_CATEGORY14_MATRIX_ID, (U8 *) category14_matrix, (S16 *) coordinate_set14_Matrix, (S16*)rotated_coordinate_set14_Matrix},
+#else
+	{MMI_CATEGORY14_MATRIX_ID,(U8*)category14_matrix,(s16*)coordinate_set14_Matrix,NULL},
+#endif
+	{MMI_CATEGORY14_CIRCULAR_ID,(U8*)category14_circular_3d,(s16*)coordinate_set14_Circular,NULL},
+	{MMI_CATEGORY14_ROTATE_ID,(U8*)category14_circular_3d,(s16*)coordinate_set14_Rotate,NULL},
+	{MMI_CATEGORY15_LIST_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY15_MATRIX_ID,(U8*)category15_matrix,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY16_ID,(U8*)category16,(s16*)coordinate_set16,NULL},
+	{MMI_CATEGORY18_ID,(U8*)category18,(s16*)coordinate_set18,NULL},
+	{MMI_CATEGORY19_ID,(U8*)category19,(s16*)coordinate_set19,NULL},
+	{MMI_CATEGORY20_ID,(U8*)category20,(s16*)coordinate_set20,NULL},
+	{MMI_CATEGORY21_ID,(U8*)category21,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY22_ID,(U8*)category22,(s16*)coordinate_set22,NULL},
+	{MMI_CATEGORY28_ID,(U8*)category28,(s16*)coordinate_set5,NULL},
+	{MMI_CATEGORY32_ID,(U8*)category32,(s16*)coordinate_set32,NULL},
+#if defined(__MMI_SCREEN_ROTATE__) 
+        {MMI_CATEGORY33_ID, (U8 *) category33, (S16 *) coordinate_set33, (S16 *) coordinate_set33_rotate},
+#else
+        {MMI_CATEGORY33_ID,(U8*)category33,(s16*)coordinate_set33,NULL},
+#endif	
+	{MMI_CATEGORY35_ID,(U8*)category35,(s16*)coordinate_set35,NULL},
+#if defined( __MMI_SCREEN_ROTATE__)
+	{MMI_CATEGORY36_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,(s16*)common_rotated_coordinate_set},
+	{MMI_CATEGORY39_ID,(U8*)category39,(s16*)common_coordinate_set,(s16*)common_rotated_coordinate_set},
+	{MMI_CATEGORY52_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,(s16*)common_rotated_coordinate_set},
+#else
+	{MMI_CATEGORY36_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY39_ID,(U8*)category39,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY52_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+#endif /* __MMI_SCREEN_ROTATE__ */
+	{MMI_CATEGORY57_ID,(U8*)category57,(s16*)coordinate_set57,NULL},
+	{MMI_CATEGORY61_ID,(U8*)category61,(s16*)coordinate_set61,NULL},
+	{MMI_CATEGORY62_ID,(U8*)category62,(s16*)coordinate_set62,NULL},
+#if defined( __MMI_SCREEN_ROTATE__)
+	{MMI_CATEGORY64_ID,(U8*)category64,(s16*)coordinate_set64,(s16*)rotated_coordinate_set64},
+	{MMI_CATEGORY66_NORMAL_ID,(U8*)category66_normal,(s16*)coordinate_set66_normal,(S16*)coordinate_set66_normal_rotated},
+	{MMI_CATEGORY66_STATUS_ICON_ID,(U8*)category66_status_icon,(s16*)coordinate_set66_status_icon,NULL},
+	{MMI_CATEGORY66_NONE_ID,(U8*)category66_none,(s16*)coordinate_set66_none,NULL},
+#else
+	{MMI_CATEGORY64_ID,(U8*)category64,(s16*)coordinate_set64,NULL},
+	{MMI_CATEGORY66_NORMAL_ID,(U8*)category66_normal,(s16*)coordinate_set66_normal,NULL},
+	{MMI_CATEGORY66_STATUS_ICON_ID,(U8*)category66_status_icon,(s16*)coordinate_set66_status_icon,NULL},
+	{MMI_CATEGORY66_NONE_ID,(U8*)category66_none,(s16*)coordinate_set66_none,NULL},
+#endif
+	{MMI_CATEGORY69_ID,(U8*)category69,(s16*)coordinate_set69,NULL},
+	{MMI_CATEGORY72_ID,(U8*)category_control_category_normal_bg,(s16*)category_controlled_coordinate_set,NULL},//071205 Calvin modified
+	{MMI_CATEGORY73_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY74_ID,(U8*)category74,(s16*)coordinate_set74,NULL},
+//qiff modify for bug 9077 start
+    {MMI_CATEGORY75_ID, (U8 *) category75, (S16 *) coordinate_set75, NULL},
+//qiff modify for bug 9077 end
+	{MMI_CATEGORY76_ID,(U8*)category74,(s16*)coordinate_set74,NULL},
+//qiff modify for bug 8945 start
+	{MMI_CATEGORY77_ID, (U8 *) category77, (S16 *) coordinate_set77, NULL},
+//qiff modify for bug 8945 end
+	{MMI_CATEGORY78_ID,(U8*)category74,(s16*)coordinate_set74,NULL},
+	{MMI_CATEGORY80_ID,(U8*)category80,(s16*)coordinate_set80,NULL},
+	{MMI_CATEGORY81_ID,(U8*)category81,(s16*)coordinate_set81,NULL},
+	{MMI_CATEGORY82_ID,(U8*)category82,(s16*)coordinate_set82,NULL},
+	{MMI_CATEGORY84_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY86_ID,(U8*)category86,(s16*)coordinate_set86,NULL},//080405 Calvin modified
+	{MMI_CATEGORY87_ID,(U8*)category87,(s16*)coordinate_set87,NULL},
+	{MMI_CATEGORY88_ID,(U8*)category88,(s16*)coordinate_set88,NULL},
+	{MMI_CATEGORY89_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY90_ID,(U8*)category_control_category_normal,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY91_ID,(U8*)category91,(s16*)coordinate_set91,NULL},
+	{MMI_CATEGORY105_ID,(U8*)category105,(s16*)coordinate_set105,NULL},
+	{MMI_CATEGORY109_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY111_ID,(U8*)category111,(s16*)coordinate_set111,NULL},
+	{MMI_CATEGORY119_ID,(U8*)category119,(s16*)coordinate_set119,NULL},
+	{MMI_CATEGORY120_ID,(U8*)category120,(s16*)coordinate_set120,NULL},
+	{MMI_CATEGORY121_ID,(U8*)category121,(s16*)coordinate_set121,NULL},
+	{MMI_CATEGORY122_ID,(U8*)category122,(s16*)coordinate_set122,NULL},
+	{MMI_CATEGORY123_ID,(U8*)category123,(s16*)coordinate_set123,NULL},
+	{MMI_CATEGORY125_ID,(U8*)base_control_set_with_list_and_category_control,(s16*)coordinate_set_base_control_set_with_list_and_category_control,NULL},
+	{MMI_CATEGORY128_ID,(U8*)category128,(s16*)coordinate_set128,NULL},//080405 Calvin modified
+//PMT HIMANSHU START 20050809
+	{MMI_CATEGORY129_ID,(U8*)category129,(s16*)coordinate_set129,NULL},
+//PMT HIMANSHU END 20050809
+	{MMI_CATEGORY131_ID,(U8*)category131,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY140_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY141_ID,(U8*)category141_normal,(s16*)coordinate_set141,NULL},
+	{MMI_CATEGORY141_STATUS_ICON_ID,(U8*)category141_status_icon,(s16*)coordinate_set141_status_icon,NULL},
+	{MMI_CATEGORY142_ID,(U8*)category_control_category_normal,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY142_STATUS_ICON_ID,(U8*)category_control_category_status_icon,(s16*)category_control_coordinate_set_status_icon,NULL},
+	{MMI_CATEGORY143_ID,(U8*)category_control_category_normal,(s16*)category_controlled_coordinate_set,NULL},
+	{MMI_CATEGORY144_ID,(U8*)category_control_category_normal,(s16*)category_controlled_coordinate_set,NULL},
+	{MMI_CATEGORY145_ID,(U8*)category_control_category_normal,(s16*)category_controlled_coordinate_set,NULL},
+	{MMI_CATEGORY150_ID,(U8*)category150,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY151_ID,(U8*)category151,(s16*)coordinate_set151,NULL},
+	{MMI_CATEGORY152_ID,(U8*)category152,(s16*)coordinate_set152,NULL},
+	{MMI_CATEGORY154_ID,(U8*)category_control_category_normal,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY154_STATUS_ICON_ID,(U8*)category_control_category_status_icon,(s16*)category_control_coordinate_set_status_icon,NULL},
+	{MMI_CATEGORY155_ID,(U8*)category155,(s16*)coordinate_set155,NULL},
+	{MMI_CATEGORY157_ID,(U8*)category157,(s16*)coordinate_set157,NULL},
+	{MMI_CATEGORY162_ID,(U8*)category162,(s16*)coordinate_set162,NULL},
+#if defined( __MMI_SCREEN_ROTATE__)
+	{MMI_CATEGORY164_ID,(U8*)category164,(s16*)coordinate_set164,(s16*)rotated_coordinate_set164},
+#else
+	{MMI_CATEGORY164_ID,(U8*)category164,(s16*)coordinate_set164,NULL},
+#endif
+	{MMI_CATEGORY166_ID,(U8*)category166,(s16*)coordinate_set166,NULL},
+	{MMI_CATEGORY170_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY171_ID,(U8*)category171,(s16*)coordinate_set171,NULL},
+	{MMI_CATEGORY172_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY174_ID,(U8*)list_menu_category,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY184_ID,(U8*)category184,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY186_ID,(U8*)category186,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY200_ID,(U8*)category200,(s16*)coordinate_set200,NULL},
+	{MMI_CATEGORY204_ID,(U8*)category204,(s16*)coordinate_set204,NULL},
+	{MMI_CATEGORY205_ID,(U8*)category205,(s16*)coordinate_set205,NULL},
+	{MMI_CATEGORY212_ID,(U8*)category212,(s16*)coordinate_set212,NULL},
+	{MMI_CATEGORY213_ID,(U8*)category213,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY214_ID,(U8*)category214,(s16*)common_coordinate_set,NULL},
+#if defined( __MMI_SCREEN_ROTATE__)
+	{MMI_CATEGORY221_ID,(U8*)category221,(s16*)coordinate_set221,(s16*)rotated_coordinate_set221},
+#else
+	{MMI_CATEGORY221_ID,(U8*)category221,(s16*)coordinate_set221,NULL},
+#endif
+	{MMI_CATEGORY222_ID,(U8*)category222,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY223_ID,(U8*)category221,(s16*)coordinate_set221,NULL},
+#if defined ( __MMI_SCREEN_ROTATE__)
+	{MMI_CATEGORY226_ID1,(U8*)category226Screen,(s16*)coordinate_set226,(s16*)coordinate_set226_rotate},
+	{MMI_CATEGORY226_ID2,(U8*)category226Screen,(s16*)coordinate_set226_1,(s16*)coordinate_set226_rotate_1},
+#else
+	{MMI_CATEGORY226_ID1,(U8*)category226Screen,(s16*)coordinate_set226,NULL},
+	{MMI_CATEGORY226_ID2,(U8*)category226Screen,(s16*)coordinate_set226_1,NULL},
+#endif
+	{MMI_CATEGORY257_ID,(U8*)category257,(s16*)coordinate_set257,NULL},
+	{MMI_CATEGORY261_ID,(U8*)category_asyndynamic_list,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY262_ID,(U8*)category_asyndynamic_list,(s16*)common_coordinate_set,NULL},
+	{MMI_CATEGORY263_ID,(U8*)category263,(s16*)coordinate_set263,NULL},
+	{MMI_CATEGORY264_ID,(U8*)category264,(s16*)coordinate_set264,NULL},
+	{MMI_CATEGORY275_ID,(U8*)category221,(s16*)coordinate_set221,NULL},
+#ifdef __MMI_SUBLCD__
+	{MMI_CATEGORY301_ID,(U8*)category301,(s16*)coordinate_set301,NULL},
+	{MMI_CATEGORY303_ID,(U8*)category303,(s16*)coordinate_set303,NULL},
+	{MMI_CATEGORY304_ID,(U8*)category304,(s16*)coordinate_set304,NULL},
+#endif
+	{MMI_CATEGORY305_ID,(U8*)category305,(s16*)coordinate_set305,NULL},
+	{MMI_CATEGORY306_ID,(U8*)category306,(s16*)coordinate_set306,NULL},
+	{MMI_CATEGORY307_ID,(U8*)category307,(s16*)coordinate_set307,NULL},
+#ifdef __MMI_SUBLCD__
+	{MMI_CATEGORY310_ID,(U8*)category310,(s16*)coordinate_set310,NULL},
+	{MMI_CATEGORY311_ID,(U8*)category311,(s16*)coordinate_set311,NULL},
+	{MMI_CATEGORY312_ID,(U8*)category312,(s16*)coordinate_set312,NULL},
+	{MMI_CATEGORY313_ID,(U8*)category313,(s16*)coordinate_set313,NULL},
+#endif
+	{MMI_CATEGORY414_ID,(U8*)category414,(s16*)coordinate_set414,NULL},
+	{MMI_CATEGORY420_ID,(U8*)category420,(s16*)coordinate_set420,NULL},
+	{MMI_CATEGORY425_ID,(U8*)category425,(s16*)coordinate_set425,NULL},
+	{MMI_CATEGORY435_ID,(U8*)category435,(s16*)coordinate_set435,NULL},
+	{MMI_CATEGORY620_ID,(U8*)category620,(s16*)coordinate_set620,NULL},
+	{MMI_CATEGORY_EMS_ID,(U8*)categoryEMS,(s16*)coordinate_setEMS,NULL},
+	{MMI_CATEGORY_WCLOCK,(U8*)categoryWcScreen,(s16*)coordinate_WcScreen,NULL},
+	/* 082305 Calvin Start */
+	{MMI_CATEGORY_VDOPLY,(U8*)categoryVdoScreen,(s16*)coordinate_VdoScreen,NULL},
+	{MMI_CATEGORY_VDOPLY_BUTTON,(U8*)categoryVdoScreen_button,(s16*)coordinate_VdoScreen_button,NULL},
+	/* 082305 Calvin End */
+	{MMI_CATEGORY_NSM275,(U8*)categoryNSM275,(s16*)coordinate_setNSM275,NULL}//083005 Calvin added
+};
+
+
+//This array must contain sorted screen ids, since binary search will be used on this array
+//const s16 g_screenid_coordinate_sets_map_entries_count = 70;
+
+const dm_screen_id_coordinate_set_map_struct g_screenid_coordinate_sets_map[]=
+{
+									{SCR_SEARCH_NAME_ENTRY,								(S16*)coordinate_set5},
+									//PMT HIMANSHU START 20050815
+									#if defined(__MMI_CALORIE__)
+									{SCR_ID_CALE_WELCOME,								(S16*)coordinate_set129_no_button},		//5801
+									#endif
+									//PMT HIMANSHU END 20050815
+									//PMT HIMANSHU START 20050815
+									#if defined(__MMI_MENSTRUAL__)
+									{SCR_ID_MENS_WELCOME,								(S16*)coordinate_set129_no_button},		//5901
+									#endif
+									//PMT HIMANSHU END 20050815
+/*									{SCR_ID_MENS_INPUT,									(S16*)coordinate_set57},		//5902 */
+									//PMT HIMANSHU START 20050815
+									#if defined(__MMI_BMI__)
+									{SCR_BMI_WELCOME,									(S16*)coordinate_set129_no_button},		//5951
+									#endif
+									#if defined(__DOWNLOAD__)
+									{SCR_IMAGEVIEW,								(S16*)coordinate_set129_no_button}		//29010
+									#endif
+									//PMT HIMANSHU END 20050815
+/*WUZC Del Start For MMIFS Ver:    on 2007-1-12 17:41 */
+									#if 0
+									{SCR_ID_PHOART_TEXT_SELECT,							(S16*)coordinate_set57_top_infobox}
+									#endif
+/*WUZC Del End  For MMIFS Ver:    on 2007-1-12 17:41 */
+};
+
+/***************************************************************************** 
+* Global Function
+*****************************************************************************/
+
+/*****************************************************************************
+* FUNCTION
+*  dm_get_coordinate_sets_count
+*
+* DESCRIPTION
+*   get coordiante set address by category id
+*
+* PARAMETERS
+*  void
+*
+* RETURNS
+*  U8 address of corresponding coordinate set
+*
+* GLOBALS AFFECTED
+*
+*****************************************************************************/
+s32 dm_get_coordinate_sets_count(void)
+{
+	return sizeof(g_screenid_coordinate_sets_map) / sizeof(dm_screen_id_coordinate_set_map_struct);
+}/* end of dm_get_screenid_coordinate_sets_map_entries_count */
+
+/*****************************************************************************
+* FUNCTION
+*  dm_get_control_sets_count
+*
+* DESCRIPTION
+*   get coordiante set address by category id
+*
+* PARAMETERS
+*  void
+*
+* RETURNS
+*  U8 address of corresponding coordinate set
+*
+* GLOBALS AFFECTED
+*
+*****************************************************************************/
+s32 dm_get_control_sets_count(void)
+{
+	return sizeof(g_categories_controls_map) / sizeof(dm_category_id_control_set_map_struct);
+}/* end of dm_get_screenid_coordinate_sets_map_entries_count */
+  
+/*****************************************************************************
+* FUNCTION
+*  dm_get_base_control_set
+*
+* DESCRIPTION
+*   get address of base control set
+*
+* PARAMETERS
+*  void
+*
+* RETURNS
+*  U8 address of base control set
+*
+* GLOBALS AFFECTED
+*
+*****************************************************************************/
+U8* dm_get_base_control_set(void)
+{
+#ifdef __MMI_SCREEN_ROTATE__
+	if (mmi_frm_is_screen_width_height_swapped())
+		return (U8*)dm_base_rotated_control_set;
+	else
+		return (U8*)dm_base_control_set;
+#else
+	return (U8*)dm_base_control_set;
+#endif
+}
+
+/*****************************************************************************
+* FUNCTION
+*  dm_get_base_coordinate_set
+*
+* DESCRIPTION
+*   get address of base coordinate set
+*
+* PARAMETERS
+*  void
+*
+* RETURNS
+*  address of base coordinate set
+*
+* GLOBALS AFFECTED
+*
+*****************************************************************************/
+s16* dm_get_base_coordinate_set(void)
+{
+#ifdef __MMI_SCREEN_ROTATE__
+	if (mmi_frm_is_screen_width_height_swapped())
+		return (s16*)dm_base_rotated_coordinate_set;
+	else
+		return (s16*)dm_base_coordinate_set;
+#else
+	return (s16*)dm_base_coordinate_set;
+#endif
+}
+
+/* 041205 Calvin added */  
+/*****************************************************************************
+* FUNCTION
+*  dm_get_base_control_set2
+*
+* DESCRIPTION
+*   get address of base control set 2
+*
+* PARAMETERS
+*  void
+*
+* RETURNS
+*  U8 address of base control set 2
+*
+* GLOBALS AFFECTED
+*
+*****************************************************************************/
+U8* dm_get_base_control_set2(void)
+{
+	return (U8*)dm_base_control_set2;
+}
+
+/*****************************************************************************
+* FUNCTION
+*  dm_get_base_coordinate_set2
+*
+* DESCRIPTION
+*   get address of base coordinate set 2
+*
+* PARAMETERS
+*  void
+*
+* RETURNS
+*  address of base coordinate set 2
+*
+* GLOBALS AFFECTED
+*
+*****************************************************************************/
+s16* dm_get_base_coordinate_set2(void)
+{
+	return (s16*)dm_base_coordinate_set2;
+}
+/* Calvin end */
+
+#endif /* end of __MMI_DRAW_MANAGER__ */
+
+
