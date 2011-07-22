@@ -1,0 +1,925 @@
+<?xml version="1.0"?>
+<customize>
+	<uidetails>
+		<filledarea name="LSK_up_Standard" flags="UI_FILLED_AREA_TYPE_BITMAP" color_t="0,0,0,0" bkcolor="0,0,0,0"/>
+		<filledarea name="LSK_down_Standard" flags="UI_FILLED_AREA_TYPE_BITMAP" color_t="0,0,0,0" bkcolor="0,0,0,0"/>
+		<filledarea name="LSK_disabled_Standard" flags="UI_FILLED_AREA_TYPE_BITMAP" color_t="0,0,0,0" bkcolor="0,0,0,0"/>
+		<filledarea name="LSK_up_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW" color_t="0,128,128,100" bkcolor="0,0,0,100"/>
+		<filledarea name="LSK_down_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW" color_t="40,66,118,100" bkcolor="0,0,0,100"/>
+		<filledarea name="LSK_disabled_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW" color_t="64,64,64,100" bkcolor="0,0,0,100"/>
+		<filledarea name="LSK_up_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_3D_ELEVATED_BORDER" color_t="212,208,200,100" bkcolor="0,0,0,100"/>
+		<filledarea name="LSK_down_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_3D_DEPRESSED_BORDER" color_t="201,204,213,100" bkcolor="0,0,0,100"/>
+		<filledarea name="LSK_disabled_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_3D_ELEVATED_BORDER" color_t="212,208,200,100" bkcolor="0,0,0,100"/>
+		
+		<filledarea name="RSK_up_Standard" flags="UI_FILLED_AREA_TYPE_BITMAP" color_t="0,0,0,0" bkcolor="0,0,0,0"/>
+		<filledarea name="RSK_down_Standard" flags="UI_FILLED_AREA_TYPE_BITMAP" color_t="0,0,0,0" bkcolor="0,0,0,0"/>
+		<filledarea name="RSK_disabled_Standard" flags="UI_FILLED_AREA_TYPE_BITMAP" color_t="0,0,0,0" bkcolor="0,0,0,0"/>
+		<filledarea name="RSK_up_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW" color_t="0,128,128,100" bkcolor="0,0,0,100"/>
+		<filledarea name="RSK_down_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW" color_t="40,66,118,100" bkcolor="0,0,0,100"/>
+		<filledarea name="RSK_disabled_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW" color_t="64,64,64,100" bkcolor="0,0,0,100"/>
+		<filledarea name="RSK_up_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_3D_ELEVATED_BORDER" color_t="212,208,200,100" bkcolor="0,0,0,100"/>
+		<filledarea name="RSK_down_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_3D_DEPRESSED_BORDER" color_t="201,204,213,100" bkcolor="0,0,0,100"/>
+		<filledarea name="RSK_disabled_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_3D_ELEVATED_BORDER" color_t="212,208,200,100" bkcolor="0,0,0,100"/>
+		
+		<filledarea name="mtab_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW|UI_FILLED_AREA_SHADOW_DOUBLE_LINE" color_t="196,228,251,100" bkcolor="0,0,0,100"/>
+		<filledarea name="mtab_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW|UI_FILLED_AREA_SHADOW_DOUBLE_LINE" color_t="255,200,176,100" bkcolor="0,0,0,100"/>
+		<filledarea name="mtab_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW|UI_FILLED_AREA_SHADOW_DOUBLE_LINE" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+		
+		<filledarea name="ibox_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="ibox_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="ibox_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		
+		<filledarea name="sbar_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="240,235,90,100" bkcolor="0,0,0,100"/>
+		<filledarea name="sbar_indicator_Standard" flags="UI_FILLED_AREA_TYPE_CUSTOM_FILL_TYPE1" color_t="82,212,60,100" bkcolor="0,0,0,100"/>
+		<filledarea name="sbar_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="220,220,220,100" bkcolor="0,0,0,100"/>
+		<filledarea name="sbar_indicator_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="148,208,246,100" bkcolor="0,0,0,100"/>
+		<filledarea name="sbar_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="128,128,128,100" bkcolor="0,0,0,100"/>
+		<filledarea name="sbar_indicator_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="225,225,225,100" bkcolor="0,0,0,100"/>
+		
+		<filledarea name="title_Standard" flags="UI_FILLED_AREA_TYPE_BITMAP" color_t="0,0,0,0	" bkcolor="0,0,0,0"/>
+		<filledarea name="title_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="60,100,100,100" bkcolor="0,0,0,100"/>
+		<filledarea name="title_3d" flags="UI_FILLED_AREA_TYPE_ALTERNATE_HATCH_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_3D_ELEVATED_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+		
+		<filledarea name="list_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="243,255,233,100" bkcolor="0,0,0,100"/>
+		<filledarea name="list_normal_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="240,240,240,100" bkcolor="0,0,0,0"/>
+		<filledarea name="list_selected_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="118,224,15,100" bkcolor="0,0,0,0"/>
+		<filledarea name="list_disabled_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="141,167,191,100" bkcolor="0,0,0,0"/>
+		<filledarea name="list_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="190,220,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="list_normal_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="190,220,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="list_selected_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="51,88,171,100" bkcolor="0,0,0,100"/>
+		<filledarea name="list_disabled_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="141,167,191,100" bkcolor="0,0,0,100"/>
+		<filledarea name="list_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+		<filledarea name="list_normal_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="0,128,0,100" bkcolor="0,0,0,100"/>
+		<filledarea name="list_selected_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="117,117,117,100" bkcolor="0,0,0,100"/>
+		<filledarea name="list_disabled_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="128,128,128,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="matrix_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="matrix_normal_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,0"/>
+		<filledarea name="matrix_selected_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="51,88,171,100" bkcolor="0,0,0,0"/>
+		<filledarea name="matrix_disabled_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="200,200,200,100" bkcolor="0,0,0,0"/>
+		<filledarea name="matrix_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="matrix_normal_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="matrix_selected_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="51,88,171,100" bkcolor="0,0,0,100"/>
+		<filledarea name="matrix_disabled_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="224,224,224,100" bkcolor="0,0,0,100"/>
+		<filledarea name="matrix_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+		<filledarea name="matrix_normal_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="0,128,64,100" bkcolor="0,0,0,100"/>
+		<filledarea name="matrix_selected_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="51,88,171,100" bkcolor="0,0,0,100"/>
+		<filledarea name="matrix_disabled_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="128,128,128,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="scut_indicator_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="224,224,224,100" bkcolor="0,0,0,100"/>
+		<filledarea name="scut_indicator_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="scut_indicator_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="128,255,255,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="fibox_normal_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="200,200,200,100" bkcolor="0,0,0,100"/>
+		<filledarea name="fibox_selected_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="fibox_normal_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="200,200,200,100" bkcolor="0,0,0,100"/>
+		<filledarea name="fibox_selected_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="fibox_normal_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="200,200,200,100" bkcolor="0,0,0,100"/>
+		<filledarea name="fibox_selected_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="mm_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="206,206,206,100" bkcolor="0,0,0,100"/>
+		<filledarea name="mm_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="190,220,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="mm_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="general_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,0"/>
+		<filledarea name="general_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="general_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="popup_description_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="245,247,115,100" bkcolor="0,0,0,0"/>
+		<filledarea name="popup_description_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="popup_description_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="inline_list_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="240,240,240,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_list_normal_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="240,240,240,100" bkcolor="0,0,0,0"/>
+		<filledarea name="inline_list_selected_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="167,232,93,100" bkcolor="0,0,0,0"/>
+		<filledarea name="inline_list_disabled_item_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="192,192,192,100" bkcolor="0,0,0,0"/>
+		<filledarea name="inline_list_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="190,220,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_list_normal_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="190,220,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_list_selected_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="51,88,171,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_list_disabled_item_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="141,167,191,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_list_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="216,216,216,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_list_normal_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="128,128,128,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_list_selected_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="73,73,73,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_list_disabled_item_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="0,255,255,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="inline_edit_focussed_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="167,232,93,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_edit_unfocussed_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,0"/>
+		<filledarea name="inline_edit_noboundary_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="167,232,93,100" bkcolor="0,0,0,0"/>
+		<filledarea name="inline_edit_focussed_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_edit_unfocussed_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="0,0,128,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_edit_noboundary_Classic" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="0,0,128,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_edit_focussed_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="0,0,0,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_edit_unfocussed_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="85,85,85,100" bkcolor="0,0,0,100"/>
+		<filledarea name="inline_edit_noboundary_3d" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="51,88,171,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="PIN_ibox_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER|UI_FILLED_AREA_SHADOW" color_t="255,222,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="PIN_ibox_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="PIN_ibox_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="128,128,128,100" bkcolor="0,0,0,100"/>
+		
+		<filledarea name="PIN_scr_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="PIN_scr_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="PIN_scr_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="network_scr_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="network_scr_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="network_scr_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="aphorism_scr_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="aphorism_scr_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="aphorism_scr_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="CM_scr_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="CM_scr_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="CM_scr_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+
+		<filledarea name="dialer_ibox_bkgrnd_Standard" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_SINGLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="dialer_ibox_bkgrnd_Classic" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="255,255,255,100" bkcolor="0,0,0,100"/>
+		<filledarea name="dialer_ibox_bkgrnd_3d" flags="UI_FILLED_AREA_TYPE_COLOR|UI_FILLED_AREA_DOUBLE_BORDER" color_t="192,192,192,100" bkcolor="0,0,0,100"/>
+
+		<colordetails name="black_color" value="0,0,0,100"/>
+		<colordetails name="white_color" value="255,255,255,100"/>
+
+		<colordetails name="LSK_up_txt_col_Standard" value="37,83,17,100"/>
+		<colordetails name="LSK_down_txt_col_Standard" value="37,83,17,100"/>
+		<colordetails name="LSK_disabled_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="LSK_up_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="LSK_down_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="LSK_disabled_txt_col_Classic" value="128,128,128,100"/>
+		<colordetails name="LSK_up_txt_col_3d" value="128,128,128,100"/>
+		<colordetails name="LSK_down_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="LSK_disabled_txt_col_3d" value="128,128,128,100"/>
+
+		<colordetails name="RSK_up_txt_col_Standard" value="37,83,17,100"/>
+		<colordetails name="RSK_down_txt_col_Standard" value="37,83,17,100"/>
+		<colordetails name="RSK_disabled_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="RSK_up_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="RSK_down_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="RSK_disabled_txt_col_Classic" value="128,128,128,100"/>
+		<colordetails name="RSK_up_txt_col_3d" value="128,128,128,100"/>
+		<colordetails name="RSK_down_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="RSK_disabled_txt_col_3d" value="128,128,128,100"/>
+
+		<colordetails name="mtab_selector_txt_col_Standard" value="51,88,171,100"/>
+		<colordetails name="mtab_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="mtab_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="mtab_selector_txt_col_Classic" value="200,0,0,100"/>
+		<colordetails name="mtab_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="mtab_selected_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="mtab_selector_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="mtab_normal_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="mtab_selected_txt_col_3d" value="255,255,255,100"/>
+
+		<colordetails name="ibox_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="ibox_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="ibox_selector_txt_col_Standard" value="51,88,171,100"/>
+		<colordetails name="ibox_cursor_col_Standard" value="255,0,0,100"/>
+		<colordetails name="ibox_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="ibox_selected_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="ibox_selector_txt_col_Classic" value="0,0,255,100"/>
+		<colordetails name="ibox_cursor_col_Classic" value="0,0,128,100"/>
+		<colordetails name="ibox_normal_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="ibox_selected_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="ibox_selector_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="ibox_cursor_col_3d" value="64,0,0,100"/>
+
+		<colordetails name="title_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="title_txt_border_col_Standard" value="0,0,0,100"/>
+		<colordetails name="title_scut_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="title_txt_col_Classic" value="0,0,128,100"/>
+		<colordetails name="title_txt_border_col_Classic" value="255,255,255,100"/>
+		<colordetails name="title_scut_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="title_txt_col_3d" value="128,128,128,100"/>
+		<colordetails name="title_txt_border_col_3d" value="72,72,72,100"/>
+		<colordetails name="title_scut_txt_col_3d" value="255,255,255,100"/>
+
+		<colordetails name="list_normal_txt_col_Standard" value="0,46,114,100"/>
+		<colordetails name="list_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="list_disabled_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="list_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="list_selected_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="list_disabled_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="list_normal_txt_col_3d" value="64,0,64,100"/>
+		<colordetails name="list_selected_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="list_disabled_txt_col_3d" value="192,192,192,100"/>
+
+		<colordetails name="matrix_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="matrix_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="matrix_disabled_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="matrix_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="matrix_selected_txt_col_Classic" value="128,128,128,100"/>
+		<colordetails name="matrix_disabled_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="matrix_normal_txt_col_3d" value="0,255,0,100"/>
+		<colordetails name="matrix_selected_txt_col_3d" value="100,255,177,100"/>
+		<colordetails name="matrix_disabled_txt_col_3d" value="192,192,192,100"/>
+
+		<colordetails name="mbar_index_bgrnd_col_Standard" value="50,90,140,100"/>
+		<colordetails name="mbar_item_bgrnd_col_Standard" value="149,207,247,100"/>
+		<colordetails name="mbar_index_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="mbar_item_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="mbar_index_bgrnd_col_Classic" value="128,128,255,100"/>
+		<colordetails name="mbar_item_bgrnd_col_Classic" value="149,207,247,100"/>
+		<colordetails name="mbar_index_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="mbar_item_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="mbar_index_bgrnd_col_3d" value="192,192,192,100"/>
+		<colordetails name="mbar_item_bgrnd_col_3d" value="192,192,192,100"/>
+		<colordetails name="mbar_index_txt_col_3d" value="64,0,64,100"/>
+		<colordetails name="mbar_item_txt_col_3d" value="0,0,0,100"/>
+
+		<colordetails name="scut_indicator_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="scut_indicator_cursor_col_Standard" value="255,0,0,100"/>
+		<colordetails name="scut_indicator_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="scut_indicator_cursor_col_Classic" value="255,0,0,100"/>
+		<colordetails name="scut_indicator_txt_col_3d" value="0,0,255,100"/>
+		<colordetails name="scut_indicator_cursor_col_3d" value="0,0,128,100"/>
+
+		<colordetails name="dropdn_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="dropdn_disabled_txt_col_Standard" value="64,64,64,100"/>
+		<colordetails name="dropdn_focused_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="dropdn_normal_txt_col_Classic" value="128,128,64,100"/>
+		<colordetails name="dropdn_disabled_txt_col_Classic" value="177,177,99,100"/>
+		<colordetails name="dropdn_focused_txt_col_Classic" value="217,217,179,100"/>
+		<colordetails name="dropdn_normal_txt_col_3d" value="64,0,64,100"/>
+		<colordetails name="dropdn_disabled_txt_col_3d" value="128,128,128,100"/>
+		<colordetails name="dropdn_focused_txt_col_3d" value="192,192,192,100"/>
+
+		<colordetails name="fibox_selector_col_Standard" value="51,88,171,100"/>
+		<colordetails name="fibox_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="fibox_disabled_txt_col_Standard" value="128,128,128,100"/>
+		<colordetails name="fibox_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="fibox_cursor_col_Standard" value="255,0,0,100"/>
+		<colordetails name="fibox_selector_col_Classic" value="51,88,171,100"/>
+		<colordetails name="fibox_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="fibox_disabled_txt_col_Classic" value="128,128,128,100"/>
+		<colordetails name="fibox_selected_txt_col_Classic" value="64,0,64,100"/>
+		<colordetails name="fibox_cursor_col_Classic" value="255,128,0,100"/>
+		<colordetails name="fibox_selector_col_3d" value="51,88,171,100"/>
+		<colordetails name="fibox_normal_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="fibox_disabled_txt_col_3d" value="128,128,128,100"/>
+		<colordetails name="fibox_selected_txt_col_3d" value="0,0,255,100"/>
+		<colordetails name="fibox_cursor_col_3d" value="128,128,64,100"/>
+
+		<colordetails name="mm_list_normal_txt_col_Standard" value="0,46,114,100"/>
+		<colordetails name="mm_list_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="mm_list_disabled_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="mm_list_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="mm_list_selected_txt_col_Classic" value="128,128,128,100"/>
+		<colordetails name="mm_list_disabled_txt_col_Classic" value="192,192,192,100"/>
+		<colordetails name="mm_list_normal_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="mm_list_selected_txt_col_3d" value="128,128,128,100"/>
+		<colordetails name="mm_list_disabled_txt_col_3d" value="192,192,192,100"/>
+
+		<colordetails name="mm_matrix_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="mm_matrix_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="mm_matrix_disabled_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="mm_matrix_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="mm_matrix_selected_txt_col_Classic" value="128,128,128,100"/>
+		<colordetails name="mm_matrix_disabled_txt_col_Classic" value="192,192,192,100"/>
+		<colordetails name="mm_matrix_normal_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="mm_matrix_selected_txt_col_3d" value="128,128,128,100"/>
+		<colordetails name="mm_matrix_disabled_txt_col_3d" value="192,192,192,100"/>
+
+		<colordetails name="mm_3d_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="mm_3d_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="mm_3d_disabled_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="mm_3d_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="mm_3d_selected_txt_col_Classic" value="128,128,128,100"/>
+		<colordetails name="mm_3d_disabled_txt_col_Classic" value="192,192,192,100"/>
+		<colordetails name="mm_3d_normal_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="mm_3d_selected_txt_col_3d" value="128,128,128,100"/>
+		<colordetails name="mm_3d_disabled_txt_col_3d" value="192,192,192,100"/>
+		
+		<colordetails name="popup_scr_bkgrnd_col_Standard" value="246,255,171,100"/>
+		<colordetails name="popup_scr_border_col_Standard" value="142,204,145,100"/>
+		<colordetails name="popup_description_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="popup_scr_bkgrnd_col_Classic" value="163,220,219,100"/>
+		<colordetails name="popup_scr_border_col_Classic" value="0,0,255,100"/>
+		<colordetails name="popup_description_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="popup_scr_bkgrnd_col_3d" value="211,211,211,100"/>
+		<colordetails name="popup_scr_border_col_3d" value="128,128,128,100"/>
+		<colordetails name="popup_description_txt_col_3d" value="0,0,0,100"/>
+
+		<colordetails name="dt_bar_bkgrnd_col_Standard" value="176,223,141,100"/>
+		<colordetails name="dt_bar_duration_bkgrnd_col_Standard" value="255,255,255,100"/>
+		<colordetails name="dt_bar_date_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="dt_bar_time_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="dt_bar_duration_txt_col_Standard" value="224,0,0,100"/>
+		<colordetails name="dt_bar_AOC_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="dt_bar_bkgrnd_col_Classic" value="64,128,128,100"/>
+		<colordetails name="dt_bar_duration_bkgrnd_col_Classic" value="139,197,197,100"/>
+		<colordetails name="dt_bar_date_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="dt_bar_time_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="dt_bar_duration_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="dt_bar_AOC_txt_col_Classic" value="0,128,64,100"/>
+		<colordetails name="dt_bar_bkgrnd_col_3d" value="128,128,128,100"/>
+		<colordetails name="dt_bar_duration_bkgrnd_col_3d" value="192,192,192,100"/>
+		<colordetails name="dt_bar_date_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="dt_bar_time_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="dt_bar_duration_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="dt_bar_AOC_txt_col_3d" value="255,255,255,100"/>
+
+		<colordetails name="button_bar_col_Standard" value="243,255,233,100"/>
+		<colordetails name="information_bar_col_Standard" value="255,231,93,100"/>
+		<colordetails name="input_method_txt_col_Standard" value="255,0,0,100"/>
+		<colordetails name="remaining_length_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="statusbar0_bkgrnd_col_Standard" value="216,212,212,100"/>
+		<colordetails name="button_bar_col_Classic" value="145,200,200,100"/>
+		<colordetails name="information_bar_col_Classic" value="184,220,220,100"/>
+		<colordetails name="input_method_txt_col_Classic" value="64,0,64,100"/>
+		<colordetails name="remaining_length_txt_col_Classic" value="64,0,64,100"/>
+		<colordetails name="statusbar0_bkgrnd_col_Classic" value="89,172,172,100"/>
+		<colordetails name="button_bar_col_3d" value="105,105,105,100"/>
+		<colordetails name="information_bar_col_3d" value="192,192,192,100"/>
+		<colordetails name="input_method_txt_col_3d" value="64,0,64,100"/>
+		<colordetails name="remaining_length_txt_col_3d" value="64,0,64,100"/>
+		<colordetails name="statusbar0_bkgrnd_col_3d" value="192,192,192,100"/>
+
+		<colordetails name="inline_edit_focussed_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="inline_edit_unfocussed_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="inline_edit_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="inline_edit_selector_col_Standard" value="51,88,171,100"/>
+		<colordetails name="inline_edit_cursor_col_Standard" value="255,0,0,100"/>
+		<colordetails name="inline_edit_focussed_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="inline_edit_unfocussed_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="inline_edit_selected_txt_col_Classic" value="64,0,0,100"/>
+		<colordetails name="inline_edit_selector_col_Classic" value="0,255,255,100"/>
+		<colordetails name="inline_edit_cursor_col_Classic" value="0,0,128,100"/>
+		<colordetails name="inline_edit_focussed_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="inline_edit_unfocussed_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="inline_edit_selected_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="inline_edit_selector_col_3d" value="255,255,255,100"/>
+		<colordetails name="inline_edit_cursor_col_3d" value="255,255,255,100"/>
+
+		<colordetails name="inline_list_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="inline_list_selected_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="inline_list_disabled_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="inline_list_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="inline_list_selected_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="inline_list_disabled_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="inline_list_normal_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="inline_list_selected_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="inline_list_disabled_txt_col_3d" value="255,128,255,100"/>
+
+		<colordetails name="PIN_ibox_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="PIN_ibox_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="PIN_ibox_selector_col_Standard" value="51,88,171,100"/>
+		<colordetails name="PIN_ibox_cursor_col_Standard" value="255,0,0,100"/>
+		<colordetails name="PIN_ibox_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="PIN_ibox_selected_txt_col_Classic" value="255,255,255,100"/>
+		<colordetails name="PIN_ibox_selector_col_Classic" value="0,0,0,100"/>
+		<colordetails name="PIN_ibox_cursor_col_Classic" value="0,0,0,100"/>
+		<colordetails name="PIN_ibox_normal_txt_col_3d" value="255,255,255,100"/>
+		<colordetails name="PIN_ibox_selected_txt_col_3d" value="0,255,255,100"/>
+		<colordetails name="PIN_ibox_selector_col_3d" value="197,197,137,100"/>
+		<colordetails name="PIN_ibox_cursor_col_3d" value="128,128,64,100"/>
+
+		<colordetails name="dialer_ibox_normal_txt_col_Standard" value="0,0,0,100"/>
+		<colordetails name="dialer_ibox_selected_txt_col_Standard" value="255,255,255,100"/>
+		<colordetails name="dialer_ibox_selector_col_Standard" value="51,88,171,100"/>
+		<colordetails name="dialer_ibox_cursor_col_Standard" value="255,0,0,100"/>
+		<colordetails name="dialer_ibox_normal_txt_col_Classic" value="0,0,0,100"/>
+		<colordetails name="dialer_ibox_selected_txt_col_Classic" value="0,255,255,100"/>
+		<colordetails name="dialer_ibox_selector_col_Classic" value="0,0,0,100"/>
+		<colordetails name="dialer_ibox_cursor_col_Classic" value="0,0,0,100"/>
+		<colordetails name="dialer_ibox_normal_txt_col_3d" value="0,0,0,100"/>
+		<colordetails name="dialer_ibox_selected_txt_col_3d" value="255,255,0,100"/>
+		<colordetails name="dialer_ibox_selector_col_3d" value="128,255,0,100"/>
+		<colordetails name="dialer_ibox_cursor_col_3d" value="0,255,255,100"/>
+
+		<fontdetails name="MMI_default_font"/>
+		<fontdetails name="MMI_small_font"/>
+		<fontdetails name="MMI_medium_font"/>
+		<fontdetails name="MMI_large_font"/>
+		
+		<themecomponents>
+			<lskinfo name="Standard" imagename="">
+				<compinfo name="LSK_up_Standard" displayname="Button Up"/>
+				<compinfo name="LSK_down_Standard" displayname="Button Down"/>
+				<compinfo name="LSK_disabled_Standard" displayname="Button Disabled"/>
+				<compinfo name="LSK_up_txt_col_Standard" displayname="Button Up Text"/>
+				<compinfo name="LSK_down_txt_col_Standard" displayname="Button Down Text"/>
+				<compinfo name="LSK_disabled_txt_col_Standard" displayname="Button Disabled Text"/>
+			</lskinfo>
+			<lskinfo name="Classic" imagename="">
+				<compinfo name="LSK_up_Classic" displayname="Button Up"/>
+				<compinfo name="LSK_down_Classic" displayname="Button Down"/>
+				<compinfo name="LSK_disabled_Classic" displayname="Button Disabled"/>
+				<compinfo name="LSK_up_txt_col_Classic" displayname="Button Up Text"/>
+				<compinfo name="LSK_down_txt_col_Classic" displayname="Button Down Text"/>
+				<compinfo name="LSK_disabled_txt_col_Classic" displayname="Button Disabled Text"/>
+			</lskinfo>
+			<lskinfo name="3d" imagename="">
+				<compinfo name="LSK_up_3d" displayname="Button Up"/>
+				<compinfo name="LSK_down_3d" displayname="Button Down"/>
+				<compinfo name="LSK_disabled_3d" displayname="Button Disabled"/>
+				<compinfo name="LSK_up_txt_col_3d" displayname="Button Up Text"/>
+				<compinfo name="LSK_down_txt_col_3d" displayname="Button Down Text"/>
+				<compinfo name="LSK_disabled_txt_col_3d" displayname="Button Disabled Text"/>
+			</lskinfo>
+			
+			<rskinfo name="Standard" imagename="">
+				<compinfo name="RSK_up_Standard" displayname="Button Up"/>
+				<compinfo name="RSK_down_Standard" displayname="Button Down"/>
+				<compinfo name="RSK_disabled_Standard" displayname="Button Disabled"/>
+				<compinfo name="RSK_up_txt_col_Standard" displayname="Button Up Text"/>
+				<compinfo name="RSK_down_txt_col_Standard" displayname="Button Down Text"/>
+				<compinfo name="RSK_disabled_txt_col_Standard" displayname="Button Disabled Text"/>
+			</rskinfo>
+			<rskinfo name="Classic" imagename="">
+				<compinfo name="RSK_up_Classic" displayname="Button Up"/>
+				<compinfo name="RSK_down_Classic" displayname="Button Down"/>
+				<compinfo name="RSK_disabled_Classic" displayname="Button Disabled"/>
+				<compinfo name="RSK_up_txt_col_Classic" displayname="Button Up Text"/>
+				<compinfo name="RSK_down_txt_col_Classic" displayname="Button Down Text"/>
+				<compinfo name="RSK_disabled_txt_col_Classic" displayname="Button Disabled Text"/>
+			</rskinfo>
+			<rskinfo name="3d" imagename="">
+				<compinfo name="RSK_up_3d" displayname="Button Up"/>
+				<compinfo name="RSK_down_3d" displayname="Button Down"/>
+				<compinfo name="RSK_disabled_3d" displayname="Button Disabled"/>
+				<compinfo name="RSK_up_txt_col_3d" displayname="Button Up Text"/>
+				<compinfo name="RSK_down_txt_col_3d" displayname="Button Down Text"/>
+				<compinfo name="RSK_disabled_txt_col_3d" displayname="Button Disabled Text"/>
+			</rskinfo>
+
+			<mtabinfo name="Standard" imagename="">
+				<compinfo name="mtab_Standard" displayname="MultiTab"/>
+				<compinfo name="mtab_selector_txt_col_Standard" displayname="Selector Text"/>
+				<compinfo name="mtab_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="mtab_selected_txt_col_Standard" displayname="Selected Text"/>
+			</mtabinfo>
+			<mtabinfo name="Classic" imagename="">
+				<compinfo name="mtab_Classic" displayname="MultiTab"/>
+				<compinfo name="mtab_selector_txt_col_Classic" displayname="Selector Text"/>
+				<compinfo name="mtab_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="mtab_selected_txt_col_Classic" displayname="Selected Text"/>
+			</mtabinfo>
+			<mtabinfo name="3d" imagename="">
+				<compinfo name="mtab_3d" displayname="MultiTab"/>
+				<compinfo name="mtab_selector_txt_col_3d" displayname="Selector Text"/>
+				<compinfo name="mtab_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="mtab_selected_txt_col_3d" displayname="Selected Text"/>
+			</mtabinfo>
+			
+			<iboxinfo name="Standard" imagename="">
+				<compinfo name="ibox_Standard" displayname="Inputbox"/>
+				<compinfo name="ibox_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="ibox_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="ibox_selector_txt_col_Standard" displayname="Selector Text"/>
+				<compinfo name="ibox_cursor_col_Standard" displayname="Cursor"/>
+			</iboxinfo>
+			<iboxinfo name="Classic" imagename="">
+				<compinfo name="ibox_Classic" displayname="Inputbox"/>
+				<compinfo name="ibox_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="ibox_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="ibox_selector_txt_col_Classic" displayname="Selector Text"/>
+				<compinfo name="ibox_cursor_col_Classic" displayname="Cursor"/>
+			</iboxinfo>
+			<iboxinfo name="3d" imagename="">
+				<compinfo name="ibox_3d" displayname="Inputbox"/>
+				<compinfo name="ibox_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="ibox_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="ibox_selector_txt_col_3d" displayname="Selector Text"/>
+				<compinfo name="ibox_cursor_col_3d" displayname="Cursor"/>
+			</iboxinfo>
+			
+			<sbarinfo name="Standard" imagename="">
+				<compinfo name="sbar_bkgrnd_Standard" displayname="BackGround"/>
+				<compinfo name="sbar_indicator_Standard" displayname="Indicator"/>
+			</sbarinfo>
+			<sbarinfo name="Classic" imagename="">
+				<compinfo name="sbar_bkgrnd_Classic" displayname="BackGround"/>
+				<compinfo name="sbar_indicator_Classic" displayname="Indicator"/>
+			</sbarinfo>
+			<sbarinfo name="3d" imagename="">
+				<compinfo name="sbar_bkgrnd_3d" displayname="BackGround"/>
+				<compinfo name="sbar_indicator_3d" displayname="Indicator"/>
+			</sbarinfo>
+
+			<wtitleinfo name="Standard" imagename="">
+				<compinfo name="title_Standard" displayname="Title"/>
+				<compinfo name="title_txt_col_Standard" displayname="Text"/>
+				<compinfo name="title_txt_border_col_Standard" displayname="Text Border"/>
+				<compinfo name="title_scut_txt_col_Standard" displayname="Shortcut Text"/>
+			</wtitleinfo>
+			<wtitleinfo name="Classic" imagename="">
+				<compinfo name="title_Classic" displayname="Title"/>
+				<compinfo name="title_txt_col_Classic" displayname="Text"/>
+				<compinfo name="title_txt_border_col_Classic" displayname="Text Border"/>
+				<compinfo name="title_scut_txt_col_Classic" displayname="Shortcut Text"/>
+			</wtitleinfo>
+			<wtitleinfo name="3d" imagename="">
+				<compinfo name="title_3d" displayname="Title"/>
+				<compinfo name="title_txt_col_3d" displayname="Text"/>
+				<compinfo name="title_txt_border_col_3d" displayname="Text Border"/>
+				<compinfo name="title_scut_txt_col_3d" displayname="Shortcut Text"/>
+			</wtitleinfo>
+			
+			<listinfo name="Standard" imagename="">
+				<compinfo name="list_bkgrnd_Standard" displayname="BackGround"/>
+				<compinfo name="list_normal_item_Standard" displayname="Normal"/>
+				<compinfo name="list_selected_item_Standard" displayname="Selected"/>
+				<compinfo name="list_disabled_item_Standard" displayname="Disabled"/>
+				<compinfo name="list_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="list_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="list_disabled_txt_col_Standard" displayname="Disabled Text"/>
+			</listinfo>
+			<listinfo name="Classic" imagename="">
+				<compinfo name="list_bkgrnd_Classic" displayname="BackGround"/>
+				<compinfo name="list_normal_item_Classic" displayname="Normal"/>
+				<compinfo name="list_selected_item_Classic" displayname="Selected"/>
+				<compinfo name="list_disabled_item_Classic" displayname="Disabled"/>
+				<compinfo name="list_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="list_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="list_disabled_txt_col_Classic" displayname="Disabled Text"/>
+			</listinfo>
+			<listinfo name="3d" imagename="">
+				<compinfo name="list_bkgrnd_3d" displayname="BackGround"/>
+				<compinfo name="list_normal_item_3d" displayname="Normal"/>
+				<compinfo name="list_selected_item_3d" displayname="Selected"/>
+				<compinfo name="list_disabled_item_3d" displayname="Disabled"/>
+				<compinfo name="list_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="list_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="list_disabled_txt_col_3d" displayname="Disabled Text"/>
+			</listinfo>
+
+			<matrixinfo name="Standard" imagename="">
+				<compinfo name="matrix_bkgrnd_Standard" displayname="BackGround"/>
+				<compinfo name="matrix_normal_item_Standard" displayname="Normal"/>
+				<compinfo name="matrix_selected_item_Standard" displayname="Selected"/>
+				<compinfo name="matrix_disabled_item_Standard" displayname="Disabled"/>
+				<compinfo name="matrix_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="matrix_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="matrix_disabled_txt_col_Standard" displayname="Disabled Text"/>
+			</matrixinfo>
+			<matrixinfo name="Classic" imagename="">
+				<compinfo name="matrix_bkgrnd_Classic" displayname="BackGround"/>
+				<compinfo name="matrix_normal_item_Classic" displayname="Normal"/>
+				<compinfo name="matrix_selected_item_Classic" displayname="Selected"/>
+				<compinfo name="matrix_disabled_item_Classic" displayname="Disabled"/>
+				<compinfo name="matrix_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="matrix_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="matrix_disabled_txt_col_Classic" displayname="Disabled Text"/>
+			</matrixinfo>
+			<matrixinfo name="3d" imagename="">
+				<compinfo name="matrix_bkgrnd_3d" displayname="BackGround"/>
+				<compinfo name="matrix_normal_item_3d" displayname="Normal"/>
+				<compinfo name="matrix_selected_item_3d" displayname="Selected"/>
+				<compinfo name="matrix_disabled_item_3d" displayname="Disabled"/>
+				<compinfo name="matrix_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="matrix_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="matrix_disabled_txt_col_3d" displayname="Disabled Text"/>
+			</matrixinfo>
+
+			<mbarinfo name="Standard" imagename="">
+				<compinfo name="mbar_index_bgrnd_col_Standard" displayname="Index BackGround"/>
+				<compinfo name="mbar_item_bgrnd_col_Standard" displayname="Item BackGround"/>
+				<compinfo name="mbar_index_txt_col_Standard" displayname="Index Text"/>
+				<compinfo name="mbar_item_txt_col_Standard" displayname="Item Text"/>
+			</mbarinfo>
+			<mbarinfo name="Classic" imagename="">
+				<compinfo name="mbar_index_bgrnd_col_Classic" displayname="Index BackGround"/>
+				<compinfo name="mbar_item_bgrnd_col_Classic" displayname="Item BackGround"/>
+				<compinfo name="mbar_index_txt_col_Classic" displayname="Index Text"/>
+				<compinfo name="mbar_item_txt_col_Classic" displayname="Item Text"/>
+			</mbarinfo>
+			<mbarinfo name="3d" imagename="">
+				<compinfo name="mbar_index_bgrnd_col_3d" displayname="Index BackGround"/>
+				<compinfo name="mbar_item_bgrnd_col_3d" displayname="Item BackGround"/>
+				<compinfo name="mbar_index_txt_col_3d" displayname="Index Text"/>
+				<compinfo name="mbar_item_txt_col_3d" displayname="Item Text"/>
+			</mbarinfo>
+			
+			<scutinfo name="Standard" imagename="">
+				<compinfo name="scut_indicator_Standard" displayname="Indicator"/>
+				<compinfo name="scut_indicator_txt_col_Standard" displayname="Indicator Text"/>
+				<compinfo name="scut_indicator_cursor_col_Standard" displayname="Indicator Cursor"/>
+			</scutinfo>
+			<scutinfo name="Classic" imagename="">
+				<compinfo name="scut_indicator_Classic" displayname="Indicator"/>
+				<compinfo name="scut_indicator_txt_col_Classic" displayname="Indicator Text"/>
+				<compinfo name="scut_indicator_cursor_col_Classic" displayname="Indicator Cursor"/>
+			</scutinfo>
+			<scutinfo name="3d" imagename="">
+				<compinfo name="scut_indicator_3d" displayname="Indicator"/>
+				<compinfo name="scut_indicator_txt_col_3d" displayname="Indicator Text"/>
+				<compinfo name="scut_indicator_cursor_col_3d" displayname="Indicator Cursor"/>
+			</scutinfo>
+		
+			<dropdninfo name="Standard" imagename="">
+				<compinfo name="dropdn_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="dropdn_disabled_txt_col_Standard" displayname="Disabled Text"/>
+				<compinfo name="dropdn_focused_txt_col_Standard" displayname="Focused Text"/>
+			</dropdninfo>
+			<dropdninfo name="Classic" imagename="">
+				<compinfo name="dropdn_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="dropdn_disabled_txt_col_Classic" displayname="Disabled Text"/>
+				<compinfo name="dropdn_focused_txt_col_Classic" displayname="Focused Text"/>
+			</dropdninfo>
+			<dropdninfo name="3d" imagename="">
+				<compinfo name="dropdn_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="dropdn_disabled_txt_col_3d" displayname="Disabled Text"/>
+				<compinfo name="dropdn_focused_txt_col_3d" displayname="Focused Text"/>
+			</dropdninfo>
+	
+			<fiboxinfo name="Standard" imagename="">
+				<compinfo name="fibox_normal_Standard" displayname="Normal"/>
+				<compinfo name="fibox_selected_Standard" displayname="Selected"/>
+				<compinfo name="fibox_selector_col_Standard" displayname="Selector"/>
+				<compinfo name="fibox_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="fibox_disabled_txt_col_Standard" displayname="Disabled Text"/>
+				<compinfo name="fibox_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="fibox_cursor_col_Standard" displayname="Cursor"/>
+			</fiboxinfo>
+			<fiboxinfo name="Classic" imagename="">
+				<compinfo name="fibox_normal_Classic" displayname="Normal"/>
+				<compinfo name="fibox_selected_Classic" displayname="Selected"/>
+				<compinfo name="fibox_selector_col_Classic" displayname="Selector"/>
+				<compinfo name="fibox_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="fibox_disabled_txt_col_Classic" displayname="Disabled Text"/>
+				<compinfo name="fibox_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="fibox_cursor_col_Classic" displayname="Cursor"/>
+			</fiboxinfo>
+			<fiboxinfo name="3d" imagename="">
+				<compinfo name="fibox_normal_3d" displayname="Normal"/>
+				<compinfo name="fibox_selected_3d" displayname="Selected"/>
+				<compinfo name="fibox_selector_col_3d" displayname="Selector"/>
+				<compinfo name="fibox_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="fibox_disabled_txt_col_3d" displayname="Disabled Text"/>
+				<compinfo name="fibox_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="fibox_cursor_col_3d" displayname="Cursor"/>
+			</fiboxinfo>
+
+			<mminfo name="Standard" imagename="">
+				<compinfo name="mm_bkgrnd_Standard" displayname="BackGround"/>
+			</mminfo>
+			<mminfo name="Classic" imagename="">
+				<compinfo name="mm_bkgrnd_Classic" displayname="BackGround"/>
+			</mminfo>
+			<mminfo name="3d" imagename="">
+				<compinfo name="mm_bkgrnd_3d" displayname="BackGround"/>
+			</mminfo>
+			
+			<mmlistinfo name="Standard" imagename="">
+				<compinfo name="mm_list_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="mm_list_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="mm_list_disabled_txt_col_Standard" displayname="Disabled Text"/>
+			</mmlistinfo>
+			<mmlistinfo name="Classic" imagename="">
+				<compinfo name="mm_list_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="mm_list_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="mm_list_disabled_txt_col_Classic" displayname="Disabled Text"/>
+			</mmlistinfo>
+			<mmlistinfo name="3d" imagename="">
+				<compinfo name="mm_list_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="mm_list_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="mm_list_disabled_txt_col_3d" displayname="Disabled Text"/>
+			</mmlistinfo>
+
+			<mmmatrixinfo name="Standard" imagename="">
+				<compinfo name="mm_matrix_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="mm_matrix_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="mm_matrix_disabled_txt_col_Standard" displayname="Disabled Text"/>
+			</mmmatrixinfo>
+			<mmmatrixinfo name="Classic" imagename="">
+				<compinfo name="mm_matrix_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="mm_matrix_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="mm_matrix_disabled_txt_col_Classic" displayname="Disabled Text"/>
+			</mmmatrixinfo>
+			<mmmatrixinfo name="3d" imagename="">
+				<compinfo name="mm_matrix_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="mm_matrix_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="mm_matrix_disabled_txt_col_3d" displayname="Disabled Text"/>
+			</mmmatrixinfo>
+
+			<mm3dinfo name="Standard" imagename="">
+				<compinfo name="mm_3d_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="mm_3d_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="mm_3d_disabled_txt_col_Standard" displayname="Disabled Text"/>
+			</mm3dinfo>
+			<mm3dinfo name="Classic" imagename="">
+				<compinfo name="mm_3d_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="mm_3d_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="mm_3d_disabled_txt_col_Classic" displayname="Disabled Text"/>
+			</mm3dinfo>
+			<mm3dinfo name="3d" imagename="">
+				<compinfo name="mm_3d_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="mm_3d_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="mm_3d_disabled_txt_col_3d" displayname="Disabled Text"/>
+			</mm3dinfo>
+
+			<generalinfo name="Standard" imagename="">
+				<compinfo name="general_bkgrnd_Standard" displayname="BackGround"/>
+			</generalinfo>
+			<generalinfo name="Classic" imagename="">
+				<compinfo name="general_bkgrnd_Classic" displayname="BackGround"/>
+			</generalinfo>
+			<generalinfo name="3d" imagename="">
+				<compinfo name="general_bkgrnd_3d" displayname="BackGround"/>
+			</generalinfo>
+
+			<popupinfo name="Standard" imagename="">
+				<compinfo name="popup_description_bkgrnd_Standard" displayname="Description BackGround"/>
+				<compinfo name="popup_scr_bkgrnd_col_Standard" displayname="Screen BackGround"/>
+				<compinfo name="popup_scr_border_col_Standard" displayname="Screen Border"/>
+				<compinfo name="popup_description_txt_col_Standard" displayname="Description Text"/>
+			</popupinfo>
+			<popupinfo name="Classic" imagename="">
+				<compinfo name="popup_description_bkgrnd_Classic" displayname="Description BackGround"/>
+				<compinfo name="popup_scr_bkgrnd_col_Classic" displayname="Screen BackGround"/>
+				<compinfo name="popup_scr_border_col_Classic" displayname="Screen Border"/>
+				<compinfo name="popup_description_txt_col_Classic" displayname="Description Text"/>
+			</popupinfo>
+			<popupinfo name="3d" imagename="">
+				<compinfo name="popup_description_bkgrnd_3d" displayname="Description BackGround"/>
+				<compinfo name="popup_scr_bkgrnd_col_3d" displayname="Screen BackGround"/>
+				<compinfo name="popup_scr_border_col_3d" displayname="Screen Border"/>
+				<compinfo name="popup_description_txt_col_3d" displayname="Description Text"/>
+			</popupinfo>
+			
+			<inlinelistinfo name="Standard" imagename="">
+				<compinfo name="inline_list_bkgrnd_Standard" displayname="BackGround"/>
+				<compinfo name="inline_list_normal_item_Standard" displayname="Normal Item"/>
+				<compinfo name="inline_list_selected_item_Standard" displayname="Selected Item"/>
+				<compinfo name="inline_list_disabled_item_Standard" displayname="Disabled Item"/>
+				<compinfo name="inline_list_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="inline_list_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="inline_list_disabled_txt_col_Standard" displayname="Disabled Text"/>
+			</inlinelistinfo>
+			<inlinelistinfo name="Classic" imagename="">
+				<compinfo name="inline_list_bkgrnd_Classic" displayname="BackGround"/>
+				<compinfo name="inline_list_normal_item_Classic" displayname="Normal Item"/>
+				<compinfo name="inline_list_selected_item_Classic" displayname="Selected Item"/>
+				<compinfo name="inline_list_disabled_item_Classic" displayname="Disabled Item"/>
+				<compinfo name="inline_list_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="inline_list_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="inline_list_disabled_txt_col_Classic" displayname="Disabled Text"/>
+			</inlinelistinfo>
+			<inlinelistinfo name="3d" imagename="">
+				<compinfo name="inline_list_bkgrnd_3d" displayname="BackGround"/>
+				<compinfo name="inline_list_normal_item_3d" displayname="Normal Item"/>
+				<compinfo name="inline_list_selected_item_3d" displayname="Selected Item"/>
+				<compinfo name="inline_list_disabled_item_3d" displayname="Disabled Item"/>
+				<compinfo name="inline_list_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="inline_list_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="inline_list_disabled_txt_col_3d" displayname="Disabled Text"/>
+			</inlinelistinfo>
+
+			<inlineeditinfo name="Standard" imagename="">
+				<compinfo name="inline_edit_focussed_Standard" displayname="Focussed"/>
+				<compinfo name="inline_edit_unfocussed_Standard" displayname="Unfocussed"/>
+				<compinfo name="inline_edit_noboundary_Standard" displayname="No Boundary"/>
+				<compinfo name="inline_edit_focussed_txt_col_Standard" displayname="Focussed Text"/>
+				<compinfo name="inline_edit_unfocussed_txt_col_Standard" displayname="Unfocussed Text"/>
+				<compinfo name="inline_edit_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="inline_edit_selector_col_Standard" displayname="Selector"/>
+				<compinfo name="inline_edit_cursor_col_Standard" displayname="Cursor"/>
+			</inlineeditinfo>
+			<inlineeditinfo name="Classic" imagename="">
+				<compinfo name="inline_edit_focussed_Classic" displayname="Focussed"/>
+				<compinfo name="inline_edit_unfocussed_Classic" displayname="Unfocussed"/>
+				<compinfo name="inline_edit_noboundary_Classic" displayname="No Boundary"/>
+				<compinfo name="inline_edit_focussed_txt_col_Classic" displayname="Focussed Text"/>
+				<compinfo name="inline_edit_unfocussed_txt_col_Classic" displayname="Unfocussed Text"/>
+				<compinfo name="inline_edit_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="inline_edit_selector_col_Classic" displayname="Selector"/>
+				<compinfo name="inline_edit_cursor_col_Classic" displayname="Cursor"/>
+			</inlineeditinfo>
+			<inlineeditinfo name="3d" imagename="">
+				<compinfo name="inline_edit_focussed_3d" displayname="Focussed"/>
+				<compinfo name="inline_edit_unfocussed_3d" displayname="Unfocussed"/>
+				<compinfo name="inline_edit_noboundary_3d" displayname="No Boundary"/>
+				<compinfo name="inline_edit_focussed_txt_col_3d" displayname="Focussed Text"/>
+				<compinfo name="inline_edit_unfocussed_txt_col_3d" displayname="Unfocussed Text"/>
+				<compinfo name="inline_edit_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="inline_edit_selector_col_3d" displayname="Selector"/>
+				<compinfo name="inline_edit_cursor_col_3d" displayname="Cursor"/>
+			</inlineeditinfo>
+
+			<pininfo name="Standard" imagename="">
+				<compinfo name="PIN_ibox_bkgrnd_Standard" displayname="BackGround"/>
+				<compinfo name="PIN_scr_bkgrnd_Standard" displayname="Screen BackGround"/>
+				<compinfo name="PIN_ibox_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="PIN_ibox_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="PIN_ibox_selector_col_Standard" displayname="Selector"/>
+				<compinfo name="PIN_ibox_cursor_col_Standard" displayname="Cursor"/>
+			</pininfo>
+			<pininfo name="Classic" imagename="">
+				<compinfo name="PIN_ibox_bkgrnd_Classic" displayname="BackGround"/>
+				<compinfo name="PIN_scr_bkgrnd_Classic" displayname="Screen BackGround"/>
+				<compinfo name="PIN_ibox_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="PIN_ibox_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="PIN_ibox_selector_col_Classic" displayname="Selector"/>
+				<compinfo name="PIN_ibox_cursor_col_Classic" displayname="Cursor"/>
+			</pininfo>
+			<pininfo name="3d" imagename="">
+				<compinfo name="PIN_ibox_bkgrnd_3d" displayname="BackGround"/>
+				<compinfo name="PIN_scr_bkgrnd_3d" displayname="Screen BackGround"/>
+				<compinfo name="PIN_ibox_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="PIN_ibox_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="PIN_ibox_selector_col_3d" displayname="Selector"/>
+				<compinfo name="PIN_ibox_cursor_col_3d" displayname="Cursor"/>
+			</pininfo>
+			
+			<dialeriboxinfo name="Standard" imagename="">
+				<compinfo name="dialer_ibox_bkgrnd_Standard" displayname="BackGround"/>
+				<compinfo name="dialer_ibox_normal_txt_col_Standard" displayname="Normal Text"/>
+				<compinfo name="dialer_ibox_selected_txt_col_Standard" displayname="Selected Text"/>
+				<compinfo name="dialer_ibox_selector_col_Standard" displayname="Selector"/>
+				<compinfo name="dialer_ibox_cursor_col_Standard" displayname="Cursor"/>
+			</dialeriboxinfo>
+			<dialeriboxinfo name="Classic" imagename="">
+				<compinfo name="dialer_ibox_bkgrnd_Classic" displayname="BackGround"/>
+				<compinfo name="dialer_ibox_normal_txt_col_Classic" displayname="Normal Text"/>
+				<compinfo name="dialer_ibox_selected_txt_col_Classic" displayname="Selected Text"/>
+				<compinfo name="dialer_ibox_selector_col_Classic" displayname="Selector"/>
+				<compinfo name="dialer_ibox_cursor_col_Classic" displayname="Cursor"/>
+			</dialeriboxinfo>
+			<dialeriboxinfo name="3d" imagename="">
+				<compinfo name="dialer_ibox_bkgrnd_3d" displayname="BackGround"/>
+				<compinfo name="dialer_ibox_normal_txt_col_3d" displayname="Normal Text"/>
+				<compinfo name="dialer_ibox_selected_txt_col_3d" displayname="Selected Text"/>
+				<compinfo name="dialer_ibox_selector_col_3d" displayname="Selector"/>
+				<compinfo name="dialer_ibox_cursor_col_3d" displayname="Cursor"/>
+			</dialeriboxinfo>
+			
+			<datetimeinfo name="Standard" imagename="">
+				<compinfo name="dt_bar_bkgrnd_col_Standard" displayname="BackGround"/>
+				<compinfo name="dt_bar_duration_bkgrnd_col_Standard" displayname="Duration BackGround"/>
+				<compinfo name="dt_bar_date_txt_col_Standard" displayname="Date Text"/>
+				<compinfo name="dt_bar_time_txt_col_Standard" displayname="Time Text"/>
+				<compinfo name="dt_bar_duration_txt_col_Standard" displayname="Duration Text"/>
+				<compinfo name="dt_bar_AOC_txt_col_Standard" displayname="AOC Text"/>
+			</datetimeinfo>
+			<datetimeinfo name="Classic" imagename="">
+				<compinfo name="dt_bar_bkgrnd_col_Classic" displayname="BackGround"/>
+				<compinfo name="dt_bar_duration_bkgrnd_col_Classic" displayname="Duration BackGround"/>
+				<compinfo name="dt_bar_date_txt_col_Classic" displayname="Date Text"/>
+				<compinfo name="dt_bar_time_txt_col_Classic" displayname="Time Text"/>
+				<compinfo name="dt_bar_duration_txt_col_Classic" displayname="Duration Text"/>
+				<compinfo name="dt_bar_AOC_txt_col_Classic" displayname="AOC Text"/>
+			</datetimeinfo>
+			<datetimeinfo name="3d" imagename="">
+				<compinfo name="dt_bar_bkgrnd_col_3d" displayname="BackGround"/>
+				<compinfo name="dt_bar_duration_bkgrnd_col_3d" displayname="Duration BackGround"/>
+				<compinfo name="dt_bar_date_txt_col_3d" displayname="Date Text"/>
+				<compinfo name="dt_bar_time_txt_col_3d" displayname="Time Text"/>
+				<compinfo name="dt_bar_duration_txt_col_3d" displayname="Duration Text"/>
+				<compinfo name="dt_bar_AOC_txt_col_3d" displayname="AOC Text"/>
+			</datetimeinfo>
+
+			<miscinfo name="Standard" imagename="">
+				<compinfo name="network_scr_bkgrnd_Standard" displayname="Network Screen BackGround"/>
+				<compinfo name="aphorism_scr_bkgrnd_Standard" displayname="Aphorism Screen BackGround"/>
+				<compinfo name="CM_scr_bkgrnd_Standard" displayname="CM Screen BackGround"/>
+				<compinfo name="button_bar_col_Standard" displayname="Button Bar"/>
+				<compinfo name="information_bar_col_Standard" displayname="Information Bar"/>
+				<compinfo name="input_method_txt_col_Standard" displayname="Input Method Text"/>
+				<compinfo name="remaining_length_txt_col_Standard" displayname="Remaining Length Text"/>
+				<compinfo name="statusbar0_bkgrnd_col_Standard" displayname="Status BackGround"/>
+			</miscinfo>
+			<miscinfo name="Classic" imagename="">
+				<compinfo name="network_scr_bkgrnd_Classic" displayname="Network Screen BackGround"/>
+				<compinfo name="aphorism_scr_bkgrnd_Classic" displayname="Aphorism Screen BackGround"/>
+				<compinfo name="CM_scr_bkgrnd_Classic" displayname="CM Screen BackGround"/>
+				<compinfo name="button_bar_col_Classic" displayname="Button Bar"/>
+				<compinfo name="information_bar_col_Classic" displayname="Information Bar"/>
+				<compinfo name="input_method_txt_col_Classic" displayname="Input Method Text"/>
+				<compinfo name="remaining_length_txt_col_Classic" displayname="Remaining Length Text"/>
+				<compinfo name="statusbar0_bkgrnd_col_Classic" displayname="Status BackGround"/>
+			</miscinfo>
+			<miscinfo name="3d" imagename="">
+				<compinfo name="network_scr_bkgrnd_3d" displayname="Network Screen BackGround"/>
+				<compinfo name="aphorism_scr_bkgrnd_3d" displayname="Aphorism Screen BackGround"/>
+				<compinfo name="CM_scr_bkgrnd_3d" displayname="CM Screen BackGround"/>
+				<compinfo name="button_bar_col_3d" displayname="Button Bar"/>
+				<compinfo name="information_bar_col_3d" displayname="Information Bar"/>
+				<compinfo name="input_method_txt_col_3d" displayname="Input Method Text"/>
+				<compinfo name="remaining_length_txt_col_3d" displayname="Remaining Length Text"/>
+				<compinfo name="statusbar0_bkgrnd_col_3d" displayname="Status BackGround"/>
+			</miscinfo>
+		</themecomponents>
+	</uidetails>
+	<language name = "English" id = "1">
+		<font name = "Small" file = "small.bdf" width = "6" height = "9" ed = "0"/>
+		<font name = "Medium" file = "medium.bdf" width = "24" height = "14"/>
+		<font name = "Large" file = "large.bdf" width = "27" height = "14"/>
+		<range min = "16" max = "126"/>
+		<range min = "160" max = "255"/>
+	</language>
+	<themedetails>
+		<theme name="Standard" font="" lsk="Standard" rsk="Standard" mtab="Standard" ibox="Standard" sbar="Standard" wtitle="Standard" list="Standard" matrix="Standard" mbar="Standard" scut="Standard" dropdn="Standard" fibox="Standard" mainmenu="Standard" mmlist="Standard" mmmatrix="Standard" mm3d="Standard" general="Standard" popup="Standard" inlinelist="Standard" inlineedit="Standard" pin="Standard" dialeribox="Standard" datetime="Standard" misc="Standard" buttonfnt="MMI_default_font" multitapfnt="MMI_default_font" iboxfnt="MMI_default_font" wtitlefnt="MMI_default_font" listmenufnt="MMI_default_font" matrixmenufnt="MMI_default_font" mbarindexfnt="MMI_default_font" mbaritemfnt="MMI_default_font" scutfnt="MMI_default_font" titletextfnt="MMI_default_font" dropdnfnt="MMI_default_font" mmmatrixfnt="MMI_default_font" mmlistfnt="MMI_default_font"/>
+		<theme name="Classic" font="" lsk="Classic" rsk="Classic" mtab="Classic" ibox="Classic" sbar="Classic" wtitle="Classic" list="Classic" matrix="Classic" mbar="Classic" scut="Classic" dropdn="Classic" fibox="Classic" mainmenu="Classic" mmlist="Classic" mmmatrix="Classic" mm3d="Classic" general="Classic" popup="Classic" inlinelist="Classic" inlineedit="Classic" pin="Classic" dialeribox="Classic" datetime="Classic" misc="Classic" buttonfnt="MMI_default_font" multitapfnt="MMI_default_font" iboxfnt="MMI_default_font" wtitlefnt="MMI_default_font" listmenufnt="MMI_default_font" matrixmenufnt="MMI_default_font" mbarindexfnt="MMI_default_font" mbaritemfnt="MMI_default_font" scutfnt="MMI_default_font" titletextfnt="MMI_default_font" dropdnfnt="MMI_default_font" mmmatrixfnt="MMI_default_font" mmlistfnt="MMI_default_font"/>
+		<theme name="3d" font="" lsk="3d" rsk="3d" mtab="3d" ibox="3d" sbar="3d" wtitle="3d" list="3d" matrix="3d" mbar="3d" scut="3d" dropdn="3d" fibox="3d" mainmenu="3d" mmlist="3d" mmmatrix="3d" mm3d="3d" general="3d" popup="3d" inlinelist="3d" inlineedit="3d" pin="3d" dialeribox="3d" datetime="3d" misc="3d" buttonfnt="MMI_default_font" multitapfnt="MMI_default_font" iboxfnt="MMI_default_font" wtitlefnt="MMI_default_font" listmenufnt="MMI_default_font" matrixmenufnt="MMI_default_font" mbarindexfnt="MMI_default_font" mbaritemfnt="MMI_default_font" scutfnt="MMI_default_font" titletextfnt="MMI_default_font" dropdnfnt="MMI_default_font" mmmatrixfnt="MMI_default_font" mmlistfnt="MMI_default_font"/>
+	</themedetails>
+	<device>		
+		<deploylanguage name = "English" fontsmall = "Small" fontmedium ="Medium" fontlarge = "Large"/>
+		<deploytheme name="Standard"/>
+		<deploytheme name="Classic"/>
+		<deploytheme name="3d"/>
+		<devicesetting>
+			<lcd name="mainlcd" width="128" height="128" />
+			<lcd name="sublcd" width="48" height="84" />
+		</devicesetting>
+	</device>
+</customize>
+
