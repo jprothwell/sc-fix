@@ -1,0 +1,3870 @@
+<bigarchive>
+
+<archive relative="****phantomglobalvars****">
+
+</archive>
+<archive relative='globals.xml'  relative='globals.xml'  relative='globals.xml' vhdlpkg='chip_cfg_pkg'>
+
+
+
+  
+  <var name='NB_BITS_ADDR' value='25'><comment>AHB Address bus size</comment></var>
+
+  <var name='NB_BITS_MAXSPACE' value='24'><comment>Bigest Address space: 16 MB max</comment></var>
+
+  
+
+  <var name='SYS_SRAM_ADDR_WIDTH' value='13'><comment>The System SRam size</comment></var>
+  <var name='SYS_SRAM_SIZE' value='exp2(SYS_SRAM_ADDR_WIDTH+2)'/>
+
+  <var name='SYS_NB_BITS_MASTER' value='3'><comment>System Ahb Bus Configuration</comment></var>
+  
+  <enum name='Sys_Master_Id'>
+    <entry name='SYS_MID_DUMMY'/>
+    <entry name='SYS_MID_BIST'/>
+    <bound name='SYS_MID_RR_Start'><comment>After this starts the Round Robib Pool</comment></bound>
+    <entry name='SYS_MID_DMA'/>
+    <entry name='SYS_MID_XCPU'/>
+    <entry name='SYS_MID_AHB2AHB'/>
+    <entry name='SYS_MID_IFC'/>
+    <entry name='SYS_MID_USB'/>
+    <bound name='SYS_MID_RR_End'/>
+  </enum>
+  <var name='SYS_NB_STATIC_MASTER' value='SYS_MID_RR_Start-1'/>
+  <var name='SYS_NB_MASTERS' value='SYS_MID_RR_End-1'/>
+
+  <var name='SYS_NB_BITS_SLAVE' value='3'/>
+  
+  <enum name='Sys_slave_Id'>
+    <entry name='SYS_SID_DUMMY'/>
+    <entry name='SYS_SID_MEM_BRIDGE'/>
+    <entry name='SYS_SID_AHB2AHB'/>
+    <entry name='SYS_SID_IFC'/>
+    <entry name='SYS_SID_USB'/>
+    <bound name='SYS_SID_End'/>
+  </enum>
+  <var name='SYS_NB_SLAVES' value='SYS_SID_End-1'/>
+
+  <var name='SYS_NB_BITS_PSEL' value='6'><comment>System Apb Bus Configuration</comment></var>
+  <var name='SYS_NB_BITS_PADDR' value='12'/>
+
+  <var name='SYS_APB_STEP' value='exp2(SYS_NB_BITS_PADDR)'/>
+
+  
+  <enum name='Sys_Module_Id'>
+    <entry name='SYS_ID_SYS_CTRL'/>
+    <entry name='SYS_ID_IRQ'/>
+    <entry name='SYS_ID_TIMER'/>
+    <entry name='SYS_ID_GPIO'/>
+    <entry name='SYS_ID_EBC'/>
+    <entry name='SYS_ID_KEYPAD'/>
+    <entry name='SYS_ID_PWM'/>
+    <entry name='SYS_ID_I2C'/>
+    <entry name='SYS_ID_DMA'/>
+    <entry name='SYS_ID_IFC'/>
+    <entry name='SYS_ID_CALENDAR'/>
+    <entry name='SYS_ID_COMREGS'/>
+    <entry name='SYS_ID_PAGE_SPY'/>
+    <entry name='SYS_ID_DEBUG_PORT'/>
+    <bound name='FIRST_SYS_ID_DATA'/> 
+    <entry name='SYS_ID_RF_SPI'/>
+    <entry name='SYS_ID_TCU'/>
+    
+    <entry name='SYS_ID_SCI'><comment>The following modules are linked to ifc dma req with 2 requests per module</comment></entry>
+    <entry name='SYS_ID_SPI'/>
+    <entry name='SYS_ID_SPI2'/>
+    <entry name='SYS_ID_DEBUG_UART'/>
+    <entry name='SYS_ID_UART'/>
+    <entry name='SYS_ID_UART2'/>
+    <entry name='SYS_ID_SDMMC'/>
+    <entry name='SYS_ID_EXT_APB'/>
+    <entry name='SYS_ID_LCDC'/>
+    <entry name='SYS_ID_CAMERA'/>
+    <bound name='LAST_SYS_ID_DATA'/>
+    <entry name='SYS_ID_XCPU_REG'/>
+    <entry name='SYS_ID_XCPU_TAG'/>
+    <entry name='SYS_ID_XCPU_IDATA'/>
+    <entry name='SYS_ID_XCPU_DDATA'/>
+    <entry name='SYS_ID_SYS_AHBC_MON'/>
+    <entry name='SYS_ID_BB_AHBC_MON'/>
+    <entry name='SYS_ID_BIST'/>
+    <entry name='SYS_ID_GPADC'/>
+    <entry name='SYS_ID_PA_AFC'/>
+    <entry name='SYS_ID_ANA_FE'/>
+
+    <bound name='SYS_NB_PSEL'><comment>The maximum number of slaves is currently 33 (excluding the HOST).</comment></bound>
+  </enum>
+    <var name='SYS_ID_DEBUG_HOST' value='exp2(SYS_NB_BITS_PSEL)-1'><comment>The debug host is placed at last PSEL63 in the IFC</comment></var>
+  
+  
+  <enum name='Sys_Ifc_Request_IDs'>
+    <entry name='SYS_ID_TX_SCI'/>       
+    <entry name='SYS_ID_RX_SCI'/>       
+    <entry name='SYS_ID_TX_SPI'/>       
+    <entry name='SYS_ID_RX_SPI'/>       
+    <entry name='SYS_ID_TX_SPI2'/>      
+    <entry name='SYS_ID_RX_SPI2'/>      
+    <entry name='SYS_ID_TX_DEBUG_UART'/>
+    <entry name='SYS_ID_RX_DEBUG_UART'/>
+    <entry name='SYS_ID_TX_UART'/>      
+    <entry name='SYS_ID_RX_UART'/>      
+    <entry name='SYS_ID_TX_UART2'/>     
+    <entry name='SYS_ID_RX_UART2'/>     
+    <entry name='SYS_ID_TX_SDMMC'/>     
+    <entry name='SYS_ID_RX_SDMMC'/>     
+    <entry name='SYS_ID_TX_EXT_APB'/>   
+    <entry name='SYS_ID_RX_EXT_APB'/>   
+    <entry name='SYS_ID_TX_LCDC'/>      
+                                        
+                                        
+    <entry name='SYS_ID_RX_CAMERA' value='SYS_ID_TX_LCDC+3'/>    
+  </enum>
+  
+  <var name='SYS_NB_DMA_REQ' value='18'/>
+
+    
+    <enum name='Sys_Irq_Id'>
+        <entry name='SYS_IRQ_TCU0'><comment>System IRQ IDs<br/>Pulse IRQ</comment></entry>
+        <entry name='SYS_IRQ_TCU1'/>
+        <entry name='SYS_IRQ_FRAME'/>
+        <entry name='SYS_IRQ_DMA_TX_SDMMC'/>
+        <entry name='SYS_IRQ_DMA_RX_SDMMC'/>
+        <entry name='SYS_IRQ_DMA_TX_LCDC'/>
+        <entry name='SYS_IRQ_DMA_RX_CAMERA'/>
+        <bound name='SYS_NB_IRQ_PULSE'><comment>Number of Pulse IRQ</comment></bound>
+        <entry name='SYS_IRQ_COM0'><comment>Level IRQ</comment></entry>
+        <entry name='SYS_IRQ_COM1'/>
+        <entry name='SYS_IRQ_VOC'/>
+        <entry name='SYS_IRQ_DMA'/>
+        <entry name='SYS_IRQ_GPIO'/>
+        <entry name='SYS_IRQ_KEYPAD'/>
+        <entry name='SYS_IRQ_TIMERS'/>
+        <entry name='SYS_IRQ_OS_TIMER'/>
+        <entry name='SYS_IRQ_CALENDAR'/>
+        <entry name='SYS_IRQ_SPI'/>
+        <entry name='SYS_IRQ_SPI2'/>
+        <entry name='SYS_IRQ_DEBUG_UART'/>
+        <entry name='SYS_IRQ_UART'/>
+        <entry name='SYS_IRQ_UART2'/>
+        <entry name='SYS_IRQ_I2C'/>
+        <entry name='SYS_IRQ_SCI'/>
+        <entry name='SYS_IRQ_RF_SPI'/>
+        <entry name='SYS_IRQ_LPS'/>
+        <entry name='SYS_IRQ_BBIFC0'/>
+        <entry name='SYS_IRQ_BBIFC1'/>
+        <entry name='SYS_IRQ_USBC'/>
+        <entry name='SYS_IRQ_LCDC'/>
+        <entry name='SYS_IRQ_SDMMC'/>
+        <entry name='SYS_IRQ_CAMERA'/>
+        <entry name='SYS_IRQ_EXTAPB'/>
+        <bound name='SYS_IRQ_QTY'><comment>Number of IRQ handled by the production driver</comment></bound>
+        <bound name='SYS_NB_IRQ'><comment>Number of IRQ</comment></bound>
+    </enum>
+    <var name='SYS_NB_IRQ_LEVEL' value='SYS_NB_IRQ - SYS_NB_IRQ_PULSE'><comment>Number of Level IRQ</comment></var>
+    
+    <range name='SYS_IRQ_TCU' left='SYS_IRQ_TCU1' right='SYS_IRQ_TCU0'/>
+    <range name='SYS_IRQ_COMREG' left='SYS_IRQ_COM1' right='SYS_IRQ_COM0'/>
+    
+  
+
+  <var name='BB_SRAM_ADDR_WIDTH' value='12'><comment>The Baseband SRam size</comment></var>
+  <var name='BB_SRAM_SIZE' value='13*1024'/>
+
+  <var name='BB_NB_BITS_MASTER' value='3'><comment>Baseband Ahb Bus Configuration</comment></var>
+  
+  <enum name='BB_Master_Id'>
+    <entry name='BB_MID_DUMMY'/>
+    <entry name='BB_MID_BIST'/>
+    <bound name='BB_MID_RR_Start'><comment>After this starts the Round Robib Pool</comment></bound>
+    <entry name='BB_MID_VOC'/>
+    <entry name='BB_MID_BCPU'/>
+    <entry name='BB_MID_AHB2AHB'/>
+    <entry name='BB_MID_IFC'/>
+    <bound name='BB_MID_RR_End'/>
+  </enum>
+  <var name='BB_NB_STATIC_MASTER' value='BB_MID_RR_Start-1'/>
+  <var name='BB_NB_MASTERS' value='BB_MID_RR_End-1'/>
+  <var name='BB_MAX_BURST_SIZE' value='4'/>
+  <var name='BB_MAX_BURST_BITS' value='2'/>
+  <var name='BB_NB_BITS_SLAVE' value='3'/>
+  
+  <enum name='BB_slave_Id'>
+    <entry name='BB_SID_DUMMY'/>
+    <entry name='BB_SID_MEM_BRIDGE'/>
+    <entry name='BB_SID_AHB2AHB'/>
+    <entry name='BB_SID_IFC'/>
+    <entry name='BB_SID_VOC'/>
+    <entry name='BB_SID_SRAM'/>
+    <bound name='BB_SID_End'/>
+  </enum>
+  <var name='BB_NB_SLAVES' value='BB_SID_End-1'/>  
+
+  <var name='BB_NB_BITS_PSEL' value='4'><comment>BaseBand Apb Bus Configuration</comment></var>
+  <var name='BB_NB_BITS_PADDR' value='12'/>
+
+  <var name='BB_APB_STEP' value='exp2(BB_NB_BITS_PADDR)'/>
+
+  
+  <enum name='BB_Module_Id'>
+    <entry name='BB_ID_XCOR'/>
+    <entry name='BB_ID_IFC'/>
+    <entry name='BB_ID_IRQ'/>
+    <entry name='BB_ID_ITLV'/>
+    <entry name='BB_ID_VITERBI'/>
+    <entry name='BB_ID_A5'/>
+    <entry name='BB_ID_RF'/>
+    <entry name='BB_ID_AIF'/>
+    <entry name='BB_ID_CP2'/>
+    <entry name='BB_ID_BIST'/>
+    <entry name='BB_ID_BCPU_REG'/>
+    <entry name='BB_ID_BCPU_TAG'/>
+    <entry name='BB_ID_BCPU_IDATA'/>
+    <entry name='BB_ID_BCPU_DDATA'/>
+    <entry name='BB_ID_COMREGS'/>
+    <bound name='BB_NB_PSEL'><comment>The maximum number of slaves is currently 32.</comment></bound>
+  </enum>
+
+    
+    <enum name='BB_Irq_Id'>
+        <entry name='BB_IRQ_TCU0'><comment>Baseband IRQ IDs<br/>Pulse IRQ</comment></entry>
+        <entry name='BB_IRQ_TCU1'/>
+        <entry name='BB_IRQ_FRAME'/>
+        <bound name='BB_NB_IRQ_PULSE'><comment>Number of Pulse IRQ</comment></bound>
+        <entry name='BB_IRQ_COM0'><comment>Level IRQ</comment></entry>
+        <entry name='BB_IRQ_COM1'/>
+        <entry name='BB_IRQ_VOC'/>
+        <entry name='BB_IRQ_IFC0'/>
+        <entry name='BB_IRQ_IFC1'/>
+        <entry name='BB_IRQ_IFC2'/>
+        <entry name='BB_IRQ_RF_IF'/>
+        <entry name='BB_IRQ_ITLV'/>
+        <entry name='BB_IRQ_VITAC'/>
+        <entry name='BB_IRQ_XCOR'/>
+        <bound name='BB_NB_IRQ'><comment>Number of IRQ</comment></bound>
+    </enum>
+    <var name='BB_NB_IRQ_LEVEL' value='BB_NB_IRQ - BB_NB_IRQ_PULSE'><comment>Number of Level IRQ</comment></var>
+
+    
+    <range name='BB_IRQ_TCU' left='BB_IRQ_TCU1' right='BB_IRQ_TCU0'/>
+    <range name='BB_IRQ_COMREG' left='BB_IRQ_COM1' right='BB_IRQ_COM0'/>
+    <range name='BB_IRQ_IFC' left='BB_IRQ_IFC2' right='BB_IRQ_IFC0'/>
+    
+
+
+  
+  <var name='BB_SYMBOL_SIZE' value='13'><comment>RF Input samples size (signed)</comment></var>
+  <var name='VITAC_MULT_SIZE' value='14'><comment>Vitac Multipliers size</comment></var>
+
+
+</archive><archive relative='granite_ip_config.xml'  relative='granite_ip_config.xml'  relative='granite_ip_config.xml'>
+
+
+
+
+    <var name='IP_NAME' strvalue='granite_ip' value='0'>
+        <comment>granite_ip</comment>
+    </var>
+
+    <var name='TECHNO' strvalue='artisan_sage_x_tsmc0_18' value='0'>
+        <comment>artisan_sage_x_tsmc0_18</comment>
+    </var>
+
+    <var name='FPGA_OPTION' value='0'>
+        <comment>0= chip option; 1= FPGA option
+        </comment>
+    </var>
+
+    <var name='BB_OPTION' value='1'>
+        <comment>0= no baseband; 1= baseband included
+        </comment>
+    </var>
+
+
+
+
+    
+    <var name='MUX_MM_DEBUG_PORT' value='0'>
+        <comment>0= no mux as on test chip; 1=mux for MultiMedia debug port part
+        </comment>
+    </var>
+
+    <var name='ANALOG_OPTION' value='1'>
+        <comment>0= No analog; 1= Acco option or FPGA wrappers if FPGA_OPTION=1
+        </comment>
+    </var>
+
+    <var name='PLL_RATE_OPTION' value='3'>
+        <comment>acco or frequency of the provided external clock:
+            <br/>0= acco 156M, run up to 78 ; 1= 156M, run up to 78 ; 2=312M, run up to 104M
+        </comment>
+    </var>
+
+    <var name='FAST_CLOCK_156M' value='156000000'/>
+    <var name='FAST_CLOCK_312M' value='312000000'/>
+    <var name='FAST_CLOCK_PLL' value='FAST_CLOCK_156M'><comment>Fast clock from the Pll.</comment></var>
+
+                                                 
+    <var name='VOC_OPTION' value='1'>
+        <comment>0= No VOC ; 1= VOC included
+        </comment>
+    </var>
+
+    <var name='AIF_OPTION' value='1'>
+        <comment>0= No aif channels (0,1) ; 1= All 3 channels
+        </comment>
+    </var>
+
+    <var name='AUBYPASS_OPTION' value='0'/>
+
+    <var name='MMI_OPTION' value='1'>
+        <comment>0= No MMI ; 1= MMI included : keypad, PWL/PWT, calendar
+        </comment>
+    </var>
+
+    <var name='NB_GPIO' value='32'>
+        <comment>GPIO/GPO OPTIONS: numbers
+        </comment>
+    </var>
+    <var name='NB_GPIO_INT' value='8'/>
+    <var name='NB_GPO' value='11'/>
+
+    <var name='DMA_OPTION' value='1'>
+        <comment>0= No DMA ; 1= DMA included
+        </comment>
+    </var>
+
+
+
+    <var name='USB_OPTION' value='1'>
+        <comment>0 = no USB; 1 = USB included 
+        </comment>
+    </var>
+
+    <var name='SYS_IFC_NB_STD_CHANNEL' value='7'>
+        <comment>System Ifc Number of generic channel (range 2 to 7)
+        </comment>
+    </var>
+
+
+    <var name='LCD_OPTION' value='1'>
+        <comment>0 = no LCDC; 1 = LCDC included 
+        </comment>
+    </var>
+
+    <var name='UART2_OPTION' value='1'>
+        <comment>0 = no UART2; 1 = UART2 included 
+        </comment>
+    </var>
+
+    <var name='SPI_NB_CS' value='3'>
+        <comment>number of SPI CS
+        </comment>
+    </var>
+
+    <var name='SPI2_OPTION' value='1'>
+        <comment>0 = no SPI2; 1 = SPI2 included 
+        </comment>
+    </var>
+
+    <var name='SPI2_NB_CS' value='2'>
+        <comment>number of SPI2 CS
+        </comment>
+    </var>
+
+    <var name='SDMMC_OPTION' value='1'>
+        <comment>0 = no SDMMC; 1 = SDMMC controller included 
+        </comment>
+    </var>
+
+    <var name='CAMERA_OPTION' value='1'>
+        <comment>0 = no Camera; 1 = Camera controller included 
+        </comment>
+    </var>
+
+    <var name='MEMBRIDGE_OPTION' value='0'>
+        <comment>0 = EBC, 1 = AHBM
+        </comment>
+    </var>
+    <var name='MEMBRIDGE_RAM_NB_BLOCK' value='2'>
+        <comment>for membridge internal ram: number of 32k blocks
+        </comment>
+    </var>
+    <var name='EBC_NB_BITS_ADDR' value='24'>
+        <comment>for EBC option only
+        </comment>
+    </var>
+    <var name='AHBM_NB_BITS_ADDR' value='25'>
+        <comment>for AHBM option only: address bus size
+        </comment>
+    </var>
+    <var name='AHBM_INIT_SB_0' value='0'/>
+    <var name='AHBM_INIT_SB_1' value='0'/>
+    <var name='AHBM_INIT_SB_2' value='0'/>
+    <var name='AHBM_INIT_SB_3' value='0'/>
+    <var name='AHBM_INIT_SB_4' value='0'/>
+
+</archive><archive relative='greenstone_minimal_globals.xml'  relative='greenstone_minimal_globals.xml'  relative='greenstone_minimal_globals.xml'>
+
+
+
+    <var name='REG_SYS_APB_BASE' value='0x00b80000'><comment>System APB base</comment></var>
+</archive><archive relative='regs.xml'  relative='regs.xml'  relative='regs.xml'>
+
+
+
+
+    <include file='greenstone_minimal_globals.xml'/>
+    <include file='globals.xml'/>
+
+    <module name="regs">
+    
+    
+    <var name="GREENSTONE_GPIO_ONLY_NB" value="4"/>
+    <var name="GREENSTONE_GPIO_NB" value="32"/> 
+    <var name="GREENSTONE_GPO_NB" value="11"/> 
+    <var name="PROD_ID" value="0x1208"/>
+    
+        
+        <enum name="GPIO_mapping">
+            <entry name="PIN_CAM_RST" value="4"/>
+            <entry name="PIN_CAM_PDN" value="5"/>
+            <entry name="PIN_I2S_DI_1" value="6"/>
+            <entry name="PIN_SPI_CS_1" value="7"/>
+            <entry name="PIN_SLCD_DA" value="8"/>
+            <entry name="PIN_SLCD_DC" value="9"/>
+            <entry name="PIN_I2C_SDA" value="10"/>
+            <entry name="PIN_I2C_SCL" value="11"/>
+            <entry name="PIN_SLCD_CL" value="12"/>
+            <entry name="PIN_CAM_PCLK" value="13"/>
+            <entry name="PIN_CAM_HREF" value="14"/>
+            <entry name="PIN_CAM_VSYNC" value="15"/>
+            <entry name="PIN_UART2_RTS" value="16"/>
+            <entry name="PIN_UART2_CTS" value="17"/>
+            <entry name="PIN_UART2_TXD" value="18"/>
+            <entry name="PIN_UART2_RXD" value="19"/>
+            <entry name="PIN_UART1_CTS" value="20"/>
+            <entry name="PIN_UART1_RTS" value="21"/>
+            <entry name="PIN_SDMMC_CLK" value="22"/>
+            <entry name="PIN_SDMMC_DATA0" value="23"/>
+            <entry name="PIN_SDMMC_DATA1" value="24"/>
+            <entry name="PIN_SDMMC_DATA2" value="25"/>
+            <entry name="PIN_SDMMC_DATA3" value="26"/>
+            <entry name="PIN_SDMMC_CMD" value="27"/>
+            <entry name="PIN_LPSCO_1" value="28"/>
+            <entry name="PIN_KEYOUT_5" value="29"/>
+            <entry name="PIN_KEYIN_5" value="30"/>
+            <entry name="PIN_TCO6" value="31"/>
+        </enum>
+    
+        <reg name="CHIP_ID" protect="r">
+            <bits name="METAL_ID" pos="9:0" access="r">
+                <comment> ECO Identification number.
+                </comment>
+            </bits>
+            <bits name="BOND_ID" pos="14:12" access="r">
+                <comment>Bonding Identification number.
+                </comment>
+            </bits>
+            <bits name="PROD_ID" pos="31:16" access="r">
+                <comment>Product Identification number.
+                </comment>
+            </bits>
+        </reg>
+        
+        <reg name="Build_Version" protect="r">
+            <comment>This register contain the synthesis date and version
+            </comment>
+            <bits name="Major" pos="31:28" access="r" rst="no">
+            </bits>
+            <bits name="Year" pos="27:24" access="r" rst="no">
+            </bits>
+            <bits name="Month" pos="23:16" access="r" rst="no" display="hex">
+            </bits>
+            <bits name="Day" pos="15:8" access="r" rst="no" display="hex">
+            </bits>
+            <bits name="Build_Style" pos="5:4" access="r" rst="no">
+                <options>
+                    <option name="FPGA" value ="0"/>
+                    <option name="CHIP" value ="1"/>
+                    <option name="FPGA_USB" value ="2"/>
+                    <option name="FPGA_GSM" value ="3"/>
+                </options>
+            </bits>
+            <bits name="Build_Revision" pos="3:0" access="r" rst="no">
+            </bits>
+        </reg>
+    
+        <reg name="GPIO_Mode" protect="rw">
+            <comment>Setting bit n to '1' selects GPIO Usage for PAD connected to GPIOn. Setting bit n to '0' selects Alt. 
+            </comment>
+            <bits name="GPIO_Mode" pos="GREENSTONE_GPIO_NB-1:GREENSTONE_GPIO_ONLY_NB" access="rw" rst="all1" cut="1" cutprefix="Mode" cutenum="GPIO_mapping" cutstart="0">
+                <options>
+                    <option name="ALT" value ="0"/>
+                    <option name="GPIO" value ="1"/>
+                    <mask/><shift/><default/>
+                </options>
+            </bits>
+        </reg>
+        <reg name="Alt_mux_select" protect="rw">
+            <bits name="Debug_Port" pos="1:0" access="rw" rst="1">
+                <comment>Debug Data Bus setting
+                </comment>
+                <options>
+                    <option name="Debug" value="0"><comment>Gives access to Debug Bus features.</comment></option>
+                    <option name="Camera" value="1"><comment>Puts Camera port on Debug port.</comment></option>
+                    <option name="DAI" value="2"><comment>Puts DAI port on Debug port LSBs.</comment></option>
+                    <option name="DAI Simple" value="3"><comment>Puts DAI-Simple port on Debug port LSBs.</comment></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="TCO_6" pos="2" access="rw" rst="0">
+                <comment>TCO_6/RF_SPI_DI pin select
+                </comment>
+                <options>
+                    <option name="TCO_6" value="0"><comment>TCO6 selected.</comment></option>
+                    <option name="RF_SPI DI" value="1"><comment>RF_SPI_DI selected.</comment></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="Xvr select" pos="3" access="rw" rst="0">
+                <comment>Transceiver select for pin DIGRF_RXTX_EN and DIGRF_RXTX_DATA.
+                </comment>
+                <options>
+                    <option name="DigRF" value="0"><comment>DigRF selected.</comment></option>
+                    <option name="TCO" value="1"><comment>Digrf pin are connected to TCO_9 and TCO_7.</comment></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="Strobe select" pos="4" access="rw" rst="0">
+                <comment>DigRf Strobe pin mode select.
+                </comment>
+                <options>
+                    <option name="DigRF Strobe" value="0"></option>
+                    <option name="TCO_8" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+    
+            <bits name="Memory Addess 23" pos="5" access="rw" rst="0">
+                <comment>Memory MA[23] pin select
+                </comment>
+                <options>
+                    <option name="MA_23" value="0"></option>
+                    <option name="M_CS4" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="LSB Memory Addr bus" pos="6" access="rw" rst="0">
+                <comment>LSB Memory address MA[15:0] bus select
+                </comment>
+                <options>
+                    <option name="Memory" value="0"></option>
+                    <option name="Parallel LCD" value="1"><comment>Select parallel LCD. When this option is selected, the serial LCD is not avalaible.</comment></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="Memory CS2" pos="8:7" access="rw" rst="0">
+                <comment>Memory CS_2 pin select
+                </comment>
+                <options>
+                    <option name="M_CS_2" value="0"></option>
+                    <option name="LCD_CS_0" value="1"></option>
+                    <option name="SPI_CS_2" value="2"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="Serial LCD_CE" pos="10:9" access="rw" rst="0">
+                <comment>SLCD_CE pin select.
+                </comment>
+                <options>
+                    <option name="SLCD_CE" value="0"></option>
+                    <option name="LCD_CS_1" value="1"></option>
+                    <option name="M_CS_3" value="2"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="UART2" pos="11" access="rw" rst="0">
+                <comment>UART2/UART1 functionality select.
+                </comment>
+                <options>
+                    <option name="UART2" value="0"></option>
+                    <option name="UART1" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="PWL0" pos="12" access="rw" rst="0">
+                <comment>PWL0/GPO_7 pin select.
+                </comment>
+                <options>
+                    <option name="PWL0" value="0"></option>
+                    <option name="GPO_7" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="PWL1" pos="13" access="rw" rst="0">
+                <comment>PWL1/GPO_6 pin select.
+                </comment>
+                <options>
+                    <option name="PWL1" value="0"></option>
+                    <option name="GPO_6" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+    
+            <bits name="SDMMC" pos="14" access="rw" rst="0">
+                <comment>SDMMC/SPI2 functionality select.
+                </comment>
+                <options>
+                    <option name="SDMMC" value="0"></option>
+                    <option name="SPI2" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="GPO" pos="15" access="rw" rst="0">
+                <comment>GPO/SPI2 functionality select. SPI2 is available only if SDMMC (bit14 set to zero in alt_mux_select register). 
+                </comment>
+                <options>
+                    <option name="GPO" value="0"></option>
+                    <option name="SPI2" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="GPO_1" pos="16" access="rw" rst="0">
+                <comment>GPO_1/SPI2_CS_1 pin select. SPI2 is available only if SDMMC (bit14 set to zero in alt_mux_select register).
+                </comment>
+                <options>
+                    <option name="GPO_1" value="0"></option>
+                    <option name="SPI2_CS_1" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+    
+            <bits name="TCO_5" pos="17" access="rw" rst="0">
+                <comment>TCO_5/GPO_10 pin select.
+                </comment>
+                <options>
+                    <option name="TCO_5" value="0"></option>
+                    <option name="GPO_10" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="TCO_4" pos="18" access="rw" rst="0">
+                <comment>TCO_4/GPO_9 pin select.
+                </comment>
+                <options>
+                    <option name="TCO_4" value="0"></option>
+                    <option name="GPO_9" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name="TCO_3" pos="19" access="rw" rst="0">
+                <comment>TCO_3/GPO_8 pin select.
+                </comment>
+                <options>
+                    <option name="TCO_3" value="0"></option>
+                    <option name="GPO_8" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+           <bits name="KEYOUT_5" pos="20" access="rw" rst="0">
+                <comment>KEYOUT_5/LPG pin select.
+                </comment>
+                <options>
+                    <option name="KEYOUT_5" value="0"></option>
+                    <option name="LPG" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+           <bits name="KEYIN_5" pos="21" access="rw" rst="0">
+                <comment>KEYIN_5/PWT pin select.
+                </comment>
+                <options>
+                    <option name="KEYIN_5" value="0"></option>
+                    <option name="PWT" value="1"></option>
+                    <mask/>
+                </options>
+            </bits>
+        </reg>
+        <reg name="IO_Drive_Select1" protect="rw">
+           <bits name="Data" pos="3:0" access="rw" rst="all0">
+                <comment>D[15:0] bus drive select</comment>
+           </bits>
+           <bits name="LSB Memory Address" pos="7:4" access="rw" rst="all0">
+                <comment>MA[15:0] bus drive select</comment>
+           </bits>
+           <bits name="MSB Memory Address" pos="11:8" access="rw" rst="all0">
+                <comment>MA[22:16] bus drive select</comment>
+           </bits>
+           <bits name="MA_23" pos="15:12" access="rw" rst="all0">
+                <comment>MA[23] drive select</comment>
+           </bits>
+           <bits name="M_CS0" pos="19:16" access="rw" rst="all0">
+                <comment>M_CS0 drive select</comment>
+           </bits>
+           <bits name="M_CS1" pos="23:20" access="rw" rst="all0">
+                <comment>M_CS1 drive select</comment>
+           </bits>
+           <bits name="M_CS2" pos="27:24" access="rw" rst="all0">
+                <comment>M_CS2 drive select</comment>
+           </bits>
+           <bits name="M_CTRL" pos="31:28" access="rw" rst="all0">
+                <comment>M_CRE, M_BE[1:0], M_ADV  drive select</comment>
+           </bits>
+        </reg>
+        <reg name="IO_Drive_Select2" protect="rw">
+           <bits name="M_CTRL_WE" pos="3:0" access="rw" rst="all0">
+                <comment>M_WE and M_OE drive select</comment>
+           </bits>
+           <bits name="M_CLK" pos="7:4" access="rw" rst="all0">
+                <comment>M_CLK drive select</comment>
+           </bits>
+           <bits name="Serial LCD" pos="11:8" access="rw" rst="all0">
+                <comment>SLCD_CL, SLCD_CA, SLCD_CC drive select</comment>
+           </bits>
+           <bits name="Serial LCD_SCE" pos="15:12" access="rw" rst="all0">
+                <comment>LCD_SCE/M_CS_3 drive select</comment>
+           </bits>
+           <bits name="Xvr domain" pos="19:16" access="rw" rst="all0">
+                <comment>Transceiver domain drive select</comment>
+           </bits>
+        </reg>
+        <reg name="ExtPll_Ctrl" protect="rw">
+            <comment>Register protected by RiskyReg_Write_Unlocked_H (Cf. Sys_Ctrl).</comment>
+            <bits name="ExtPll_Enable" pos="0" access="rw" rst="1">
+                <comment>Mode of the Pll. This register is set to enable by the LPS_start_ExtPll_pulse_H.</comment>
+                <options>
+                    <option name="Power_Down" value="1"></option>
+                    <option name="Enable" value="0"></option>
+                </options>
+            </bits>
+            <bits name="ExtPll_Output_Enable" pos="4" access="rw" rst="1">
+                <comment>Enables the output of the PLL. This register is set to enable by the LPS_start_ExtPll_pulse_H.</comment>
+                <options>
+                    <option name="Enable" value="0"></option>
+                    <option name="Disable" value="1"></option>
+                </options>
+            </bits>
+            <bits name="ExtPll_Bypass" pos="8" access="rw" rst="0">
+                <options>
+                    <option name="Pass" value="0"><comment>In this mode the output of the PLL is its input clock divided by the proper dividers</comment></option> 
+                    <option name="Bypass" value="1"><comment>In this mode the output of the PLL is its input clock</comment></option>
+                </options>
+            </bits>
+            <bits name="ExtPll_Locked" pos="12" access="r" rst="0">
+                <comment>Indicates if the Pll managed to lock at 312MHz</comment>
+                <options>
+                    <option name="Not_Locked" value="0"></option>
+                    <option name="Locked" value="1"></option>
+                </options>
+            </bits>
+            <bits name="ExtPll_Clk_Fast_Enable" pos="16" access="rw" rst="0">
+                <comment>Enables the Fast Clock from the ExtPll (Clock Gate Reg Resync).</comment>
+                <options>
+                    <option name="Enable" value="1"></option>
+                    <option name="Disable" value="0"></option>
+                </options>
+            </bits>
+            <bits name="ExtPll_Lock_Ctrl_Rst" pos="20" access="rw" rst="0">
+                <comment>Resets the module which detects if the PLL has locked or not</comment>
+                <options>
+                    <option name="No_Reset" value="0"></option>
+                    <option name="Reset" value="1"></option>
+                </options>
+            </bits>
+        </reg>
+    
+        <reg name="ExtPll_Config" protect="rw">   
+                <comment>Configuration of the Pll</comment>        
+            <bits name="ExtPll_Input_Divider" pos="4:0" access="rw" rst="0">
+                <comment>Input 5-bits divider value. The clock is multiplied by NR=R+2 , R being the actual value in this register.</comment>
+            </bits>
+            <bits name="ExtPll_Feedback_Divider" pos="16:8" access="rw" rst="0">
+                <comment>Feedback 9-bits divider value. The clock is multiplied by NF=F+2 , F being the actual value in this register.</comment>
+            </bits>
+            <bits name="ExtPll_Output_Divider" pos="25:24" access="rw" rst="0">
+                <comment>Ouput 2-bits divider value</comment>
+               <options>
+                   <option name="Div_By_1" value="0"></option>
+                   <option name="Div_By_2" value="1"></option>
+                   <option name="Div_By_2_also" value="2"></option>
+                   <option name="Div_By_4" value="3"></option>
+               </options> 
+            </bits>
+            <comment>PLL Output Clock Frequency Setting
+               <br/>FOUT = [FIN * (NF * 2)] / [(NR * 2) * NO]
+               <br/>Meanwhile, the following constraints must be followed :
+               <ul>
+               <li>800KHz &lt; Fref &lt; 8MHz</li>
+               <li>200MHz &lt; FVCO &lt; 500MHz, FVCO &gt; 250MHz is preferred</li>
+               </ul>
+               where
+               <br/>PLL's comparison frequency Fref = FIN/(NR*2).
+               <br/>PLL's VCO frequency FVCO = FIN*(NF*2)/(NR*2).
+            </comment> 
+        </reg>
+    
+        <reg name="ExtPll_Dbg_Clk" protect="rw">
+            <bits name="ExtPll_Dbg_Clk_Sel" pos="2:0" access="rw" rst="0">
+                <comment>Configurates which clock is selected as debug_clock</comment>
+                <options>
+                    <option name="Clk_To_PllAcco" value="0"><comment>Clk to PLL_Acco : 12 MHz</comment></option>
+                    <option name="Clk_USB" value="1"><comment>Clk USB : 48 MHz</comment></option>
+                    <option name="Clk_Stereo" value="2"><comment>Clk Stereo : 12/13 MHz % 2->16</comment></option>
+                    <option name="Clk_Camera" value="3"><comment>Clk Camera : 156/144 MHz % 2->12</comment></option>
+                    <option name="Au_ExtTx_Stb" value="4"><comment>Stereo Strobe</comment></option>
+                </options>
+            </bits>
+        </reg>
+    
+        <reg name="CLK_CAMERA_OUT_CTRL" protect="rw">   
+            <bits name="CLK_CAMERA_OUT_EN" pos="0" access="rw" rst="0">
+                <comment>Clk camera out enable. </comment>
+               <options>
+                   <option name="disable" value="0"></option>
+                   <option name="enable" value="1"></option>
+               </options>
+            </bits>    
+            <bits name="CLK_CAMERA_DIV_SRC_SEL" pos="5:4" access="rw" rst="0">
+                <comment>Selects from which clock the Clk camera is generated.</comment>
+               <options>
+                   <option name="156 MHz" value="0"></option>
+                   <option name="144 MHz" value="1"></option>
+                   <option name=" 26 MHz" value="2"></option>
+               </options>
+            </bits>    
+            <bits name="CLK_CAMERA_OUT_DIV" pos="11:8" access="rw" rst="15">
+                <comment>Clock camera out divider. clock frequency = selected clock source frequency / (value + 2). See bit 4 CLK_CAMERA_OUT_SRC_SEL for source selection.  
+                </comment>
+                <options>
+                    <default/><mask/><shift/>
+                </options>
+            </bits>  
+            <bits name="CLK_CAMERA_OUT_SRC_SEL" pos="13:12" access="rw" rst="0">
+                <comment>Selection between the output of the divider, the 32K clock, or the 26M clock.</comment>
+                <options>
+                    <option name="From divider" value="0"></option>
+                    <option name="From 32K" value="1"></option>
+                    <option name="From 26M" value="2"></option>
+                </options>
+            </bits>         
+        </reg>
+        
+        <reg name="STEREO_DAC_CTRL_SET" protect="rw">   
+            <bits name="AU_HPLPD" pos="0" access="rs" rst="1">
+                <comment>Headphone left channel mixer and driver power down signal.</comment>
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_HPRPD" pos="1" access="rs" rst="1">
+                <comment>Headphone right channel mixer and driver power down signal.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_VREFPD" pos="2" access="rs" rst="1">
+                <comment>VREF (necessary for all other functions) generation block power down. </comment>
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_VMIDPD" pos="3" access="rs" rst="1">
+                <comment>VMID (necessary for all other functions) generation block power down.</comment>
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_IBPD" pos="4" access="rs" rst="1">
+                <comment>Bias current generation block power down.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_DACPDL" pos="5" access="rs" rst="1">
+                <comment>DAC left power down. </comment>
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_DACPDR" pos="6" access="rs" rst="1">
+                <comment>DAC right power down. </comment>
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_RST_H" pos="16" access="rs" rst="1">
+                <comment>SoftReset for all flops using the audio clock.  </comment>
+               <options>
+                   <option name="No Reset" value="0"></option>
+                   <option name="Reset" value="1"></option>
+               </options>
+            </bits>             
+            <bits name="AU_CLKENB_L" pos="31" access="rs" rst="1">
+                <comment>Clock input disable. </comment>
+                <options>
+                    <option name="enable" value ="0"/>
+                    <option name="disable" value ="1"/>
+                </options>
+            </bits>    
+        </reg>
+        
+        <reg name="STEREO_DAC_CTRL_CLR" protect="rw">   
+            <bits name="AU_HPLPD" pos="0" access="rc" rst="1">
+                <comment>Headphone left channel mixer and driver power down signal.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_HPRPD" pos="1" access="rc" rst="1">
+                <comment>Headphone right channel mixer and driver power down signal.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_VREFPD" pos="2" access="rc" rst="1">
+                <comment>VREF (necessary for all other functions) generation block power down.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_VMIDPD" pos="3" access="rc" rst="1">
+                <comment>VMID (necessary for all other functions) generation block power down.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_IBPD" pos="4" access="rc" rst="1">
+                <comment>Bias current generation block power down.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_DACPDL" pos="5" access="rc" rst="1">
+                <comment>DAC left power down.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_DACPDR" pos="6" access="rc" rst="1">
+                <comment>DAC right power down.</comment> 
+                <options>
+                    <option name="power up" value ="0"/>
+                    <option name="power down" value ="1"/>
+                </options>
+            </bits>    
+            <bits name="AU_RST_H" pos="16" access="rc" rst="1">
+                <comment>SoftReset for all flops using the audio clock.  </comment>
+               <options>
+                   <option name="no Reset" value="0"></option>
+                   <option name="Reset" value="1"></option>
+               </options>
+            </bits>          
+            <bits name="AU_CLKENB_L" pos="31" access="rc" rst="1">
+                <comment>Clock input disable.</comment> 
+                <options>
+                    <option name="enable" value="0"></option>
+                    <option name="disable" value="1"></option>
+                </options>
+            </bits>    
+        </reg>
+    
+        <reg name="STEREO_DAC_DIG_CTRL" protect="rw">   
+            <bits name="AU_DACFLT" pos="1:0" access="rw" rst="0">
+                <comment>DAC filter type select. </comment>
+               <options>
+                   <option name="OSR 125" value="0"></option>
+                   <option name="OSR 135" value="1"></option>
+                   <option name="OSR 145" value="2"></option>
+                   <option name="reserved" value="3"></option>
+               </options>
+            </bits>   
+            <bits name="AU_AIF_STB_CFG" pos="3" access="rw" rst="0">
+                <comment>configure aif strobe toggles on rising or falling edge of stereo dac strobe.</comment>
+               <options>
+                   <option name="rising" value="0"> </option>
+                   <option name="falling" value="1"> </option>
+               </options>
+            </bits>   
+            <bits name="AU_DACMU_L" pos="4" access="rw" rst="1">
+                <comment>Digital soft mute for DAC left channel. </comment>
+                <options>
+                    <option name="no mute" value ="0"/>
+                    <option name="mute" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_DACMU_R" pos="5" access="rw" rst="1">
+                <comment>Digital soft mute for DAC right channel. </comment> 
+                <options>
+                    <option name="no mute" value ="0"/>
+                    <option name="mute" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_DACINV_L" pos="6" access="rw" rst="0">
+                <comment>L Channel DAC phase invert. 
+                    <options>
+                        <option name="no inverted" value ="0"/>
+                        <option name="inverted" value ="1"/>
+                    </options>
+                </comment>
+            </bits>   
+            <bits name="AU_DACINV_R" pos="7" access="rw" rst="0">
+                <comment>R Channel DAC phase invert. 
+                    <options>
+                        <option name="no inverted" value ="0"/>
+                        <option name="inverted" value ="1"/>
+                    </options>
+                </comment>
+            </bits>           
+            <bits name="AU_DWAEN" pos="8" access="rw" rst="0">
+                <comment>DWA algorithm enable.</comment>
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_TSTEN" pos="9" access="rw" rst="0">
+                <comment>Test stimulus enable.</comment>
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_LDAMUX" pos="12" access="rw" rst="0">
+                <comment>Left channel DAC input select.</comment>
+                <options>
+                    <option name="digit input" value ="0"/>
+                    <option name="test stimu" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_RDAMUX" pos="13" access="rw" rst="0">
+                <comment>Right channel DAC input select.</comment>
+                <options>
+                    <option name="digit input" value ="0"/>
+                    <option name="test stimu" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_DAC_SHIFT_SIGN" pos="14" access="rw" rst="0">
+                <comment>config DAC digital input shift.</comment>
+                <options>
+                    <option name="signed" value ="0"/>
+                    <option name="unsigned" value ="1"/>
+                </options>
+            </bits>              
+            <bits name="AU_DACIL_SHIFT" pos="18:16" access="rw" rst="0">
+                <comment>left DAC digital input shift.</comment>
+            </bits>   
+            <bits name="AU_DACIR_SHIFT" pos="22:20" access="rw" rst="0">
+                <comment>right DAC digital input shift.</comment>
+            </bits>   
+            <bits name="AU_CLK_DIV" pos="27:24" access="rw" rst="15">
+                <comment>Stereo dac clock divider for generating over-sampling clock. clock freqency = selected clock source frequency / (value + 2). See bit 28 CLK_SRC_SEL for source selection.  </comment>
+            </bits>         
+            <bits name="AU_CLK_SRC_SEL" pos="28" access="rw" rst="0">
+                <comment>Generate audio clock from 12MHz or 13MHz. </comment>
+               <options>
+                   <option name="12 MHz" value="0"></option>
+                   <option name="13 MHz" value="1"></option>
+               </options>
+            </bits>  
+        </reg>    
+        
+        <reg name="STEREO_DAC_ANA_CTRL" protect="rw">   
+            <bits name="AU_TOEN" pos="0" access="rw" rst="0">
+                <comment>Timeout Enable. </comment>
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_TOTM" pos="1" access="rw" rst="0">
+                <comment>Detect time for the timeout mode in zero-crossing function. 
+                    <br/> 0 = (2**18-1)*T (T = oversampling-clock cycle)
+                    <br/> 1 = (2**17-1)*T (T = oversampling-clock cycle)
+                </comment>
+            </bits>   
+            <bits name="AU_CAPLESS" pos="2" access="w" rst="-">
+                <comment>Capless mode enable signal. 
+                    <br/> 0 = Capless Mode disable.(Output PSUGND is high resistance)
+                    <br/> 1 = Capless Mode enable.(Vau_psugnd=VMID)
+                </comment>
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>          
+            <bits name="AU_HPLZC" pos="4" access="rw" rst="0">
+                <comment>Left stereo headphone driver zero cross enable. 
+                    <br/> 0 = change gain immediately
+                    <br/> 1 = change gain on zero cross only
+                </comment>
+            </bits>   
+            <bits name="AU_HPRZC" pos="5" access="rw" rst="0">
+                <comment>Left stereo headphone driver zero cross enable. 
+                    <br/> 0 = change gain immediately
+                    <br/> 1 = change gain on zero cross only
+                </comment>
+            </bits>   
+            <bits name="AU_LDA2HPL" pos="16" access="rw" rst="0">
+                <comment>Left DAC to headphone stereo mixer L channel.</comment> 
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_RDA2HPL" pos="17" access="rw" rst="0">
+                <comment>Right DAC to headphone stereo mixer L channel.</comment> 
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_LDA2HPR" pos="20" access="rw" rst="0">
+                <comment>Left DAC to headphone stereo mixer R channel.</comment> 
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_RDA2HPR" pos="21" access="rw" rst="0">
+                <comment>Right DAC to headphone stereo mixer R channel.</comment> 
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_VOI2HP" pos="24" access="rw" rst="0">
+                <comment>Voice input to both headphone stereo mixer L/R channel.</comment>
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>           
+            <bits name="AU_TSDEN" pos="28" access="rw" rst="0">
+                <comment>Temperature sensor enable signal. </comment>
+                <options>
+                    <option name="disable" value ="0"/>
+                    <option name="enable" value ="1"/>
+                </options>
+            </bits>   
+            <bits name="AU_DTEMP" pos="31" access="r" rst="0">
+                <comment>Over temperature index for the system.</comment>
+                <options>
+                    <option name="normal" value ="0"/>
+                    <option name="over temp" value ="1"/>
+                </options>
+            </bits>   
+        </reg>    
+        
+        <reg name="STEREO_DAC_MIXER_HP_GAIN" protect="rw">   
+            <bits name="AU_VOI2HPVOL" pos="2:0" access="rw" rst="5">
+                <comment>Voice signal to headphone stereo mixer L channel volume control. 
+                    <br/> 000 = +6dB 
+                    <br/> 001 = +3dB 
+                    <br/> ... 3dB steps downto  
+                    <br/> 110 = -12dB
+                    <br/> 111 = -15dB
+                </comment>
+            </bits>   
+        </reg>    
+        
+        <reg name="STEREO_DAC_HP_GAIN_L" protect="rw">   
+            <bits name="AU_HPLVU" pos="0" access="rw" rst="0">
+                <comment>Left stereo headphone driver volume update. 
+                    <br/> 0 = store AU_HPLVOL in intermediate latch(no gain change)
+                    <br/> 1 = update left and right channel gains (left=AU_HPLVOL, right=intermediate latch)
+                </comment>
+            </bits>   
+            <bits name="AU_HPLVOL" pos="12:8" access="rw" rst="23">
+                <comment>Left stereo headphone driver volume control. 
+                    <br/> 00000 to 00010 analog mute
+                    <br/> 00011 = -30dB
+                    <br/> 00100 = -28.5dB
+                    <br/> ... 1.5dB steps up to 
+                    <br/> 11110 = +10.5dB
+                    <br/> 11111 = +12dB
+                </comment>
+            </bits>   
+        </reg>     
+    
+        <reg name="STEREO_DAC_HP_GAIN_R" protect="rw">   
+            <bits name="AU_HPRVU" pos="0" access="rw" rst="0">
+                <comment>Left stereo headphone driver volume update. 
+                    <br/> 0 = store AU_HPLVOL in intermediate latch(no gain change)
+                    <br/> 1 = update left and right channel gains (left=AU_HPLVOL, right=intermediate latch)
+                </comment>
+            </bits>   
+            <bits name="AU_HPRVOL" pos="12:8" access="rw" rst="23">
+                <comment>Left stereo headphone driver volume control. 
+                    <br/> 00000 to 00010 analog mute
+                    <br/> 00011 = -30dB
+                    <br/> 00100 = -28.5dB
+                    <br/> ... 1.5dB steps up to 
+                    <br/> 11110 = +10.5dB
+                    <br/> 11111 = +12dB
+                </comment>
+            </bits>   
+        </reg>     
+    
+        <reg name="STEREO_DAC_REF_GEN" protect="rw"> 
+            <bits name="AU_VROI" pos="0" access="rw" rst="0">
+                <comment>VREF to analog output resistance. 
+                    <br/> 0 = 1.5K Ohm
+                    <br/> 1 = 40K Ohm
+                </comment>
+            </bits>   
+            <bits name="AU_VMIDSEL" pos="5:4" access="rw" rst="0">
+                <comment>VMID divider enable and select. 
+                    <br/> 00 = VMID disable (for OFF mode)
+                    <br/> 01 = 50K Ohm divider enable 
+                    <br/> 10 = 500K Ohm divider enable (for low power standby) 
+                    <br/> 11 = 5K Ohm divider enable (for fast startup) 
+                </comment>
+            </bits>   
+            <bits name="AU_VSEL" pos="10:8" access="rw" rst="4">
+                <comment>Analog bias current optimisation. 
+                    <br/> 000 = -50%
+                    <br/> 001 = -37.5%
+                    <br/> 010 = -25%
+                    <br/> 011 = -12.5%
+                    <br/> 100 = 0 
+                    <br/> 101 = +12.5%
+                    <br/> 110 = +25%
+                    <br/> 111 = +37.5%
+                </comment>
+            </bits>   
+            <bits name="AU_IMFMIX" pos="13:12" access="rw" rst="1">
+                <comment>Bias current modify control bit for mixers. 
+                    <br/> 00 = 2.5u
+                    <br/> 01 = 5u 
+                    <br/> 10 = 7.5u 
+                    <br/> 11 = 10u 
+                </comment>
+            </bits>   
+            <bits name="AU_IMFDR" pos="17:16" access="rw" rst="1">
+                <comment>Bias current modify control bit for headphone and loudspeaker. 
+                    <br/> 00 = 2.5u
+                    <br/> 01 = 5u 
+                    <br/> 10 = 7.5u 
+                    <br/> 11 = 10u 
+                </comment>
+            </bits>   
+            <bits name="AU_IMFDAC" pos="21:20" access="rw" rst="1">
+                <comment>Bias current modify control bit for analog filter of DAC. 
+                    <br/> 00 = 2.5u
+                    <br/> 01 = 5u 
+                    <br/> 10 = 7.5u 
+                    <br/> 11 = 10u 
+                </comment>
+            </bits>   
+            <bits name="AU_DACIT1" pos="24" access="rw" rst="0">
+                <comment>Bias current modify bit of stage one in analog filter. 
+                    <br/> 0 = default 5 uA
+                    <br/> 1 = 2.5 uA
+                </comment>
+            </bits>   
+        </reg>     
+        <reg name="IO_TEST_MODE" protect="rw">
+            <comment>Selects I/O muxing for ACCO/STEREO DAC/USB tests and USB Backup port.
+                    <br/>Note that theses settings can be overidden in TST_H mode by pad driving.
+            </comment>
+            <bits name="Test_Mode" pos="3:0" access="rw" rst="all0">
+                <options>
+                    <option name="DISABLED" value ="0">
+                        <comment>Functional muxing.</comment></option>
+                    <option name="ACCO_TEST" value ="1">
+                        <comment>Gives access to ACCO test buses.</comment></option>
+                    <option name="USB_TEST" value ="2">
+                        <comment>Gives access to USB PHY pins.</comment></option>
+                    <option name="ST_DAC_TEST" value ="3">
+                        <comment>Gives access to Stereo DAC test bus.</comment></option>
+                    <option name="ST_DAC_BIST" value ="4">
+                        <comment>Puts the Stereo DAC in BIST mode.</comment></option>
+                    <option name="USB_BACKUP" value ="5">
+                        <comment>Put the USBC bus on the DBG_BUS to control an external PHY</comment></option>
+                    <mask/><shift/><default/>
+                </options>
+            </bits>
+        </reg>
+                    
+    </module>
+    
+    <instance address="REG_SYS_APB_BASE + SYS_APB_STEP * SYS_ID_EXT_APB" type="regs" name="EXT_APB" />
+
+</archive><archive relative='debug_host_internals.xml'  relative='debug_host_internals.xml'  relative='debug_host_internals.xml'>
+
+
+
+	<module name='debug_host_internal_registers' category='Debug'>
+		<ireg name='CTRL_SET' protect='rw'>
+			<comment>General control signals set.</comment>
+			<bits name='Debug_Reset' rst='0' access='rs' pos='0'>
+				<comment>Debug host generated reset. Signal to system control. Active high.<br/>Write '1' to this bit will set it to '1'.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+			<bits name='XCPU_Force_Reset' rst='0' access='rs' pos='1'>
+				<comment>Force XCPU Reset signal. Active high. Hold XCPU in reset state until this bit is cleared.<br/>Write '1' to this bit will set it to '1'.<br/>Reseted by signal rst_host_reg.</comment>
+			</bits>
+			<bits name='Force_Wakeup' rst='0' access='rs' pos='2'>
+				<comment>Force wakeup. Active high.<br/>Write '1' to this bit will set it to '1'.<br/>Reseted by signal rst_host_reg.</comment>
+			</bits>
+			<bits name='Force_BP_XCPU' rst='0' access='rs' pos='3'>
+				<comment>Force XCPU breakpoint. Active high. Hold its value until this bit is cleared. When Read, Get the status of Force breakpoint sent back by XCPU.<br/>Write '1' to this bit will set it to '1'.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+			<bits name='Force_BP_BCPU' rst='0' access='rs' pos='4'>
+				<comment>Force BCPU breakpoint. Active high. Hold its value until this bit is cleared. When Read, Get the status of Force breakpoint sent back by BCPU.<br/>Write '1' to this bit will set it to '1'.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+			<bits name='IT_XCPU' rst='0' access='rs' pos='5'>
+				<comment>When write '1, generate a level IRQ to XCPU. Write '0 is ignored. This IRQ can be cleared by written APB register. When Read, Get the IRQ status.<br/>Write '1' to this bit will set it to '1'.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+			<bits name='IT_BCPU' rst='0' access='rs' pos='6'>
+				<comment>When write '1', generate a level IRQ to BCPU. Write '0' is ignored. This IRQ can be cleared by written APB register. When Read, Get the IRQ status.<br/>Write '1' to this bit will set it to '1'.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+			<bits name='Debug_Port_Lock' rst='0' access='rs' pos='7'>
+				<comment>Lock Debug port set.<br/>Write '1' to this bit will set it to '1'.<br/>Reseted by signal rst_host_reg.</comment>
+			</bits>
+		</ireg>
+		
+		<ireg name='CTRL_CLR' protect='rw'>
+			<comment>General control signals clear.</comment>		
+			<bits name='XCPU_Force_Reset' rst='0' access='rc' pos='1'>
+				<comment>Force XCPU Reset signal. Active high. Hold XCPU in reset state until this bit is cleared.<br/>Write '1' to this bit will clear it to '0'.<br/>Reseted by signal rst_host_reg.</comment>
+			</bits>
+			<bits name='Force_Wakeup' rst='0' access='rc' pos='2'>
+				<comment>Force wakeup. Active high.<br/>Write '1' to this bit will clear it to '0'.<br/>Reseted by signal rst_host_reg.</comment>
+			</bits>
+			<bits name='Force_BP_XCPU' rst='0' access='rc' pos='3'>
+				<comment>Force XCPU breakpoint. Active high. Hold its value until this bit is cleared. When Read, Get the status of Force breakpoint sent back by XCPU.<br/>Write '1' to this bit will clear it to '0'.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>	
+			<bits name='Force_BP_BCPU' rst='0' access='rc' pos='4'>
+				<comment>Force BCPU breakpoint. Active high. Hold its value until this bit is cleared. When Read, Get the status of Force breakpoint sent back by BCPU.<br/>Write '1' to this bit will clear it to '0'.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+			<bits name='Debug_Port_Lock' rst='0' access='rc' pos='7'>
+				<comment>Lock Debug port clear.<br/>Write '1' to this bit will clear it to '0'.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>            
+		</ireg>
+
+		<ireg name='CLKDIV' protect='rw'>
+			<comment>Configure Debug UART Clock divider.</comment>
+			<bits name='CFG_CLK' rst='2' access='rw' pos='5:0'>
+				<comment>Debug host clock divider. The serial clock is generated by dividing  14,7456MHz Host Clock by (CFG_CLK+2). So By default, the serial clock is 14,7456MHz / (2+2) = 3,6864 MHz which corresponds to the 921,6K Baud-rate.<br/>Reseted by signal rst_host_reg.</comment>
+			</bits>
+        </ireg>
+
+		<ireg name='CFG' protect='rw'>
+			<comment>Configure Debug UART.</comment>
+			<bits name='Disable_Uart_H' rst='0' access='rw' pos='0'>
+                <comment>When '1', Disable Normal Uart functional group.
+                    <br/>This bit is set to '1' when break.
+                    <br/>Reseted by signal rst_host_reg.
+                </comment>
+			</bits>
+			<bits name='Disable_IFC_H' rst='0' access='rw' pos='1'>
+                <comment>When '1', Ignore IFC write and read access so only debug host internal is accessible.
+                    <br/>This bit is set to '1' when break.
+                    <br/>Reseted by signal rst_host_reg.
+                </comment>
+			</bits>
+			<bits name='Debug_Port_Sel' rst='0' access='rw' pos='2'>
+                <comment>Select the usage of the Debug Port pins
+                    <br/>'0' : select Granite Ip Debug port
+                    <br/>'1' : select MultiMedia Chip Debug Port
+                </comment>
+			</bits>
+			<bits name='Force_Prio_H' rst='1' access='rw' pos='7'>
+				<comment>When '1', force the Debug Uart to have priority on TX.<br/>Reseted by signal rst_host_reg.</comment>
+			</bits>	
+        </ireg>
+        
+
+		<ireg name='CRC' protect='rw'>
+			<comment>Status of CRC.</comment>
+			<bits name='CRC' rst='0' access='rc' pos='0'>
+				<comment>This bit represents that an CRC error has occured in commands received by Debug Host. Once set to '1', it will keep the value until this register is clearred by write '1'.<br/>'0' = no CRC error.<br/>'1' = CRC error.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+			<bits name='FC_Fifo_Ovf' rst='0' access='r' pos='1'>
+				<comment>This bit represents if the 16-byte Flow Control FIFO has an overflow error. This status will be kept until a RX break is received.<br/>'0' = no Flow Control Overflow Error.<br/>'1' = Flow Control Overflow Error.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+		</ireg>
+			
+		<ireg name='H2P_STATUS' protect='rw'>
+			<comment>Host write, APB readable register.</comment>
+			<bits name='STATUS' rst='0' access='rw' pos='7:0'>
+				<comment>These bits can be read by APB and write by host. Corresponds to APB register STATUS. They can also be reseted to zeros by APB command. (see details in debug host APB register mapping) <br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+		</ireg>
+
+		<ireg name='P2H_STATUS' protect='rw'>
+			<comment>APB write, Host readable register.</comment>
+			<bits name='STATUS' rst='0' access='rw' pos='7:0'>
+				<comment>These bits can be written by APB and read by host. Corresponds to APB register STATUS.<br/>Write to Bit 0 can reset the P2H status.<br/>Reseted by signal sys_rst_others (host).</comment>
+			</bits>
+		</ireg>
+
+		<ireg name='AHB_SYS_MASTER' protect='r'>
+			<comment>Debug information of system side AHB bus status.</comment>
+			<bits name='SYS_IFC_HMBURSREQ' rst='-' access='r' pos='0'>
+				<comment>The bit represent Sys Ifc HMBURSREQ.</comment>
+			</bits>
+			<bits name='SYS_DMA_HMBURSREQ' rst='-' access='r' pos='1'>
+				<comment>The bit represent Dma HMBURSREQ.</comment>
+			</bits>
+			<bits name='SYS_AHB2AHB_HMBURSREQ' rst='-' access='r' pos='2'>
+				<comment>The bit represent Sys Ahb2ahb HMBURSREQ.</comment>
+			</bits>
+			<bits name='XCPU_HMBRSREQ' rst='-' access='r' pos='3'>
+				<comment>The bit represent Xcpu HMBURSREQ.</comment>
+			</bits>
+			<bits name='SYS_IFC_HMGRANT' rst='-' access='r' pos='4'>
+				<comment>The bit represent Sys Ifc HMGRANT.</comment>
+			</bits>
+			<bits name='SYS_DMA_HMGRANT' rst='-' access='r' pos='5'>
+				<comment>The bit represent Dma HMGRANT.</comment>
+			</bits>
+			<bits name='SYS_AHB2AHB_HMGRANT' rst='-' access='r' pos='6'>
+				<comment>The bit represent Sys Ahb2ahb HMGRANT.</comment>
+			</bits>
+			<bits name='XCPU_HMGRANT' rst='-' access='r' pos='7'>
+				<comment>The bit represent Xcpu HMGRANT.</comment>
+			</bits>
+		</ireg>
+	
+		<ireg name='AHB_SYS_SLAVE' protect='r'>
+			<comment>Debug information of AHB bus status HSEL.</comment>
+			<bits name='SYS_MEM_EXT_HSEL' rst='-' access='r' pos='0'>
+				<comment>The bit represent Sys MEM_EXT HSEL.</comment>
+			</bits>
+			<bits name='SYS_MEM_INT_HSEL' rst='-' access='r' pos='1'>
+				<comment>The bit represent Sys MEM_INT HSEL.</comment>
+			</bits>
+			<bits name='SYS_IFC_HSEL' rst='-' access='r' pos='2'>
+				<comment>The bit represent Sys Ifc HSEL.</comment>
+			</bits>
+			<bits name='SYS_AHB2AHB_HSEL' rst='-' access='r' pos='3'>
+				<comment>The bit represent Sys Ahb2ahb HSEL.</comment>
+			</bits>
+			<bits name='SYS_IFC_HSREADY' rst='-' access='r' pos='4'>
+				<comment>The bit represent Sys Ifc HSREADY.</comment>
+			</bits>
+			<bits name='SYS_MEM_HSREADY' rst='-' access='r' pos='5'>
+				<comment>The bit represent Sys EBC HSREADY.</comment>
+			</bits>
+			<bits name='SYS_AHB2AHB_HSREADY' rst='-' access='r' pos='6'>
+				<comment>The bit represent Sys Ahb2ahb HSREADY.</comment>
+			</bits>
+			<bits name='SYS_HREADY' rst='-' access='r' pos='7'>
+				<comment>The bit represent Sys HSREADY which is sent to all sys AHB slaves.</comment>
+			</bits>
+		</ireg>
+
+		<ireg name='AHB_BB_MASTER' protect='r'>
+			<comment>Debug information of baseband side AHB bus status.</comment>
+			<bits name='BB_IFC_HMBURSREQ' rst='-' access='r' pos='0'>
+				<comment>The bit represent BB Ifc HMBURSREQ.</comment>
+			</bits>
+			<bits name='BB_VOC_HMBURSREQ' rst='-' access='r' pos='1'>
+				<comment>The bit represent Voc HMBURSREQ.</comment>
+			</bits>
+			<bits name='BB_AHB2AHB_HMBURSREQ' rst='-' access='r' pos='2'>
+				<comment>The bit represent BB Ahb2ahb HMBURSREQ.</comment>
+			</bits>
+			<bits name='BCPU_HMBRSREQ' rst='-' access='r' pos='3'>
+				<comment>The bit represent Bcpu HMBURSREQ.</comment>
+			</bits>
+			<bits name='BB_IFC_HMGRANT' rst='-' access='r' pos='4'>
+				<comment>The bit represent BB Ifc HMGRANT.</comment>
+			</bits>
+			<bits name='BB_VOC_HMGRANT' rst='-' access='r' pos='5'>
+				<comment>The bit represent Voc HMGRANT.</comment>
+			</bits>
+			<bits name='BB_AHB2AHB_HMGRANT' rst='-' access='r' pos='6'>
+				<comment>The bit represent BB Ahb2ahb HMGRANT.</comment>
+			</bits>
+			<bits name='BCPU_HMGRANT' rst='-' access='r' pos='7'>
+				<comment>The bit represent Bcpu HMGRANT.</comment>
+			</bits>
+		</ireg>
+
+		<ireg name='AHB_BB_HSREADY' protect='r'>
+			<comment>Debug information of AHB bus status HSEL.</comment>
+			<bits name='BB_MEM_HSREADY' rst='-' access='r' pos='0'>
+				<comment>The bit represent BB MEM HSREADY.</comment>
+            </bits>
+			<bits name='BB_VOC_HSREADY' rst='-' access='r' pos='1'>
+				<comment>The bit represent BB VoC HSREADY.</comment>
+			</bits>
+			<bits name='BB_SRAM_HSREADY' rst='-' access='r' pos='2'>
+				<comment>The bit represent BB Sram HSREADY.</comment>
+			</bits>
+			<bits name='BB_IFC_HSREADY' rst='-' access='r' pos='3'>
+				<comment>The bit represent BB Ifc HSREADY.</comment>
+			</bits>
+			<bits name='BB_AHB2AHB_HSREADY' rst='-' access='r' pos='4'>
+				<comment>The bit represent BB Ahb2ahb HSREADY.</comment>
+			</bits>
+			<bits name='BB_HREADY' rst='-' access='r' pos='7'>
+				<comment>The bit represent BB HREADY which is sent to all BB AHB slaves.</comment>
+			</bits>
+		</ireg>
+
+		<ireg name='AHB_BB_HSEL' protect='r'>
+			<comment>Debug information of AHB bus status HSEL.</comment>
+			<bits name='BB_MEM_EXT_HSEL' rst='-' access='r' pos='0'>
+				<comment>The bit represent BB MEM_EXT HSEL.</comment>
+			</bits>
+			<bits name='BB_MEM_INT_HSEL' rst='-' access='r' pos='1'>
+				<comment>The bit represent BB MEM_INT HSEL.</comment>
+			</bits>
+			<bits name='BB_VOC_HSEL' rst='-' access='r' pos='2'>
+				<comment>The bit represent BB VOC HSEL.</comment>
+			</bits>
+			<bits name='BB_SRAM_HSEL' rst='-' access='r' pos='3'>
+				<comment>The bit represent BB Sram HSEL.</comment>
+			</bits>
+			<bits name='BB_IFC_HSEL' rst='-' access='r' pos='4'>
+				<comment>The bit represent BB Ifc HSEL.</comment>
+			</bits>
+			<bits name='BB_AHB2AHB_HSEL' rst='-' access='r' pos='5'>
+				<comment>The bit represent BB Ahb2ahb HSEL.</comment>
+			</bits>
+		</ireg>
+
+        
+	</module>
+	
+    <instance name='INT_REG_DBG_HOST' type='debug_host_internal_registers' address='0x00000000'/>
+	
+</archive><archive relative='mem_bridge.xml'  relative='mem_bridge.xml'  relative='mem_bridge.xml'>
+
+
+
+
+    <include file='globals.xml'/>
+    <include file='granite_ip_config.xml'/>
+    <include file='greenstone_minimal_globals.xml'/>
+    
+    <var name='EBC_NB_BITS_CS' value='3'/>
+    <var name='EBC_NB_CS' value='5'/> 
+    <var name='FIRST_CS_WITH_POLARITY' value='2'/>
+
+    <var name='NB_BITS_EXTADDR' value='EBC_NB_BITS_ADDR+1'/> 
+
+    <var name='EBC_CS0_SIZE' value='exp2(NB_BITS_MAXSPACE)'/>
+    <var name='EBC_CS1_SIZE' value='exp2(NB_BITS_MAXSPACE-1)'/>
+    <var name='EBC_CS2_SIZE' value='exp2(20)'/>
+    <var name='EBC_CS3_SIZE' value='exp2(20)'/>
+    <var name='EBC_CS4_SIZE' value='exp2(19)'/>
+    
+    <var name='INT_RAM_NB_BITS' value='17'/> 
+    <var name='INT_RAM_NB_BLOCK' value='MEMBRIDGE_RAM_NB_BLOCK'/> 
+    <var name='INT_RAM_SIZE' value='32768*INT_RAM_NB_BLOCK'/> 
+
+    <var name='INT_ROM_NB_BITS' value='17'/> 
+    <var name='INT_ROM_SIZE' value='80*1024'/> 
+
+    <var name='NB_BIT_ROM_PACHT' value='4'/>
+    <var name='NB_ROM_PACHT' value='10'/>
+
+
+<module name='mem_bridge' category='System'>
+
+    
+    <reg name='FIFO_Ctrl' protect='rw'>
+        <bits name='Lock' access='rw' rst='0' pos='0'>
+            <comment>Lock mode: when locked the FIFO only accept requests from the XCPU, other masters receive the Split response until the lock mode is disabled. (If blocked in debug, use host internal reg reset+xcpu hold).
+
+            </comment>
+            <options>
+                <option name='Enable' value='1'/>
+                <option name='Disable' value='0'/>
+            </options>
+        </bits>
+    </reg>
+    <reg name='FIFO_Status' protect='rw'>
+        <bits name='FIFO_Level' access='r' rst='0' pos='5:4'>
+            <comment>Number of requests pending in fifo.
+            </comment>
+            <options><default/><mask/><shift/></options>
+        </bits>
+    </reg>
+    <reg name='Monitor_Ctrl' protect='rw'>
+        <bits name='Monitor_Sel' access='rw' rst='0' pos='0'>
+            <comment>Monitor signal selection
+            </comment>
+            <options>
+                <option name='Side_by_Side' value='0'><comment>Select FIFO Data access used by each side</comment></option>
+                <option name='Data_vs_External' value='1'><comment>Select FIFO Data used by both side against Cycle used on External interface</comment></option>
+            </options>
+        </bits>
+    </reg>
+
+    
+    <reg name='Rom_Bist' protect='rw'>
+        <bits name='Ctrl' access='rw' rst='0' pos='0'>
+            <comment>Write 1 to start the CRC Computation on the Rom, Read to get the status
+            </comment>
+            <options>
+                <option name='Done' value='0'/>
+                <option name='Running' value='1'/>
+            </options>
+        </bits>
+        <bits name='CRC' access='r' rst='0' pos='31:16'>
+            <comment>The Computed CRC
+            </comment>
+        </bits>
+    </reg>
+    <reg name='SRam_Bist' protect='rw'>
+        <bits name='Ctrl' access='w' rst='0' pos='0'>
+            <comment>Write 1 to start the BIST on the selected SRam block, Read to get the status
+            </comment>
+            <options>
+                <option name='Done' value='0'/>
+                <option name='Running' value='1'/>
+            </options>
+        </bits>
+        <bits name='Block_Sel' access='rw' pos='INT_RAM_NB_BITS-1:15'>
+            <comment>The Bock of 32k on which to run the March C- algorithm
+            </comment>
+        </bits>
+        <bits name='Status' access='r' rst='0' pos='31'>
+            <comment>The Bist Status (valid when Done)
+            </comment>
+            <options>
+                <option name='Bad' value='1'/>
+                <option name='OK' value='0'/>
+            </options>
+        </bits>
+    </reg>
+
+    <hole size='1888'/> 
+
+    
+    <reg name='Rom_Patch' protect='rw' count='NB_ROM_PACHT'>
+        <bits name='block_addr' pos='INT_RAM_NB_BITS-1:4'>
+            <comment>Base address of block in int_Rom patched (corresponding data are read from int_SRam)
+            </comment>
+        </bits>
+        <bits name='Patch' access='rw' rst='0' pos='31'>
+            <options>
+                <option name='Enable' value='1'/>
+                <option name='Disable' value='0'/>
+            </options>
+        </bits>
+    </reg>
+    
+ 
+    <hole size='1728'/> 
+    
+    <hole size='2048'/>
+    <hole size='2048'/>
+
+    
+    <reg name='EBC_Ctrl' protect='rw'>
+        <bits name='Enable' access='rw' rst='1' pos='0'>
+            <comment>Enable the ebc
+                <br/>1 = Enable
+                <br/>0 = Disable (will finish current transfer anyway)
+            </comment>
+        </bits>
+        <bits name='IdleDrive' access='rw' rst='0' pos='12'>
+            <comment>This bit select wether (1) or not (0) the EBC drives the data bus lines during idle (ie: between tranfers)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='EBC_Status' protect='rw'>
+        <bits name='Enable' access='r' rst='1' pos='0'>
+            <comment>Enable status of the module (as reading EBC_Ctrl will return the written value)
+            </comment>
+        </bits>
+        <bits name='Update_CS' access='r' rst='0' pos='4'>
+            <comment>This bit shows that a CS update is in progress. It reads as 1 when a chip select register has been written but not yet updated in the actual configuration. This is to ensure the configuration does not change during an access.
+            </comment>
+        </bits>
+    </reg>
+    <hole size='32'/> 
+    <reg name='CS_Time_Write' protect='rw'>
+        <comment>This register is used to program the CS_Time register of One CS_Config at the same time as the CS_Mode regiter is set (so the two registers are always synchronized with each other).
+            <br/>To update Chip Select n configuration, first write the timing value in this register, then write the CS_Mode configuration in the corresponding CS_Config[n].CS_Mode.
+        </comment>
+        <bits name='RdLatHalfMode' access='rw' rst='1' pos='0'>
+            <comment>Read access Latency Half cycle Mode:
+                <br/>when 1 reduce the cycle latency by half a cycle between 2 consecutive half word access.
+                <br/>In burst mode, when 1 extend the cycle latency by half a cycle for all half word access.
+            </comment>
+        </bits>
+        <bits name='RdLat' access='rw' rst='all1' pos='5:1'>
+            <comment>Read access Latency: Access time for read.
+                <br/>Access time in clock cycle is the value of this field +1.
+            </comment>
+            <options>
+                <default/>
+                <shift/>
+                <mask/>
+            </options>
+        </bits>
+        <bits name='OEDlyHalfMode' access='rw' rst='1' pos='8'>
+            <comment>Chip select to Output enable Setup half mode:
+                <br/>1 add one half cycle to the time
+            </comment>
+        </bits>
+        <bits name='OEDly' access='rw' rst='all1' pos='11:9'>
+            <comment>Chip select to Output enable Setup time:
+                <br/>The time in clock cycle is the value of this field.
+
+            </comment>
+            <options>
+                <default/>
+                <shift/>
+                <mask/>
+            </options>
+        </bits>
+        <bits name='PageLat' access='rw' rst='all1' pos='15:13'>
+            <comment>Page mode Latency value: Page mode access time (for read or write page mode)
+                <br/>Access time in clock cycle is the value of this field +1.
+                <br/>Note: if Half cycle mode is enabled it also applies to the page mode.
+            </comment>
+            <options>
+                <default/>
+                <shift/>
+                <mask/>
+            </options>
+        </bits>
+        <bits name='WrLatHalfMode' access='rw' rst='1' pos='16'>
+            <comment>Write access Latency Half cycle Mode:
+                <br/>when 1 reduce the cycle latency by half a cycle between 2 consecutive half word access.
+            </comment>
+        </bits>
+        <bits name='WrLat' access='rw' rst='all1' pos='21:17'>
+            <comment>Write access Latency: Access time for write.
+                <br/>Access time in clock cycle is the value of this field +1.
+            </comment>
+            <options>
+                <default/>
+                <shift/>
+                <mask/>
+            </options>
+        </bits>
+        <bits name='WEDlyHalfMode' access='rw' rst='1' pos='24'>
+            <comment>Chip select to Write enable Setup half mode:
+                <br/>1 add one half cycle to the time
+            </comment>
+        </bits>
+        <bits name='WEDly' access='rw' rst='all1' pos='27:25'>
+            <comment>Chip select to Write enable Setup time:
+                <br/>The time in clock cycle is the value of this field.
+            </comment>
+            <options>
+                <default/>
+                <shift/>
+                <mask/>
+            </options>
+        </bits>
+        <bits name='Relax' access='rw' rst='all1' pos='30:28'>
+            <comment>Relaxation delay between sequence of access (all read or all write) to the same chip select and any new sequence or idle state.
+                <br/>The delay in number of clock cycle is the value of this field.
+            </comment>
+            <options>
+                <default/>
+                <shift/>
+                <mask/>
+            </options>
+        </bits>
+        <bits name='ForceRelax' access='rw' rst='1' pos='31'>
+            <comment>Force Relaxation cycles to be inserted between any access. (same page or same burst consecutive access are considered a single access)
+            </comment>
+        </bits>
+    </reg>
+    <struct name='CS_Config' count='EBC_NB_CS'>
+        <reg name='CS_Mode' protect='rw'>
+            <comment>Writing this register will also copy the content of CS_Time_Write to the CS_Time register.
+            </comment>
+            <bits name='CSEn' access='rw' rst='0' pos='0'>
+                <comment>Enable the chip select.
+                </comment>
+            </bits>
+            <bits name='Polarity' access='rw' rst='0' pos='1'>
+                <comment>Chip Select polarity: 1 active High, '0' active Low.
+                    <br/>CS0 and CS1 are always active low (0) so this bit is not writable for them.
+                </comment>
+                <options>
+                    <option name='ActiveHigh' value='1'/>
+                    <option name='ActiveLow' value='0'/>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name='ADMuxMode' access='rw' rst='0' pos='2'>
+                <comment>1 use Address/Data Mux for 16 lower address bits.
+                </comment>
+            </bits>
+            <bits name='WriteAllow' access='rw' rst='1' pos='4'>
+                <comment>1 to allow write, else a write to the memory of this chip select will be dropped from the controller without notice.
+                </comment>
+            </bits>
+            <bits name='WBEMode' access='rw' rst='1' pos='5'>
+                <comment>1 to use BE as WE for each byte (to use two 8bits chips)
+                </comment>
+            </bits>
+            <bits name='BEDlyMode' access='rw' rst='1' pos='6'>
+                <comment>0: BE active after OEDly/WEDly
+                    <br/>1: BE active during full access
+                </comment>
+            </bits>
+            <bits name='WaitMode' access='rw' rst='1' pos='8'>
+                <comment>1 to use the wait input to delay end of a read access.
+                    <br/>(RdLat min 4)
+                </comment>
+            </bits>
+            <bits name='WriteWaitMode' access='rw' rst='1' pos='9'>
+                <comment>1 to use the wait input to delay end of a write access.
+                    <br/>(WrLAt min 4)
+                </comment>
+            </bits>
+            <bits name='PageSize' access='rw' rst='all1' pos='14:12'>
+                <options>
+                    <option name='4HW' value='0'><comment>4 half words </comment></option>
+                    <option name='8HW' value='1'><comment>8 half words </comment></option>
+                    <option name='16HW' value='2'><comment>16 half words </comment></option>
+                    <option name='32HW' value='3'><comment>32 half words </comment></option>
+                    <option name='64HW' value='4'><comment>64 half words </comment></option>
+                    <option name='128HW' value='5'><comment>128 half words </comment></option>
+                    <option name='256HW' value='6'><comment>256 half words </comment></option>
+                    <option name='FULL' value='7'><comment>Full page (in burst mode, else reserved)</comment></option>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+                <comment>Page size for page or bursts access.
+                </comment>
+            </bits>
+            <bits name='PageMode' access='rw' rst='1' pos='16'>
+                <comment>1 enable page mode for read access:
+                    <br/>only address changes, chip select keeps enabled while address keeps in a page (defined by PageSize). 
+                </comment>
+            </bits>
+            <bits name='WritePageMode' access='rw' rst='1' pos='17'>
+                <comment>1 enable page mode for write access.
+                </comment>
+            </bits>
+            <bits name='BurstMode' access='rw' rst='1' pos='20'>
+                <comment>1 enable burst mode for read access.
+                    <br/>Use PageSize.
+                    <br/>Require the use of the M_ADV and M_CLK pins.
+                </comment>
+            </bits>
+            <bits name='WriteBurstMode' access='rw' rst='1' pos='21'>
+                <comment>1 enable burst mode for write access.
+                </comment>
+            </bits>
+            <bits name='ADVAsync' access='rw' rst='1' pos='24'>
+                <comment>1 the M_ADV pin is low only during the first cycle of an asynchronous access (for asynchronous modes on burst capable chips)
+                </comment>
+            </bits>
+            <bits name='ADVWEPulse' access='rw' rst='1' pos='25'>
+                <comment>1 the M_WE is valid only during the M_ADV pulse.
+                </comment>
+            </bits>
+            <bits name='ADMuxDly' access='rw' rst='0' pos='27:26'>
+                <comment>Address/Data Mux timing
+                </comment>
+                <options>
+                    <option name='normal' value='0'><comment>ADV signal as in burst mode</comment></option>
+                    <option name='F1' value='1'><comment>ADV signal fall a half cycle after CS for 1 cycle</comment></option>
+                    <option name='F1_5' value='2'><comment>ADV signal fall a half cycle after CS for 1.5 cycle</comment></option>
+                    <option name='F2' value='3'><comment>ADV signal fall a half cycle after CS for 2 cycle</comment></option>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name='WriteSingle' access='rw' rst='1' pos='28'>
+                <comment>1 the Write Burst mode PageSize is replaced by 1 to do synchronous single write access. (while PageSize is still used for Read burst access)
+                </comment>
+            </bits>
+            <bits name='WriteHold' access='rw' rst='1' pos='29'>
+                <comment>1 the data remains driven during Relaxation time.
+                </comment>
+            </bits>
+        </reg>
+        <reg name='CS_Time' protect='r'>
+            <comment>This register cannot be written direclty. To update it, write to the CS_Time_write register, then to the CS_Mode register.
+            </comment>
+            <bits name='RdLatHalfMode' access='r' rst='1' pos='0'>
+                <comment>Read access Latency Half cycle Mode:
+                    <br/>when 1 reduce the cycle latency by half a cycle between 2 consecutive half word access.
+                    <br/>In burst mode, when 1 extend the cycle latency by half a cycle for all half word access.
+                </comment>
+            </bits>
+            <bits name='RdLat' access='r' rst='all1' pos='5:1'>
+                <comment>Read access Latency: Access time for read.
+                    <br/>Access time in clock cycle is the value of this field +1.
+                </comment>
+                <options>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name='OEDlyHalfMode' access='r' rst='1' pos='8'>
+                <comment>Chip select to Output enable Setup half mode:
+                    <br/>1 add one half cycle to the time
+                </comment>
+            </bits>
+            <bits name='OEDly' access='r' rst='all1' pos='11:9'>
+                <comment>Chip select to Output enable Setup time:
+                    <br/>The time in clock cycle is the value of this field.
+
+                </comment>
+                <options>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name='PageLat' access='r' rst='all1' pos='15:13'>
+                <comment>Page mode Latency value: Page mode access time (for read or write page mode)
+                    <br/>Access time in clock cycle is the value of this field +1.
+                    <br/>Note: if Half cycle mode is enabled it also applies to the page mode.
+                </comment>
+                <options>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name='WrLatHalfMode' access='r' rst='1' pos='16'>
+                <comment>Write access Latency Half cycle Mode:
+                    <br/>when 1 reduce the cycle latency by half a cycle between 2 consecutive half word access.
+                </comment>
+            </bits>
+            <bits name='WrLat' access='r' rst='all1' pos='21:17'>
+                <comment>Write access Latency: Access time for write.
+                    <br/>Access time in clock cycle is the value of this field +1.
+                </comment>
+                <options>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name='WEDlyHalfMode' access='r' rst='1' pos='24'>
+                <comment>Chip select to Write enable Setup half mode:
+                    <br/>1 add one half cycle to the time
+                </comment>
+            </bits>
+            <bits name='WEDly' access='r' rst='all1' pos='27:25'>
+                <comment>Chip select to Write enable Setup time:
+                    <br/>The time in clock cycle is the value of this field.
+                </comment>
+                <options>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name='Relax' access='r' rst='all1' pos='30:28'>
+                <comment>Relaxation delay between sequence of access (all read or all write) to the same chip select and any new sequence or idle state. (burst reaching end of page in non Full Page mode also insert a Relaxation delay)
+                    <br/>The delay in number of clock cycle is the value of this field.
+                </comment>
+                <options>
+                    <default/>
+                    <shift/>
+                    <mask/>
+                </options>
+            </bits>
+            <bits name='ForceRelax' access='r' rst='1' pos='31'>
+                <comment>Force Relaxation cycles to be inserted between any access. (same page or same burst consecutive access are considered a single access)
+                </comment>
+            </bits>
+        </reg>
+    </struct>
+    <hole size='1600'/> 
+
+    
+    <reg name='AHBM_Ctrl' protect='rw'>
+        <bits name='Enable' access='rw' rst='1' pos='0'>
+            <comment>Enable the AHB Master
+                <br/>1 = Enable
+                <br/>0 = Disable (will finish current transfer anyway)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='AHBM_Status' protect='rw'>
+        <bits name='Enable' access='r' rst='1' pos='0'>
+            <comment>Enable status of the module (as reading AHBM_Ctrl will return the written value)
+            </comment>
+        </bits>
+        <bits name='Update_SB' access='r' rst='0' pos='4'>
+            <comment>This bits shows that a SpaceBase update is in progress. It reads as 1 when a SpaceBase register has been written but not yet updated in the actual configuration. This is to ensure the configuration does not change during an access.
+            </comment>
+        </bits>
+    </reg>
+    <hole size='64'/>
+    <reg name='SpaceBase' protect='rw' count='EBC_NB_CS'>
+        <bits name='BaseAddr' display='hex' access='rw' rst='all1' pos='31:4'>
+            <comment>Base address added to the lower bits of address from FIFO.
+            </comment>
+        </bits>
+    </reg>
+
+
+</module>
+<module name='mem_FIFO' category='System'>
+
+    <reg name='Flush' protect='rw'>
+        <comment>Reading this register ensure the previous write command are all done (any read would do anyway) but this does not access external controller.
+        </comment>
+        <bits name='Flush' access='r' rst='0' pos='0'>
+        </bits>
+    </reg>
+
+
+    <reg name='EBC_CRE' protect='rw'>
+        <bits name='CRE' access='rw' rst='0' pos='0'>
+            <comment>Write here the desired state of the M_CRE pin. 
+                <br/>As this register is placed in the FIFO with the memory commands, it ensure the sequence of memory access and change to this register will be kept in sequence.
+            </comment>
+        </bits>
+    </reg>
+    <reg name='EBC_Flash_Block_Remap' protect='rw'>
+        <bits name='Block_Remap' access='rw' rst='all1' pos='NB_BITS_EXTADDR-1:22'>
+            <comment>When the address in CS0 is in the range 0xC00000 to 0xFFFFFF, the bits 23:22 are repalced and extended by the bits in this register. <font color='red'>(value of 0,1,2 should be avoided)</font>
+                <br/>As this register is placed in the FIFO with the memory commands, it ensure the sequence of memory access and change to this register will be kept in order.
+            </comment>
+            <options><default/><mask/><shift/></options>
+        </bits>
+    </reg>
+
+    <reg name='Side_Id' protect='r'>
+        <bits name='Side_Id' access='r' rst='no' pos='0'>
+            <comment>Read as 0 on System side, as 1 on BaseBand Side.
+            </comment>
+            <options>
+                <option name='System' value='0'/>
+                <option name='Baseband' value='1'/>
+            </options>
+        </bits>
+    </reg>
+</module>
+
+<module name='ebc_cs0' category='System'>
+    <memory name='ram_array' size='EBC_CS0_SIZE'>
+        <comment>EBC Chip select 0 memory space.
+            <br/>Space accessed by M_CS_0 line.
+            <br/>This chip select is dedicated to Flash access, the CPU will boot from here.
+        </comment>
+    </memory>
+</module>
+<module name='ebc_cs1' category='System'>
+    <memory name='ram_array' size='EBC_CS1_SIZE'>
+        <comment>EBC Chip select 1 memory space.
+            <br/>Space accessed by M_CS_1 line.
+            <br/>This chip select is dedicated to ram access.
+        </comment>
+    </memory>
+</module>
+<module name='ebc_cs2' category='System'>
+    <memory name='ram_array' size='EBC_CS2_SIZE'>
+        <comment>EBC Chip select 2 memory space.
+            <br/>Space accessed by M_CS_2 line
+        </comment>
+    </memory>
+</module>
+<module name='ebc_cs3' category='System'>
+    <memory name='ram_array' size='EBC_CS3_SIZE'>
+        <comment>EBC Chip select 3 memory space.
+            <br/>Space accessed by M_CS_3 line
+        </comment>
+    </memory>
+</module>
+<module name='ebc_cs4' category='System'>
+    <memory name='ram_array' size='EBC_CS4_SIZE'>
+        <comment>EBC Chip select 4 memory space.
+            <br/>Space accessed by M_CS_4 line
+        </comment>
+    </memory>
+</module>
+
+
+<module name='int_sram' category='System'>
+    <memory name='sram_array' size='INT_RAM_SIZE'>
+        <comment>Internal SRam Space
+        </comment>
+    </memory>
+</module>
+
+<module name='int_rom' category='System'>
+    <memory name='rom_array' size='INT_ROM_SIZE'>
+        <comment>Internal Rom Space
+            <br/>This rom is used for boot code.
+        </comment>
+    </memory>
+</module>
+
+
+
+<instance name='MEM_BRIDGE' type='mem_bridge' address='REG_SYS_APB_BASE + SYS_APB_STEP * SYS_ID_EBC'/>
+  <instance name='CS0' type='ebc_cs0' address='0x01000000'/>
+  <instance name='CS1' type='ebc_cs1' address='0x00000000'/>
+  <instance name='CS2' type='ebc_cs2' address='0x00800000'/>
+  <instance name='CS3' type='ebc_cs3' address='0x00900000'/>
+  <instance name='CS4' type='ebc_cs4' address='0x00a00000'/>
+ 
+</archive><archive relative='ip_version.xml'  relative='ip_version.xml'  relative='ip_version.xml' vhdlpkg='ip_version_pkg'>
+
+
+
+
+    <typedef name='IP_Version' rubyconstants='yes'>
+        <reg name='IP_Version' protect='r'>
+            <bits name='Major' access='r' rst='no' pos='31:28'>
+            </bits>
+            <bits name='Minor' access='r' rst='no' pos='27:24'>
+            </bits>
+            <comment>This register contains the IP version and release date for released IP
+                <br/>If the version Major is 0 the the register contains the svn revision used and the IP is not a released IP!
+            </comment>
+
+            <bits name='Year' access='r' rst='no' pos='19:16'>
+            </bits>
+            <bits name='Month' display='hex' access='r' rst='no' pos='15:8'>
+            </bits>
+            <bits name='Day' display='hex' access='r' rst='no' pos='7:0'>
+            </bits>
+        </reg>
+    </typedef>
+    <var name='RELEASED_IP' value='1'><comment>This is a released IP!</comment></var>
+    <var name='IP_VERSION_NUMBER' value='0x13080325'/>
+</archive><archive relative='sys_ctrl.xml'  relative='sys_ctrl.xml'  relative='sys_ctrl.xml'>
+
+
+
+
+
+<include file='globals.xml'/>
+<include file='ip_version.xml'/>
+<include file='greenstone_minimal_globals.xml'/>
+
+<module name='sys_ctrl' category='System'>
+    
+    <enum name='Cpu_Id'>
+        <entry name='XCPU'><comment>CPU IDs</comment></entry>
+        <entry name='BCPU'/>
+    </enum>
+
+    
+    <enum name='Sys_Clks'>
+    
+        <entry name='SYS_XCPU'><comment>System side System clocks</comment></entry>
+        <entry name='SYS_XCPU_int'/>
+        <entry name='SYS_AMBA'/>
+        <entry name='SYS_PCLK_CONF'/>
+        <entry name='SYS_PCLK_DATA'/>
+        <entry name='SYS_DMA'/>
+        <entry name='SYS_EBC'/>
+        <entry name='SYS_IFC_CH0'/>
+        <entry name='SYS_IFC_CH1'/>
+        <entry name='SYS_IFC_CH2'/>
+        <entry name='SYS_IFC_CH3'/>
+        <entry name='SYS_IFC_CH4'/>
+        <entry name='SYS_IFC_CH5'/>
+        <entry name='SYS_IFC_CH6'/>
+        <entry name='SYS_IFC_CH7'/>
+        <entry name='SYS_IFC_DBG'/>
+        <entry name='SYS_A2A'/>
+        <entry name='SYS_COM_REGS'/>
+        <entry name='SYS_DEBUG_UART'/>
+        <entry name='SYS_DBGHST'/>
+        <entry name='SYS_GPADC'/>         
+    
+        <entry name='SYSD_SCI'><comment>System side divided clock (either divided by module or by sys_ctrl)</comment></entry>
+        <entry name='SYSD_RF_SPI'/>
+        <entry name='SYSD_OSC'/>
+        <entry name='SYSD_PWM'/>
+        <bound name='NB_SYS_CLK_AEN'/>
+    
+        <entry name='SYS_GPIO'><comment>the following don't have an auto enable</comment></entry>
+        <entry name='SYS_IRQ'/>
+        <entry name='SYS_TCU'/>
+        <entry name='SYS_TIMER'/>
+        <bound name='NB_SYS_CLK_EN'/>
+    
+        <entry name='SYS_SCI'><comment>the following are sharing their enable</comment></entry>
+        <entry name='SYS_NOGATE'><comment>keep last</comment></entry>
+        <bound name='NB_SYS_CLK'/>
+    </enum>
+    
+    <enum name='Per_Clks'>
+    
+        <entry name='PER_UART'><comment>System side System clocks for Peripherals</comment></entry>
+        <entry name='PER_UART2'/>
+        <entry name='PER_I2C'/>
+        <entry name='PER_LCDC'/>
+        <entry name='PER_SDMMC'/>
+    
+        <entry name='PERD_SPI'><comment>System side divided clock (either divided by module or by sys_ctrl)</comment></entry>
+        <entry name='PERD_SPI2'/>
+        <bound name='NB_PER_CLK_AEN'/>
+    
+        <entry name='PER_USBC'/>
+        <entry name='PER_CAMERA'/>
+        <entry name='PER_SPY'/>
+        <entry name='PER_TEST'/>
+        <bound name='NB_PER_CLK_EN'/>
+    
+        <bound name='NB_PER_CLK'/>
+    </enum>    
+    
+    <enum name='BB_Clks'>
+    
+        <entry name='BB_BCPU'><comment>Baseband side System clocks</comment></entry>
+        <entry name='BB_BCPU_int'/>
+        <entry name='BB_AMBA'/>
+        <entry name='BB_PCLK_CONF'/>
+        <entry name='BB_PCLK_DATA'/>
+        <entry name='BB_VOC_AHB'/>
+        <entry name='BB_IFC_CH0'/>
+        <entry name='BB_IFC_CH1'/>
+        <entry name='BB_IFC_CH2'/>
+        <entry name='BB_SRAM'/>
+        <entry name='BB_A2A'/>
+        <entry name='BB_ITLV'/>
+        <entry name='BB_VITERBI'/>
+        <entry name='BB_CIPHER'/>
+        <entry name='BB_RF_IF'/>
+        <entry name='BB_COPRO'/>
+        <entry name='BB_CP2_REG'/>
+        <entry name='BB_XCOR'/>
+        <entry name='BB_AIF'/>
+    
+        <entry name='BBD_DAIS_208K'><comment>Baseband side divided clock<br/>divided BCK clock for DAI</comment></entry>
+        <bound name='NB_BB_CLK_AEN'/>
+    
+        <entry name='BB_IRQ'><comment>the following don't have an auto enable</comment></entry>
+        <bound name='NB_BB_CLK_EN'/>
+        <bound name='NB_BB_CLK'/>
+    </enum>
+    
+    <enum name='Other_Clks'>
+        
+        
+        
+        <bound name='OC_HOST_UART'><comment>Other clocks<br/>clocks with auto enble<br/>the debug host clock auto enable is not used in host mode, only in uart mode</comment></bound>
+        <entry name='OC_DEBUG_UART'/>
+        <entry name='OC_BCK'/>
+        <entry name='OC_UART'/>
+        <entry name='OC_UART2'/>
+        <entry name='OC_RF_RX'/>
+        <entry name='OC_RF_TX'/>
+        <entry name='OC_MEM_BRIDGE'/>        
+        <bound name='NB_OTHER_CLK_VOC_AEN_SYNC'/>
+        <entry name='OC_VOC_CORE'/>
+        <entry name='OC_VOC_AHB'/>
+        <entry name='OC_VOC_DAI'/>
+        <bound name='NB_OTHER_CLK_AEN'/>
+        
+        <entry name='OC_VOC'><comment>the following don't have an auto enable</comment></entry>
+        <entry name='OC_LPS'/>
+        <entry name='OC_GPIO'/>
+        <entry name='OC_USBPHY'/>
+        <entry name='OC_CAMERA'/>
+        <entry name='OC_CLK_OUT'/>
+        <entry name='OC_MEM_CLK_OUT'/>
+        <bound name='NB_OTHER_CLK_EN'/>
+        
+        <bound name='NB_OTHER_CLK'/>
+    </enum>
+    
+    
+    <enum name='Resets'>
+        
+        <entry name='RST_XCPU'><comment>System side resets</comment></entry>
+        <entry name='RST_SYS_IRQ'/>
+        <entry name='RST_SYS_A2A'/>
+        <entry name='RST_COM_REGS'/>
+        <entry name='RST_DMA'/>
+        <entry name='RST_TIMER'/>
+        <entry name='RST_TCU'/>
+        <entry name='RST_GPIO'/>
+        <entry name='RST_KEYPAD'/>
+        <entry name='RST_PWM'/>
+        <entry name='RST_UART'/>
+        <entry name='RST_UART2'/>
+        <entry name='RST_SPI'/>
+        <entry name='RST_SPI2'/>
+        <entry name='RST_RF_SPI'/>
+        <entry name='RST_SCI'/>
+        <entry name='RST_SPY'/>
+        <entry name='RST_TEST'/>
+        <entry name='RST_I2C'/>
+        <entry name='RST_MEM_BRIDGE'/>
+        <entry name='RST_PA_AFC'/>
+        <entry name='RST_GPADC'/>
+        <entry name='RST_ANA_ACCO'/>
+        <entry name='RST_EXT_APB'/>
+        <entry name='RST_LCDC'/>
+        <entry name='RST_SDMMC'/>
+        <entry name='RST_CAMERA'/>
+        <entry name='RST_USBC'/>
+        <entry name='RST_USBPHY'/>
+        <bound name='NB_SRST'/>
+        
+        <bound name='BOUND_BRST_FIRST'><comment>Baseband side resets</comment></bound>
+        <entry name='RST_BCPU'/>
+        <entry name='RST_BB_IRQ'/>
+        <entry name='RST_BB_A2A'/>
+        <entry name='RST_BB_IFC'/>
+        <entry name='RST_BB_SRAM'/>
+        <entry name='RST_ITLV'/>
+        <entry name='RST_VITERBI'/>
+        <entry name='RST_CIPHER'/>
+        <entry name='RST_XCOR'/>
+        <entry name='RST_COPRO'/>
+        <entry name='RST_RF_IF'/>
+        <entry name='RST_VOC'/>
+        <entry name='RST_AIF'/>
+        <entry name='RST_DAI'/>
+        <bound name='BOUND_BRST_AFTER'/>
+        <entry name='RST_BB_FULL'/>
+        <bound name='NR_RST_REG'><comment>The following reset does not have register</comment></bound>
+        <entry name='RST_SYS_FULL'/> 
+        <bound name='NB_RST'/>
+    </enum>
+    <var name='NB_BRST' value='BOUND_BRST_AFTER-BOUND_BRST_FIRST'/>
+
+    
+    <enum name='Reset_Others'>
+        <entry name='RSTO_DBG_HOST'><comment>Reset Other : resync on corresponding clock other</comment></entry>
+        <entry name='RSTO_BCK'/>
+        <entry name='RSTO_UART'/>
+        <entry name='RSTO_UART2'/>
+        <bound name='BOUND_RSTO_RF_FIRST'/>
+        <entry name='RSTO_RF_RX'/>
+        <entry name='RSTO_RF_TX'/>
+        <bound name='BOUND_RSTO_RF_AFTER'/>
+        <entry name='RSTO_MEM_BRIDGE'/>        
+        <entry name='RSTO_VOC_DAI'/>
+        <entry name='RSTO_VOC'/>
+        <entry name='RSTO_LPS'/>
+        <entry name='RSTO_GPIO'/>
+        <entry name='RSTO_WDTIMER'/>
+        <entry name='RSTO_USBPHY'/>
+        <bound name='NB_RSTO'/>
+    </enum>
+
+    <range name='p_Reset_BB_L' left='BOUND_BRST_AFTER-1' right='BOUND_BRST_FIRST'><comment>Range for Reset register generation</comment></range>
+
+    <range name='range_Reset_Sys_Reg_L' left='NR_RST_REG-1' right='0'/>
+    <range name='range_Reset_Sys_L' left='NB_RST-1' right='0'/>
+    <range name='range_Reset_Other_L' left='NB_RSTO-1' right='0'/>
+
+    <range name='range_Clock_Sys_H' left='NB_SYS_CLK-1' right='0'><comment>Range for clock_ctrl generation</comment></range>
+    <range name='range_Mode_Clock_Sys_H' left='NB_SYS_CLK_AEN-1' right='1'/>
+    <range name='range_Enable_Clock_Sys_H' left='NB_SYS_CLK_EN-1' right='0'/>
+    
+    <range name='range_Clock_Per_H' left='NB_PER_CLK-1' right='0'/>
+    <range name='range_Mode_Clock_Per_H' left='NB_PER_CLK_AEN-1' right='0'/>
+    <range name='range_Enable_Clock_Per_H' left='NB_PER_CLK_EN-1' right='0'/>
+    
+    <range name='range_Clock_BB_H' left='NB_BB_CLK-1' right='0'/>
+    <range name='range_Mode_Clock_BB_H' left='NB_BB_CLK_AEN-1' right='1'/>
+    <range name='range_Enable_Clock_BB_H' left='NB_BB_CLK_EN-1' right='0'/>
+
+    <range name='range_Clock_Other_H' left='NB_OTHER_CLK-1' right='0'/>
+    <range name='range_Mode_Clock_Other_H' left='NB_OTHER_CLK_AEN-1' right='0'/>
+    <range name='range_Enable_Clock_Other_H' left='NB_OTHER_CLK_EN-1' right='0'/>
+
+    <range name='range_Clock_VOC_H' left='OC_VOC' right='NB_OTHER_CLK_VOC_AEN_SYNC'/>
+    <range name='range_Mode_Clock_VOC_H' left='NB_OTHER_CLK_AEN-1' right='NB_OTHER_CLK_VOC_AEN_SYNC'/>
+
+
+
+    <range name='range_Cfg_Clk_Host' left='5' right='0'><comment>Range for clock_ctrl generation, as there is no config register for this clock in sys_ctrl</comment></range>
+
+
+    <var name='SYS_CTRL_PROTECT_LOCK' value='0xa50000'><comment>For REG_DBG protect lock/unlock value</comment></var>
+    <var name='SYS_CTRL_PROTECT_UNLOCK' value='0xa50001'/>
+
+
+
+
+    <reg name='REG_DBG' protect='rw'>
+        <comment><strong>This register is used to Lock and Unlock the protected registers.</strong>
+        </comment>
+        <bits name='Scratch' access='rw' rst='no' pos='15:0'>
+            <comment>Scratch register: used for debug
+            </comment>
+        </bits>
+        <bits name='Write Unlock Status' access='r' rst='0' pos='30'>
+            <comment>Is set to 1 when a write attempt has been done on a protected register
+                <br/>Can be reset by writing 0xa50000 or 0xa50001 to the debug register (With the LSB at 1 to unlock the protected registers, with the LSB at 0 to lock them)
+            </comment>
+        </bits>
+        <bits name='Write Unlock' access='r' rst='1' pos='31'>
+            <comment>When this bit is set to 1, the protected registers are accessible
+                <br/>When this bit is set to 0, the protected registers can not be written
+                <br/>Write 0xa50000 to the debug register to set this bit to 0
+                <br/>Write 0xa50001 to the debug register to set this bit to 1
+            </comment>
+        </bits>
+    </reg>
+
+    <instance name='IP_Version' type='IP_Version'/>
+
+    <reg name='Sys_Rst_Set' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='Set_Sys_Rst' cut='1' cutprefix='Set' cutenum='Resets' cutstart='0' access='rs' rst='1' pos='NB_SRST-1:0'>
+            <comment>Writing a 1 to any of the reset bit will reset the corresponding module and leave it in reset state
+                <br/>Reading this register returns the reset state of all the corresponding modules
+                <br/>0 : in reset
+                <br/>1 : out of reset
+            </comment>
+        </bits>
+        <bits name='Set_Rst_Out' access='rs' rst='0' pos='30'>
+            <comment>Writing a 1 to this bit will output a 0 on the RST_OUT pin
+                <br/>Reading this bit will return the RST_OUT line state.
+            </comment>
+        </bits>
+        <bits name='Soft_Rst' access='s' rst='0' pos='31'>
+            <comment>Writing a 1 to this bit will reset the entire chip.
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Sys_Rst_Clr' protect='rw'>
+        <bits name='Clr_Sys_Rst' cut='1' cutprefix='Clr' cutenum='Resets' cutstart='0' access='rc' rst='1' pos='NB_SRST-1:0'>
+            <comment>Writing a 1 to any of the reset bit will take the corresponding module out of reset state
+                <br/>Reading this register returns the reset state of all the corresponding modules
+                <br/>0 : in reset
+                <br/>1 : out of reset
+            </comment>
+        </bits>
+        <bits name='Clr_Rst_Out' access='rc' rst='0' pos='30'>
+            <comment>Writing a 1 to this bit will output a 1 on the RST_OUT pin
+                <br/>Reading this bit will return the RST_OUT line state.
+            </comment>
+        </bits>
+    </reg>
+    <reg name='BB_Rst_Set' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='Set_BB_Rst' cut='1' cutprefix='Set' cutenum='Resets' cutstart='BOUND_BRST_FIRST' access='rs' rst='1' pos='NB_BRST-1:0'>
+            <comment>Writing a 1 to any of the reset bit will reset the corresponding module and leave it in reset state
+                <br/>Reading this register returns the reset state of all the corresponding modules
+                <br/>0 : in reset
+                <br/>1 : out of reset
+            </comment>
+        </bits>
+        <bits name='Set_RST_BB_FULL' access='rs' rst='1' pos='31'>
+            <comment>Writing a 1 to this reset bit will reset the all  modules on the baseband  and leave them in reset state. (this resets more modules than all lower bits of this register)
+                <br/>Reading this register returns the reset state of the full baseband side.
+                <br/>0 : in reset
+                <br/>1 : out of reset
+
+            </comment>
+        </bits>
+    </reg>
+    <reg name='BB_Rst_Clr' protect='rw'>
+        <bits name='Clr_BB_Rst' cut='1' cutprefix='Clr' cutenum='Resets' cutstart='BOUND_BRST_FIRST' access='rc' rst='1' pos='NB_BRST-1:0'>
+            <comment>Writing a 1 to any of the reset bit will take the corresponding module out of reset state
+                <br/>Reading this register returns the reset state of all the corresponding modules
+                <br/>0 : in reset
+                <br/>1 : out of reset
+            </comment>
+        </bits>
+        <bits name='Clr_RST_BB_FULL' access='rc' rst='1' pos='31'>
+            <comment>Writing a 1 to this reset bit will take all the modules on the baseband   out of reset state. (modules can be kept in reset if the corresponding bit in lower bits of this register is still forcing it's reset)
+                <br/>Reading this register returns the reset state of the full baseband side.
+                <br/>0 : in reset
+                <br/>1 : out of reset
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Clk_Sys_Mode' protect='rw'>
+        <bits name='Mode_SYS_XCPU' access='r' rst='1' pos='0'>
+            <comment> fixed to '1'. This clock is gated only by manual mode or xcpu_sleep from irq module.
+            </comment>   
+        </bits>
+        <bits name='Mode_Clk_Sys' cut='1' cutprefix='Mode' cutenum='Sys_Clks' cutstart='1' access='rw' rst='1' pos='NB_SYS_CLK_AEN-1:1'>
+            <options>
+                <option name='Automatic' value='0'><comment>automatic clock gating enabled</comment></option>
+                <option name='Manual' value='1'><comment>manual clock gating only</comment></option>
+            </options>
+        </bits>
+    </reg>
+    <reg name='Clk_Sys_Enable' protect='rw'>
+        <bits name='Enable_Clk_Sys' cut='1' cutprefix='Enable' cutenum='Sys_Clks' cutstart='0' access='rs' rst='1' pos='NB_SYS_CLK_EN-1:0'>
+            <comment>Each bit controls the manual enable  for one clock 
+                <br/>Writing a 1 to bit x of this register will enable the corresponding clocks
+                <br/>Writing a 0 to bit x has no effect on clock x 
+                <br/>Reading this register gives the current status for all the clocks (1 : enabled, 0: disabled)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Clk_Sys_Disable' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='Disable_Clk_Sys' cut='1' cutprefix='Disable' cutenum='Sys_Clks' cutstart='0' access='rc' rst='1' pos='NB_SYS_CLK_EN-1:0'>
+            <comment>Each bit controls the manual enable  for one clock 
+                <br/>Writing a 1 to bit x of this register will disable  the corresponding clocks
+                <br/>Writing a 0 to bit x has no effect on clock x 
+                <br/>Reading this register gives the current status for all the clocks (1 : enabled, 0: disabled)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Clk_Per_Mode' protect='rw'>
+        <bits name='Mode_Clk_Per' cut='1' cutprefix='Mode' cutenum='Per_Clks' cutstart='0' access='rw' rst='1' pos='NB_PER_CLK_AEN-1:0'>
+            <options>
+                <option name='Automatic' value='0'><comment>automatic clock gating enabled</comment></option>
+                <option name='Manual' value='1'><comment>manual clock gating only</comment></option>
+            </options>
+        </bits>
+    </reg>
+    <reg name='Clk_Per_Enable' protect='rw'>
+        <bits name='Enable_Clk_Per' cut='1' cutprefix='Enable' cutenum='Per_Clks' cutstart='0' access='rs' rst='1' pos='NB_PER_CLK_EN-1:0'>
+            <comment>Each bit controls the manual enable  for one clock 
+                <br/>Writing a 1 to bit x of this register will enable the corresponding clocks
+                <br/>Writing a 0 to bit x has no effect on clock x 
+                <br/>Reading this register gives the current status for all the clocks (1 : enabled, 0: disabled)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Clk_Per_Disable' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='Disable_Clk_Per' cut='1' cutprefix='Disable' cutenum='Per_Clks' cutstart='0' access='rc' rst='1' pos='NB_PER_CLK_EN-1:0'>
+            <comment>Each bit controls the manual enable  for one clock 
+                <br/>Writing a 1 to bit x of this register will disable  the corresponding clocks
+                <br/>Writing a 0 to bit x has no effect on clock x 
+                <br/>Reading this register gives the current status for all the clocks (1 : enabled, 0: disabled)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Clk_BB_Mode' protect='rw'>
+       <bits name='Mode_BB_BCPU' access='r' rst='1' pos='0'>
+            <comment> fixed to '1'. This clock is gated only by manual mode or bcpu_sleep from irq module.  
+            </comment>   
+        </bits>
+        <bits name='Mode_Clk_BB' cut='1' cutprefix='Mode' cutenum='BB_Clks' cutstart='1' access='rw' rst='1' pos='NB_BB_CLK_AEN-1:1'>
+            <options>
+                <option name='Automatic' value='0'><comment>automatic clock gating enabled</comment></option>
+                <option name='Manual' value='1'><comment>manual clock gating only</comment></option>
+            </options>
+        </bits>
+    </reg>
+    <reg name='Clk_BB_Enable' protect='rw'>
+        <bits name='Enable_Clk_BB' cut='1' cutprefix='Enable' cutenum='BB_Clks' cutstart='0' access='rs' rst='1' pos='NB_BB_CLK_EN-1:0'>
+            <comment>Each bit controls the manual enable  for one clock 
+                <br/>Writing a 1 to bit x of this register will enable the corresponding clocks
+                <br/>Writing a 0 to bit x has no effect on clock x 
+                <br/>Reading this register gives the current status for all the clocks (1 : enabled, 0: disabled)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Clk_BB_Disable' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='Disable_Clk_BB' cut='1' cutprefix='Disable' cutenum='BB_Clks' cutstart='0' access='rc' rst='1' pos='NB_BB_CLK_EN-1:0'>
+            <comment>Each bit controls the manual enable  for one clock 
+                <br/>Writing a 1 to bit x of this register will disable  the corresponding clocks
+                <br/>Writing a 0 to bit x has no effect on clock x 
+                <br/>Reading this register gives the current status for all the clocks (1 : enabled, 0: disabled)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Clk_Other_Mode' protect='rw'>
+        <bits name='Mode_Clk_Other' cut='1' cutprefix='Mode' cutenum='Other_Clks' cutstart='0' access='rw' rst='1' pos='NB_OTHER_CLK_AEN-1:0'>
+            <options>
+                <option name='Automatic' value='0'><comment>automatic clock gating enabled</comment></option>
+                <option name='Manual' value='1'><comment>manual clock gating only</comment></option>
+            </options>
+        </bits>
+    </reg>
+    <reg name='Clk_Other_Enable' protect='rw'>
+        <bits name='Enable_Clk_Other' cut='1' cutprefix='Enable' cutenum='Other_Clks' cutstart='0' access='rs' rst='1' pos='NB_OTHER_CLK_EN-1:0'>
+            <comment>Each bit controls the manual enable  for one clock 
+                <br/>Writing a 1 to bit x of this register will enable the corresponding clocks
+                <br/>Writing a 0 to bit x has no effect on clock x 
+                <br/>Reading this register gives the current status for all the clocks (1 : enabled, 0: disabled)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Clk_Other_Disable' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='Disable_Clk_Other' cut='1' cutprefix='Disable' cutenum='Other_Clks' cutstart='0' access='rc' rst='1' pos='NB_OTHER_CLK_EN-1:0'>
+            <comment>Each bit controls the manual enable  for one clock 
+                <br/>Writing a 1 to bit x of this register will disable  the corresponding clocks
+                <br/>Writing a 0 to bit x has no effect on clock x 
+                <br/>Reading this register gives the current status for all the clocks (1 : enabled, 0: disabled)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='Sel_Clock' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='Slow_sel_RF' access='rw' rst='1' pos='0'>
+            <comment>PreSelects between RF clock and Oscillator clock for Clock Slow
+            </comment>
+            <options>
+                <option name='Oscillator' value='1'/>
+                <option name='RF' value='0'/>
+            </options>
+        </bits>
+        <bits name='Sys_sel_Fast' access='rw' rst='1' pos='4'>
+            <comment>Selects between the Slow clock and the Fast Clock (Pll clock)
+            </comment>
+            <options>
+                <option name='Slow' value='1'/>
+                <option name='Fast' value='0'/>
+            </options>
+        </bits>
+        <bits name='Sys_sel_PLL' access='rw' rst='1' pos='8'>
+            <comment>Selects between the 2 pll sources
+            </comment>
+            <options>
+                <option name='Acco' value='1'/>
+                <option name='Ext' value='0'/>
+            </options>
+        </bits>
+        <bitgroup name='Clock_Select'>
+            <entry ref='Slow_sel_RF'/>
+            <entry ref='Sys_sel_Fast'/>
+            <entry ref='Sys_sel_PLL'/>
+        </bitgroup>
+        <bits name='ClockOut_sel_RF' access='rw' rst='1' pos='12'>
+            <comment>Selects between RF clock and Oscillator clock for Clock OUT pin
+            </comment>
+            <options>
+                <option name='Oscillator' value='1'/>
+                <option name='RF' value='0'/>
+            </options>
+        </bits>
+
+        <bits name='Clock_PLL_UART_Sel' access='rw' rst='1' pos='16'>
+            <comment>Select the Fast clock UART frequency (104MHz is available only with 312MHz Pll)
+            </comment>
+            <options>
+                <option name='104MHz' value='1'/>
+                <option name='52MHz' value='0'/>
+            </options>
+        </bits>
+
+
+        <bits name='RF_detected' access='r' rst='no' pos='20'>
+            <options>
+                <option name='Ok' value='1'><comment>When 1, the clock from the XCver is detected.</comment></option>
+                <option name='No' value='0'><comment>When 0, the clock from the XCver is not detected.</comment></option>
+            </options>
+        </bits>
+        <bits name='RF_Detect_Bypass' access='rw' rst='0' pos='21'>
+            <comment>If RF_Detect_Bypass = 0, RF clock is selected when she is detected.
+                <br/>If RF_Detect_Bypass = 1, RF clock is selected even she is not detected.
+            </comment> 
+        </bits>
+
+        <bits name='RF_Detect_Reset' access='rw' rst='0' pos='22'>
+            <comment>When 1, The RF clock detection counter is force reseted.
+                <br/>When 0, The RF clock detection counter is enabled.
+            </comment>               
+        </bits>
+        <bits name='RF_selected_L' access='r' rst='1' pos='23'>
+            <comment>0 when RF clock is effectively selected for Slow Clock. RF clock selection is not done until the clock has been detected.
+            </comment>
+        </bits>
+        <bits name='Ext_PLL_Locked' access='r' rst='0' pos='24'>
+            <comment>1 when the External pll is locked.
+            </comment>
+        </bits>  
+        <bits name='Acco_PLL_Locked' access='r' rst='0' pos='25'>
+            <comment>1 when the Acco pll is locked.
+            </comment>
+        </bits>  
+        <bits name='PLL_bypass_Lock' access='rw' rst='0' pos='27'>
+            <comment>When set to 1, the system clock will switch to the fast clock even if the pll is not locked.
+                <br/>When set to 0, the system clock is only allowed to switch to the fast clock if the pll is locked
+            </comment>
+        </bits>
+        <bits name='Sys_PLL_Selected' access='r' rst='1' pos='30'>
+            <comment>Show which PLL is actually selected
+            </comment>
+            <options>
+                <option name='Acco' value='1'/>
+                <option name='Ext' value='0'/>
+            </options>
+        </bits>
+        <bits name='Fast_Selected_L' access='r' rst='1' pos='31'>
+            <comment>0 when Fast clock is effectively selected. Fast clock selection is not done until the PLL has locked.
+            </comment>
+        </bits>
+    </reg>
+
+    <reg name='Cfg_Clk_Sys' protect='rw'>
+        <comment>Bit force_div_update in this register is protected.
+        </comment>
+        <bits name='Freq' access='rw' rst='all1' pos='2:0'>
+            <options>
+                <option name='13M' value='0'/>
+                <option name='26M' value='1'/>
+                <option name='39M' value='2'/>
+                <option name='52M' value='3'/>
+                <option name='78M' value='4'/>
+                <option name='104M' value='5'/>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>
+            <comment>Note: for unvalid values the system will run at 13MHz
+                <br/>any writing to this register will trigger an update request. The update will be effective when the gsm clocks are in the proper phase to avoid schronization loss unless bit force_div_update is written '1'.
+            </comment>
+        </bits>
+        <bits name='force_div_update' access='rw' rst='1' pos='4'>
+            <comment>Allows to switch the system clock divider without taking care of the gsm clocks
+                <br/>1 : update is immediate
+                <br/>0 : update is dependent of the gsm clocks phase to avoid loosing synchronization
+            </comment>
+        </bits>
+        <bits name='req_div_update' access='r' rst='0' pos='8'>
+            <comment>Status to check if a request to update the pll divider is pending.
+            </comment>
+        </bits>
+    </reg>
+     <reg name='Cfg_Clk_Mem_Bridge' protect='rw'>
+        <bits name='Freq' access='rw' rst='all1' pos='2:0'>
+            <options>
+                <option name='13M' value='0'/>
+                <option name='26M' value='1'/>
+                <option name='39M' value='2'/>
+                <option name='52M' value='3'/>
+                <option name='78M' value='4'/>
+                <option name='104M' value='5'/>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>
+            <comment>Note: for unvalid values the memory interface will run at 13MHz
+            </comment>
+        </bits>
+    </reg>
+
+    <reg name='Cfg_Clk_Voc' protect='rw'>
+        <bits name='Freq' access='rw' rst='all1' pos='2:0'>
+            <options>
+                <option name='13M' value='0'/>
+                <option name='26M' value='1'/>
+                <option name='39M' value='2'/>
+                <option name='52M' value='3'/>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>
+            <comment>Note: for unvalid values Voc will run at 13MHz
+            </comment>
+        </bits>
+        <bits name='Voc_Sel_PLL' access='rw' rst='1' pos='3'>
+            <comment>Selects between the Slow clock and the Pll clock
+            </comment>
+            <options>
+                <option name='Slow' value='1'/>
+                <option name='PLL' value='0'/>
+            </options>
+            
+        </bits>
+    </reg>
+    <reg name='Cfg_Clk_AudioBCK_Div' protect='rw'>
+        <bits name='AudioBCK_Divider' access='rw' rst='all1' pos='10:0'>
+            <comment>The generated clock frequency is equal to the 156MHz divided by this value + 2. The 156MHz clock comes from a PLL.
+            </comment>
+        </bits>
+    </reg>
+    
+    <reg name='Cfg_Clk_Uart' protect='rw' count='3'>
+        <bits name='Uart_Divider' access='rw' rst='all1' pos='9:0'>
+            <comment>The generated clock frequency is equal to the selected source frequency divided by this value + 2 (see bit 12 clock select for source selection).
+                <br/>The generated clock must be 4 or 16 times the expected baud rate depending on the Uart settings (see Uart section for details).
+            </comment>
+            <options><mask/><shift/></options>
+        </bits>
+        <bits name='Uart_Sel_PLL' access='rw' rst='1' pos='12'>
+            <options>
+                <option name='Slow' value='0'><comment>The Uart clock is generated from the Slow clock divided by the divider value + 2</comment></option>
+                <option name='PLL' value='1'><comment>The Uart clock is generated from a fast clock generated by the PLL (52 MHz or 104MHz see Sel_Clock Register) divided by the divider value + 2</comment></option>
+            </options>
+        </bits>
+    </reg>
+
+    <reg name='Cfg_Clk_PWM' protect='rw'>
+        <bits name='PWM_Divider' access='rw' rst='all1' pos='7:0'>
+            <comment>The Pwm reference clock frequency is the system clock divided by this register value + 1.
+            </comment>
+        </bits>
+    </reg>
+    
+    <reg name='Cfg_AHB' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='Sys_Enable' cut='1' cutprefix='Enable' cutenum='Sys_Master_Id' cutstart='1' access='rw' rst='1' pos='SYS_NB_MASTERS-1:0'>
+            <options>
+                <option name='Enable' value='1'><comment>Normal configuration</comment></option>
+                <option name='Disable' value='0'><comment>The master is never granted on the System AHB</comment></option>
+            </options>
+        </bits>
+        <bits name='BB_Enable' cut='1' cutprefix='Enable' cutenum='BB_Master_Id' cutstart='1' access='rw' rst='1' pos='BB_NB_MASTERS+15:16'>
+            <options>
+                <option name='Enable' value='1'><comment>Normal configuration</comment></option>
+                <option name='Disable' value='0'><comment>The master is never granted on the Baseband AHB</comment></option>
+            </options>
+        </bits>
+        <bits name='USB_Ram_Test_Mode' access='rw' rst='0' pos='31'>
+            <options>
+                <option name='Enable' value='1'><comment>USB Ram test mode, allow access to 3 upper bits of the USB ram: mapped as lower bits</comment></option>
+                <option name='Disable' value='0'><comment>Normal usage of the USB Ram</comment></option>
+            </options>
+        </bits>
+    </reg>
+
+    <reg name='XCpu_Dbg_BKP' protect='rw'>
+        <bits name='BKPT_En' access='rw' rst='0' pos='0'>
+            <comment>Enable XCPU hardware breakpoint.
+            </comment>
+        </bits>
+        <bits name='BKPT_Mode' display='bin' access='rw' rst='all1' pos='5:4'>
+            <options>
+                <option name='I' value='0'><comment>Breakpoint is triggered when an instruction is fetched at XCpu_Dbg_Addr</comment></option>
+                <option name='R' value='1'><comment>Breakpoint triggered when a data is read at XCpu_Dbg_Addr</comment></option>
+                <option name='W' value='2'><comment>Breakpoint triggered when a data is written at XCpu_Dbg_Addr</comment></option>
+                <option name='RW' value='3'><comment>Breakpoint triggered when a data is read OR written at XCpu_Dbg_Addr</comment></option>
+                <default/>
+            </options>
+        </bits>
+        <bits name='Stalled' access='rw' rst='0' pos='8'>
+            <comment>When 1 the cpu is stalled and stays stalled until this bit is set to 0, when 0 the stall condition depends on the breakpoint trigger. If the breakpoint is triggered, the cpu stalls. It can be released by writing a 0 to this bit.
+            </comment>
+        </bits>
+    </reg>
+    <reg name='XCpu_Dbg_Addr' protect='rw'>
+        <bits name='Breakpoint address' display='hex' access='rw' rst='no' pos='NB_BITS_ADDR-1:0'>
+            <comment>Physical address of breakpoint
+            </comment>
+        </bits>
+    </reg>
+    <reg name='BCpu_Dbg_BKP' protect='rw'>
+        <bits name='BKPT_En' access='rw' rst='0' pos='0'>
+            <comment>Enable BCPU hardware breakpoint.
+            </comment>
+        </bits>
+        <bits name='BKPT_Mode' display='bin' access='rw' rst='all1' pos='5:4'>
+            <options>
+                <option name='I' value='0'><comment>Breakpoint is triggered when an instruction is fetched at BCpu_Dbg_Addr</comment></option>
+                <option name='R' value='1'><comment>Breakpoint triggered when a data is read at BCpu_Dbg_Addr</comment></option>
+                <option name='W' value='2'><comment>Breakpoint triggered when a data is written at BCpu_Dbg_Addr</comment></option>
+                <option name='RW' value='3'><comment>Breakpoint triggered when a data is read OR written at BCpu_Dbg_Addr</comment></option>
+                <default/>
+            </options>
+        </bits>
+        <bits name='Stalled' access='rw' rst='0' pos='8'>
+            <comment>When 1 the cpu is stalled and stays stalled until this bit is set to 0, when 0 the stall condition depends on the breakpoint trigger. If the breakpoint is triggered, the cpu stalls. It can be released by writing a 0 to this bit.
+            </comment>
+        </bits>
+    </reg>
+    <reg name='BCpu_Dbg_Addr' protect='rw'>
+        <bits name='Breakpoint address' display='hex' access='rw' rst='no' pos='NB_BITS_ADDR-1:0'>
+            <comment>Physical address of breakpoint
+            </comment>
+        </bits>
+        
+    </reg>
+    
+    <reg name='Cfg_Cpus_Cache_Ram_Disable' protect='rw'>
+        <bits name='XCpu_Use_Mode' access='rw' rst='0' pos='0'>
+            <comment>When 1 the XCPU deselects its cache rams automatically when not in use, when 0 this feature is disabled.
+            </comment>
+        </bits>
+        <bits name='XCpu_Clk_Off_Mode' access='rw' rst='0' pos='1'>
+            <comment>When 1 the cache rams are automatically deselected  when the XCPU clock is shutdown, when 0 this feature is disabled.
+            </comment>
+        </bits>
+        <bitgroup name='XCpu_Cache_Ram_Disable'>
+            <entry ref='XCpu_Use_Mode'/>
+            <entry ref='XCpu_Clk_Off_Mode'/>
+        </bitgroup>
+        <bits name='BCpu_Use_Mode' access='rw' rst='0' pos='16'>
+            <comment>When 1 the BCPU deselects its cache rams automatically when not in use, when 0 this feature is disabled.
+            </comment>
+        </bits>
+        <bits name='BCpu_Clk_Off_Mode' access='rw' rst='0' pos='17'>
+            <comment>When 1 the cache rams are automatically deselected  when the BCPU clock is shutdown, when 0 this feature is disabled.
+            </comment>
+        </bits>
+        <bitgroup name='BCpu_Cache_Ram_Disable'>
+            <entry ref='BCpu_Use_Mode'/>
+            <entry ref='BCpu_Clk_Off_Mode'/>
+        </bitgroup>
+        
+    </reg>
+
+    <reg name='Reset_Cause' protect='rw'>
+        
+        <bits name='WatchDog_Reset' access='rw' rst='no' pos='0'>
+            <options>
+                <option name='Happened' value='1'><comment>A watchdog reset has happened</comment></option>
+                <option name='No' value='0'><comment>No watchdog reset happened since the last HW reset or power on.</comment></option>
+            </options>
+            <comment>Writing a 1 to this bit will reset the bits watchdog_Reset cause, GlobalSoft_Reset cause and HostDebug_Reset cause to 0.
+            </comment>
+        </bits>
+        <bits name='GlobalSoft_Reset' access='r' rst='no' pos='4'>
+            <options>
+                <option name='Happened' value='1'><comment>A reset was initiated from Global soft reset register</comment></option>
+                <option name='No' value='0'><comment>The reset was not from the soft reset register.</comment></option>
+            </options>
+        </bits>
+        <bits name='HostDebug_Reset' access='r' rst='no' pos='8'>
+            <options>
+                <option name='Happened' value='1'><comment>A reset was initiated from the Host interface</comment></option>
+                <option name='No' value='0'><comment>The reset was not from the debug interface.</comment></option>
+            </options>
+        </bits>
+        <bits name='AlarmCause' access='r' rst='no' pos='12'>
+            <options>
+                <option name='Happened' value='1'><comment>An Alarm occur from the calendar</comment></option>
+                <option name='No' value='0'><comment>No Alarm occur.</comment></option>
+            </options>
+        </bits>       
+        <bits name='Boot_Mode' access='rw' rst='no' pos='21:16'>
+            <comment>This contains the state of boot mode pins latched during Reset.
+                <br/> bit 16: BOOT_MODE_NO_AUTO_PU.
+                <br/> bit 17: BOOT_MODE_SKIP_HOST_MONITOR.
+                <br/> bit 18: BOOT_MODE_SKIP_UART_MONITOR.
+                <br/> bit 19: BOOT_MODE_FLASH_ADMUX.
+                <br/> bits[21:20]: reserved.
+                <br/> see DOC GraniteBootSequence for details.
+            </comment>
+            <options><mask/><shift/></options>
+        </bits>
+        <bits name='Fonctional_Test_Mode' access='r' rst='no' pos='31'>
+            <comment>When 1 the chip has booted in fonctional test mode (for chip production tests).
+            </comment>
+            
+        </bits>
+    </reg>
+    
+   <reg name='WakeUp' protect='rw'>
+        <comment>This register is protected.
+        </comment>
+        <bits name='force_Wakeup' access='rw' rst='0' pos='0'>
+            <comment>When 1, the wake up is set. When 0, the wake up is clear .
+            </comment>
+        </bits>
+    </reg>
+    
+</module>
+
+<instance name='SYS_CTRL' type='sys_ctrl' address='REG_SYS_APB_BASE + SYS_APB_STEP * SYS_ID_SYS_CTRL'/>
+
+</archive><archive relative='debug_host.xml'  relative='debug_host.xml'  relative='debug_host.xml'>
+
+
+
+
+    <include file='globals.xml'/>
+    <include file='granite_ip_config.xml'/>
+    <include file='greenstone_minimal_globals.xml'/>
+
+
+<module name='debug_host' category='Debug'>
+  <reg name='cmd' protect='r'>
+    <bits name='Addr' access='r' rst='-' pos='28:0'>
+      <comment>Address of data to be read or written. </comment>
+    </bits>
+
+    <bits name='Size' access='r' rst='-' pos='30:29'>
+      <comment>These two bits indicates element data size. <br/>
+            when "00" = "byte". <br/>
+            when "01" = "half word". <br/>
+            when "10" = "word". 
+        </comment>
+    </bits>
+
+    <bits name='Write_H' access='r' rst='-' pos='31'>
+      <comment>This bit indicates command is read or write. <br/>
+        when "0" = "Read". <br/>
+        when "1" = "Write".  
+      </comment>
+    </bits>
+
+  </reg>
+
+  <reg name='data' protect='rw'>
+    <bits name='data' access='rw' rst='-' pos='31:0'>
+      <comment>Those bits are data to be read or written by IFC. </comment>
+    </bits>
+    
+  </reg>
+
+  <reg name='event' protect='w'>
+    <bits name='event0_sema' access='rw' rst='0' pos='0'>
+      <comment>When read, this bit is used for event semaphore. <br/>
+            '0' = no new event should be programed. <br/>
+            '1' = no pending event, new event is authorised. <br/>
+            If host is not enabled, this bit is always '1'. However in this case, 
+            any event written will be ignored. <br/>
+            When Write, this bit is the least significant bit for a 32-bit event.
+      </comment>
+    </bits>
+
+    <bits name='event31_1' access='w' rst='-' pos='31:1'>
+      <comment> These bits combined with bit0 consists a 32-bit event number. If a
+            new event is written before the previous event has been sent, it will 
+            be ignored. 
+      </comment>
+    </bits>
+  </reg>
+
+  <reg name='mode' protect='rw'>
+    <bits name='force_on' access='rw' rst='0' pos='0'>
+      <comment>When '1', force the debug host on, use clock UART if clock host is not
+            detected. </comment>
+    </bits>
+
+    <bits name='Clk_Host_On' access='r' rst='0' pos='1'>
+      <comment>This bit indicates if clock host is detected to be on or not. <br/>
+            '0' = no clock host. <br/>
+            '1' = clock host detected. </comment>
+    </bits>
+  </reg>
+
+  <reg name='h2p_status' protect='rw'>
+    <bits name='h2p_status' access='r' rst='0' pos='7:0'>
+      <comment>Status which can be written through debug uart interface into a debug host
+            internal register and read by APB. </comment>
+      <options>
+        <mask/>
+        <shift/>
+      </options>
+    </bits>
+    <bits name='h2p_status_rst' access='w' rst='0' pos='16'>
+      <comment>write in this bit will reset h2p status register. </comment>
+    </bits>
+  </reg>
+  
+  <reg name='p2h_status' protect='rw'>
+    <bits name='p2h_status' access='rw' rst='0' pos='7:0'>
+      <comment>Status which can be written by APB and read through debug uart interface 
+            as a debug host internal register.
+      </comment>
+    </bits>
+  </reg>
+  
+  <reg name='irq' protect='wr'>
+    <bits name='xcpu_irq' access='rw' rst='0' pos='0'>
+      <comment>when write '1', clear the xcpu irq level which is programmed in a debug host
+          internal register, this bit is automatic cleared. <br/> when read, get the xcpu
+          irq status. </comment>
+    </bits>
+    
+    <bits name='bcpu_irq' access='rw' rst='0' pos='1'>
+      <comment>when write '1', clear the bcpu irq level which is programmed in a debug host
+            internal register, this bit is automatic cleared.<br/> when read, get the bcpu
+            irq status.</comment>
+    </bits>
+    
+  </reg>
+</module>
+
+<instance name='DEBUG_HOST' type='debug_host' address='REG_SYS_APB_BASE + SYS_APB_STEP * SYS_ID_DEBUG_HOST'/>
+
+
+</archive><archive relative='pwm.xml'  relative='pwm.xml'  relative='pwm.xml'>
+
+
+
+    <include file='globals.xml'/>
+    <include file='granite_ip_config.xml'/>
+    <include file='greenstone_minimal_globals.xml'/>
+    
+<module name='pwm' category='Periph'>
+    <reg name='PWT_Config' protect='rw'>
+        <bits name='PWT_Enable' access='rw' rst='0' pos='0'>
+            <comment>Enables the Pulse Width Tone output
+                <br/>1 = Enable PWT output
+                <br/>0 = Disable PWT output
+            </comment>            
+        </bits>
+        <bits name='PWT_Duty' access='rw' rst='all1' pos='13:4'>
+            <comment>The PWT_Duty value can be used to set the approximate volume of the tone.
+                <br/> The PWT_Duty value must be less than or equal to half the PWT_Period value and must be at least a value of 8, otherwise no tone will be generated.
+            </comment>
+        </bits>
+        <bits name='PWT_Period' access='rw' rst='all1' pos='26:16'>
+            <comment>PWT_Period is the divider value to produce a tone of a given frequency.
+                <br/> To calculate the PWT_Period value, Use the following formula:
+                <br/>  PWT_Period = FBASE/FNOTE
+                <br/> where FBASE is the frequency of the PWM module clock (it is based on the system frequency, 26, 39, 52, 78 or 104 MHz divided by 5).  FNOTE is the frequency of the desired tone.
+            </comment>
+        </bits>        
+    </reg>
+    <reg name='LPG_Config' protect='rw'>
+        <bits name='LPG_Reset_L' access='rw' pos='1'>
+            <comment>Setting this bit to '0' will reset the Light Pulse Generator internal counters.
+            </comment>
+        </bits>
+        <bits name='LPG_OnTime' access='rw' rst='0xf' pos='7:4'>
+            <comment>Configures the duty cycle for the Light Pulse Generator by setting the ontime for the LPG output. The actual on-time is calculated as: Tick Period * LPG_OnTime * 256 where the Tick Period is nominally 1/16kHz.
+            </comment>
+            <options>
+                <option name='undefined' value='0'/>
+                <option name='15_6mS' value='1'/>
+                <option name='31_2mS' value='2'/>
+                <option name='46_8mS' value='3'/>
+                <option name='62mS' value='4'/>
+                <option name='78mS' value='5'/>
+                <option name='94mS' value='6'/>
+                <option name='110mS' value='7'/>
+                <option name='125mS' value='8'/>
+                <option name='140mS' value='9'/>
+                <option name='156mS' value='10'/>
+                <option name='172mS' value='11'/>
+                <option name='188mS' value='12'/>
+                <option name='200mS' value='13'/>
+                <option name='218mS' value='14'/>
+                <option name='234mS' value='15'/>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>
+        </bits>
+        <bits name='LPG_Period' access='rw' pos='18:16'>
+            <comment>Configures the main period of the light pulse generator. The period is calculated based on the following configurations:
+            <br/>with the Tick Period ~ 1/16kHz<br/>
+            </comment>
+            <options>
+                <option name='0_125s' value='0'><comment>Tick Period * 2048</comment></option>
+                <option name='0_25s' value='1'><comment>Tick Period * 4096</comment></option>
+                <option name='0_5s' value='2'><comment>Tick Period * 8192</comment></option>
+                <option name='0_75s' value='3'><comment>Tick Period * 12288</comment></option>
+                <option name='1s' value='4'><comment>Tick Period * 16384</comment></option>
+                <option name='1_25s' value='5'><comment>Tick Period * 20480</comment></option>
+                <option name='1_5s' value='6'><comment>Tick Period * 24576</comment></option>
+                <option name='1_75s' value='7'><comment>Tick Period * 28672</comment></option>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>
+        </bits>
+    </reg>
+    <reg name='PWL0_Config' protect='rw'>
+        <bits name='PWL_Min' access='rw' rst='all1' pos='7:0'>
+            <comment>Sets the lower boundary for PWL pulse.  When pulse mode is not used, this is the threshold value for the PWL0.  Reading this value will return the current value used for the threshold.
+            </comment>
+        </bits>
+        <bits name='PWL_Max' access='rw' rst='all1' pos='15:8'>
+            <comment>Sets the upper boundary for PWL pulse.  When pulse mode is not used, this value is ignored.  Reading this value will return the LFSR value used for generating the PWL outputs.
+            </comment>
+        </bits>
+        <bits name='PWL0_En_H' access='rs' rst='0' pos='16'>
+            <comment>When this bit is written with '1', the PWL 0 is enabled and the output is a PRBS whose average on-time is proportional to PWL_Min.  This bit is cleared when either of the Force bits are written.  Reading this bit will return the current state of the PWL0 enable.
+            </comment>
+        </bits>
+        <bits name='PWL0_Force_L' access='rc' rst='0' pos='17'>
+            <comment>Writing a '1' to this bit will force the PWL0 to output a low value.  If the PWL0 was previously enabled, this will clear the bit.
+            </comment>
+        </bits>
+        <bits name='PWL0_Force_H' access='s' rst='no' pos='18'>
+            <comment>Writing a '1' to this bit will force the PWL0 to output a high value.  If the PWL0 was previously enabled, this will clear the bit.
+            </comment>
+        </bits>
+        <bits name='PWL_Pulse_En' access='rw' rst='0' pos='19'>
+            <comment>This will enable the PWL pulse mode.  The threshold will dynamically sweep between PWL_Min and PWL_Max at a rate depending on PWL_Pulse_Per.
+            </comment>
+        </bits>
+        <bits name='PWL0_Set_OE' access='rs' rst='0' pos='20'>
+            <comment>Writing '1' to this bit will set the output enable.  Reading this bit will return the current status.
+            </comment>
+        </bits>
+        <bits name='PWL0_Clr_OE' access='c' rst='no' pos='21'>
+            <comment>Writing '1' to this bit will clear the output enable.
+            </comment>
+        </bits>
+        <bits name='PWL_Set_Mux' access='rs' rst='0' pos='22'>
+            <comment>Writing a '1' to this bit will swap the PWL0 and PWL1 outputs.  Reading this bit will return the current status.
+            </comment>
+        </bits>
+        <bits name='PWL_Clr_Mux' access='c' rst='no' pos='23'>
+            <comment>Writing a '1' to this bit will unswap the PWL0/PWL1 outputs.
+            </comment>
+        </bits>
+        <bits name='PWL_Pulse_Per' access='w' rst='all1' pos='31:24'>
+            <comment>This value will adjust the pulse period when pulsing is enabled.
+            </comment>
+        </bits>
+    </reg>
+    <reg name='PWL1_Config' protect='rw'>
+        <bits name='PWL1_Threshold' access='rw' rst='all1' pos='7:0'>
+            <comment>Average duty cycle for the Pulse Width Light 1 output. The average duty cycle is calculated as PWL1_Threshold/256.
+            </comment>
+        </bits>
+        <bits name='LFSR_Reg' access='r' rst='0xa1' pos='15:8'>
+            <comment>LFSR value for PWL.
+            </comment>
+        </bits>
+        <bits name='PWL1_En_H' access='rs' rst='0' pos='16'>
+            <comment>When this bit is written with '1', the PWL 1 is enabled and the output is a PRBS whose average on-time is proportional to PWL1_Threshold.  This bit is cleared when either of the Force bits are written.  Reading this bit will return the current state of the PWL1 enable.
+            </comment>
+        </bits>
+        <bits name='PWL1_Force_L' access='rc' rst='0' pos='17'>
+            <comment>Writing a '1' to this bit will force the PWL1 to output a low value.  If the PWL1 was previously enabled, this will clear the bit.
+            </comment>
+        </bits>
+        <bits name='PWL1_Force_H' access='s' rst='no' pos='18'>
+            <comment>Writing a '1' to this bit will force the PWL1 to output a high value.  If the PWL1 was previously enabled, this will clear the bit.
+            </comment>
+        </bits>
+        <bits name='PWL1_Set_OE' access='rs' rst='0' pos='20'>
+            <comment>Writing '1' to this bit will set the output enable.  Reading this bit will return the current status.
+            </comment>
+        </bits>
+        <bits name='PWL1_Clr_OE' access='c' rst='no' pos='21'>
+            <comment>Writing '1' to this bit will clear the output enable.
+            </comment>
+        </bits>
+    </reg>
+</module>
+
+<instance name='PWM' type='pwm' address='REG_SYS_APB_BASE + SYS_APB_STEP * SYS_ID_PWM'/>
+
+</archive><archive relative='gpio.xml'  relative='gpio.xml'>
+
+
+   <include file='globals.xml'/>
+    <include file='granite_ip_config.xml'/>
+    <include file='greenstone_minimal_globals.xml'/>
+ 
+  
+  <var name='IDX_GPIO_DCON' value='0'/>
+  <var name='IDX_GPO_CHG' value='0'/>
+
+
+<module name='gpio' category='Periph'>
+
+  
+
+  <reg name='gpio_oen_val' protect='rw'>
+    <bits name='oen_val' display='hex' access='rw' rst='0xffffff' pos='NB_GPIO-1:0'>
+      <options>
+        <option name='INPUT' value='1'/>
+
+        <option name='OUTPUT' value='0'/>
+
+        <default/>
+      </options>
+
+      <comment>Set the direction of the GPIO n.<br/>0 = output<br/>1 =
+      input</comment>
+    </bits>
+  </reg>
+
+  <reg name='gpio_oen_set_out' protect='rw'>
+    <bits name='oen_set_out' access='rc' rst='0' pos='NB_GPIO-1:0'>
+      <comment>'Write '1' sets the corresponding GPIO pin as output.</comment>
+    </bits>
+  </reg>
+
+  <reg name='gpio_oen_set_in' protect='rw'>
+    <bits name='oen_set_in' display='hex' access='rs' rst='0xffffff' pos='NB_GPIO-1:0'>
+      <comment>'Write '1' sets the corresponding GPIO pin as input.</comment>
+    </bits>
+  </reg>
+
+  
+
+  <reg name='gpio_val' protect='rw'>
+    <bits name='gpio_val' display='hex' access='rw' rst='0xffffff' pos='NB_GPIO-1:0'>
+      <comment>When write, update the output value. When read, get the input
+      value. </comment>
+    </bits>
+  </reg>
+
+  <reg name='gpio_set' protect='rw'>
+    <bits name='gpio_set' access='rs' rst='0' pos='NB_GPIO-1:0'>
+      <comment>Write '1' will set GPIO output value. When read, get the GPIO
+      output value.</comment>
+    </bits>
+  </reg>
+
+  <reg name='gpio_clr' protect='rw'>
+    <bits name='gpio_clr' access='rc' rst='0' pos='NB_GPIO-1:0'>
+      <comment>'Write '1' clears corresponding GPIO output value. When read, get the GPIO
+      output value. </comment>
+    </bits>
+  </reg>
+
+  
+
+  <reg name='gpint_ctrl_set' protect='rw'>
+    <bits name='gpint_r_set' access='rs' rst='0' pos='7:0'>
+      <comment>Write '1' will set GPIO interrupt mask for rising edge and
+      level high. When read, get the GPIO interrupt mask for rising edge and
+      level high. </comment>
+    </bits>
+
+    <bits name='gpint_f_set' access='rs' rst='0' pos='15:8'>
+      <comment>Write '1' will set GPIO interrupt mask for falling edge and
+      level low. When read, get the GPIO interrupt mask for falling edge and
+      level low.</comment>
+    </bits>
+
+    <bits name='dbn_en_set' access='rs' rst='0' pos='23:16'>
+      <comment>Write '1' will enable debounce mechanism.</comment>
+    </bits>
+
+    <bits name='gpint_mode_set' access='rs' rst='0' pos='31:24'>
+      <comment>Write '1' will set interruption mode to level.</comment>
+    </bits>
+  </reg>
+
+  <reg name='gpint_ctrl_clr' protect='rw'>
+    <bits name='gpint_r_clr' access='rc' rst='0' pos='7:0'>
+      <comment>'Write '1' will clear GPIO interrupt mask for rising edge and
+      level high.</comment>
+    </bits>
+
+    <bits name='gpint_f_clr' access='rc' rst='0' pos='15:8'>
+      <comment>Write '1' will clear GPIO interrupt mask for falling edge and
+      level low.</comment>
+    </bits>
+
+    <bits name='dbn_en_clr' access='rc' rst='0' pos='23:16'>
+      <comment>Write '1' will disable debounce mechanism.</comment>
+    </bits>
+
+    <bits name='gpint_mode_clr' access='rc' rst='0' pos='31:24'>
+      <comment>Write '1' will set interruption mode to edge
+      triggered.</comment>
+    </bits>
+  </reg>
+
+  
+
+  <reg name='int_clr' protect='w'>
+    <bits name='gpint_clr' access='c' rst='0' pos='NB_GPIO_INT-1:0'>
+      <comment>'Write '1' will clear GPIO interrupt.</comment>
+    </bits>
+  </reg>
+
+  <reg name='int_status' protect='r'>
+    <bits name='gpint_status' access='r' rst='0' pos='NB_GPIO_INT-1:0'>
+      <comment>Each bit represents if there is a GPIO interrupt
+      pending.</comment>
+      <options>
+        <default/>
+        <mask/>
+        <shift/>
+      </options>
+    </bits>
+  </reg>
+
+  
+  <reg name='chg_ctrl' protect='rw'>
+    <bits name='out_time' display='hex' access='rw' rst='0xf' pos='3:0'>
+        <comment>time for which GPIO0 is set to output mode, after a start read
+            DCON command is issued.<br/>The output time = (OUT_TIME+1)*30.5us.
+        </comment>
+    </bits>
+
+    <bits name='wait_time' display='hex' access='rw' rst='0x3f' pos='9:4'>
+        <comment>time for which GPIO0 should wait before reading DC_ON, after
+            a start read DCON command is issued.<br/>The wait time = (WAIT_TIME+1)*30.5us.
+            <br/>NOTE: wait_time must be strictly greater than out_time;
+        </comment>
+    </bits>
+
+    <bits name='int_mode' display='hex' access='rw' rst='0x3' pos='17:16'>
+        <comment>interruption mode of GPIO0 in mode DC_ON detection.<br/>
+        </comment>
+            <options>
+                <option name='L2H' value='0'>
+                    <comment>
+                        "00" = send IRQ if last read DCON is '0' and now is '1'. 
+                    </comment>
+                </option>
+                <option name='H2L' value='1'>
+                    <comment>
+                        "01" = send IRQ if last read DCON is '1' and now is '0'.
+                    </comment>
+                </option>
+                <option name='RR' value='3'>
+                    <comment>
+                        "11" = send IRQ every time read is ready.
+                    </comment>
+                </option>
+            </options>
+    </bits>
+  </reg>
+  
+  
+
+  <reg name='chg_cmd' protect='w'>
+    <bits name='dcon_mode_set' access='s' rst='0' pos='0'>
+      <comment>Write '1' to set GPIO0 to charger DCON detect mode.</comment>
+    </bits>
+      
+    <bits name='chg_mode_set' access='s' rst='0' pos='4'>
+      <comment>Write '1' to set GPO0 to charger watchdog mode.</comment>
+    </bits>
+
+    <bits name='dcon_mode_clr' access='c' rst='0' pos='8'>
+      <comment>Write '1' to clear charger DCON detect mode of GPIO0.</comment>
+    </bits>
+
+    <bits name='chg_mode_clr' access='c' rst='0' pos='12'>
+      <comment>Write '1' to clear the charger watchdog mode of GPO0.</comment>
+    </bits>
+
+    <bits name='chg_down' access='s' rst='0' pos='24'>
+      <comment>Write '1' to generate a pulse of '0' on GPO0 for 16 CLK_OSC cycles.</comment>
+    </bits>
+  </reg>
+
+  
+
+  <reg name='gpo_set' protect='rw'>
+    <bits name='gpo_set' display='hex' access='rs' rst='0xaaaaaaaa' pos='NB_GPO-1:0'>
+      <comment>'Write '1' will set GPO output value. When read, get the GPO
+      output value.</comment>
+    </bits>
+  </reg>
+
+  <reg name='gpo_clr' protect='rw'>
+    <bits name='gpo_clr' display='hex' access='rc' rst='0xaaaaaaaa' pos='NB_GPO-1:0'>
+      <comment>'Write '1' will clear GPO output value. When read, get the GPO
+      output value.</comment>
+    </bits>
+  </reg>
+</module>
+
+  <instance name='GPIO' type='gpio' address='REG_SYS_APB_BASE + SYS_APB_STEP * SYS_ID_GPIO'/>
+
+
+</archive><archive relative='spi.xml'  relative='spi.xml'>
+
+
+   <include file='globals.xml'/>
+    <include file='granite_ip_config.xml'/>
+    <include file='greenstone_minimal_globals.xml'/>
+ 
+
+<var name='SPI_TX_FIFO_SIZE' value='16'/>
+<var name='SPI_RX_FIFO_SIZE' value='16'/>
+
+<module name='spi' category='Periph'>
+    <reg name='ctrl' protect='rw'>
+        <bits name='Enable' access='rw' pos='0'>
+            <comment>Enable the module and activate the chip select selected by CS_sel field.
+            </comment>
+        </bits>
+        <bits name='CS_sel' access='rw' pos='1:2'>
+            <comment>Selects the active CS.
+            </comment>
+            <options>
+                <option name='CS0' value='0'/>
+                <option name='CS1' value='1'/>
+                <option name='CS2' value='2'/>
+                <option name='CS3' value='3'/>
+                <default/><shift/><mask/>
+            </options>
+        </bits>
+        <bits name='Input_sel' access='rw' pos='3'>
+            <comment>Selects the input line to be used as SPI data in.
+                <br/>when '0' the SPI_DI_0 is used.
+                <br/>When '1' the SPI_DI_1 is used.
+            </comment>
+        </bits>
+        <bits name='Input_mode' access='rw' rst='1' pos='4'>
+            <comment>When set to 1 the inputs are activated, else only the output is driven and no data are stored in the receive FIFO.
+            </comment>
+        </bits>
+        <bits name='Clock_Polarity' access='rw' rst='1' pos='5'>
+            <comment>The spi clock polarity
+                <br/>when '0' the clock disabled level is low, and the first edge is a rising edge.
+                <br/>When '1' the clock disabled level is high, and the first edge is a falling edge.
+            </comment>
+        </bits>
+        <bits name='Clock_Delay' access='rw' rst='3' pos='7:6'>
+            <comment>Transfer start to first edge delay value from 0 to 2 is the number of spi clock half period between the CS activation and the first clock edge.
+            </comment>
+        </bits>
+        <bits name='DO_Delay' access='rw' rst='3' pos='9:8'>
+            <comment>Transfer start to first data out delay value from 0 to 2 is the number of spi clock half period between the CS activation and the first data out
+            </comment>
+        </bits>
+        <bits name='DI_Delay' access='rw' rst='3' pos='11:10'>
+            <comment>Transfer start to first data in sample delay value from 0 to 3 is the number of spi clock half period between the CS activation and the first data in sampled.
+                <br/>NOTE: DI_Delay must be less or equal to DO_Delay + CS_Delay + 2.
+                <br/>In other words DI_Delay can be 3 only if DO_Delay and CS_Delay are not both equal to 0.
+            </comment>
+        </bits>
+        <bits name='CS_Delay' access='rw' rst='3' pos='13:12'>
+            <comment>Transfer end to chip select deactivation delay value from 0 to 3 is the number of spi clock half period between the end of transfer and CS deactivation
+            </comment>
+        </bits>
+        <bits name='CS_Pulse' access='rw' rst='3' pos='15:14'>
+            <comment>Chip select deactivation to reactivation minimum delay value from 0 to 3 is the number of spi clock half period between the CS deactivation and a new CS activation (CS will activate only if more data are available in the transmit FIFO)
+            </comment>
+        </bits>
+        <bits name='Frame_Size' access='rw' rst='31' pos='20:16'>
+            <comment>Frame Size
+                <br/>The frame size is the binary value of this register + 1 valid value are 3 to 31 (frame size 4 to 32bits)
+            </comment>
+        </bits>
+        <bits name='OE_delay' access='rw' rst='31' pos='28:24'>
+            <comment>OE delay
+                <br/>When 0: regular mode, SPI_DO pin as output only.
+                <br/>Value from 1 to 31 is the number of data out to transfert before the SPI_DO pin switch to input.
+            </comment>
+        </bits>
+        
+    </reg>
+        
+    <reg name='status' protect='rw'>
+
+        <bits name='Active_Status' access='r' pos='0'>
+            <comment>'1' when a transfer is in progress.
+            </comment>
+        </bits>
+        <bits name='Cause_Rx_Ovf_Irq' access='rw' pos='3'>
+            <comment>The receive FIFO overflow irq cause.
+                <br/>Writing a '1' clear the receive overflow status and cause.
+            </comment>
+        </bits>
+        <bits name='Cause_Tx_Th_Irq' access='r' pos='4'>
+            <comment>The transmit FIFO threshold irq cause.
+            </comment>
+        </bits>
+        <bits name='Cause_Tx_Dma_Irq' access='rw' pos='5'>
+            <comment>The transmit Dma Done irq cause.
+                <br/>Writing a '1' clear the transmit Dma Done status and cause.
+            </comment>
+        </bits>
+        <bits name='Cause_Rx_Th_Irq' access='r' pos='6'>
+            <comment>The receive FIFO threshold irq cause.
+            </comment>
+        </bits>
+        <bits name='Cause_Rx_Dma_Irq' access='rw' pos='7'>
+            <comment>The receive Dma Done irq cause.
+                <br/>Writing a '1' clear the receive Dma Done status and cause.
+            </comment>
+        </bits>
+        <bitgroup name='Irq_Cause'>
+            <entry ref='Cause_Rx_Ovf_Irq'/>
+            <entry ref='Cause_Tx_Th_Irq'/>
+            <entry ref='Cause_Tx_Dma_Irq'/>
+            <entry ref='Cause_Rx_Th_Irq'/>
+            <entry ref='Cause_Rx_Dma_Irq'/>
+        </bitgroup>
+        <bits name='Tx_Ovf' access='rw' pos='9'>
+            <comment>The transmit FIFO overflow status.
+                <br/>Writing a '1' clear the transmit overflow status and cause.
+            </comment>
+        </bits>
+        <bits name='Rx_Udf' access='rw' pos='10'>
+            <comment>The receive FIFO underflow status.
+                <br/>Writing a '1' clear the receive underflow status and cause.
+            </comment>
+        </bits>
+        <bits name='Rx_Ovf' access='rw' pos='11'>
+            <comment>The receive FIFO overflow status.
+                <br/>Writing a '1' clear the receive overflow status and cause.
+            </comment>
+        </bits> 
+        <bits name='Tx_Th' access='r' pos='12'>
+            <comment>The transmit FIFO threshold status.
+            </comment>
+        </bits> 
+        <bits name='Tx_Dma_Done' access='rw' pos='13'>
+            <comment>The transmit Dma Done status.
+                <br/>Writing a '1' clear the transmit Dma Done status and cause.
+            </comment>
+        </bits> 
+        <bits name='Rx_Th' access='r' pos='14'>
+            <comment>The receive FIFO threshold status.
+            </comment>
+        </bits> 
+        <bits name='Rx_Dma_Done' access='rw' pos='15'>
+            <comment>The receive Dma Done status.
+                <br/>Writing a '1' clear the receive Dma Done status and cause.
+            </comment>
+        </bits> 
+        <bits name='Tx_Space' access='r' rst='16' pos='20:16'>
+            <comment>Transmit FIFO Space
+                <br/>Number of empty spot in the FIFO
+            </comment>
+            <options>
+                <mask/>
+                <shift/>
+            </options>
+        </bits> 
+        <bits name='Rx_Level' access='r' pos='28:24'>
+            <comment>Receive FIFO level
+                <br/>Number of bytes in the FIFO
+            </comment>
+            <options>
+                <mask/>
+                <shift/>
+            </options>
+        </bits> 
+        <bits name='FIFO_Flush' access='w' pos='30'>
+            <comment>Writing '1' flush both FIFO, don't do it when SPI is active (transfer in progress)
+            </comment>
+        </bits>
+    </reg>
+    <reg name='rxtx_buffer' protect='--'>
+        <bits name='DATA_IN' access='w' pos='7:0'>
+            <comment>Write to the transmit FIFO
+            </comment>
+        </bits>
+        <bits name='DATA_OUT' access='r' pos='7:0'>
+            <comment>Read in the receive FIFO
+            </comment>
+        </bits>
+    </reg>
+    <reg name='cfg' protect='rw'>
+        <bits name='CS_Polarity' cut='1' cutprefix='CS_Polarity' access='rw' rst='all1' pos='3:0'>
+            <comment>Chip select polarity
+            </comment>
+            <options>
+                <option name='active high' value='0'><comment>chip select is active high</comment></option>
+                <option name='active low' value='1'><comment>chip select is active low</comment></option>
+                <mask/><shift/><default/>
+            </options>
+        </bits>
+        <bits name='Clock_Divider' access='rw' rst='1023' pos='25:16'>
+            <comment>Clock Divider
+                <br/>The state machine clock is generated by dividing the system clock by the value of this register + 1.
+                <br/>So the output clock is divided by (register + 1)*2
+            </comment>
+            <options><mask/><shift/><default/></options>
+        </bits>
+        <bits name='Clock_Limiter' access='rw' rst='0' pos='28'>
+            <comment>When enabled the clock input to the divider is not the system clock, but a limited version of it: It cannot be above 52MHz, so the output clock will never be above 26MHz.
+                <br/> for system clock of 104Mhz the clock input to the divider is 52Mhz, for system clock of 78Mhz the clock input to the divider is 39Mhz, for lower system clock value, the input to the divider is the system clock.
+            </comment>
+            <options><mask/><shift/><default/></options>
+        </bits>
+
+    </reg>
+
+    <reg name='pattern' protect='rw'>
+        <bits name='pattern' access='rw' pos='7:0'>
+            <comment>MMC Pattern value for RX pattern match mode.
+            </comment>
+        </bits>
+        <bits name='pattern_mode' access='rw' rst='0' pos='8'>
+            <comment> Enable the pattern mode.
+            </comment>
+            <options>
+                <option name='disabled' value='0'><comment>Spi Behaviour.</comment></option>
+                <option name='enabled' value='1'><comment>Pattern matching.</comment></option>
+                <default/><shift/><mask/>
+            </options>
+        </bits>
+        <bits name='pattern_selector' access='rw' rst='0' pos='9'>
+            <comment> Select the RX pattern matching mode when the pattern_mode is enabled( set 1). Used for SD/MMC SPI mode.</comment>
+            <options>
+                <option name='UNTIL' value='0'><comment>No datas are written into the RX FIFO UNTIL the received data is equal to the pattern.</comment></option>
+                <option name='WHILE' value='1'><comment>No datas are written into the RX FIFO WHILE the received data is equal to the pattern.</comment></option>
+                <default/><shift/><mask/>
+            </options>
+        </bits>
+    </reg>
+    
+    <reg name='stream' protect='rw'>
+        <bits name='tx_stream_bit' access='rw' rst='0' pos='0'>
+            <comment>When TX stream mode is enabled, once the TX fifo is empty, all new bits send have the value of this bit.
+            </comment>
+            <options>
+                <option name='zero' value='0'/>
+                <option name='one' value='1'/>
+                <default/><shift/><mask/>
+            </options>
+        </bits>
+        <bits name='tx_stream_mode' access='rw' rst='0' pos='8'>
+            <comment>Enable the TX stream mode. Used for SD/MMC SPI mode.
+                <br/>When enabled, this mode provide infinite bit stream for sending, after fifo is empty the extra bits generated all have the same value. The value is in tx_stream_bit.
+            </comment>    
+            <options>
+                <option name='disabled' value='0'/>
+                <option name='enabled' value='1'/>
+                <default/><shift/><mask/>
+            </options>
+        </bits>
+        <bits name='tx_stream_stop_with_rx_dma_done' access='rw' rst='0' pos='16'>
+            <comment>Allow to automatically clear the tx_stream_mode when Rx_Dma_Done is set.
+            </comment>    
+            <options>
+                <option name='disabled' value='0'/>
+                <option name='enabled' value='1'/>
+                <default/><shift/><mask/>
+            </options>
+        </bits>
+    </reg>
+    <reg name='pin_control' protect='rw'>
+        <bits name='clk_ctrl' access='rw' rst='0' pos='1:0'>
+            <options>
+                <option name='Spi Ctrl' value='0'><comment>The Spi_Clk pin is set OUTPUT(Basic SPI Behaviour).</comment></option>
+                <option name='Input Ctrl' value='1'><comment>The Spi_Clk pin is set INPUT (High Impedance).</comment></option>
+                <option name='Force 0 Ctrl' value='2'><comment>The Spi_Clk pin is set OUTPUT and forced to 0.</comment></option>
+                <option name='Force 1 Ctrl' value='3'><comment>The Spi_Clk pin is set OUTPUT and forced to 1.</comment></option>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>
+        </bits>
+        <bits name='do_ctrl' access='rw' rst='0' pos='2:3'>
+            <options>
+                <option name='Spi Ctrl' value='0'><comment>The Spi_DO pin is set OUTPUT(Basic SPI Behaviour).</comment></option>
+                <option name='Input Ctrl' value='1'><comment>The Spi_DO pin is set INPUT (High Impedance).</comment></option>
+                <option name='Force 0 Ctrl' value='2'><comment>The Spi_DO pin is set OUTPUT and forced to 0.</comment></option>
+                <option name='Force 1 Ctrl' value='3'><comment>The Spi_DO pin is set OUTPUT and forced to 1.</comment></option>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>            
+        </bits>
+        <bits name='cs0_ctrl' access='rw' rst='0' pos='4:5'>
+            <options>
+                <option name='Spi Ctrl' value='0'><comment>The Spi_CSO pin is set OUTPUT(Basic SPI Behaviour).</comment></option>
+                <option name='Input Ctrl' value='1'><comment>The Spi_CSO pin is set INPUT (High Impedance).</comment></option>
+                <option name='Force 0 Ctrl' value='2'><comment>The Spi_CSO pin is set OUTPUT and forced to 0.</comment></option>
+                <option name='Force 1 Ctrl' value='3'><comment>The Spi_CSO pin is set OUTPUT and forced to 1.</comment></option>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>               
+        </bits>        
+        <bits name='cs1_ctrl' access='rw' rst='0' pos='6:7'>
+            <options>
+                <option name='Spi Ctrl' value='0'><comment>The Spi_CS1 pin is set OUTPUT(Basic SPI Behaviour).</comment></option>
+                <option name='Input Ctrl' value='1'><comment>The Spi_CS1 pin is set INPUT (High Impedance).</comment></option>
+                <option name='Force 0 Ctrl' value='2'><comment>The Spi_CS1 pin is set OUTPUT and forced to 0.</comment></option>
+                <option name='Force 1 Ctrl' value='3'><comment>The Spi_CS1 pin is set OUTPUT and forced to 1.</comment></option>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>   
+        </bits>
+        <bits name='cs2_ctrl' access='rw' rst='0' pos='8:9'>
+            <options>
+                <option name='Spi Ctrl' value='0'><comment>The Spi_CS2 pin is set OUTPUT(Basic SPI Behaviour).</comment></option>
+                <option name='Input Ctrl' value='1'><comment>The Spi_CS2 pin is set INPUT (High Impedance).</comment></option>
+                <option name='Force 0 Ctrl' value='2'><comment>The Spi_CS2 pin is set OUTPUT and forced to 0.</comment></option>
+                <option name='Force 1 Ctrl' value='3'><comment>The Spi_CS2 pin is set OUTPUT and forced to 1.</comment></option>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>   
+        </bits> 
+        <bits name='cs3_ctrl' access='rw' rst='0' pos='10:11'>
+            <options>
+                <option name='Spi Ctrl' value='0'><comment>The Spi_CS3 pin is set OUTPUT(Basic SPI Behaviour).</comment></option>
+                <option name='Input Ctrl' value='1'><comment>The Spi_CS3 pin is set INPUT (High Impedance).</comment></option>
+                <option name='Force 0 Ctrl' value='2'><comment>The Spi_CS3 pin is set OUTPUT and forced to 0.</comment></option>
+                <option name='Force 1 Ctrl' value='3'><comment>The Spi_CS3 pin is set OUTPUT and forced to 1.</comment></option>
+                <default/>
+                <mask/>
+                <shift/>
+            </options>   
+        </bits> 
+    </reg>
+    <reg name='irq' protect='rw'>
+        <bits name='Mask_Rx_ovf_Irq' access='rw' pos='0'>
+            <comment>Mask the receive FIFO overflow irq
+            </comment>
+        </bits>
+        <bits name='Mask_Tx_Th_Irq' access='rw' pos='1'>
+            <comment>Mask the transmit FIFO threshold irq
+            </comment>
+        </bits>
+        <bits name='Mask_Tx_Dma_Irq' access='rw' pos='2'>
+            <comment>Mask the transmit Dma Done irq
+            </comment>
+        </bits>
+        <bits name='Mask_Rx_Th_Irq' access='rw' pos='3'>
+            <comment>Mask the receive FIFO threshold irq
+            </comment>
+        </bits>
+        <bits name='Mask_Rx_Dma_Irq' access='rw' pos='4'>
+            <comment>Mask the receive DMA Done irq
+            </comment>
+        </bits>
+        <bitgroup name='Irq_Mask'>
+            <entry ref='Mask_Rx_ovf_Irq'/>
+            <entry ref='Mask_Tx_Th_Irq'/>
+            <entry ref='Mask_Tx_Dma_Irq'/>
+            <entry ref='Mask_Rx_Th_Irq'/>
+            <entry ref='Mask_Rx_Dma_Irq'/>
+        </bitgroup>
+        <bits name='Tx_Threshold' access='rw' rst='3' pos='6:5'>
+            <comment>Transmit FIFO threshold this threshold is used to generate the irq.
+            </comment>
+            <options>
+                <option name='1 Empty Slot' value='0'/>
+                <option name='4 Empty Slots' value='1'/>
+                <option name='8 Empty Slots' value='2'/>
+                <option name='12 Empty Slots' value='3'/>
+                <default/><shift/><mask/>
+            </options>
+        </bits>
+        <bits name='Rx_Threshold' access='rw' rst='3' pos='8:7'>
+            <comment>Receive FIFO threshold this threshold is used to generate the irq.
+            </comment>
+            <options>
+                <option name='1 Valid Data' value='0'/>
+                <option name='4 Valid Data' value='1'/>
+                <option name='8 Valid Data' value='2'/>
+                <option name='12 Valid Data' value='3'/>
+                <default/><shift/><mask/>
+            </options>
+        </bits>
+    </reg>
+
+</module>
+
+
+  <instance name='SPI' type='spi' address='REG_SYS_APB_BASE + SYS_APB_STEP * SYS_ID_SPI'/>
+
+
+</archive><archive relative='root_greenstone_hard_minimal_uncyphered.xml' >
+
+
+<include file='globals.xml'/>
+<include file='granite_ip_config.xml'/>
+<include file='greenstone_minimal_globals.xml'/>
+<include file='regs.xml'/>
+<include file='debug_host_internals.xml'/>
+<include file='mem_bridge.xml'/>
+<include file='ip_version.xml'/>
+<include file='sys_ctrl.xml'/>
+<include file='debug_host.xml'/>
+<include file='pwm.xml'/>
+<include file='gpio.xml'/>
+<include file='spi.xml'/>
+
+
+
+</archive>
+
+
+</bigarchive>
