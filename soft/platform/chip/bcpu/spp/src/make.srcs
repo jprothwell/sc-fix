@@ -1,0 +1,32 @@
+S_SRC := $(S_SRC)   spp_fcch_detect_asm.S \
+					spp_fcchDetect_gallite.S
+
+C_SRC := $(C_SRC)   spp_cfg.c \
+                    spp_cipher.c \
+                    spp_gsm_amr_rx.c \
+                    spp_gsm_decoder.c \
+                    spp_gsm_equalizer.c \
+                    spp_gsm_rx.c \
+                    spp_gsm_tables.c \
+                    spp_gsm_tx.c \
+                    spp_math.c \
+                    spp_misc.c \
+                    spp_version.c \
+                    spp_fcch_detect.c \
+                    spp_pch_detect.c \
+
+# Compiles the Edge source files only when the chip supports Edge.
+ifneq (,$(findstring CHIP_EDGE_SUPPORTED=1, $(CHIP_EXPORT_FLAG)))
+C_SRC := $(C_SRC)   spp_egprs_dc_iq.c \
+                    spp_egprs_ddfse.c \
+                    spp_egprs_rx.c \
+                    spp_egprs_tx.c \
+                    spp_egprs_tof_bd.c \
+                    spp_egprs_lse_prefilter.c \
+                    spp_egprs_tables.c \
+                    spp_egprs_ir.c
+endif
+
+%/spp_fcch_detect.o: REDUCED_REGS_FLAG=
+%/spp_fcch_detect.o: CT_MIPS16_CFLAGS=
+

@@ -1,0 +1,151 @@
+CT_ASIC         ?= gallite
+CT_ASIC_CFG     ?= chip
+3GPP_MODE       ?= gsm
+ROM_TYPE        ?= chip
+CT_ROMULATOR    ?= no
+UCTLS_SERVICE   ?= umss_storage_flashmc
+CT_MMI          ?= cs2324
+CT_ERES         ?= 220_176
+
+PM_MODEL        ?= rda1203_gallite
+XCV_MODEL       ?= xcv_rda6220_gallite
+PA_MODEL        ?= pasw_rda6231
+SW_MODEL        ?= 
+FLSH_MODEL      ?= flsh_k5l2731caa_d770
+#FLSH_MODEL      ?=flsh_k5l6331caa_d270
+#LCD_MODEL       ?= ili9328
+LCD_MODEL       ?= ili9225
+LCD_IF          ?= gouda
+AD_MODEL        ?= codec_gallite
+MCD_IF          ?= sdmmc
+#CAMERA_MODEL    ?= gc0307 byd3603
+CAMERA_MODEL    ?= byd3703
+TSD_MODEL       ?= rda1203_gallite
+#FM_MODEL        ?= rda5888e
+FM_MODEL        ?= rda5802e_gallite
+
+BT_MODEL        ?= rda5872
+#DUALSIM_MODEL   ?= rda1203_gallite
+DUALSIM_MODEL ?= threesimd
+I2C_MODEL       ?= 
+ATV_MODEL       ?= rda5888e
+GSENSOR_MODEL   ?= 
+
+NUMBER_OF_SIM   ?=3 
+
+TARGET_EXPORT_FLAG    += TGT_THREE_SIM
+TARGET_EXPORT_FLAG    += SIM_SWITCH_USED
+
+ifneq (${USER_SIM_ORDER},)
+TARGET_EXPORT_FLAG    += USER_SIM_SWAP
+endif # (${USER_SIM_ORDER},)
+
+# used to set sim mapping 
+#USER_SIM_ORDER := 1 2 3
+
+CT_OPT:=dbg_size
+WITHOUT_WERROR:=1
+
+ifneq (${DUALSIM_MODEL},)
+DUAL_SIM_SUPPORT := 1
+endif # (${DUALSIMD_MODEL},)
+
+ifneq (${ATV_MODEL},)
+ANALOG_TV_SUPPORT := 1
+endif # (${ATV_MODEL},)
+
+ifneq (${I2C_MODEL},)
+TARGET_EXPORT_FLAG    += I2C_BASED_ON_GPIO
+endif # (${I2C_MODEL},)
+
+# GPRS capability
+WAPMMS_SUPPORT   ?= 1
+
+include ${SOFT_WORKDIR}/platform/edrv/memd/${FLSH_MODEL}/memd.def
+
+# Define BT crystal flag
+BT_SHARE_CRYSTAL := 1
+
+# for full MMI
+export MMI_SUPPORT_TOUCHPANEL := NO
+export MMI_SUPPORT_SENDKEY2 := NO
+export MMI_PARAM_LCDSIZE := LCDSIZE_220_176
+
+# Define screen resolution
+#TARGET_EXPORT_FLAG    += LCDSIZE_240_320
+TARGET_EXPORT_FLAG    += LCDSIZE_220_176
+#TARGET_EXPORT_FLAG    += LCD_SCALE_176_220_TO_240_320
+
+ifeq "${SOFTROM}" "1"
+TARGET_EXPORT_FLAG    += REWRITE_ROM_AT_BOOT
+endif
+
+# Register all the available modules
+#TARGET_EXPORT_FLAG    += TGT_REGISTER_PLATFORM_VERSIONS
+
+# Enable profile stub
+ifneq "${NO_PROFILE}" "1"
+# Buffer profile
+TARGET_EXPORT_FLAG    += HAL_PROFILE_ON_BUFFER
+#TARGET_EXPORT_FLAG    += HAL_PROFILE_NOT_ON_ROMULATOR
+
+# Enable profile on HAL/PAL/SX
+TARGET_EXPORT_FLAG    += HAL_PROFILING PAL_PROFILING
+TARGET_EXPORT_FLAG    += SX_PROFILING
+endif
+
+# Enable SPI register debug
+ifneq "${NO_SPI_REG_DEBUG}" "1"
+TARGET_EXPORT_FLAG    += SPI_REG_DEBUG
+LDPPFLAGS += -DSPI_REG_DEBUG
+endif
+
+# Enable trace in hal_Open
+ifneq "${NO_EARLY_TRACE_OPEN}" "1"
+TARGET_EXPORT_FLAG    += EARLY_TRACE_OPEN
+endif
+
+# Receiver uses one speaker line (using left line by default)
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE
+# If using right line, the following macro should be added as well
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE_R
+
+#GLOBAL_EXPORT_FLAG    += MEMD_RAM_IS_ADMUX
+#GLOBAL_EXPORT_FLAG    += MEMD_FLASH_IS_ADMUX
+#GLOBAL_EXPORT_FLAG    += MEMD_RAM_IS_BURST
+#GLOBAL_EXPORT_FLAG    += MEMD_FLASH_IS_BURST
+
+#normal flash ebc clock use 78MHz
+TARGET_EXPORT_FLAG    += MEM_FREQ_78M
+
+MMI_EXPORT_FLAG += COMPRESS_OPTIMIZE_FLASH_SIZE
+MMI_EXPORT_FLAG += COMPRESS_USE_LZMA
+
+GLOBAL_EXPORT_FLAG += FMRDO_SINGLEVOLUMECHANNEL_SUPPORT 
+GLOBAL_EXPORT_FLAG += SUPPORT_DUAL_CAMERA
+MMI_EXPORT_FLAG 	+= PRODUCT_QPAD
+
+TARGET_MEDIA_RM_MODEL :=1
+
+ifeq "${TARGET_MEDIA_RM_MODEL}" "1"
+TARGET_EXPORT_FLAG    +=TARGET_MEDIA_RM_SUPPORT
+endif
+
+# Define the ML language support
+GLOBAL_EXPORT_FLAG += ML_SUPPORT
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP0	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_1
+
+##这个宏开关，用来控制是否支持自动记录按键信息，通常用于记录出问题之前的按键信息，方便工程人员复现问题#######
+##打开这个宏会额外占用大约9KByte的空间，可以根据实际情况考虑是否打开这个功能##
+GLOBAL_EXPORT_FLAG += AUTO_TEST_KEYPRESS_RECORD_SUPPORT
+##打开这个宏，在正常开关机的情况下可以节省一个RTC大电容
+#GLOBAL_EXPORT_FLAG += __MMI_SAVE_CURRENT_TIME__
+
+##定义短消息和电话本的条目
+##PHONE_SMS_ENTRY_COUNT表征FLASH上多卡项目总计SMS容量，单卡数目为PHONE_SMS_ENTRY_COUNT/SIM_COUNT
+##SIM_SMS_ENTRY_COUNT表征SIM卡上最大SMS容量，请勿修改
+GLOBAL_EXPORT_FLAG += PHONE_SMS_ENTRY_COUNT=200
+GLOBAL_EXPORT_FLAG += SIM_SMS_ENTRY_COUNT=255
+GLOBAL_EXPORT_FLAG += PHONE_PHB_ENTRY_COUNT=250
+#################################################################

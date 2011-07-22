@@ -1,0 +1,9 @@
+CC=cl.exe
+CFLAGS=/I.. /MT /D "WIN32" /D "_CONSOLE" /D "_MBCS" tci_upper.lib 
+
+EXAMPLES= ex1.exe ex2.exe ex3.exe ex4.exe ex7.exe ex8.exe ex9.exe 
+
+all: $(EXAMPLES)
+
+clean:
+	del $(EXAMPLES)

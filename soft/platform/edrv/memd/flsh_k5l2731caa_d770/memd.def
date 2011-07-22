@@ -1,0 +1,24 @@
+# this file is to be included in target.def by dev targets that use the 
+# k5l2731caa_d770 flash/ram combo
+# K5L2731CAA-D770
+#     K5    Combo Memory
+#     L     NOR Flash + Ram
+#     27    128M Bit (16M Byte) Flash
+#     31    32M Bit (4M Byte) Ram
+#     C     3.0V Memory
+#     A     Top & Bottom Boot Block
+#     A
+#     D
+#     7     70ns Flash
+#     70    70ns Ram
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x01000000
+    RAM_SIZE:=              0x00400000
+    USER_DATA_BASE:=        0x00E00000
+    USER_DATA_SIZE:=        0x001F0000
+    CALIB_BASE:=            0x00FFC000
+    FACT_SETTINGS_BASE:=    0x00FFE000
+    USER_DATA_BLOCK_SIZE:=  0x00000200
+

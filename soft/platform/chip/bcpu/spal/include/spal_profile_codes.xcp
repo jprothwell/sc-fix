@@ -1,0 +1,28 @@
+<module name="SPAL">
+    <fn name='BCPU_BOOT' id='0x6F00'/>
+    <fn name='BCPU_MAIN' id='0x6F01'/>
+    <fn name='BCPU_ERROR' id='0x6F02'/>
+    <fn name='spal_XcorTscxcNb' id='0x4200'/>
+    <fn name='spal_XcorTscxcSch' id='0x4201'/>
+    <fn name='spal_XcorFchxc' id='0x4202'/>
+    <fn name='spal_XcorBiterror' id='0x4203'/>
+    <fn name='spal_XcorChest' id='0x4204'/>
+    <fn name='spal_XcorSrec' id='0x4205'/>
+    <fn name='spal_XcorBmsum' id='0x4206'/>
+    <fn name='spal_XcorErrCalc' id='0x4207'/>
+    <fn name='spal_XcorIcorCalc' id='0x4208'/>
+    <fn name='spal_XcorHvextract' id='0x4209'/>
+    <fn name='spal_XcorDcoc' id='0x420a'/>
+    <fn name='spal_VitacFullDecoding' id='0x420b'/>
+    <fn name='spal_XcorBmmlZf' id='0x420c'/>
+    <fn name='spal_XcorComplexMatrixMultiply' id='0x420d'/>
+    <fn name='spal_XcorComplexConvolution' id='0x420e'/>
+    <fn name='spal_XcorComplexPower' id='0x420f'/>
+    <fn name='spal_XcorDerotate' id='0x4210'/>
+    <fn name='spal_XcorDcIqCompensate' id='0x4211'/>
+    <fn name='spal_XcorSrecPSK8' id='0x4212'/>
+    <fn name='spal_debug' id='0x42FF'/>
+    <fn name='spal_debug1' id='0x42FE'/>
+    <fn name='spal_debug2' id='0x42FD'/>
+</module>
+

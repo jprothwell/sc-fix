@@ -1,0 +1,127 @@
+#
+# MODULE NAME:    host_make_rules 
+# PROJECT CODE:   BlueStream
+# DESCRIPTION:    This makefile provides sources
+# AUTHOR:         Ivan Griffin 
+# DATE:           25 August, 1999
+#
+# SOURCE CONTROL: $Id: host_make_rules 1532 2010-08-23 05:47:34Z huazeng $
+#
+# LICENSE:
+#    This source code is copyright (c) 1999-2004 Ceva Inc.
+#    All rights reserved.
+#
+# REVISION HISTORY:
+#
+# SOURCE:
+#
+# ISSUES:
+#
+
+HOST_BASE_DIR = ../bt_host
+
+L2_SOURCES = \
+    $(HOST_BASE_DIR)/generic/host_sched.c \
+    $(HOST_BASE_DIR)/generic/host_init.c \
+    $(HOST_BASE_DIR)/generic/host_buf.c \
+    $(HOST_BASE_DIR)/generic/host_timer.c \
+    $(HOST_BASE_DIR)/generic/host_ll.c \
+    $(HOST_BASE_DIR)/l2cap/l2_sar.c \
+    $(HOST_BASE_DIR)/l2cap/l2_enc_dec.c \
+    $(HOST_BASE_DIR)/l2cap/l2cap_primitives.c \
+    $(HOST_BASE_DIR)/l2cap/l2_acl_link.c \
+    $(HOST_BASE_DIR)/l2cap/l2_psm.c \
+    $(HOST_BASE_DIR)/l2cap/l2_pkt_handler.c \
+    $(HOST_BASE_DIR)/l2cap/l2_channel.c  \
+    $(HOST_BASE_DIR)/l2cap/l2_groups.c \
+    $(HOST_BASE_DIR)/l2cap/bd_addr_list.c \
+    $(HOST_BASE_DIR)/l2cap/l2_utils.c \
+    $(HOST_BASE_DIR)/l2cap/l2_config_sm.c \
+    $(HOST_BASE_DIR)/l2cap/l2_connect_sm.c \
+    $(HOST_BASE_DIR)/l2cap/l2_config_helper.c \
+    $(HOST_BASE_DIR)/l2cap/l2_bufalloc.c \
+    $(HOST_BASE_DIR)/sdp/sdp_ue.c \
+    $(HOST_BASE_DIR)/sdp/sdp_db.c \
+    $(HOST_BASE_DIR)/sdp/sdp_le_request_decoder.c \
+    $(HOST_BASE_DIR)/sdp/sdp_le_request_encoder.c \
+    $(HOST_BASE_DIR)/sdp/sdp_le_response_decoder.c \
+    $(HOST_BASE_DIR)/sdp/sdp_le_response_encoder.c \
+    $(HOST_BASE_DIR)/sdp/sdp_callbacks.c \
+    $(HOST_BASE_DIR)/sdp/sdp_le_common.c \
+    $(HOST_BASE_DIR)/sdp/sdp_state_machine.c \
+    $(HOST_BASE_DIR)/sdp/sdp_server.c \
+
+
+HFP_SOURCES = \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_core.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_ctrl_chan.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_dlc_state.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_frames.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_l2cap.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_ue_api.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_ctrl_frames.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_pe.c \
+    $(HOST_BASE_DIR)/rfcomm/port_ent_api.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_credit.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_entity_core.c \
+    $(HOST_BASE_DIR)/rfcomm/stack_ent.c \
+    $(HOST_BASE_DIR)/rfcomm/stack_ent_api.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_l2auto_state.c \
+    $(HOST_BASE_DIR)/rfcomm/rfcomm_bufalloc.c \
+    $(HOST_BASE_DIR)/rfcomm/stack_ent_pump.c \
+    $(HOST_BASE_DIR)/hfp/hfp_core.c \
+
+
+A2DP_SOURCES = \
+	$(HOST_BASE_DIR)/a2dp/headset_sched.c \
+	$(HOST_BASE_DIR)/a2dp/a2dp_core.c \
+	$(HOST_BASE_DIR)/a2dp/avdtp_callbacks.c \
+	$(HOST_BASE_DIR)/a2dp/avdtp_core.c \
+	$(HOST_BASE_DIR)/a2dp/avrcp_callbacks.c \
+	$(HOST_BASE_DIR)/a2dp/avrcp_core.c \
+
+
+###
+### Include Directories
+###
+###
+###
+
+L2_INCLUDES = \
+     -I$(HOST_BASE_DIR)/include \
+     -I$(HOST_BASE_DIR)/l2cap/include \
+     -I$(HOST_BASE_DIR)/sdp/include \
+
+HFP_INCLUDES = \
+     -I$(HOST_BASE_DIR)/rfcomm/include \
+     -I$(HOST_BASE_DIR)/hfp/include \
+
+A2DP_INCLUDES = \
+     -I$(HOST_BASE_DIR)/a2dp/include \
+
+HC_HOST_SOURCES = \
+     $(L2_SOURCES) \
+     $(HFP_SOURCES) \
+     $(A2DP_SOURCES)
+
+HOST_INCLUDES = \
+     $(L2_INCLUDES) \
+     $(HFP_INCLUDES) \
+     $(A2DP_INCLUDES)
+
+#
+# CORE_SOURCES Used throughout hal files, to refer to all non hal files
+# Legacy when only core_make_rules existed.
+#
+HOST_SOURCES = $(HC_HOST_SOURCES) $(TEST_SOURCES)
+
+
+host: $(HOST_TARGET)
+
+$(HOST_TARGET): $(HOST_SOURCES:.c=.o) 
+
+.phony: host_clean
+
+host_clean:
+	-$(RM) $(HOST_TARGET) $(HOST_SOURCES:.c=.o)
+	

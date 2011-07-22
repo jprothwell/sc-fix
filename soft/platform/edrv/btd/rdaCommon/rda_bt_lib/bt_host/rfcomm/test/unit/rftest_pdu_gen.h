@@ -1,0 +1,168 @@
+/***********************************************************************
+ *
+ * MODULE NAME:    rftest_pdu_gen.h
+ * PROJECT CODE:   host side stack
+ * DESCRIPTION:    RFCOMM Frame Defines
+ * MAINTAINER:     Dave Airlie
+ * CREATION DATE:  15 March 2000
+ *
+ * SOURCE CONTROL: $Id: rftest_pdu_gen.h 1532 2010-08-23 05:47:34Z huazeng $
+ *
+ * LICENSE:
+ *     This source code is copyright (c) 2000 Parthus Technologies Inc.
+ *     All rights reserved.
+ *
+ * REVISION HISTORY:
+ *    15.Mar.2000 -   DA - first import
+ *
+ *
+ * ISSUES:
+ *       
+ *
+ ***********************************************************************/
+
+#ifndef PRH_RFTEST_FRAME_H
+#define PRH_RFTEST_FRAME_H
+
+#define PRH_RFCOMM_EA_BIT 1
+#define PRH_RFCOMM_CR_BIT 2
+
+#define PRH_RFCOMM_FR_ADDR_FIELD 0
+#define PRH_RFCOMM_FR_CTRL_FIELD 1
+#define PRH_RFCOMM_FR_LENGTH_FIELD1 2
+#define PRH_RFCOMM_FR_LENGTH_FIELD2 3
+
+#define PRH_RFCOMM_FR_CTRL_SABM 0x2F
+#define PRH_RFCOMM_FR_CTRL_UA 0x63
+#define PRH_RFCOMM_FR_CTRL_DM 0x0F
+#define PRH_RFCOMM_FR_CTRL_DISC 0x43
+#define PRH_RFCOMM_FR_CTRL_UIH 0xEF
+
+/* Size of buffer for a frame */
+#define PRH_RFCOMM_FR_BUFSIZE 3
+#define PRH_RFCOMM_FR_CTRL_PF_BIT (1<<4)
+
+/* Values for Control Channel Type field from TS 07.10 5.4.6.3 */
+/* These are in the same order as the spec */
+#define PRH_RFCOMM_CC_TYPE_PN 0x80
+#define PRH_RFCOMM_CC_TYPE_TEST 0x20
+#define PRH_RFCOMM_CC_TYPE_FCON 0xA0
+#define PRH_RFCOMM_CC_TYPE_FCOFF 0x60
+#define PRH_RFCOMM_CC_TYPE_MSC 0xE0
+#define PRH_RFCOMM_CC_TYPE_NSC 0x10
+#define PRH_RFCOMM_CC_TYPE_RPN 0x90
+#define PRH_RFCOMM_CC_TYPE_RLS 0x50
+
+#define PRH_RFCOMM_CC_TYPE_FIELD 0
+#define PRH_RFCOMM_CC_LENGTH_FIELD 1
+
+/* length fields for host buffer allocation */
+#define PRH_RFCOMM_EXTRA_FRAME_LEN 4
+#define PRH_RFCOMM_CC_HEAD_LEN 2
+
+/* Length of Control Channel Message (not including headers) */
+#define PRH_RFCOMM_CC_PN_LEN 8
+#define PRH_RFCOMM_CC_RPN_LEN_REQ 1
+#define PRH_RFCOMM_CC_RPN_LEN_COMM 8
+#define PRH_RFCOMM_CC_MSC_SHORT_LEN 2
+#define PRH_RFCOMM_CC_MSC_LONG_LEN 3
+#define PRH_RFCOMM_CC_LSR_LEN 2
+#define PRH_RFCOMM_CC_PN_LEN 8
+#define PRH_RFCOMM_CC_NSC_LEN 1
+#define PRH_RFCOMM_CC_FCON_LEN 0
+#define PRH_RFCOMM_CC_FCOFF_LEN 0
+
+#define PRH_RFCOMM_CC_CR_RESP 0
+#define PRH_RFCOMM_CC_CR_COMM 1
+
+/* DLC Parameter negotiation PN */
+#define PRH_RFCOMM_CC_PN_DLCI 2
+#define PRH_RFCOMM_CC_PN_CLBITS 3
+#define PRH_RFCOMM_CC_PN_FRAME_SIZE1 6
+#define PRH_RFCOMM_CC_PN_FRAME_SIZE2 7
+#define PRH_RFCOMM_CC_PN_KBITS 9
+
+#define PRH_RFCOMM_CC_PN_CREDIT_FLOW_REQ 0x0F
+#define PRH_RFCOMM_CC_PN_CREDIT_FLOW_RESP 0x0E
+
+/* MSC */
+#define PRH_RFCOMM_CC_MSC_DLCI 2
+#define PRH_RFCOMM_CC_MSC_BITS 3
+#define PRH_RFCOMM_CC_MSC_BREAK 4
+
+#define PRH_RFCOMM_CC_MSC_CSF_FC (1<<1)
+#define PRH_RFCOMM_CC_MSC_CSF_RTC (1<<2)
+#define PRH_RFCOMM_CC_MSC_CSF_RTR (1<<3)
+#define PRH_RFCOMM_CC_MSC_CSF_IC (1<<6)
+#define PRH_RFCOMM_CC_MSC_CSF_DV (1<<7)
+
+#define PRH_RFCOMM_CC_MSC_BS_B1 2
+
+/* RPN */
+#define PRH_RFCOMM_CC_RPN_DLCI 2
+#define PRH_RFCOMM_CC_RPN_BAUD 3
+#define PRH_RFCOMM_CC_RPN_DSPB 4
+#define PRH_RFCOMM_CC_RPN_FLC 5
+#define PRH_RFCOMM_CC_RPN_XON 6
+#define PRH_RFCOMM_CC_RPN_XOFF 7
+#define PRH_RFCOMM_CC_RPN_PM1 8
+#define PRH_RFCOMM_CC_RPN_PM2 9
+
+#define PRH_RFCOMM_CC_RPN_B_2400 0
+#define PRH_RFCOMM_CC_RPN_B_4800 1
+#define PRH_RFCOMM_CC_RPN_B_7200 2
+#define PRH_RFCOMM_CC_RPN_B_9600 3
+#define PRH_RFCOMM_CC_RPN_B_19200 4
+#define PRH_RFCOMM_CC_RPN_B_38400 5
+#define PRH_RFCOMM_CC_RPN_B_57600 6
+#define PRH_RFCOMM_CC_RPN_B_115200 7
+#define PRH_RFCOMM_CC_RPN_B_230400 8 
+
+#define PRH_RFCOMM_CC_RPN_B_DEF PRH_RFCOMM_CC_RPN_B_9600
+
+#define PRH_RFCOMM_CC_RPN_D_5 0
+#define PRH_RFCOMM_CC_RPN_D_6 2
+#define PRH_RFCOMM_CC_RPN_D_7 1
+#define PRH_RFCOMM_CC_RPN_D_8 3
+
+#define PRH_RFCOMM_CC_RPN_D_DEF PRH_RFCOMM_CC_RPN_D_8
+
+#define PRH_RFCOMM_CC_RPN_PT_ODD 0
+#define PRH_RFCOMM_CC_RPN_PT_EVEN 2<<5
+#define PRH_RFCOMM_CC_RPN_PT_MARK 1<<5
+#define PRH_RFCOMM_CC_RPN_PT_SPACE 3<<5
+
+#define PRH_RFCOMM_CC_RPN_FLC_IXON 1
+#define PRH_RFCOMM_CC_RPN_FLC_OXON 2
+#define PRH_RFCOMM_CC_RPN_FLC_IRTR 4
+#define PRH_RFCOMM_CC_RPN_FLC_ORTR 8
+#define PRH_RFCOMM_CC_RPN_FLC_IRTC 16
+#define PRH_RFCOMM_CC_RPN_FLC_ORTC 32
+
+#define PRH_RFCOMM_CC_RPN_PM_BITRATE 0x0001
+#define PRH_RFCOMM_CC_RPN_PM_DATABITS 0x0002
+#define PRH_RFCOMM_CC_RPN_PM_STOPBITS 0x0004
+#define PRH_RFCOMM_CC_RPN_PM_PARITY 0x0008
+#define PRH_RFCOMM_CC_RPN_PM_PARITY_TYPE 0x0010
+#define PRH_RFCOMM_CC_RPN_PM_XON_CH 0x0020
+#define PRH_RFCOMM_CC_RPN_PM_XOFF_CH 0x0040
+
+#define PRH_RFCOMM_CC_RPN_PM_RESV1 0x0080
+
+#define PRH_RFCOMM_CC_RPN_PM_XONXOFF_INPUT 0x0100
+#define PRH_RFCOMM_CC_RPN_PM_XONXOFF_OUTPUT 0x0200
+#define PRH_RFCOMM_CC_RPN_PM_RTR_INPUT 0x0400
+#define PRH_RFCOMM_CC_RPN_PM_RTR_OUTPUT 0x0800
+#define PRH_RFCOMM_CC_RPN_PM_RTC_INPUT 0x1000
+#define PRH_RFCOMM_CC_RPN_PM_RTC_OUTPUT 0x2000
+
+#define PRH_RFCOMM_CC_LSR_DLCI 2
+
+#define PRH_RFCOMM_DEF_DLC_PRI 15
+#define PRH_RFCOMM_CTRL_DLC 0
+
+#define PRH_RFTEST_PDU_COMMAND 0
+#define PRH_RFTEST_PDU_DLCI0 1
+
+#endif
+

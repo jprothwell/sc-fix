@@ -1,0 +1,20 @@
+# this file is to be included in target.def by dev targets that use the 
+# s71pl256nc0 flash/ram combo
+# S71PL256N(B/C/D)0 flash/ram combo
+#     S71PL    3.0V Page Mode Flash
+#     256      256M Bit (32M Byte) Flash
+#     N        N: 110nm MirrorBit
+#     B/C/D    B: 32M Bit (4M Byte) Ram
+#              C: 64M Bit (8M Byte) Ram
+#              D: 128M Bit (16M Byte) Ram
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x02000000
+    RAM_SIZE:=              0x00800000
+    CALIB_BASE:=            0x00010000
+    FACT_SETTINGS_BASE:=    0x00020000
+    CODE_BASE:=             0x00040000
+    USER_DATA_BASE:=        0x01C00000
+    USER_DATA_SIZE:=        0x00400000
+    USER_DATA_BLOCK_SIZE:=  0x00000200

@@ -1,0 +1,25 @@
+CC                cfw_bal_app.c
+src/cfw_bal_app.c:10: warning: 'g_pfnCfwProc' defined but not used
+CC                cfw_bal_init.c
+src/cfw_bal_init.c: In function `CFW_SendSclMessage':
+src/cfw_bal_init.c:53: warning: implicit declaration of function `Stack_MsgMalloc'
+src/cfw_bal_init.c: In function `CFW_SendSclData':
+src/cfw_bal_init.c:128: warning: implicit declaration of function `SUL_MemCopy8'
+src/cfw_bal_init.c: In function `CFW_BalSendMessage':
+src/cfw_bal_init.c:162: warning: passing arg 1 of `TS_OutputText' makes integer from pointer without a cast
+src/cfw_bal_init.c:162: warning: passing arg 2 of `TS_OutputText' makes pointer from integer without a cast
+src/cfw_bal_init.c: In function `CFW_BalAudCallStart':
+src/cfw_bal_init.c:181: warning: comparison between pointer and integer
+src/cfw_bal_init.c: In function `CFW_BalAudCallStop':
+src/cfw_bal_init.c:199: warning: comparison between pointer and integer
+src/cfw_bal_init.c: In function `CFW_ServicesInit':
+src/cfw_bal_init.c:217: warning: implicit declaration of function `CFW_NwInit'
+src/cfw_bal_init.c:220: warning: implicit declaration of function `CFW_SimInit'
+src/cfw_bal_init.c:223: warning: implicit declaration of function `CFW_SmsMtInit'
+src/cfw_bal_init.c:226: warning: implicit declaration of function `CFW_SsInit'
+src/cfw_bal_init.c:229: warning: implicit declaration of function `CFW_CcInit'
+src/cfw_bal_init.c:232: warning: implicit declaration of function `CFW_SmsCbInit'
+CC                cfw_task.c
+src/cfw_task.c: In function `cfw_ParseMsg':
+src/cfw_task.c:64: warning: implicit declaration of function `Stack_MsgFree'
+AR                libbal_cool_profile.a

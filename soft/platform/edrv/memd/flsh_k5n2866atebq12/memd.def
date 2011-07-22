@@ -1,0 +1,25 @@
+# this file is to be included in target.def by dev targets that use the 
+# flsh_k5n6433atm flash/ram combo
+#     k5    Samsung 2chipMCP memory
+#     n     Muxed NOR + Muxed UtRam2 
+#     28     128M Bit (16M Byte) flash
+#     66    64M Bit (8M Byte)ram
+#     A    1.V   T  Top Boot Block  E: 5th Generation Q 108Mhz  12: 108 M        
+
+# form factor models can define the values directly in their target.def
+
+   FLASH_SIZE:=            0x01000000
+ifeq "${CT_COMPRESS_CODE_SECTION}" "yes"
+    RAM_SIZE:=              0x003a8000
+    XCPU_OVERLAY_BASE:=     ${RAM_SIZE}
+else
+    RAM_SIZE:=              0x00800000
+endif
+    CODE_BASE:=             0x00006000
+    USER_DATA_BASE:=        0x00E00000
+    USER_DATA_SIZE:=        0x000F0000   
+    CALIB_BASE:=            0x00FE0000
+    FACT_SETTINGS_BASE:=    0x00FF0000
+
+    USER_DATA_BLOCK_SIZE:=  0x00000400
+

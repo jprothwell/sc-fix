@@ -1,0 +1,17 @@
+# this file is to be included in target.def by dev targets that use the 
+# en71pl064b0 flash/ram combo
+#    71pl   MCP,3V Simultaneous R/W,Page mode Flash Memory and RAM
+#     064    64Mb(4M X 16) Flash
+#     b0    32Mb Ram
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x00800000
+    RAM_SIZE:=              0x00400000
+    CALIB_BASE:=            0x007FC000
+    FACT_SETTINGS_BASE:=    0x007FE000
+    CODE_BASE:=             0x00000800
+    USER_DATA_BASE:=        0x00700000
+    USER_DATA_SIZE:=        0x000F0000
+    USER_DATA_BLOCK_SIZE:=  0x00000200
+

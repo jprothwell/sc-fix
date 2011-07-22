@@ -1,0 +1,35 @@
+README for BT Host Side CVS
+===========================
+
+host entities:
+hc
+l2cap
+rfcomm
+sdp
+manager
+api
+obex - goep, object push, ftp, sync
+
+os specifics:
+ecos
+win32
+linux 
+realos-fr
+
+include dir:
+include
+  - host_types.h
+  - host_error.h
+  - host_config.h
+  - host_const.h
+
+
+user:
+header files which are required for application development.
+
+
+
+Each modules will contain an include directory in which it stores its own layer specific include files, global includes only will be stored in the include dir. 
+
+Each OS specific layer will hold its own include files also.
+

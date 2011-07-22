@@ -1,0 +1,7 @@
+C_SRC +=  boot_loader.c
+C_SRC +=  boot_sector.c
+
+S_SRC +=
+
+%/boot_loader.o: CT_MIPS16_CFLAGS=
+%/boot_sector.o: CT_MIPS16_CFLAGS=

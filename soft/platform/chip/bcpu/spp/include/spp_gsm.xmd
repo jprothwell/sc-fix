@@ -1,0 +1,1229 @@
+<archive asm="no">
+
+<comment>
+This document describes the structures and functions provided to SPC for
+both baseband processing and low-level HW control.
+Includes the definition of the various buffers used by HW modules during Rx and Tx.
+</comment>
+
+<include load="no" file="cs_types.h"/>
+<include load="no" file="gsm.h"/>
+
+<var name='SPP_EGPRS_IR_MEM_LEN' value='52*1024'>
+    <comment>size of the memory used for saving the IR blocks</comment>
+</var>
+<var name='SPP_EGPRS_IR_SNS' value='2048'>
+    <comment>TBF modulo</comment>
+</var>
+
+<var name='SPP_EGPRS_TX_BURST_LEN' value='44'>
+    <comment>Size in bytes of on one Tx burst buffer</comment>
+</var>
+
+<var name='MCS_1_TO_4_UNCOMPRESSED_BLOCK_LEN' value='372'>
+    <comment>size in bytes of one received MCS1 to MCS4 block prior to decoding</comment>
+</var>
+<var name='MCS_5_TO_6_UNCOMPRESSED_BLOCK_LEN' value='1248'>
+    <comment>size in bytes of one received MCS5 to MCS6 block prior to decoding</comment>
+</var>
+<var name='MCS_7_TO_9_UNCOMPRESSED_BLOCK_LEN' value='612'>
+    <comment>size in bytes of one received MCS7 to MCS9 block prior to decoding</comment>
+</var>
+
+<var name='MCS_1_TO_4_BLOCK_LEN' value='MCS_1_TO_4_UNCOMPRESSED_BLOCK_LEN/2'>
+    <comment>size in bytes of one compressed MCS1 to MCS4 block prior to decoding</comment>
+</var>
+<var name='MCS_5_TO_6_BLOCK_LEN' value='MCS_5_TO_6_UNCOMPRESSED_BLOCK_LEN/2'>
+    <comment>size in bytes of one compressed MCS5 to MCS6 block prior to decoding</comment>
+</var>
+<var name='MCS_7_TO_9_BLOCK_LEN' value='MCS_7_TO_9_UNCOMPRESSED_BLOCK_LEN/2'>
+    <comment>size in bytes of one compressed MCS7 to MCS9 block prior to decoding</comment>
+</var>
+
+<var name='MCS_1_TO_4_BUFFER_LEN' value='SPP_EGPRS_IR_MEM_LEN/MCS_1_TO_4_BLOCK_LEN'>
+    <comment>number of compressed MCS1 to MCS4 blocks that can be stored in the IR memory</comment>
+</var>
+<var name='MCS_5_TO_6_BUFFER_LEN' value='SPP_EGPRS_IR_MEM_LEN/MCS_5_TO_6_BLOCK_LEN'>
+    <comment>number of compressed MCS5 to MCS6 blocks that can be stored in the IR memory</comment>
+</var>
+<var name='MCS_7_TO_9_BUFFER_LEN' value='SPP_EGPRS_IR_MEM_LEN/MCS_7_TO_9_BLOCK_LEN'>
+    <comment>number of compressed MCS7 to MCS9 blocks that can be stored in the IR memory</comment>
+</var>
+
+<var name='MCS_MAX_BLOCK_LEN' value='MCS_5_TO_6_BLOCK_LEN'>
+    <comment>maximum size of one received blocks regardless of the mode</comment>
+</var>
+<var name='MCS_MAX_BUFFER_LEN' value='MCS_1_TO_4_BUFFER_LEN'>
+    <comment>maximum number of blocks that can contain the IR memory regardless of the mode</comment>
+
+</var>
+<var name='SPP_EGPRS_SIZE_HEAD_DECODE_MCS789' value='29'>
+    <comment>size of table that gives the correct coding scheme between MCS7, MCS8 and MCS9 after the header decoding</comment>
+
+</var>
+<var name='SPP_EGPRS_SIZE_HEAD_DECODE_MCS56' value='6'>
+    <comment>size of table that gives the correct coding scheme between MCS5 and MCS6 after the header decoding</comment>
+
+</var>
+<var name='SPP_EGPRS_SIZE_HEAD_DECODE_MCS1234' value='13'>
+    <comment>size of table that gives the correct coding scheme between MCS1, MCS2, MCS3 and MCS4 after the header decoding</comment>
+
+</var>
+<var name='TRAIN_SEQ_LENGTH' value='26'>
+    <comment>length of the training sequence</comment>
+</var>
+<var name='HALF_BURST_LEN' value='61'>
+    <comment>length of the training sequence</comment>
+</var>
+<var name='SPP_LSE_TAP_NB' value='8'>
+    <comment>length of the training sequence</comment>
+</var>
+<var name='QP' value='10'>
+    <comment>quality factor for the prefilter</comment>
+</var>
+<var name='MAIN_TAP_LEN' value='2'>
+    <comment>number of taps used in the DDFSE treillis</comment>
+</var>
+<var name='ALL_TAP_LEN' value='6'>
+    <comment>number of taps used in the DDFSE equalizer</comment>
+</var>
+<var name='STATE_LEN' value='8'>
+    <comment>size of the treillis for 8PSK equal to 8**(MAIN_TAP_LEN-1)</comment>
+</var>
+<var name='HASH_LEN' value='64'>
+    <comment>length of the HASH TABLE (for IR)</comment>
+</var>
+
+<enum name='SPP_EGPRS_HEADER_DATA_DISCRIMINATOR'>
+    <comment>discrimination between header and data for Egprs</comment>
+    <entry name='HEAD_COD'></entry>
+    <entry name='DATA_COD'></entry>
+</enum>
+
+<var name='SUCCESS' value='0'>
+    <comment>crc decoding successful</comment>
+</var>
+
+<var name='FAIL' value='1'>
+    <comment>crc decoding failing</comment>
+</var>
+
+
+<typedef name='SPP_FCCH_RESULT'>
+    <comment>FCCH Result</comment>
+
+    <int16 name='FOf'></int16>
+    <int16 name='TOf'></int16>
+</typedef>
+
+<typedef name='SPP_FCCH_PARAM'>
+    <int32 name='Acc_Energy'></int32>
+    <int32 name='Acc_Corr_I'></int32>
+    <int32 name='Acc_Corr_Q'></int32>
+    <uint32 name='Max_Abs_Corr'></uint32>
+    <int32 name='Corr_order_I'></int32>
+    <int32 name='Corr_order_Q'></int32>
+    <int16 name='samples_left'></int16>
+    <int16 name='max_index'></int16>
+    <uint8 name='FCCH_detected'></uint8>
+    <uint8 name='counter_high'></uint8>
+    <uint8 name='counter_low'></uint8>
+    <uint8 name='lastIT'></uint8>
+    <uint8 name='debug'></uint8>
+</typedef>
+
+<typedef name='SPP_COMPLEX'>
+    <int16 name='i'></int16>
+    <int16 name='q'></int16>
+</typedef>
+
+<typedef name='SPP_SCH_RESULT'>
+    <comment>SCH Result</comment>
+
+    <uint16 name='Pwr'></uint16>
+    <int16 name='Snr'></int16>
+    <int16 name='FOf'></int16>
+    <uint8 name='TOf'></uint8>
+    <uint8 name='Data' count='4'></uint8>
+</typedef>
+
+<typedef name='SPP_N_BURST_RESULT'>
+    <comment>Normal Burst Result</comment>
+
+    <uint16 name='Pwr'></uint16>
+    <int16 name='Snr'></int16>
+    <int16 name='FOf'></int16>
+    <uint8 name='TOf'></uint8>
+    <instance name='Dco' type='SPP_COMPLEX'></instance>
+</typedef>
+
+<typedef name='SPP_N_BLOCK_RESULT'>
+    <comment>Normal block Result</comment>
+
+    <bool name='Bfi'></bool>
+    <uint8 name='Cs'></uint8>
+    <uint8 name='Voc_Sid'></uint8>
+    <uint8 name='MeanBEP'></uint8>
+    <uint8 name='CvBEP'></uint8>
+    <uint16 name='BitError'></uint16>
+    <uint16 name='BitTotal'></uint16>
+</typedef>
+
+<typedef name='SPP_HEADER_RESULT'>
+    <comment>Header structure for Egprs</comment>
+
+    <uint16 name='bsn' count='2'></uint16>
+    <uint8 name='mcs'></uint8>
+    <uint8 name='cps' count='2'></uint8>
+    <uint8 name='spb'></uint8>
+    <uint8 name='bfi'></uint8>
+</typedef>
+
+<typedef name='SPP_NB_VITAC'>
+    <comment>Viterbi NB Equalisation Buffers Structure  SPAL_ISI is fixed, equal to 5</comment>
+
+    <uint32 name='PathMetric' ckeywords='VOLATILE' count='2*16/2'>
+        <comment>2068 bytes</comment>
+    </uint32>
+    <uint32 name='path_diff_bkw' ckeywords='VOLATILE' count='61*16/4'></uint32>
+    <uint32 name='path_diff_fwd' ckeywords='VOLATILE' count='61*16/4'></uint32>
+    <int16 name='Xcorr' ckeywords='VOLATILE' count='2*(8+5+1)'></int16>
+</typedef>
+
+<typedef name='SPP_SCH_VITAC'>
+    <comment>Viterbi SCH Equalisation Buffers Structure</comment>
+
+    <uint32 name='PathMetric' ckeywords='VOLATILE' count='2*16/2'>
+        <comment>1643 bytes</comment>
+    </uint32>
+    <uint32 name='path_diff_bkw' ckeywords='VOLATILE' count='42*16/4'></uint32>
+    <uint32 name='path_diff_fwd' ckeywords='VOLATILE' count='42*16/4'></uint32>
+    <int32 name='Xcorr_I' ckeywords='VOLATILE' count='24+5'></int32>
+    <int32 name='Xcorr_Q' ckeywords='VOLATILE' count='24+5'></int32>
+</typedef>
+
+<typedef name='SPP_DECODE_VITAC'>
+    <comment>Viterbi Decoding Buffers Structure</comment>
+
+    <uint32 name='RxItlvBufferOut' ckeywords='VOLATILE' count='114'>
+        <comment>2144 bytes</comment>
+    </uint32>
+    <uint32 name='ViterbiOut' ckeywords='VOLATILE' count='16'></uint32>
+    <uint32 name='SurvivorMEM' ckeywords='VOLATILE' count='(64*171)/(16*2)'></uint32>
+    <uint32 name='PathMetric' ckeywords='VOLATILE' count='64'></uint32>
+</typedef>
+
+
+<typedef name='SPP_EGPRS_PREFILTER_BUFS'>
+
+<instance name='InArray' type='SPP_COMPLEX' count='157'></instance>
+<instance name='RLS_W' type='SPP_COMPLEX' count='8'></instance>
+<instance name='PrefiltMin' type='SPP_COMPLEX' count='10+8'></instance>
+<instance name='PrefiltMax' type='SPP_COMPLEX' count='10+8'></instance>
+<instance name='LpChan' type='SPP_COMPLEX' count='8'></instance>
+<instance name='A1' type='SPP_COMPLEX' count='8'></instance>
+<instance name='A2' type='SPP_COMPLEX' count='10'></instance>
+<instance name='P_Array' type='SPP_COMPLEX' count='10+1'></instance>
+<instance name='P_Array_New' type='SPP_COMPLEX' count='10'></instance>
+<instance name='H_CorArray' type='SPP_COMPLEX' count='2*8-1'></instance>
+<instance name='LocalTsc' type='SPP_COMPLEX' count='16'></instance>
+<instance name='TscSym' type='SPP_COMPLEX' count='26'></instance>
+<instance name='DcIqBufs' type='SPP_COMPLEX' count='11'></instance>
+</typedef>
+
+<typedef name='SPP_EGPRS_DDFSE_BUFS'>
+
+<instance name='InArray' type='SPP_COMPLEX' count='157'></instance>
+<instance name='RLS_W' type='SPP_COMPLEX' count='8'></instance>
+<instance name='PrefiltMin' type='SPP_COMPLEX' count='10+8'></instance>
+<instance name='PrefiltMax' type='SPP_COMPLEX' count='10+8'></instance>
+<instance name='LpChan' type='SPP_COMPLEX' count='8'></instance>
+<instance name='BmmlZfMetric' type='SPP_COMPLEX' count='6/2 * 8 * 8 + 1'></instance>
+<uint8 name='SoftOutputFwd' count='8*61*4'></uint8>
+<uint8 name='SoftOutputBck' count='8*61*4'></uint8>
+<uint8 name='TscSym' count='26'></uint8>
+</typedef>
+
+
+<typedef name='SPP_EGPRS_DECODE_VITAC'>
+    <comment>Viterbi Decoding Buffers Structure</comment>
+
+    <uint32 name='CombinedData' ckeywords='VOLATILE' count='459'></uint32>
+    <uint32 name='SurvivorData' ckeywords='VOLATILE' count='(64*612)/(16*2)'></uint32>
+    <uint32 name='PunctTable' ckeywords='VOLATILE' count='58'></uint32>
+    <uint32 name='PathMetric' ckeywords='VOLATILE' count='64'></uint32>
+    <uint32 name='DecodedData' ckeywords='VOLATILE' count='20'></uint32>
+</typedef>
+
+
+<enum name='SPP_CODING_SCHEME'>
+    <comment>This is an exhaustive enum containing all the coding schemes for GSM/GPRS/EGPRS</comment>
+    <comment>It has been designed to optimise table size, do NOT modify without knowing EXACTLY the impact !</comment>
+    <comment>CS needing SRC are packed toghether</comment>
+    <comment>CS that doesn't need CRC/CONV params are packed toghether at the END to reduce tables</comment>
+
+    <entry name='CS_RACH'></entry>
+    <entry name='CS_PRACH'></entry>
+    <entry name='CS_SCH'></entry>
+    <entry name='CS_CS1'></entry>
+    <entry name='CS_CS2'></entry>
+    <entry name='CS_CS3'></entry>
+    <entry name='CS_CS4'></entry>
+    <entry name='CS_HEAD_1'></entry>
+    <entry name='CS_HEAD_2'></entry>
+    <entry name='CS_HEAD_3'></entry>
+    <entry name='CS_MCS1'></entry>
+    <entry name='CS_MCS2'></entry>
+    <entry name='CS_MCS3'></entry>
+    <entry name='CS_MCS4'></entry>
+    <entry name='CS_MCS5'></entry>
+    <entry name='CS_MCS6'></entry>
+    <entry name='CS_MCS7'></entry>
+    <entry name='CS_MCS8'></entry>
+    <entry name='CS_MCS9'></entry>
+    <entry name='CS_HR'></entry>
+    <entry name='CS_FR'></entry>
+    <entry name='CS_EFR'></entry>
+    <entry name='CS_H24'></entry>
+    <entry name='CS_H48'></entry>
+    <entry name='CS_F24'></entry>
+    <entry name='CS_F48'></entry>
+    <entry name='CS_F96'></entry>
+    <entry name='CS_F144'></entry>
+    <entry name='CS_AFS_SPEECH_122'></entry>
+    <entry name='CS_AFS_SPEECH_102'></entry>
+    <entry name='CS_AFS_SPEECH_795'></entry>
+    <entry name='CS_AFS_SPEECH_74'></entry>
+    <entry name='CS_AFS_SPEECH_67'></entry>
+    <entry name='CS_AFS_SPEECH_59'></entry>
+    <entry name='CS_AFS_SPEECH_515'></entry>
+    <entry name='CS_AFS_SPEECH_475'></entry>
+    <entry name='CS_AHS_SPEECH_795'></entry>
+    <entry name='CS_AHS_SPEECH_74'></entry>
+    <entry name='CS_AHS_SPEECH_67'></entry>
+    <entry name='CS_AHS_SPEECH_59'></entry>
+    <entry name='CS_AHS_SPEECH_515'></entry>
+    <entry name='CS_AHS_SPEECH_475'></entry>
+    <entry name='CS_AFS_SID_UPDATE'></entry>
+    <entry name='CS_AFS_RATSCCH'></entry>
+    <entry name='CS_AHS_SID_UPDATE'></entry>
+    <entry name='CS_AHS_RATSCCH_DATA'></entry>
+    <entry name='CS_AFS_SID_FIRST'></entry>
+    <entry name='CS_AFS_ONSET'></entry>
+    <entry name='CS_AHS_SID_UPDATE_INH'></entry>
+    <entry name='CS_AHS_SID_FIRST_P1'></entry>
+    <entry name='CS_AHS_SID_FIRST_P2'></entry>
+    <entry name='CS_AHS_SID_FIRST_INH'></entry>
+    <entry name='CS_AHS_ONSET'></entry>
+    <entry name='CS_AHS_RATSCCH_MARKER'></entry>
+    <entry name='CS_QTY'></entry>
+</enum>
+
+<var name='CS_NEED_SRC' value='CS_AFS_SPEECH_122'>
+    <comment>Offset for the SRC tables</comment>
+</var>
+<var name='CS_END_NEED_SRC' value='CS_AFS_SID_FIRST'>
+    <comment>Offset for Post SRC tables</comment>
+</var>
+<var name='CS_PARAM_QTY' value='CS_END_NEED_SRC'>
+    <comment>size of the CRC/CONV table</comment>
+</var>
+<var name='CS_SRC_PARAM_QTY' value='CS_END_NEED_SRC - CS_NEED_SRC'>
+    <comment>size of the SRC table</comment>
+</var>
+
+
+<enum name='SPP_SPEECH_MODE'>
+    <comment>vocoder mode</comment>
+
+    <entry name='SPP_MR475_MODE'></entry>
+    <entry name='SPP_MR515_MODE'></entry>
+    <entry name='SPP_MR59_MODE'></entry>
+    <entry name='SPP_MR67_MODE'></entry>
+    <entry name='SPP_MR74_MODE'></entry>
+    <entry name='SPP_MR795_MODE'></entry>
+    <entry name='SPP_MR102_MODE'></entry>
+    <entry name='SPP_MR122_MODE'></entry>
+    <entry name='SPP_FR_MODE'></entry>
+    <entry name='SPP_HR_MODE'></entry>
+    <entry name='SPP_EFR_MODE'></entry>
+    <entry name='SPP_INVALID_MODE'></entry>
+</enum>
+
+<enum name='SPP_RX_FRAME_TYPE'>
+    <comment>AMR enum</comment>
+
+    <entry name='SPP_RX_SPEECH_GOOD'></entry>
+    <entry name='SPP_RX_SPEECH_DEGRADED'></entry>
+    <entry name='SPP_RX_ONSET'></entry>
+    <entry name='SPP_RX_SPEECH_BAD'></entry>
+    <entry name='SPP_RX_SID_FIRST'></entry>
+    <entry name='SPP_RX_SID_UPDATE'></entry>
+    <entry name='SPP_RX_SID_BAD'></entry>
+    <entry name='SPP_RX_NO_DATA'></entry>
+</enum>
+
+<enum name='SPP_TX_FRAME_TYPE'>
+    <entry name='SPP_TX_SPEECH'></entry>
+    <entry name='SPP_TX_SID_FIRST'></entry>
+    <entry name='SPP_TX_SID_UPDATE'></entry>
+    <entry name='SPP_TX_NO_DATA'></entry>
+</enum>
+
+<typedef name='SPP_AMR_CFG'>
+    <comment>AMR Config</comment>
+
+    <uint8 name='activeCodecSet' count='4'></uint8>
+    <uint8 name='hysteresis' count='3'></uint8>
+    <uint8 name='threshold' count='3'></uint8>
+    <uint8 name='version'></uint8>
+    <uint8 name='noiseSuppression'></uint8>
+    <uint8 name='startModeIdx'></uint8>
+    <uint8 name='nbActiveCodecSet'></uint8>
+    <uint8 name='phase'></uint8>
+</typedef>
+
+<enum name='SPP_AFS_TYPE'>
+    <entry name='SPP_AFS_SID_UPDATE'></entry>
+    <entry name='SPP_AFS_SID_FIRST'></entry>
+    <entry name='SPP_AFS_ONSET'></entry>
+    <entry name='SPP_AFS_SPEECH'></entry>
+    <entry name='SPP_AFS_RATSCCH'></entry>
+    <entry name='SPP_AFS_NO_DATA'></entry>
+</enum>
+
+<enum name='SPP_AHS_TYPE'>
+    <entry name='SPP_AHS_SID_UPDATE'></entry>
+    <entry name='SPP_AHS_SID_UPDATE_INH'></entry>
+    <entry name='SPP_AHS_SID_FIRST_P1'></entry>
+    <entry name='SPP_AHS_SID_FIRST_P2'></entry>
+    <entry name='SPP_AHS_SID_FIRST_INH'></entry>
+    <entry name='SPP_AHS_ONSET'></entry>
+    <entry name='SPP_AHS_SPEECH'></entry>
+    <entry name='SPP_AHS_RATSCCH_MARKER'></entry>
+    <entry name='SPP_AHS_RATSCCH_DATA'></entry>
+    <entry name='SPP_AHS_NO_DATA'></entry>
+</enum>
+
+<enum name='SPP_FCCH_RETURN'>
+    <entry name='FCCH_FOUND'></entry>
+    <entry name='FCCH_NOT_FOUND'></entry>
+    <entry name='FCCH_INVALID'></entry>
+</enum>
+
+<enum name='SPP_FCCH_MODE'>
+    <entry name='FCCH_SLICED'></entry>
+    <entry name='FCCH_FULL'></entry>
+</enum>
+
+<enum name='SPP_ITLV_TYPE'>
+    <entry name='ITLV_TYPE_1A' value='0'></entry>
+    <entry name='ITLV_TYPE_1B' value='1'></entry>
+    <entry name='ITLV_TYPE_1C' value='2'></entry>
+    <entry name='ITLV_TYPE_2A' value='3'></entry>
+    <entry name='ITLV_TYPE_2B' value='4'></entry>
+    <entry name='ITLV_TYPE_3' value='5'></entry>
+    <entry name='ITLV_TYPE_H1' value='6'></entry>
+    <entry name='ITLV_TYPE_H2' value='7'></entry>
+    <entry name='ITLV_TYPE_H3' value='8'></entry>
+    <entry name='ITLV_TYPE_H4' value='9'></entry>
+    <entry name='ITLV_TYPE_D1' value='10'></entry>
+    <entry name='ITLV_TYPE_D2' value='11'></entry>
+    <entry name='ITLV_TYPE_D3' value='12'></entry>
+</enum>
+
+<enum name='SPP_MODULATION_TYPE'>
+    <entry name='SPP_UNKNOWN_MOD'></entry>
+    <entry name='SPP_GMSK_MOD'></entry>
+    <entry name='SPP_8PSK_MOD'></entry>
+</enum>
+
+<enum name='SPP_HEADER_TYPE'>
+    <entry name='SPP_HEADER_TYPE1'></entry>
+    <entry name='SPP_HEADER_TYPE2'></entry>
+    <entry name='SPP_HEADER_TYPE3'></entry>
+    <entry name='SPP_HEADER_UNKNOWN'></entry>
+</enum>
+
+<enum name='SPP_DUMMY_PCH_RESULT'>
+    <entry name='SPP_DUMMY_PCH_NOT_DETECTED' value='0'></entry>
+    <entry name='SPP_DUMMY_PCH_A_DETECTED' value='1'></entry>
+    <entry name='SPP_DUMMY_PCH_AB_DETECTED' value='2'></entry>
+    <entry name='SPP_PCH_DECODING_COMPLETE' value='3'></entry>
+    <entry name='SPP_DUMMY_PCH_NO_RESULT' value='0xFF'></entry>
+</enum>
+
+<cjoker>
+
+//-------------------
+// SPP IR structures
+//-------------------
+
+typedef union
+{
+    struct
+    {
+        UINT32 bsn : 11;  // BSN number
+        UINT32 mod : 1;   // Modulation (1 GMSK, 0 8PSK)
+        UINT32 mcs : 4;   // MCS (+ SPB for GMSK only)
+    };
+
+    UINT16 ID;
+
+} SPP_HEADER_CTX_T;
+
+typedef union
+{
+    struct
+    {
+        UINT32 bsnresi  : 5;   // residuel BSN number
+        UINT32 spb      : 2;   // SPB for GMSK only
+        UINT32 next     : 9;   // index of next bock
+    };
+
+    UINT16 ID_H;
+
+} SPP_EGPRS_IR_HASH;
+
+
+typedef struct
+{
+    SPP_HEADER_CTX_T header[MCS_MAX_BUFFER_LEN];
+    UINT32           receiveBufState[(MCS_MAX_BUFFER_LEN+31)/32];
+    UINT8            cps[(MCS_MAX_BUFFER_LEN+3)/4];
+    UINT8             ReceiveState[(SPP_EGPRS_IR_SNS+3)/4];
+    UINT16             hashEntry[HASH_LEN];
+    SPP_EGPRS_IR_HASH  tabHash[MCS_MAX_BUFFER_LEN];
+    UINT16             MaxBufferLength;
+    UINT16             BufLeft;
+    UINT16             pw;
+    UINT16             Vq;
+    UINT16             Vr;
+    UINT16             CptSearch;
+    UINT8             OverFlow;
+    UINT8            irOn;
+
+} SPP_EGPRS_IR_CTX_T;
+
+
+typedef union
+{
+    UINT8 mcs1To4[MCS_1_TO_4_BUFFER_LEN][MCS_1_TO_4_BLOCK_LEN];
+    UINT8 mcs5To6[MCS_5_TO_6_BUFFER_LEN][MCS_5_TO_6_BLOCK_LEN];
+    UINT8 mcs7To9[MCS_7_TO_9_BUFFER_LEN][MCS_7_TO_9_BLOCK_LEN];
+
+} SPP_EGPRS_IR_BUF_T;
+
+
+//------------------------------------------------------------------------------
+// Includes
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// Defines
+//------------------------------------------------------------------------------
+
+// SPP PUBLIC STRUCTURES/ ENUMS
+///@defgroup gsm_struct GSM Structures and enums
+///@{
+
+//---------------
+// SPP structures
+//---------------
+
+//volatile UINT8 decoded_out[5];
+
+// Overlap Vitac Buffer Mapping (sequential use only)
+typedef union
+{
+       SPP_NB_VITAC_T               NbVitac;
+       SPP_SCH_VITAC_T              SchVitac;
+       SPP_DECODE_VITAC_T           DecodeVitac;
+       SPP_EGPRS_PREFILTER_BUFS_T   EgprsPrefilterBufs;
+       SPP_EGPRS_DDFSE_BUFS_T       EgprsDdfseBufs;
+       SPP_EGPRS_DECODE_VITAC_T     EgprsDecodeVitac;
+} SPP_UNCACHED_BUFFERS_T;
+//----------
+// SPP Enums
+//----------
+
+///@}
+
+//------------------------------------------------------------------------------
+// Functions
+//------------------------------------------------------------------------------
+
+// SPP PUBLIC FUNCTIONS
+///@defgroup gsm_rx_func Rx processing functions
+///@{
+
+//======================================================================
+// FCCH Detection function
+//----------------------------------------------------------------------
+/// This function implements FCCH detection over large reception windows
+/// (usually 9 Time Slots in @b sliced mode or 12 TDMA frames in @b Full
+/// mode). For both modes, the reception window must be sliced in sub
+/// parts. The function must be called for each sub part of the window
+/// and will return an FCCH detection status each time. See FCCH
+/// detection memory requirements.
+/// @param RxBuffer UINT32*. Start address of the reception buffer.
+/// @param Init BOOL. Takes following values:
+/// - TRUE : first call for this FCCH window,
+/// - FALSE: subsequent calls for a same FCCH window.
+/// .
+/// @param Mode SPP_FCCH_MODE_T. Takes following values:
+/// - #FCCH_SLICED for detection during dedicated mode,
+/// - #FCCH_FULL for initial cell syncronization process.
+/// .
+/// @param Res SPP_FCCH_RESULT_T*. Pointer to the FCCH Result structure.
+///
+/// @return Takes following values:
+/// - #FCCH_FOUND if fcch has been detected (results valid),
+/// - #FCCH_NOT_FOUND if no fcch has been detected,
+/// - #FCCH_INVALID if fcch has been detected but conditions
+/// of detection (window boundaries, suspect frequency error
+/// ...) are imposing to discard the detection results.
+/// .
+//======================================================================
+PUBLIC SPP_FCCH_RETURN_T spp_SearchFcch(UINT32* RxBuffer,
+    BOOL Init,
+    SPP_FCCH_MODE_T Mode,
+    SPP_FCCH_RESULT_T* Res);
+
+PUBLIC BOOL spp_FcchDetect(UINT32* Ptr_old,
+                      UINT32* Ptr_new,
+                      SPP_FCCH_PARAM_T* Params,
+                      SPP_FCCH_RESULT_T* Res);
+
+PUBLIC BOOL spp_FcchDetectAsm(UINT32* Ptr_old,
+                      UINT32* Ptr_new,
+                      SPP_FCCH_PARAM_T* Params,
+                      SPP_FCCH_RESULT_T* Res);
+
+PUBLIC BOOL spp_FcchDetectAsm_gallite(UINT32* Ptr_old,
+                      UINT32* Ptr_new,
+                      SPP_FCCH_PARAM_T* Params,
+                      SPP_FCCH_RESULT_T* Res);
+
+//======================================================================
+// SCH Equalize and Decode function
+//----------------------------------------------------------------------
+/// Performs SCH burst equalization including:
+/// - DC offset estimation and correction,
+/// - channel estimation,
+/// - SNR estimation,
+/// - Viterbi equalization and traceback,
+/// - Frequency Offset estimation.
+/// .
+/// @param RxBuffer : Pointer to the beginning of the RF samples buffer
+/// @param UncachedBuffers : uncached working memory space
+/// @param Res : Pointer to the SCH Result structure
+//======================================================================
+PUBLIC BOOL spp_EqualizeDecodeSch(UINT32* RxBuffer,
+    SPP_UNCACHED_BUFFERS_T* UncachedBuffers,
+    SPP_SCH_RESULT_T* Res);
+
+//======================================================================
+// spp_EqualizeNBurst
+//----------------------------------------------------------------------
+/// Performs normal burst equalization including:
+/// - DC offset estimation and correction,
+/// - channel estimation,
+/// - SNR estimation,
+/// - Viterbi equalization and traceback,
+/// - Frequency Offset estimation.
+/// .
+///
+/// @param RxBuffer (UINT32*): Pointer to the beginning of the RF samples buffer
+/// @param Tsc (UINT8): Training sequence number
+/// @param EqBufferOut (UINT32*): Pointer to the equalized output
+/// @param UncachedBuffers : uncached working memory space
+/// @param Res (SPP_N_BURST_RESULT_T*): Pointer to the Normal Burst Result structure
+//======================================================================
+PUBLIC VOID spp_EqualizeNBurst(UINT32* RxBuffer,
+    UINT8 Tsc,
+    UINT32* EqBufferOut,
+    SPP_UNCACHED_BUFFERS_T* UncachedBuffers,
+    SPP_N_BURST_RESULT_T* Res);
+
+//======================================================================
+// spp_DecodeStealingBits
+//----------------------------------------------------------------------
+/// Decode Stealing Flags of Normal Bursts.
+///
+/// @param RxBuffer UINT32*. Pointer to the beginning of the RF samples buffer.
+/// @param StealMode BOOL. Takes following values:
+/// - TRUE for PDCH Steal flags type,
+/// - FALSE for TCH Steal flags type.
+/// .
+/// @param StealingResult UINT8*. Output pointer.
+/// @param Threshold INT16. Decision threshold (for TCH only).
+//======================================================================
+PUBLIC VOID spp_DecodeStealingBits(UINT32* RxBuffer,
+    BOOL StealMode,
+    UINT8* StealingResult,
+    INT16 Threshold);
+
+//======================================================================
+// spp_DeinterleaveBlock
+//----------------------------------------------------------------------
+/// DeInterleaving of a data block
+///
+/// @param BufferIn UINT32*. INPUT. Pointer to equalized bursts buffer.
+/// @param InterleaverType UINT8. INPUT. InterleaverType may take the following values:
+/// - 0 : TYPE_1A. Valid for TCH/FS, TCH/EFS, FACCH/F, TCH/F2.4,
+/// TCH/AFS (speech, ratscch, sid_first).
+/// - 1 : TYPE_1B. Valid for SACCH, SDCCH, TCH/AFS(sid_update), PDTCH(CS-1 to CS-4),
+/// BCCH, PCH, AGCH, PACCH, PBCCH, PAGCH, PPCH, PNCH, PTCCH/D.
+/// - 2 : TYPE_1C. Valid for FACCH/H.
+/// - 3 : TYPE_2A. Valid for TCH/HS and TCH/AHS (speech, ratscch, sid_first).
+/// - 4 : TYPE_2B. Valid for TCH/AHS (sid_update).
+/// - 5 : TYPE_3. Valid for TCH/F14.4, TCH/F9.6, TCH/F4.8, TCH/H4.8
+/// and TCH/H2.4.
+/// - 6 : TYPE_H1. Valid for EGPRS HEADER TYPE2 in Rx.
+/// - 7 : TYPE_H2. Valid for EGPRS HEADER TYPE2 in Tx.
+/// - 8 : TYPE_H3. Valid for EGPRS HEADER TYPE1 in Rx.
+/// - 9 : TYPE_H4. Valid for EGPRS HEADER TYPE1 in Tx.
+/// - 10 : TYPE_D1. Valid for EGPRS MCS5/6.
+/// - 11 : TYPE_D2. Valid for EGPRS MCS7.
+/// - 12 : TYPE_D3. Valid for EGPRS MCS8/9.
+/// @param BurstOffset UINT8. INPUT. Offset position for deinterleaving (see ITLV
+/// documentation).
+/// @param BufferOut UINT32*. OUTPUT. Output pointer.
+//======================================================================
+PUBLIC VOID spp_DeinterleaveBlock(UINT32* BufferIn,
+    UINT8 InterleaverType,
+    UINT8 BurstOffset,
+    UINT32* BufferOut);
+
+//======================================================================
+// spp_DecodeBlock
+//----------------------------------------------------------------------
+/// Decoding of a data block
+///
+/// @param BufferIn UINT32*. Pointer to the deinterleaved data frame.
+/// @param ChMode UINT16. Channel Type (PAL API format).
+/// @param AmrFrameType UINT8. Type of AMR frame (set to 0 excepted for AMR).
+/// @param AmrMode UINT8. Codec Mode (set to 0 excepted for AMR).
+/// @param BufferOut UINT32*. Output pointer.
+/// @param Usf UINT8. Uplink State Flag.
+/// @param UncachedBuffers : uncached working memory space
+/// @param Res SPP_N_BLOCK_RESULT_T*. Pointer to the Block Result structure.
+//======================================================================
+PUBLIC VOID spp_DecodeBlock(UINT32* BufferIn,
+    UINT16 ChMode,
+    UINT8 AmrFrameType,
+    UINT8 AmrMode,
+    UINT32* BufferOut,
+    UINT8 Usf,
+    SPP_UNCACHED_BUFFERS_T* UncachedBuffers,
+    SPP_N_BLOCK_RESULT_T* Res);
+
+//======================================================================
+// spp_GetUSF
+//----------------------------------------------------------------------
+/// Uplink State Flag extraction
+///
+/// @param BufferIn UINT32*. Pointer to the beginning of the RF samples buffer.
+/// @param CS UINT8. Coding scheme.
+///
+/// @return UINT8. Uplink State Flag
+//======================================================================
+PUBLIC UINT8 spp_GetUSF(UINT32* BufferIn,
+    UINT8 CS);
+
+//======================================================================
+// spp_DetectDummyPCH
+//----------------------------------------------------------------------
+/// Dummy PCH detection
+///
+/// @param BufferIn UINT32* Pointer to the beginning of the softbits.
+/// @param Idx      UINT8   Index of the received burst
+/// @param Thresh_a UINT8   Threshold for vector A detection
+/// @param Thresh_b UINT8   Threshold for vector B detection
+//
+/// @return         UINT8   0xFF: false, 0x1: only A, 0x2: AB detected
+//======================================================================
+UINT8 spp_DetectDummyPCH(UINT32 *Buffer,
+                         UINT8 Idx,
+                         UINT8 Thresh_a,
+                         UINT8 Thresh_b);
+
+//======================================================================
+// spp_GetMonPower
+//----------------------------------------------------------------------
+/// Calculate Power for Monitoring (and Interference) windows.
+///
+/// @param MonIdx UINT8. Index of the monitoring (or interference) window.
+/// @param RxBuffer UINT32*. Pointer to the Rx buffer.
+/// @param power UINT32*. Pointer to the resulting calculated power.
+//======================================================================
+PUBLIC VOID spp_GetMonPower(UINT8 MonIdx,
+    UINT32* RxBuffer,
+    UINT32* power);
+
+//======================================================================
+// Decoding of AMR Inband Data (DTX and RATSCCH frames)
+//----------------------------------------------------------------------
+/// This function decodes inband data for AFS or AHS
+/// deinterleaved softbit frames (SPEECH, SIDUPDATE, RATSCCH)
+///
+/// @param softBit : Pointer to the decoded data
+/// @param mode : type of frame: 0 -&amp;amp;gt; AFS, 1 -&amp;amp;gt; AHS, 2 -&amp;amp;gt; SIDUPDATE/RATSCCH
+///
+/// @return UINT8. Inband Data.
+//======================================================================
+PUBLIC UINT8 spp_GetAmrIc(UINT8 *softBit,
+    UINT8 mode);
+
+//======================================================================
+// Search AMR frame markers
+//----------------------------------------------------------------------
+/// This function searches AMR frame markers and returns the most
+/// likely frame type. It decode also the associated in band data.
+///
+/// @param BufferIn UINT32*. Pointer to the deinterleaved decoded data.
+/// @param id1 UINT8*. Pointer to ther first decoded in band data.
+/// @param id2 UINT8*. Pointer to the second decoded in band data.
+/// @param mode UINT8. TCH rate: 0 -&amp;amp;gt; AFS, 1 -&amp;amp;gt; AHS.
+///
+/// @return UINT8. Most likely frame type.
+//======================================================================
+PUBLIC UINT8 spp_SearchAmrMarker(UINT32 *BufferIn,
+    UINT8 *id1,
+    UINT8 *id2,
+    UINT8 mode);
+
+//======================================================================
+// spp_EgprsBlindDetection
+//----------------------------------------------------------------------
+/// Performs modulation blind detection and TOf estimation:
+///.
+/// @param RxBuffer (UINT32*): Pointer to the beginning of the RF samples buffer
+/// @param burstIdx (UINT8): burst index number
+/// @param tsc UINT8 : training sequence Id
+/// @param modulation (SPP_MODULATION_TYPE_T*): Pointer to modulation result
+/// @param TOf_in_Qb (UINT8*): Pointer to timing offset result in quarter of bit
+/// @param TOf (UINT8*): Pointer to timing offset result
+//======================================================================
+PUBLIC VOID spp_EgprsBlindDetection(UINT32* RxBuffer,
+    UINT8 burstIdx,
+    UINT8 tsc,
+    SPP_MODULATION_TYPE_T* modulation,
+    UINT8* TOf_in_Qb,
+    UINT8* TOf);
+
+//======================================================================
+// spp_EgprsEqualizeNBurst
+//----------------------------------------------------------------------
+/// Performs normal burst equalization including:
+/// - DC offset estimation and correction,
+/// - IQ imbalance estimation and correction,
+/// - channel estimation,
+/// - SNR estimation,
+/// - Viterbi equalization and traceback,
+/// - Frequency Offset estimation.
+/// .
+///
+/// @param RxBuffer (UINT32*): Pointer to the beginning of the RF samples buffer
+/// @param Tsc (UINT8): Training sequence number
+/// @param EqBufferOut (UINT32*): Pointer to the equalized output
+/// @param UncachedBuffers : uncached working memory space
+/// @param Res (SPP_N_BURST_RESULT_T*): Pointer to the Normal Burst Result structure
+//======================================================================
+PUBLIC VOID spp_EgprsEqualizeNBurst(UINT32* RxBuffer,
+    UINT8 Tsc,
+    UINT32* EqBufferOut,
+    SPP_UNCACHED_BUFFERS_T* UncachedBuffers,
+    SPP_N_BURST_RESULT_T* Res);
+
+//======================================================================
+// spp_EgprsBurstDemapping
+//----------------------------------------------------------------------
+/// Performs burst demapping for EDGE:
+/// .
+/// @param BufferIn (UINT32*): Pointer to the sofbit buffer
+/// @param headertype (SPP_HEADER_TYPE_T): haeder type of the block
+/// @param BufferOut (UINT32*): Pointer to the block's softbits (MCS1-4)
+/// @param HeaderBufferOut (UINT32*): Pointer to the Header sofbits (MCS5-9)
+/// @param DataBufferOut (UINT32*): Pointer to the Data sofbits (MCS5-9)
+//======================================================================
+PUBLIC VOID spp_EgprsBurstDemapping(UINT32* BufferIn,
+    UINT32* HeaderBufferOut,
+    UINT32* DataBufferOut,
+    SPP_HEADER_TYPE_T headerType);
+
+//======================================================================
+// spp_EgprsDecodeStealingBits
+//----------------------------------------------------------------------
+/// Decode Stealing Flags of Normal Bursts.
+///
+/// @param RxBuffer UINT32*. Pointer to the beginning of the RF samples buffer.
+/// @param headertype SPP_HEADER_TYPE_T*. Output pointer.
+//======================================================================
+PUBLIC VOID spp_EgprsDecodeStealingBits(UINT32* RxBuffer,
+    SPP_HEADER_TYPE_T* headertype);
+
+//======================================================================
+// spp_EgprsDecodeHeader
+//----------------------------------------------------------------------
+/// Decoding of a data block
+///
+/// @param BufferIn UINT8*. Pointer to the deinterleaved data frame.
+/// @param header_type SPP_HEADER_TYPE_T. Channel Type (PAL API format).
+/// @param Usf UINT8 3 decoded usf bit .
+/// @param BufferOut UINT8*. Output pointer.
+/// @param UncachedBuffers : uncached working memory space
+/// @param Res SPP_HEADER_RESULT_T*. Pointer to the Header Result structure.
+//======================================================================
+PUBLIC VOID spp_EgprsDecodeHeader(UINT8 *BufferIn,
+                                    SPP_HEADER_TYPE_T HeadType,
+                                    UINT8 Usf,
+                                    UINT8 *BufferOut,
+                                    SPP_UNCACHED_BUFFERS_T* UncachedBuffers,
+                                    SPP_HEADER_RESULT_T* Res);
+
+//======================================================================
+// spp_EgprsDecodeData
+//----------------------------------------------------------------------
+/// Decoding of a data block
+///
+/// @param BufferIn UINT8*. Pointer to the deinterleaved data frame.
+/// @param Header SPP_HEADER_RESULT_T. decoded Header structure.
+/// @param BufferOut0 UINT8*. Output pointer for the first RLC data block.
+/// @param BufferOut1 UINT8*. Output pointer for the second RLC data block (MCS 7,8,9 only).
+/// @param irCtx : uncached IR context memory space
+/// @param irBuf : uncached IR buffer memory space
+/// @param UncachedBuffers : uncached working memory space
+/// @param Res SPP_N_BLOCK_RESULT_T*. Pointer to the Block Result structure.
+//======================================================================
+PUBLIC VOID spp_EgprsDecodeData(UINT8                       *BufferIn,
+                                SPP_HEADER_RESULT_T             Header,
+                                UINT8                        *BufferOut0,
+                                UINT8                        *BufferOut1,
+                                SPP_EGPRS_IR_CTX_T            *irCtx,
+                                SPP_EGPRS_IR_BUF_T            *irBuf,
+                                SPP_UNCACHED_BUFFERS_T        *UncachedBuffers,
+                                SPP_N_BLOCK_RESULT_T        *Res);
+
+//======================================================================
+// spp_EgprsGetUSF
+//----------------------------------------------------------------------
+/// Uplink State Flag extraction
+///
+/// @param BufferIn UINT32*. Pointer to the beginning of the RF samples buffer.
+/// @return UINT8. Uplink State Flag
+//======================================================================
+PUBLIC UINT8 spp_EgprsGetUSF(UINT32* BufferIn);
+
+//======================================================================
+// spp_EgprsDeinterleaveBlock
+//----------------------------------------------------------------------
+/// DeInterleaving of a data block
+///
+/// @param BufferIn UINT32*. INPUT. Pointer to equalized bursts buffer.
+/// @param InterleaverType UINT8. INPUT. InterleaverType may take the following values:
+/// - 6 : TYPE_H1. Valid for EGPRS HEADER TYPE2 in Rx.
+/// - 7 : TYPE_H2. Valid for EGPRS HEADER TYPE2 in Tx.
+/// - 8 : TYPE_H3. Valid for EGPRS HEADER TYPE1 in Rx.
+/// - 9 : TYPE_H4. Valid for EGPRS HEADER TYPE1 in Tx.
+/// - 10 : TYPE_D1. Valid for EGPRS MCS5/6.
+/// - 11 : TYPE_D2. Valid for EGPRS MCS7.
+/// - 12 : TYPE_D3. Valid for EGPRS MCS8/9.
+/// @param BufferOut UINT32*. OUTPUT. Output pointer.
+//======================================================================
+PUBLIC VOID spp_EgprsDeinterleaveBlock(UINT32* BufferIn,
+    SPP_ITLV_TYPE_T InterleaverType,
+    UINT32* BufferOut);
+
+
+
+//=============================================================================
+//  spp_EgprsIrInitCtx
+//-----------------------------------------------------------------------------
+/// for IR initial.
+///
+/// @param IR SPP_EGPRS_IR_CTX_T*. Incremental Redundancy related structure.
+/// @param ChSubMode GSM_CS_T. Channel mode.
+///
+/// @author zhangchangchun
+/// @date 2007/09/18
+//=============================================================================
+PUBLIC VOID spp_EgprsIrInitCtx(SPP_EGPRS_IR_CTX_T *IR, GSM_CS_T ChSubMode);
+
+
+
+///@}
+
+///@defgroup gsm_tx_func Tx processing functions
+///@{
+//-----------------------
+// Transmission Functions
+//-----------------------
+//======================================================================
+// spp_EncodeABurst
+//----------------------------------------------------------------------
+/// Access Burst encoding
+///
+/// @param BufferIn UINT32*. Pointer to the data to be encoded.
+/// @param Bsic UINT8. Base Station BSIC.
+/// @param size UINT8. 8 or 11 bits Access Burst.
+/// @param BufferOut UINT32*. Encoded data output pointer.
+//======================================================================
+PUBLIC VOID spp_EncodeABurst(UINT32* BufferIn,
+    UINT8 Bsic,
+    UINT8 size,
+    UINT32* BufferOut);
+
+//======================================================================
+// spp_EncodeBlock
+//----------------------------------------------------------------------
+/// Normal BLOCK encoding
+///
+/// @param InTxBuffer UINT32*. Pointer to the data to be encoded.
+/// @param ChMode UINT16. Channel Type (PAL API format).
+/// @param AmrFrameType UINT8. Type of AMR frame (set to 0 excepted for AMR).
+/// @param AmrMode UINT8. Codec Mode (set to 0 excepted for AMR).
+/// @param AmrInBandData UINT8*. AMR in Band Data (set to NULL excepted for AMR).
+/// @param BurstOffset UINT8. Offset position for interleaving. Interleaving
+/// is performed over a number of Tx bursts. The Offset position corresponds to
+/// the offset number of bursts in the interleaving buffer. For example, in
+/// FR mode, BurstOffset can be 0 or 4 as one coded block is interleaved over
+/// 8 consecutive bursts, and each coded block has 4 bursts worth of payload.
+/// (see ITLV documentation).
+/// @param InterleaverType UINT8. INPUT. InterleaverType may take the following values:
+/// - 0 : TYPE_1A. Valid for TCH/FS, TCH/EFS, FACCH/F, TCH/F2.4,
+/// TCH/AFS (speech, ratscch, sid_first).
+/// - 1 : TYPE_1B. Valid for SACCH, SDCCH, TCH/AFS(sid_update), PDTCH(CS-1 to CS-4),
+/// BCCH, PCH, AGCH, PACCH, PBCCH, PAGCH, PPCH, PNCH, PTCCH/D.
+/// - 2 : TYPE_1C. Valid for FACCH/H.
+/// - 3 : TYPE_2A. Valid for TCH/HS and TCH/AHS (speech, ratscch, sid_first).
+/// - 4 : TYPE_2B. Valid for TCH/AHS (sid_update).
+/// - 5 : TYPE_3. Valid for TCH/F14.4, TCH/F9.6, TCH/F4.8, TCH/H4.8
+/// and TCH/H2.4.
+/// .
+/// @param BufferOut UINT32*. Encoded data output pointer. The function
+/// stores the output (the interleaved and encoded bits) in the Tx interleaver buffer.
+/// BufferOut should point to the beginning of the Tx interleaver buffer.
+//======================================================================
+PUBLIC VOID spp_EncodeBlock(UINT32* InTxBuffer,
+    UINT16 ChMode,
+    UINT8 AmrFrameType,
+    UINT8 AmrMode,
+    UINT8* AmrInBandData,
+    UINT8 BurstOffset,
+    UINT8 InterleaverType,
+    UINT32* BufferOut);
+
+//======================================================================
+// spp_BuildNBurst
+//----------------------------------------------------------------------
+/// Normal Burst building and mapping
+///
+/// @param TxBuffer UINT32*. Pointer to the encoded data.
+/// @param Tsc UINT8. Training sequence number.
+/// @param StealFlag UINT8. Stealing Flags.
+/// @param BufferOut UINT32*. Burst output pointer.
+//======================================================================
+PUBLIC VOID spp_BuildNBurst(UINT32* TxBuffer,
+    UINT8 Tsc,
+    UINT8 StealFlag,
+    UINT32* BufferOut);
+
+//======================================================================
+// spp_Modulation
+//----------------------------------------------------------------------
+/// This function handles the modulation of the (multiple) burst(s)
+/// constituting the full Tx window.
+/// The following is true for Granite TC and Greenstone :
+/// resulting modulated structure :
+/// - Preamble
+/// - 1st burst (156 bits)
+/// - eventual 2nd burst (156 bits)
+/// - eventual 3nd burst (156 bits)
+/// - eventual 4nd burst (156 bits)
+/// - Postamble (enough for 32 bits)
+///
+/// Preamble are filled with '1'
+/// Postamble are filled with '1'
+/// Eventual "Holes" in burst Bitmap are filled with '1' because
+/// multislot transmission is continuous from GMSK point of view
+///
+/// For Emerald:
+/// depending on modulation one symbol is either 1 or 3 bits.
+/// Modulation can change for each slot. 'Holes' are not sent.
+/// resulting modulated structure if burst N is the first active
+/// burst or if burst N-1 is inactive:
+///
+/// - bstN definition for RF_IF
+/// - Preamble symb                 |
+/// - bstN active part (148 symb)   |
+///                                 | in burst N modulation
+/// then if bstN+1 is active:       |
+/// - (8-guardStart) symb           |
+/// - bstN+1 definition for RF_IF
+/// - guardStart symb               |
+/// - bstN+1 active part (148 symb) | in burst N+1 modulation
+/// - ... and so on until inactive burst
+///
+/// else if bstN+1 is inactive:
+/// - Postamble symb                | in burst N modulation
+/// - End of transmit for RF_IF
+///
+/// @param BufferIn pointer to the mapped burst(s) data
+/// @param Bitmap Tx window bitmap allocation (first active bit is
+/// considered as 1st burst)
+/// @param preamble Burst Mapping parameters
+/// @param postamble Burst Mapping parameters
+/// @param guardStart Burst Mapping parameters
+/// @param BufferOut Pointer to the output sw fifo (if relevant
+//         for HW implementation)
+/// @param BstMod Type of the modulation, 8PSK or GMSK.
+/// @param NormalBst 0:Access Burst 1:Normal Burst
+/// @todo  change modulation field to a bitmap to handle multislot.
+/// @todo  do a structure for Burst Mapping parameters
+/// @todo  include the burst type (AB/NB) in the modulation bitmap...
+//======================================================================
+
+PUBLIC VOID spp_Modulation(UINT32* BufferIn,
+    UINT8 Bitmap,
+                            UINT16 preamble,
+                            UINT16 postamble,
+                            UINT16 guardStart,
+    UINT32* BufferOut,
+                            SPP_MODULATION_TYPE_T BstMod,
+                            BOOL NormalBst);
+
+//======================================================================
+// spp_EgprsEncodeBlock
+//----------------------------------------------------------------------
+/// Normal BLOCK encoding
+///
+/// @param InData0 UINT32*. Pointer to the 1st Tx buffer (for all MCS) to be encoded.
+/// @param InData0 UINT32*. Pointer to the 2nd Tx buffer (for MCS > MCS6) to be encoded.
+/// @param InHeader UINT32*. Pointer to the header buffer (for all MCS).
+/// @param  header_type SPP_HEADER_TYPE_T. type of the header.
+/// @param BufferOut UINT32*. Encoded data output pointer. The function
+/// stores the output (the interleaved and encoded bits) in the Tx interleaver buffer.
+/// BufferOut should point to the beginning of the Tx interleaver buffer.
+//======================================================================
+PUBLIC VOID spp_EgprsEncodeBlock(UINT32* InData0,
+                                 UINT32* InData1,
+                                 UINT32* InHeader,
+                                 SPP_HEADER_TYPE_T header_type,
+                                 UINT32* BufferOut);
+
+//======================================================================
+// spp_EgprsBuildNBurst
+//----------------------------------------------------------------------
+/// Normal Burst building and mapping
+///
+/// @param TxBuffer UINT32*. Pointer to the encoded data.
+/// @param Tsc UINT8. Training sequence number.
+/// @header_type SPP_HEADER_TYPE_T. type of the header.
+/// @param BufferOut UINT32*. Burst output pointer.
+//======================================================================
+PUBLIC VOID spp_EgprsBuildNBurst(UINT32* TxBuffer,
+    UINT8 Tsc,
+    SPP_HEADER_TYPE_T headerType,
+    UINT32* BufferOut);
+
+//-----------------------
+// Ciphering Functions
+//-----------------------
+///@defgroup gsm_ciphering_func GSM/GPRS Miscellanous Functions
+///@{
+
+//======================================================================
+// spp_CipherCipherNB
+//----------------------------------------------------------------------
+/// This function ciphers 114 bits for normal burst.
+///
+/// @param BufferIn UINT32*. Pointer to input buffer.
+/// @param BufferOut UINT32*. Pointer to output buffer.
+///
+//======================================================================
+PUBLIC VOID spp_CipherCipherNb(UINT32* BufferIn, UINT32* BufferOut);
+
+//======================================================================
+// spp_CipherCipherNB
+//----------------------------------------------------------------------
+/// This function deciphers 114 bits for normal burst.
+///
+/// @param BufferIn UINT32*. Pointer to input buffer.
+/// @param BufferOut UINT32*. Pointer to output buffer.
+///
+//======================================================================
+PUBLIC VOID spp_CipherDecipherNb(UINT32* BufferIn, UINT32* BufferOut);
+
+//======================================================================
+// Initialize the count register
+//----------------------------------------------------------------------
+/// This function initializes the count register.
+///
+/// @param count UINT32. Counter register.
+//======================================================================
+PUBLIC UINT8 spp_CipherCountInit(UINT32 count);
+
+//======================================================================
+// spp_CipherStart
+//----------------------------------------------------------------------
+/// Start the encipherment.
+///
+/// @param algo UINT8.
+///
+/// @return UINT8. Error or no error???
+//======================================================================
+PUBLIC UINT8 spp_CipherStart(UINT8 algo);
+
+/// @}
+
+
+//-----------------------
+// Miscellanous Functions
+//-----------------------
+///@defgroup gsm_misc_func GSM/GPRS Miscellanous Functions
+///@{
+
+// =============================================================================
+// spp_FullBurstReady
+// -----------------------------------------------------------------------------
+/// This function MUST be in RAM and not in ROM !
+/// This function returns the number of completely received (and not treated)
+/// bursts in the active frame.
+/// @return
+// =============================================================================
+PUBLIC UINT8 spp_FullBurstReady(VOID);
+
+// =============================================================================
+// spp_ResetFullBurstReady
+// -----------------------------------------------------------------------------
+/// This function MUST be in RAM and not in ROM !
+/// This function resets the number of completely received bursts in the active
+/// frame.
+// =============================================================================
+PUBLIC VOID spp_ResetFullBurstReady(VOID);
+
+// =============================================================================
+// spp_OneFullBurstReady
+// -----------------------------------------------------------------------------
+/// This function MUST be in RAM and not in ROM !
+/// This function flags that a burst has been completely received in the active
+/// frame.
+// =============================================================================
+PUBLIC VOID spp_OneFullBurstReady(VOID);
+
+// =============================================================================
+// spp_OneFullBurstDone
+// -----------------------------------------------------------------------------
+/// This function MUST be in RAM and not in ROM !
+/// This function flags that a burst has been fully processed in the active
+/// frame.
+// =============================================================================
+PUBLIC VOID spp_OneFullBurstDone(VOID);
+
+/// @}
+
+
+</cjoker>
+</archive>

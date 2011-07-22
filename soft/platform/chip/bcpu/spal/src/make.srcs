@@ -1,0 +1,32 @@
+S_SRC := $(S_SRC)   bcpu_ram.S \
+                    bcpu_rom.S \
+                    spal_irq_handler.S \
+                    spal_gdb.S
+                    
+C_SRC := $(C_SRC)   spal_vitac.c \
+                    spal_cache.c \
+                    spal_cfg.c \
+                    spal_gdb_stub.c \
+                    spal_cipher.c \
+                    spal_irq.c \
+                    spal_ifc.c \
+                    spal_itlv.c \
+                    spal_xcor.c \
+                    spal_debug.c \
+                    spal_version.c
+
+ifeq "${CT_ASIC}" "emerald"
+C_SRC := $(C_SRC)  spal_dmasc.c \
+                   spal_cap_apb.c
+else
+ifeq "${CT_ASIC}" "esperite"
+C_SRC := $(C_SRC)  spal_dmasc.c \
+                   spal_cap_apb.c
+else
+C_SRC := $(C_SRC)  spal_cap_cp2.c
+endif
+endif
+
+%/spal_cap_cp2.o: CT_MIPS16_CFLAGS=
+%/spal_cache.o: CT_MIPS16_CFLAGS=
+

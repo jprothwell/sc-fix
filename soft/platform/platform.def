@@ -1,0 +1,110 @@
+# This file can be used to define platform
+# properties.
+#
+
+########################################################################
+# MAKELEVEL=0 Things to do only once
+# Variables that are defined only once should be in this section and 
+# exported to sub-make
+########################################################################
+ifeq ($(MAKELEVEL),0)
+
+
+#-----------------------------------------------------------------------
+# Set the number of SIM cards
+#-----------------------------------------------------------------------
+export NUMBER_OF_SIM ?= 2
+LOCAL_EXPORT_FLAG += NUMBER_OF_SIM=${NUMBER_OF_SIM}
+
+#-----------------------------------------------------------------------
+# End of Set the number of SIM cards
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+# Enable CSW extended features flags.
+#-----------------------------------------------------------------------
+
+## Default values for PMD and LCD are 1.
+export CSW_EXTENDED_API_LCD ?= 1
+export CSW_EXTENDED_API_PMD ?= 1
+
+## Export this flag to all sub makes and in the code too
+ifeq "${CSW_EXTENDED_API}" "1"
+	LOCAL_EXPORT_FLAG += CSW_EXTENDED_API=1
+# Export the sub flags for conditionals in Makefiles
+	export CSW_EXTENDED_API_PMD := 1
+	export CSW_EXTENDED_API_AUDIO_VIDEO := 1
+	export CSW_EXTENDED_API_LCD := 1
+	export CSW_EXTENDED_API_MRS := 1
+	export CSW_EXTENDED_API_CAMERA :=1
+	export CSW_EXTENDED_API_IMAGE :=1
+#	not yet for this one 
+#	export CSW_EXTENDED_API_PMD_USB := 1
+endif
+
+# Export CSW_EXTENDED_API sub flags to the C files
+ifeq "${CSW_EXTENDED_API_IMAGE}" "1"
+	LOCAL_EXPORT_FLAG += CSW_EXTENDED_API_IMAGE=1
+endif
+ifeq "${CSW_EXTENDED_API_LCD}" "1"
+	LOCAL_EXPORT_FLAG += CSW_EXTENDED_API_LCD=1
+endif
+ifeq "${CSW_EXTENDED_API_PMD_USB}" "1"
+	LOCAL_EXPORT_FLAG += CSW_EXTENDED_API_PMD_USB=1
+# for conditionals in Makefiles
+	export CSW_EXTENDED_API_PMD := 1
+endif
+ifeq "${CSW_EXTENDED_API_PMD}" "1"
+	LOCAL_EXPORT_FLAG += CSW_EXTENDED_API_PMD=1
+endif
+ifeq "${CSW_EXTENDED_API_AUDIO_VIDEO}" "1"
+	LOCAL_EXPORT_FLAG += CSW_EXTENDED_API_AUDIO_VIDEO=1
+endif
+ifeq "${CSW_EXTENDED_API_CAMERA}" "1"
+	LOCAL_EXPORT_FLAG += CSW_EXTENDED_API_CAMERA=1
+endif
+ifeq "${CSW_EXTENDED_API_MRS}" "1"
+	LOCAL_EXPORT_FLAG += CSW_EXTENDED_API_MRS=1
+endif
+
+#-----------------------------------------------------------------------
+# End of Enable CSW extended features flags.
+#-----------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------
+# Enable CFW extended features flags.
+#-----------------------------------------------------------------------
+
+ifeq "${CFW_EXTENDED_API}" "1"
+	LOCAL_EXPORT_FLAG += CFW_EXTENDED_API=1
+endif
+
+#-----------------------------------------------------------------------
+# End of Enable CFW extended features flags.
+#-----------------------------------------------------------------------
+
+
+########################################################################
+# End of MAKELEVEL=0. Things to do only once.
+########################################################################
+endif 
+
+
+#-----------------------------------------------------------------------
+# OVERLAYS
+#-----------------------------------------------------------------------
+# The files below define the overlays's content. 
+# Depending on the configuration, overlays are either
+# used by MDI or the SVC
+
+ifeq "${CSW_EXTENDED_API}" "1"
+# Services are used.
+include $(SOFT_WORKDIR)/platform/svc/overlay.def
+else
+# MDI is used if it exists.
+-include $(SOFT_WORKDIR)/platform/mdi/overlay.def
+endif
+
+

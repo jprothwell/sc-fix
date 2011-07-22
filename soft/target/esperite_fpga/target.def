@@ -1,0 +1,44 @@
+CT_ASIC         ?= esperite
+CT_ASIC_CFG     ?= fpga
+3GPP_MODE       ?= edge
+CT_ROMULATOR    ?= yes
+PM_MODEL        ?= ct1010
+XCV_MODEL       ?= xcv_rda6220
+PA_MODEL        ?= pa_rda6216
+SW_MODEL        ?= sw_dummy
+FLSH_MODEL      ?= flsh_s71ws256nc0
+LCD_MODEL       ?= ili9320
+LCD_IF          ?= gouda
+AD_MODEL        ?= maxim
+MCD_IF          ?= sdmmc
+CAMERA_MODEL    ?= ov7670
+TSD_MODEL       ?=
+FM_MODEL        ?= rda5802e_gallite
+BT_MODEL        ?=
+UCTLS_SERVICE   ?= umss_storage_mc
+CT_MMI          := cs2324
+
+WAPMMS_SUPPORT  ?= 1
+
+include ${SOFT_WORKDIR}/platform/edrv/memd/${FLSH_MODEL}/memd.def
+
+# Flag used by CSW (and the MMI) to define whether
+# there are two SIM card connectors or not.
+TARGET_EXPORT_FLAG    += SIM_SWITCH_ENABLE
+# Enable the GPRS mode of the stack.
+TARGET_EXPORT_FLAG    += __GPRS__
+
+TARGET_EXPORT_FLAG    += DIRTY_WORKAROUND_NULL_POINTER_IN_CONVERT_SIM_STRING_PLEASE_FIX_ME
+
+# Define the ML language support
+GLOBAL_EXPORT_FLAG += ML_SUPPORT
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP0	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_1
+
+##定义短消息和电话本的条目
+##PHONE_SMS_ENTRY_COUNT表征FLASH上多卡项目总计SMS容量，单卡数目为PHONE_SMS_ENTRY_COUNT/SIM_COUNT
+##SIM_SMS_ENTRY_COUNT表征SIM卡上最大SMS容量，请勿修改
+GLOBAL_EXPORT_FLAG += PHONE_SMS_ENTRY_COUNT=200
+GLOBAL_EXPORT_FLAG += SIM_SMS_ENTRY_COUNT=255
+GLOBAL_EXPORT_FLAG += PHONE_PHB_ENTRY_COUNT=250
+#################################################################

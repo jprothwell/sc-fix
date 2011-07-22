@@ -1,0 +1,244 @@
+# That file is used to describes the compilation variable
+# dependent on the targeted Chip. Typically, it is used to 
+# define specifi Macros aiming at configuring the code.
+
+# Capitalized chip name.
+CT_ASIC_CAPD = Greenstone
+
+# The chip ID is required by the Makefiles and by the code.
+CHIP_EXPORT_FLAG += CHIP_ASIC_ID=3
+
+CHIP_EXPORT_FLAG += CHIP_EDGE_SUPPORTED=0
+CHIP_EXPORT_FLAG += CHIP_MAX_SPEED=104000000
+CHIP_EXPORT_FLAG += CHIP_HAS_AUTOSIMCLK=1
+CHIP_EXPORT_FLAG += CHIP_SYS_CRITICAL_SECTION_REG=0xA0B81014
+
+# Penultimate patch used for GDB and last patch Internal RAM area
+# used for the Boot Sector structure.
+CHIP_EXPORT_FLAG += CHIP_NUMBER_OF_PATCHES=9
+
+CHIP_HAS_USB := 1
+CHIP_EXPORT_FLAG += CHIP_HAS_USB=$(CHIP_HAS_USB)
+CHIP_EXPORT_FLAG += CHIP_HAS_PXTS_LEVELS=1
+CHIP_EXPORT_FLAG += CHIP_HAS_AHB_MONITOR=0
+CHIP_EXPORT_FLAG += CHIP_HAS_SIM_T0T1=0
+
+# Fix usb function rom
+CHIP_EXPORT_FLAG += HAL_USB_DRIVER_DONT_USE_ROMED_CODE=1
+# The following variables are used to configure the SPAL layer
+CHIP_EXPORT_FLAG += CHIP_CAP_ON_APB=0
+CHIP_EXPORT_FLAG += CHIP_IFC_RF_TX_CHANNEL=0
+CHIP_EXPORT_FLAG += CHIP_ITLV_8PSK_SUPPORTED=0
+CHIP_EXPORT_FLAG += CHIP_VITAC_8PSK_SUPPORTED=0
+CHIP_EXPORT_FLAG += CHIP_XCOR_8PSK_SUPPORTED=0
+CHIP_EXPORT_FLAG += CHIP_XCOR_HAS_SLIDING_WINDOW=0
+CHIP_EXPORT_FLAG += CHIP_CIPHER_A53_SUPPORTED=0
+CHIP_EXPORT_FLAG += CHIP_HAS_ANA_RF=1
+CHIP_EXPORT_FLAG += CHIP_HAS_14_BIT_RF_PATH=0
+
+# The following variables are used to configure the SPP layer
+CHIP_EXPORT_FLAG += CHIP_CHEST_LEN=5
+
+# The variable SPC_IF_VER can be overwritten by the CT_TARGET.def file.
+SPC_IF_VER ?= 1
+CHIP_EXPORT_FLAG += SPC_IF_VER=${SPC_IF_VER}
+
+# about HAL SYS 
+CHIP_EXPORT_FLAG += CHIP_HAS_ACCO_PLL=1
+CHIP_EXPORT_FLAG += CHIP_HAS_ASYNC_TCU=0
+CHIP_EXPORT_FLAG += CHIP_HAS_ASYNC_BCPU=0
+
+# The following variables are used to configure the VPP layer
+CHIP_WITH_VOC     = 1
+CHIP_WITH_VOC_ROM = 0
+CHIP_EXPORT_FLAG += CHIP_WITH_VOC=$(CHIP_WITH_VOC)
+CHIP_EXPORT_FLAG += CHIP_WITH_VOC_ROM=$(CHIP_WITH_VOC_ROM)
+
+# About the UART
+CHIP_EXPORT_FLAG += CHIP_STD_UART_QTY=2
+
+# About the SPI
+# Number of CS on SPI
+CHIP_EXPORT_FLAG += CHIP_SPI_CS_QTY=4
+# Number of CS on SPI2
+CHIP_EXPORT_FLAG += CHIP_SPI2_CS_QTY=3
+# The DOI pin of the SPI modules
+CHIP_EXPORT_FLAG += CHIP_SPI_HAS_DIO=1
+# The pattern mode of the SPI can do the WHILE rejection
+CHIP_EXPORT_FLAG += CHIP_SPI_HAS_PATTERN_WHILE=1
+# The SPI module registers to force its pin values (0, 1, Z)
+CHIP_EXPORT_FLAG += CHIP_SPI_HAS_INTERNAL_FORCE=1
+
+# Needed for SC code
+CHIP_EXPORT_FLAG += __TARGET__ __XCPU__ __JADE__
+
+# SXR: Location for stack and context heaps.
+CHIP_EXPORT_FLAG += SXR_CSP_TK_STCK_HEAP=0
+CHIP_EXPORT_FLAG += SXR_CSP_JB_STCK_HEAP=0
+CHIP_EXPORT_FLAG += SXR_CSP_JB_CTX_HEAP=0
+
+# About the AIF / Audio
+CHIP_EXPORT_FLAG += CHIP_HAS_I2S_DI_1=1
+CHIP_EXPORT_FLAG += CHIP_HAS_STEREO_DAC=1
+CHIP_EXPORT_FLAG += CHIP_HAS_ACCO_AUDIO=1
+
+# Misc
+CHIP_EXPORT_FLAG += CHIP_HAS_GOUDA=0
+CHIP_EXPORT_FLAG += CHIP_HAS_LCDC
+CHIP_EXPORT_FLAG += CHIP_HAS_SYS_IFC_SIZE=1
+CHIP_EXPORT_FLAG += CHIP_HAS_SDMMC=1
+
+# Keypad
+CHIP_EXPORT_FLAG += CHIP_KEY_COL_NB=6
+CHIP_EXPORT_FLAG += CHIP_KEY_ROW_NB=6
+
+# About the proxy memory
+CHIP_EXPORT_FLAG += CHIP_HAS_PROXY_MEMORY=0
+
+# default PXTS clock polarity
+CHIP_DEBUG_PORT_PXTS_EXL_CLK_INV_POL ?= 1
+CHIP_EXPORT_FLAG += CHIP_DEBUG_PORT_PXTS_EXL_CLK_INV_POL=${CHIP_DEBUG_PORT_PXTS_EXL_CLK_INV_POL}
+
+# Enable the optimized FCCH search patch
+CHIP_EXPORT_FLAG += PATCH_SPP_USE_OPTIMIZED_FCCH_DETECTION
+
+# For Greenstone, the window size is a little bit extended and the
+# PLL lock time is changed because of a latency in the AHB bus arbitration:
+# the IFC on the baseband side does not get access to the external
+# memory for a given time, because of many write accesses on the
+# system side.
+# See the GreenstoneImprovements wiki page for more info.
+CHIP_EXPORT_FLAG += PAL_WINDOW_EXTENSION_FOR_AHB_LATENCY
+
+# Enable the ACCO Pll optimization
+CHIP_EXPORT_FLAG += HAL_ACCO_PLL_SCHEME=1
+
+# Boot code in ROM.
+SRC_IN_ROM := \
+    boot_bist.c \
+    boot_host.c \
+    boot_march_c_bbcp2.c \
+    boot_monitor.c \
+    boot_monitor.c \
+    boot_ram.S \
+    boot_rom.S \
+    boot_romstring.c \
+    boot_test.S \
+    boot_uart_monitor.c \
+    boot_usb.c \
+    boot_usb_monitor.c \
+
+
+# BCPU code in ROM.
+SRC_IN_ROM += \
+    bcpu_ram.S \
+    bcpu_rom.S \
+    spal_cache.c \
+    spal_cap_apb.c \
+    spal_cap_cp2.c \
+    spal_cfg.c \
+    spal_cipher.c \
+    spal_debug.c \
+    spal_gdb.S \
+    spal_gdb_stub.c \
+    spal_ifc.c \
+    spal_irq.c \
+    spal_irq_handler.S \
+    spal_itlv.c \
+    spal_vitac.c \
+    spal_xcor.c \
+    spc_amr_rx.c \
+    spc_amr_tx.c \
+    spc_irq_handler.c \
+    spc_mailbox.c \
+    spc_rx.c \
+    spc_scheduler.c \
+    spc_tables.c \
+    spc_tx.c \
+    spp_cfg.c \
+    spp_cipher.c \
+    spp_fcchDetect.S \
+    spp_gsm_amr_rx.c \
+    spp_gsm_decoder.c \
+    spp_gsm_equalizer.c \
+    spp_gsm_rx.c \
+    spp_gsm_tables.c \
+    spp_gsm_tx.c \
+    spp_math.c \
+    spp_misc.c \
+    
+# Standard library in ROM.
+SRC_IN_ROM += \
+    atoi.c \
+    ctype.c \
+    memchr.c \
+    memcmp.c \
+    memmove.c \
+    memscan.c \
+    memset.c \
+    rand.c \
+    strcat.c \
+    strchr.c \
+    strcpy.c \
+    strcmp.c \
+    strlen.c \
+    strncat.c \
+    strncmp.c \
+    strncpy.c \
+    strnicmp.c \
+    strsep.c \
+    strstr.c \
+    strtok.c \
+    strtol.c \
+    strtoul.c \
+    vsscanf.c \
+
+# There was a bug in vsprintf fixed at rev 15675
+# Thus the file is taken out of the rom.
+#    vsprintf.c \
+
+# Don't manage full alignement for word
+#    memcpy.c \
+
+
+
+# Chip memory map dependent.
+FLASH_BASE                  := 0xFFFFFFFF81000000
+EXT_RAM_BASE                := 0xFFFFFFFF80000000
+SYS_SRAM_BASE               := 0xFFFFFFFF80C00000
+SYS_SRAM_AVAILABLE_BASE     := 0xFFFFFFFF80C00200
+SYS_SRAM_SIZE               := 65536
+BB_SRAM_BASE                := 0xFFFFFFFF80AA0000
+BB_SRAM_SIZE                := 0x3400
+INT_ROM_BASE                := 0xFFFFFFFF80E00000
+INT_ROM_END                 ?= 0xFFFFFFFF80E13ffc
+
+# ROM memory map dependent.
+### TODO actualize with what is already reserved by the ROM
+RESERVED_MBX_SIZE           := 0x280
+SYS_SRAM_END                := SYS_SRAM_BASE+SYS_SRAM_SIZE-RESERVED_MBX_SIZE-4
+ROM_MISC_BASE               := 0xFFFFFFFF80c000a0
+ROM_MISC_UBASE              := 0xFFFFFFFFa0c000a0
+BB_SRAM_GLOBALS_SIZE        := 200
+# Use the last patch for the structure
+BOOT_SECTOR_STRUCT_BASE     := ROM_MISC_UBASE-4*4
+
+
+# List of symbols to exclude from the ROM as a newer
+# version needs to be compiled and placed in ram or flash.
+STRIP_ROM_OBJ2STRIP_FILE ?= platform/chip/defs/${CT_ASIC}/rom_symbols_to_strip
+
+# *************************************************************
+### TODO this should be in target or in the linker as it is not chip dependent. Those are software dependent.
+SYS_SRAM_IRQ_STACKWATCH_SIZE := 128
+XCPU_IRQ_STACK_SIZE          := 3584
+#       /* DEBUG: stack for page spy all writes watching
+#        * The Room is taken from the irq stackwatch*/
+ifneq "${PAGE_SPY_LOG}" "1"
+    PS_STACK_SIZE               := 0
+else
+    PS_STACK_SIZE               := 64
+endif
+# *************************************************************
+
+LINKER_MASTER ?= modem2G_master.ld

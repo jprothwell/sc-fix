@@ -1,0 +1,20 @@
+<module name="CAMD">
+    <!-- Functions -->
+    <fn name="camd_Open"        id="0x1040" group="CAMD API"/>
+    <fn name="camd_Close"       id="0x1041" group="CAMD API"/>
+    <fn name="camd_SetParam"    id="0x1042" group="CAMD API"/>
+    <fn name="camd_GetImage"    id="0x1043" group="CAMD API"/>
+    <fn name="camd_GetInfo"     id="0x1044" group="CAMD API"/>
+    <fn name="camd_PowerOn"     id="0x1045" group="CAMD API"/>
+
+    <!-- Windows -->
+    <fn name="CAMD Ifc Fetching" id="0x3800" group="CAMD API"/>
+    <fn name="camd_GettingPictureWin"       id="0x3801" group="CAMD API"/>
+    <fn name="camd_SyncWaitWin"             id="0x3802" group="CAMD API"/>
+    <fn name="camd_FetchData"               id="0x3803" group="CAMD API"/>
+    
+    <!-- Pulses -->
+    <fn name="camd_OverflowPulse"           id="0x3010" group="CAMD API"/>
+
+</module>
+

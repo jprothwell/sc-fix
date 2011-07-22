@@ -1,0 +1,234 @@
+This file lists the configurations options for the host.
+
+Stack Config options  ----------------------------------------
+
+RFCOMM_PRESENT
+Provides: Controls whether the RFCOMM layer is started by the stack.
+
+HOST_SECURITY
+Provides: Control whether service level security is enabled.
+
+PRH_SNIFF_SUPPORTED 0/1
+Provides: The code neccessary to supprt the device going into and 
+out of sniff mode
+
+PRH_PARK_SUPPORTED 0/1
+Provides: The code neccessary to supprt the device going into and 
+out of park mode
+
+STACK_MAX_OUTGOING_QUEUED_HCI_COMMAND_BYTES
+Provides: The maximum number of bytes for HCI commands that the stack 
+get command buffer will allocate.
+
+STACK_MAX_OUTGOING_QUEUED_ACL_BYTES_PER_HANDLE 
+Provides: The maximum number of bytes the stack will queue per handle.
+
+STACK_MAX_OUTGOING_QUEUED_SCO_BYTES_PER_HANDLE
+Provides: The maximum number of SCO bytes the stack will queue per handle.
+
+STACK_MAX_OUTGOING_CONTROL_MESSAGE_RESERVED_BYTES
+Provides: The stack reserves this number of bytes per handle for upper layer control messages. These are used so that during total data flow, a layer can still allocate a buffer for sending a control message.
+
+BOOTUP_HC_RESPONSE_TIMEOUT
+Provides: The timeout within a HC must respond during host bootup before the host startup fails.
+
+PRH_API_PARAM_CHECKING
+Provides: The suport for more exhaustive checking of invalid parameters passed to the API
+
+HCI Config options    ----------------------------------------
+PRH_HOST_HC_TO_HOST_FLOW_CONTROL_SUPPORTED 
+Provides: Host Controller to Host Flow control support.
+
+PRH_HOST_HC_TO_HOST_FLOW_CONTROL_REPORTING_FREQUENCY
+Provides: The periodic reporting frequency for HC->host flow control.
+
+PRH_HOST_HC_TO_HOST_FLOW_CONTROL_ACL_REPORTING_THRESHOLD
+Provides: The threshold at which the HC is updated for HC->host flow control.
+
+HCI_HC_TO_HOST_FLOWCTRL_ACL_NUM
+Provides: The number of ACL buffers the host configures in HCI_HostBufferSize for HC->host flow control.
+
+HCI_HC_TO_HOST_FLOWCTRL_ACL_SIZE
+Provides: The size of the ACL buffers the host configures in HCI_HostBufferSize for HC->host FC.
+
+HCI_HC_TO_HOST_FLOWCTRL_SCO_NUM
+Provides: The number of SCO buffers the host configures in HCI_HostBufferSize for HC->host FC.
+
+HCI_HC_TO_HOST_FLOWCTRL_SCO_SIZE
+Provides: The size of SCO buffers the host configures in HCI_HostBufferSize for HC->host FC.
+
+SDP Config options -------------------------------------------
+
+SDP_SERVER
+Dependencies : none ( layer )
+Provides : Control over including all server code.
+
+SDP_RECORD_GEN
+Dependencies : SDP_SERVER
+Provides : Primitives for the creation of SDP database records.
+It cannot be used with SDP_ROM_SUPPORT.
+
+SDP_ROM_SUPPORT
+Dependencies : SDP_SERVER
+Provides : This changes SDP to access a static rom database.
+It cannot be used with SDP_RECORD_GEN.
+
+SDP_ROM_CREATION
+Dependencies : SDP_SERVER, SDP_RECORD_GEN
+Provides : Primitives for the creation of a ROM database and the 
+constuction of a new database that contains an old ROM database
+image as an attribute.
+
+SDP_CLIENT 
+Dependencies : none (layer)
+Provides : Control over including all client code.
+
+SDP_SS_AND_SA_SUPPORT 
+Dependencies : SDP_CLIENT
+Provides : Code to create a Service Search Request and 
+Service Attribute Request and receive their responces.
+
+SDP_SSA_SUPPORT 
+Dependencies : SDP_CLIENT
+Provides : Code to create a Server Search Attribute Request and
+receive their responces.
+
+SDP_GENERIC_BROWSE 
+Dependencies : SDP_CLIENT, SDP_SSA_SUPPORT
+Provides : Code needed to perform a generic browse as per the spec.
+
+SDP_SDAP 
+Dependencies : SDP_CLIENT, (SDP_SSA_SUPPORT or SDP_SA_SUPPORT)
+Provides : Code to Discover and obtain service records, and well as
+retrieve a full set of results.
+
+SDP_INTERFACE 
+Dependencies : SDP_CLIENT, (SDP_SSA_SUPPORT or SDP_SA_SUPPORT)
+Provides : low level access to SDP Protocol PDU generation, these 
+primitives can be used in an obtain store loop to retrieve a full
+record.
+
+SDP_DB_TO_FILE 
+Dependencies : SDP_CLIENT SDP_SDAP SDP_SSA_SUPPORT
+Provides : This will retrieved record containing a ROM image and it 
+will contstuct the C code needed to create and load the static image.
+
+RFCOMM Config options ----------------------------------------
+
+PRH_RFCOMM_RSE_SUPPORT - 0/1
+Provides: Support for the stack entity layer, required for OBEX / Headset.
+
+PRH_RFCOMM_PE_SUPPORT - 0/1
+Provides: Enable/disable support for port entity layer, required for SPP.
+
+PRH_RFCOMM_INITIAL_CREDITS 0-7
+Provides: Initial number of credits to give to peer with RFCOMM CBFC.
+
+PRH_RFCOMM_MAX_CREDITS 0-255
+Provides: Maximum credits allowable.
+
+PRH_RFCOMM_CREDIT_MIN 0-255
+Provides: Number of credits at which to re-issue credits.
+
+PRH_RFCOMM_CREDIT_ISSUE 0-255
+Provides: Number of credits in each re-issue
+
+PRH_RFCOMM_MAX_FRAME_SIZE 0-32767
+Provides: Maximum RFCOMM frame size to support.
+
+L2CAP Config options  ---------------------------------------
+
+PRH_L2CAP_AUTO_CONFIG
+Provides: Controls whether the configuration helper code is included, if RFCOMM
+or TCS is included this option must be enabled.
+
+L2CAP GROUPS SUPPORTED
+Provides: When set this includes all groups support in the L2CAP layer. The Ability to Create/Close groups and 
+Add/Remove group members is supported
+
+L2CAP CLS TRAFFIC SUPPORTED
+Provides: When set this includes the all the support required  to transmit
+and recieve connectionless data. This encompasses the API calls to
+enable and disable connectionless traffic.
+
+L2CAP PING SUPPORTED
+Provides: When set this includes the all the support required  to transmit
+a PING (L2CAP_Echo) to a peer device. Note that this only effects the ability 
+to Transmit an l2cap echo. The ability to Revieve an echo and respond is mandatory
+and thus not impacted by the value of the build parameter.
+
+L2CAP INFO SUPPORTED
+Provides: When set this includes the all the support required  to transmit/recieve an Info
+request/respons (L2CAP_INFO_REQ/RESP) to a peer device. 
+
+L2CAP AGGREGATE QOS
+Provides: This allows the QoS values for a channel to be aggregated for the ACL link. 
+By default this is off - as all testing is performed with this turned off.
+
+L2CAP_CONFIG_VALUES_BELOW_HCI
+Provides:This controls the sending of LinkTO, FlushTO and QoS to the HC during the 
+negociation of a channel. To operate correctly the underlying HC must support
+LinkTO,FlushTO and QoS. Thus this is turned on by default.
+
+PRH_L2_MAX_NUM_CHANNEL_IDENTIFIERS
+Controls:- The maximum numer of L2CAP channels allowed in the system
+
+PRH_L2_MAX_NUM_LINKS
+Controls:- The maximum number of ACL links L2CAP can support.
+
+PRH_L2_MAX_ECHO_DATA_SIZE
+Controls:- The maximum data size which L2CAP uses for Ping/Echo
+
+PRH_L2_MAX_CLS_MTU
+Controls:- The maximum MTU used for connectionless traffic the system
+
+PRH_L2_MAX_NUM_PSM
+Controls:- The maximum number of PSMs supported in the L2CAP layer
+
+PRH_L2_MAX_GROUPS
+Controls:- The maximum number of groups which are supported by L2CAP layer
+
+
+TCS Config options  ---------------------------------------
+PRH_TCS_GATEWAY	0/1		
+Provides: The code neccessary to act as a Gateway for the puropses
+of the Cordless Telephony Profile
+
+PRH_TCS_TERMINAL 0/1
+Provides: The code neccessary to act as a Terminal for the purposes
+of the Cordless Telephony Profile and the Intercom Profile
+
+PRH_TCI_TCS_BIN 0/1
+Provides: The code neccessary to support the TCI for TCS-Bin
+
+Debug Options         ---------------------------------------
+pDEBUGLEVEL 
+Provides:If debug is enabled, the severity level of messages.
+
+pDEBUGLAYERS
+Provides: If debug is enabled, a bitmask of the layers for which debug is to be enabled.
+
+
+Manager Options         ---------------------------------------
+MGR_DEVDB_MAX_ENTRIES         
+Provides: The maximum allowable number of device entries provided by the manager
+
+MGR_DEVDB_CACHE_REMOTE_NAME   
+Provides: Controls whether the manager caches remote names which have been requested by applications.
+
+HOST_INQDB_MAX_DEVICE_ENTRIES 
+Provides: The maximum allowable number of inquiry database entries provided by the manager.
+
+HOST_INQDB_CULL_GRANULARITY   
+Provides: The frequency at which the age attribute of inquiry database entries is incremented.
+
+HOST_INQDB_CULL_THRESHOLD	
+Provides: The age threshold above which inquiry database entries are deallocated.
+
+HOST_INQDB_CULL_MIN_ENTRIES   
+Provides: The minimum number of inquiry database entries provided by the manager, above which culling is performed
+
+MGR_LINKFLAGS_DEFAULT
+Provides: The default behaviour of the manager for handling connection requests, link key requests, PIN code requests, and allow role switch settings.
+
+

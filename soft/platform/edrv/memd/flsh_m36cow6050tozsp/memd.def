@@ -1,0 +1,27 @@
+# this file is to be included in target.def by dev targets that use the 
+# flsh_m36cow6050tozsp flash/ram combo
+# M36   single package (flash & RAM)
+# C     single bank, boot block
+# 0     Flash 2 = no die
+# w     Operating voltage = 2.7 to 3.3V
+# 6     Flash 1 density = 64 MBit 
+# 0     Flash 2 density = no die
+# 5     RAM 1 density = 32 MBit
+# 0     RAM 2 density = no die
+# T     Parameter block location = top boot block flash
+# o     90 nm flash technology,70ns speed
+# zsp   stacked TFBGA56 7*9 56 ball array -0.8 mm pitch
+# form factor models can define the values directly in their target.def
+    FLASH_SIZE:=            0x00800000
+ifeq "${CT_COMPRESS_CODE_SECTION}" "yes"
+    RAM_SIZE:=              0x003a8000
+    XCPU_OVERLAY_BASE:=     ${RAM_SIZE}
+else
+    RAM_SIZE:=              0x00400000
+endif
+    CODE_BASE:=             0x00000800
+    USER_DATA_BASE:=        0x00700000
+    USER_DATA_SIZE:=        0x000F0000    
+    USER_DATA_BLOCK_SIZE:=  0x00000200
+    CALIB_BASE:=            0x007FC000
+    FACT_SETTINGS_BASE:=    0x007FE000

@@ -1,0 +1,13 @@
+# this file is to be included in target.def by dev targets that use the 
+# dual flash_SPI_32M 
+
+
+# form factor models can define the values directly in their target.def
+    RAM_SIZE:=              0x00400000
+    FLASH_SIZE:=            0x00800000
+    CALIB_BASE:=            0x007FC000
+    FACT_SETTINGS_BASE:=    0x007FE000
+    CODE_BASE:=             0x00000800
+    USER_DATA_BASE:=        0x00700000
+    USER_DATA_SIZE:=        0x000FC000
+    USER_DATA_BLOCK_SIZE:=	0x00000200

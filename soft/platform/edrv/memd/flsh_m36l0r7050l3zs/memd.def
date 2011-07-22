@@ -1,0 +1,22 @@
+# this file is to be included in target.def by dev targets that use the 
+# M36L0R7050l3ZS flash/ram combo
+# M36   Multichip package (flash & RAM)
+# L     Flash 1 = multilevel, multiple bank, burst mode
+# 0     Flash 2 = no die
+# R     Operating voltage = 1.7 to 1.95V
+# 7     Flash 1 density = 128 MBit (16 MByte)
+# 0     Flash 2 density = no die
+# 5     RAM 1 density = 32 MBit (4 MByte)
+# 0     RAM 2 density = no die
+# L     Parameter block location = bottom boot block flash
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x01000000
+    RAM_SIZE:=              0x00400000
+    CALIB_BASE:=            0x00020000
+    FACT_SETTINGS_BASE:=    0x00040000
+    CODE_BASE:=             0x00060000
+    USER_DATA_BASE:=        0x00E00000
+    USER_DATA_SIZE:=        0x00200000
+    USER_DATA_BLOCK_SIZE:=  0x00000200

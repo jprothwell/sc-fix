@@ -1,0 +1,15 @@
+# Include the default configuration for the Greenstone family
+include ${SOFT_WORKDIR}/platform/chip/defs/greenstone_base.def
+
+# Now override the base configuration and add special flags/values
+
+
+
+
+# Number of the GPIO dedicated to charger detect.
+CHIP_EXPORT_FLAG += CHIP_GPIO_NUM_CHARGER_DETECT=0
+ 
+# The ROM to use. This can be overloaded in the "target.def" file.
+CHIP_ROM_ELF_FILE ?= platform/chip/rom/${CT_ASIC}/lib/mem_bridge_rom_CHIP.elf
+
+CHIP_ROM_DEF_FILE ?= platform/chip/rom/$(CT_ASIC)/lib/mem_bridge_rom_CHIP.def

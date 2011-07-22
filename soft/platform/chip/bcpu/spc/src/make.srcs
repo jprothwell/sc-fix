@@ -1,0 +1,15 @@
+S_SRC := $(S_SRC)
+C_SRC := $(C_SRC) spc_main.c \
+                  spc_irq_handler.c \
+                  spc_mailbox.c \
+                  spc_amr_tx.c \
+                  spc_amr_rx.c \
+                  spc_tables.c \
+                  spc_scheduler.c \
+                  spc_tx.c \
+                  spc_rx.c \
+                  spc_version.c
+
+ifeq "${CT_ASIC}" "greenstone"
+C_SRC += spc_irq_handler_greenstone.c
+endif # greenstone

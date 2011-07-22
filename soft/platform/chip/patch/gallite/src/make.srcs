@@ -1,0 +1,62 @@
+S_SRC := 
+C_SRC := 
+
+# Only for BCPU buffer profiling
+C_SRC += patch_spal_irq.c \
+
+# Only for Rx/Tx debugging
+#C_SRC += patch_spc_rx.c \
+
+# For real fixes, with some debugging functions in the same files
+S_SRC += patch_spc_FcchProcess_part1.S \
+
+C_SRC += patch_open.c \
+         patch_spal_debug.c \
+         patch_spp_gsm_tx.c \
+         patch_spc_irq_handler.c \
+         patch_spc_scheduler.c \
+         patch_spc_amr_rx.c \
+         patch_spp_gsm_equalizer.c \
+         patch_spp_SearchFcch.c \
+         patch_spal_ifc.c \
+         patch_spp_SearchFcch_Old.c \
+         patch_spp_SearchFcch_Cmb.c \
+         patch_spc_rx_ext.c
+
+
+# BCPU buffer profiling
+LOCAL_EXPORT_FLAG += ENABLE_PATCH_BB_PROG_RX_WIN
+LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPAL_IRQHANDLER
+LOCAL_EXPORT_FLAG += BCPU_PROFILING
+# CAUTION: BCPU accessing external RAM risks halting BCPU in some cases.
+#LOCAL_EXPORT_FLAG += BCPU_PROFILING_IN_EXTRAM
+
+# Rx/Tx debugging
+#LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPC_RXPROCESS
+#LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPP_BUILDNBURST
+
+# Fix preample bit error in Tx
+LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPP_MODULATION
+# Fix snapshot number for 2nd win issue
+LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPC_IRQHANDLER
+LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPC_SCHEDULERMAIN
+# Fix AMR issue
+#LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPC_AFSDECODING
+#LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPC_AHSDECODING
+# Fix NB equalization issue
+LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPP_EQUALIZENBURST
+# Improve FCCH searching efficiency
+LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPP_SEARCHFCCH
+# Fix IFC2 disabling issue
+LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPAL_IFCDISABLERF
+
+# FCCH Search @AFC Locked. This switch cannot be co-opened 
+# with ENABLE_PATCH_SPP_SEARCHFCCH when ENABLE_PATCH_SPP_SEARCHFCCH_CMB is not opened.
+#LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPP_SEARCHFCCH_OLD
+ 
+# FCCH Search @AFC Locked&Unlocked, Combined. This siwtch requires: 
+# both ENABLE_PATCH_SPP_SEARCHFCCH and ENABLE_PATCH_SPP_SEARCHFCCH_OLD opened
+#LOCAL_EXPORT_FLAG += ENABLE_PATCH_SPP_SEARCHFCCH_CMB
+
+
+ 

@@ -1,0 +1,24 @@
+# this file is to be included in target.def by dev targets that use the 
+# flsh_k5l3316cam_d770 flash/ram combo
+# flsh_k5l3316cam_d770
+#     K5    Combo Memory
+#     L     NOR Flash + Ram
+#     33    32M Bit (4M Byte) Flash
+#     16    16M Bit (2M Byte) Ram
+#     C     3.0V Memory
+#     A     Top & Bottom Boot Block
+#     M
+#     D
+#     7     70ns Flash
+#     70    70ns Ram
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x00400000
+    RAM_SIZE:=              0x00200000    
+    CODE_BASE:=             0x00000800
+    USER_DATA_BASE:=        0x003a0000
+    USER_DATA_SIZE:=        0x00050000
+    CALIB_BASE:=            0x003FC000
+    FACT_SETTINGS_BASE:=    0x003FE000
+    USER_DATA_BLOCK_SIZE:=  0x00000200

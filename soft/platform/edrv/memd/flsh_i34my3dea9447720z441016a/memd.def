@@ -1,0 +1,25 @@
+# this file is to be included in target.def by dev targets that use the 
+# I34MY3DEA9447720Z441016A flash/ram combo
+# Multichip package (flash & RAM)
+# Flash 1 = multilevel, multiple bank, burst mode
+# Flash 2 = no die
+# perating voltage = 1.7 to 1.95V
+# Flash 1 density = 128 MBit (16 MByte)
+# Flash 2 density = no die
+# RAM 1 density = 64 MBit (8 MByte)
+# RAM 2 density = no die
+# USER_DATA_BLOCK_SIZE  user data sector logical block size
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x01000000
+    RAM_SIZE:=              0x00400000
+    CALIB_BASE:=            0x00020000
+    FACT_SETTINGS_BASE:=    0x00040000
+    CODE_BASE:=             0x00060000
+    USER_DATA_BASE:=        0x00E00000
+    USER_DATA_SIZE:=        0x00200000
+    USER_DATA_BLOCK_SIZE:=  0x00000400
+
+
+LOCAL_EXPORT_FLAG += FLASH_BOTH_PROGRAM_MODE

@@ -1,0 +1,8 @@
+_printn
+_doprnt
+vsnprintf
+vsprintf
+sprintf
+snprintf
+memcpy
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive asm="no">
+
+<comment>
+@file spc.h<br/>
+This File contains SPC context structures and enums.<br/>
+<br/>
+@author Coolsand Technologies, Inc.<br/>
+@version 1.0<br/>
+@date january 2008<br/>
+<br/>
+</comment>
+
+<include>
+    <comment> spc contex definition depending on 
+              the SPC interface version
+    </comment>
+    <case cond="(SPC_IF_VER == 0)" file="spc_ctx_v0.xmd"/>
+    <case cond="(SPC_IF_VER == 1)" file="spc_ctx_v1.xmd"/>
+    <case cond="(SPC_IF_VER == 2)" file="spc_ctx_v2.xmd"/>
+    <default file="spc_ctx_std.xmd"/>
+</include>
+
+</archive>

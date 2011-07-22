@@ -1,0 +1,104 @@
+# this file contains the standard conf for 3216 prj.
+# if you create a 3216 prj, you'd better include this file.
+# this file should be relocated in env...
+
+
+ifeq "$(strip ${TARGET_MEM_ULC_3216})" "YES"
+############################################
+# gprs/tcpip/wap/mms not supported
+WAPMMS_SUPPORT   := 0
+GPRS_SUPPORT	:= 0
+TCPIP_SUPPORT := 0
+
+GLOBAL_EXPORT_FLAG += N_CFW_GPRS_SUPPORT
+GLOBAL_EXPORT_FLAG += N_CFW_TCPIP_SUPPORT
+############################################
+
+############################################
+# multimedia conf
+VIDEO_RECORDER_SUPPORT   := 1
+TARGET_VIDEO_RECORDER_SUPPORT_OFF := 0
+VIDEO_PLAYER_SUPPORT   := 1
+SOUND_RECORDER_SUPPORT   := 1
+
+MIDI_SUPPORT   := 0
+TARGET_MIDI_SUPPORT_OFF := 1
+
+ANALOG_TV_SUPPORT := 0
+TARGET_VDOCHAT_SUPPORT_OFF := 1
+
+ifeq "$(strip ${VIDEO_PLAYER_SUPPORT})" "1"
+GLOBAL_EXPORT_FLAG += VIDEO_PLAYER_SUPPORT
+endif
+ifeq "$(strip ${VIDEO_RECORDER_SUPPORT})" "1"
+GLOBAL_EXPORT_FLAG += VIDEO_RECORDER_SUPPORT
+endif
+GLOBAL_EXPORT_FLAG += N_MDI_MIDI_SUPPORT
+GLOBAL_EXPORT_FLAG += N_SOUND_RECORDER_SUPPORT
+GLOBAL_EXPORT_FLAG += N_MMC_VDOCHAT_SUPPORT
+GLOBAL_EXPORT_FLAG += CAMERA_SUPPORT
+ifeq "$(strip ${TARGET_VIDEO_RECORDER_SUPPORT_OFF})" "1"
+GLOBAL_EXPORT_FLAG += TARGET_VIDEO_RECORDER_SUPPORT_OFF
+endif
+ifeq "$(strip ${SOUND_RECORDER_SUPPORT})" "0"
+GLOBAL_EXPORT_FLAG += TARGET_SOUND_RECORDER_SUPPORT_OFF
+endif
+
+GLOBAL_EXPORT_FLAG += AUDIO_PLAYER_SUPPORT
+GLOBAL_EXPORT_FLAG += TARGET_MIDI_SUPPORT_OFF
+GLOBAL_EXPORT_FLAG += TARGET_VDOCHAT_SUPPORT_OFF
+GLOBAL_EXPORT_FLAG += AMR_SUPPORT
+############################################
+
+############################################
+# text encoder conf
+ML_SUPPORT := 0
+NEW_ML_SUPPORT := 1
+
+GLOBAL_EXPORT_FLAG += N_ML_SUPPORT
+GLOBAL_EXPORT_FLAG += NEW_ML_SUPPORT
+############################################
+
+############################################
+# app conf
+CALENDAR_SUPPORT := 1
+JMETOC_SUPPORT := 0
+FUNGAME_SUPPORT := 0
+STOPWATCH_SUPPORT := 1
+GSENSOR_SUPPORT := 0
+BIDI_SUPPORT := 1
+MESSAGCHAT_SUPPORT := 0 
+ORGANIZER_SUPPORT := 1 
+TODULIST_SUPPORT := 1
+EXTRA_SUPPORT := 0
+ONLY_ALARM_SUPPORT := 0
+TARGET_MAGIC_SOUND_OFF := 1
+GLOBAL_EXPORT_FLAG += N_MESSAGCHAT_SUPPORT
+GLOBAL_EXPORT_FLAG += CALENDAR_SUPPORT
+GLOBAL_EXPORT_FLAG += TODULIST_SUPPORT
+GLOBAL_EXPORT_FLAG += ORGANIZER_SUPPORT
+GLOBAL_EXPORT_FLAG += N_EXTRA_SUPPORT
+GLOBAL_EXPORT_FLAG += TARGET_MAGIC_SOUND_OFF
+
+############################################
+
+############################################
+# misc conf
+CES_DISPLAY := 0
+
+GLOBAL_EXPORT_FLAG += N_FSTRACE_SUPPORT
+GLOBAL_EXPORT_FLAG += N_VCORE_ADP
+GLOBAL_EXPORT_FLAG += PA_CALIB_OPT4RAM
+GLOBAL_EXPORT_FLAG += MMC_CAM_OPT4RAM
+GLOBAL_EXPORT_FLAG += PAL_WINDOWS_LOCK_MCP_ON_RX
+GLOBAL_EXPORT_FLAG += DCDC_FREQ_DIV_WORKAROUND
+GLOBAL_EXPORT_FLAG += MEM_ULC_3216
+############################################
+
+
+############################################
+
+############################################
+
+endif
+

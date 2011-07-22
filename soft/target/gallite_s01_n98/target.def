@@ -1,0 +1,157 @@
+CT_ASIC         ?= gallite
+CT_ASIC_CFG     ?= chip
+3GPP_MODE       ?= gsm
+ROM_TYPE        ?= chip
+CT_ROMULATOR    ?= no
+UCTLS_SERVICE   ?= umss_storage_flashmc
+CT_MMI          ?= cs2324
+#CT_ERES         ?= t33
+
+PM_MODEL        ?= rda1203_gallite
+XCV_MODEL       ?= xcv_rda6220_gallite
+PA_MODEL        ?= pasw_rda6231
+SW_MODEL        ?= 
+#FLSH_MODEL      ?= flsh_k5l2731caa_d770
+#FLSH_MODEL      ?=flsh_m36l0r7050u3zs
+FLSH_MODEL      ?=flsh_m36l0r7050u3zs_twn
+LCD_MODEL       ?= ms1321
+LCD_IF          ?= gouda
+AD_MODEL        ?= codec_gallite
+MCD_IF          ?= sdmmc
+CAMERA_MODEL    ?= gc0309 byd3703 byd3603
+TSD_MODEL       ?= rda1203_gallite
+FM_MODEL        ?= rda5802e_gallite
+BT_MODEL        ?= rda5872
+DUALSIM_MODEL   ?= rda1203_gallite
+I2C_MODEL       ?= 
+ATV_MODEL       ?= 
+GSENSOR_MODEL   ?= 
+TD_PROJ_NAME	?=S01_N98
+
+ifneq (${DUALSIM_MODEL},)
+DUAL_SIM_SUPPORT := 1
+endif # (${DUALSIMD_MODEL},)
+
+ifneq (${ATV_MODEL},)
+ANALOG_TV_SUPPORT := 1
+endif # (${ATV_MODEL},)
+
+ifneq (${I2C_MODEL},)
+TARGET_EXPORT_FLAG    += I2C_BASED_ON_GPIO
+endif # (${I2C_MODEL},)
+
+# GPRS capability
+WAPMMS_SUPPORT   ?= 1
+
+WITHOUT_WERROR:=1
+
+include ${SOFT_WORKDIR}/platform/edrv/memd/${FLSH_MODEL}/memd.def
+
+# Define BT crystal flag
+BT_SHARE_CRYSTAL := 1
+
+# MMI flags
+#MMI_EXPORT_FLAG       += __MMI_USE_LSK_AS_SEND2__
+MMI_EXPORT_FLAG       += __MMI_PROJECT_T33__
+#MMI_EXPORT_FLAG       += __MMI_RUNNING_LED__
+MMI_EXPORT_FLAG       += __TFLASH_MOUNT_DYNAMIC__
+#sheerie add for n98
+MMI_EXPORT_FLAG	+= __MMI_PROJECT_N98__
+
+# Define screen resolution
+TARGET_EXPORT_FLAG    += LCDSIZE_240_320
+#TARGET_EXPORT_FLAG    += LCDSIZE_176_220
+#TARGET_EXPORT_FLAG    += LCD_SCALE_176_220_TO_240_320
+
+ifeq "${SOFTROM}" "1"
+TARGET_EXPORT_FLAG    += REWRITE_ROM_AT_BOOT
+endif
+
+# Register all the available modules
+#TARGET_EXPORT_FLAG    += TGT_REGISTER_PLATFORM_VERSIONS
+
+# Enable profile stub
+ifneq "${NO_PROFILE}" "1"
+# Buffer profile
+GLOBAL_EXPORT_FLAG    += HAL_PROFILE_ON_BUFFER
+#TARGET_EXPORT_FLAG    += HAL_PROFILE_NOT_ON_ROMULATOR
+
+GLOBAL_EXPORT_FLAG += DUALSIMD_PROFILING                                        
+GLOBAL_EXPORT_FLAG += STK_PROFILING                                        
+GLOBAL_EXPORT_FLAG += TSD_PROFILING                                        
+GLOBAL_EXPORT_FLAG += PMD_PROFILING                                        
+GLOBAL_EXPORT_FLAG += RFD_NO_TRACE                                        
+GLOBAL_EXPORT_FLAG += SX_PROFILING                                        
+GLOBAL_EXPORT_FLAG += HAL_PROFILE_ON_BUFFER                                        
+GLOBAL_EXPORT_FLAG += PAL_PROFILING                                        
+GLOBAL_EXPORT_FLAG += HAL_PROFILING                                        
+GLOBAL_EXPORT_FLAG += SPC_FUNC_PROFILING                                        
+GLOBAL_EXPORT_FLAG += SPAL_IRQ_PROFILING 
+endif
+
+# Enable SPI register debug
+ifneq "${NO_SPI_REG_DEBUG}" "1"
+TARGET_EXPORT_FLAG    += SPI_REG_DEBUG
+LDPPFLAGS += -DSPI_REG_DEBUG
+endif
+
+# Enable trace in hal_Open
+ifneq "${NO_EARLY_TRACE_OPEN}" "1"
+TARGET_EXPORT_FLAG    += EARLY_TRACE_OPEN
+endif
+
+# Receiver uses one speaker line (using left line by default)
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE
+# If using right line, the following macro should be added as well
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE_R
+
+TARGET_EXPORT_FLAG    += MEMD_RAM_IS_ADMUX
+TARGET_EXPORT_FLAG    += MEMD_FLASH_IS_ADMUX
+TARGET_EXPORT_FLAG    += MEMD_RAM_IS_BURST
+TARGET_EXPORT_FLAG    += MEMD_FLASH_IS_BURST
+
+#normal flash ebc clock use 78MHz
+TARGET_EXPORT_FLAG    += MEM_FREQ_78M
+
+NUMBER_OF_SIM   ?=2
+
+GLOBAL_EXPORT_FLAG += _FS_DEBUG
+GLOBAL_EXPORT_FLAG += _REG_SMS_MERGE
+
+GLOBAL_EXPORT_FLAG += FMRDO_SINGLEVOLUMECHANNEL_SUPPORT 
+GLOBAL_EXPORT_FLAG += __TFLASH_MOUNT_DYNAMIC__
+GLOBAL_EXPORT_FLAG += NO_CS_LOGO
+
+# Define the ML language support
+GLOBAL_EXPORT_FLAG += ML_SUPPORT
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP936	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_1
+## 18 ##
+##支持sound recorder功能  
+TARGET_EXPORT_FLAG  += SOUND_RECORDER_SUPPORT
+GLOBAL_EXPORT_FLAG  += VIDEO_RECORDER_SUPPORT
+GLOBAL_EXPORT_FLAG += EDRV_NO_TRACE
+GLOBAL_EXPORT_FLAG += APS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += ARS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += SXS_NO_DUMP
+GLOBAL_EXPORT_FLAG += CALIB_NO_PRINTF
+GLOBAL_EXPORT_FLAG += UMSS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += UCTLS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += VOIS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += STACK_NO_PRINTF
+GLOBAL_EXPORT_FLAG += SXS_NO_DUMP
+
+##这个宏开关，用来控制是否支持自动记录按键信息，通常用于记录出问题之前的按键信息，方便工程人员复现问题#######
+##打开这个宏会额外占用大约9KByte的空间，可以根据实际情况考虑是否打开这个功能##
+GLOBAL_EXPORT_FLAG += AUTO_TEST_KEYPRESS_RECORD_SUPPORT
+##打开这个宏，在正常开关机的情况下可以节省一个RTC大电容
+#GLOBAL_EXPORT_FLAG += __MMI_SAVE_CURRENT_TIME__
+
+##定义短消息和电话本的条目
+##PHONE_SMS_ENTRY_COUNT表征FLASH上多卡项目总计SMS容量，单卡数目为PHONE_SMS_ENTRY_COUNT/SIM_COUNT
+##SIM_SMS_ENTRY_COUNT表征SIM卡上最大SMS容量，请勿修改
+GLOBAL_EXPORT_FLAG += PHONE_SMS_ENTRY_COUNT=200
+GLOBAL_EXPORT_FLAG += SIM_SMS_ENTRY_COUNT=255
+GLOBAL_EXPORT_FLAG += PHONE_PHB_ENTRY_COUNT=250
+#################################################################
+

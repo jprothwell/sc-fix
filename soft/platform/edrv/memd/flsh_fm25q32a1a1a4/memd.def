@@ -1,0 +1,18 @@
+# this file is to be included in target.def by dev targets that use the 
+#
+# FM = Fidelix
+# 25 = SpiFlash Serial Flash Memroy 
+# Q = Quad
+# 32b =32M bit
+#  
+# A  = 1st generation
+
+# form factor models can define the values directly in their target.def
+    FLASH_SIZE:=            0x00400000
+    RAM_SIZE:=              0x00400000
+    CALIB_BASE:=            0x003FC000
+    FACT_SETTINGS_BASE:=    0x003FE000
+    CODE_BASE:=             0x00000800
+    USER_DATA_BASE:=        0x003A0000
+    USER_DATA_SIZE:=        0x0005C000
+    USER_DATA_BLOCK_SIZE:=	0x00000200

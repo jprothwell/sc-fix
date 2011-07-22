@@ -1,0 +1,109 @@
+# make.srcs for drivers, to include at end of test's make.srcs\n
+S_SRC := \
+    hal_gdb.S \
+    hal_gdb_stub_mips.S \
+    hal_irq_handler.S \
+    hal_lps_utils.S \
+    hal_sxr_mips.S \
+    hal_utils_mips.S \
+    setjmp.S
+#	hal_critical_section.S \
+# leave this comment and the last \ on last line for easier merge
+C_SRC := \
+    hal_perfmeter.c \
+    hal_aif.c \
+    hal_assert.c \
+    hal_boot_sector_driver.c \
+    hal_boot_sector_reload.c \
+    hal_calendar.c \
+    hal_camera.c \
+    hal_cipher.c \
+    hal_comregs.c \
+    hal_config.c \
+    hal_debug.c \
+    hal_debugpaltrc.c \
+    hal_dma.c \
+    hal_ebc.c \
+    hal_fint.c \
+    hal_flash.c \
+    hal_gdb_stub.c \
+    hal_getk1.c \
+    hal_gouda.c \
+    hal_gpio.c \
+    hal_host.c \
+    hal_host_ram.c\
+    hal_i2c.c \
+    hal_irq.c \
+    hal_key.c\
+    hal_lcdc.c \
+    hal_lps.c \
+    hal_map.c \
+    hal_map_engine.c \
+    hal_open.c \
+    hal_overlay.c \
+    hal_page_spy.c \
+    hal_profile.c \
+    hal_proxy_memory.c \
+    hal_pwm.c \
+    hal_rfspi.c \
+    hal_sdmmc.c \
+    hal_sim.c \
+    hal_slcdc.c \
+    hal_speech.c \
+    hal_spi.c\
+    hal_sxr.c \
+    hal_sys.c \
+    hal_sys_ifc.c \
+    hal_tcu.c \
+    hal_timer.c \
+    hal_trace.c\
+    hal_uart.c \
+    hal_usb.c \
+    hal_usb_monitor.c \
+    hal_usb_descriptor.c \
+    hal_voc.c
+
+ifneq "${CT_ASIC}" "emerald"
+C_SRC += \
+    hal_ana_gpadc.c
+endif # not emerald
+
+ifeq "${CT_ASIC}" "greenstone" 
+C_SRC += \
+    hal_ana_audio.c \
+    hal_ana_afc.c\
+    hal_ana_pa.c \
+    hal_ana_rfif.c \
+    hal_camera_greenstone.c
+endif # greenstone
+
+ifneq "${CT_ASIC}" "greenstone"
+C_SRC += \
+    hal_ispi.c
+endif # not Greenstone 
+
+ifeq "${CT_ASIC}" "gallite"
+C_SRC += \
+    hal_rda_abb.c \
+    hal_rda_audio.c
+endif # gallite
+
+# leave this comment and the last \ on last line for easier merge
+
+%/boot_loader.o: CT_MIPS16_CFLAGS=
+%/hal_lpsleep.o: CT_MIPS16_CFLAGS=
+%/hal_getk1.o: CT_MIPS16_CFLAGS=
+
+# Overwrite the normal optimisation to fit in the internal SRAM
+%/hal_tcu.o: MYCFLAGS=-O2
+%/hal_fint.o: MYCFLAGS=-O2
+%/hal_irq.o: MYCFLAGS=-O2
+#%/hal_irq_handler.o: MYCFLAGS=-O2
+#%/hal_sxr_mips.o: MYCFLAGS=-O2
+%/hal_lpsleep.o: MYCFLAGS=-O2
+%/hal_lps.o: MYCFLAGS=-O2
+%/hal_ana_pa.o: MYCFLAGS=-O2
+%/hal_ebc.o: MYCFLAGS=-O2
+
+
+

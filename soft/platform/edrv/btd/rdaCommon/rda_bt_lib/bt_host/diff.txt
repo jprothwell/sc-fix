@@ -1,0 +1,6 @@
+? diff.txt
+? arch/win32/Debug
+? arch/win32/hostdll.aps
+? arch/win32/hostdll.ncb
+? arch/win32/hostdll.opt
+? arch/win32/lib_desktop.plg

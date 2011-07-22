@@ -1,0 +1,110 @@
+CT_ASIC         ?= gallite
+CT_ASIC_CFG     ?= chip
+3GPP_MODE       ?= gsm
+ROM_TYPE        ?= chip
+CT_ROMULATOR    ?= no
+UCTLS_SERVICE   ?= umss_storage_flashmc
+CT_MMI          ?= cs2324
+CT_ERES         ?= t33
+
+PM_MODEL        ?= rda1203_gallite
+XCV_MODEL       ?= xcv_rda6220_gallite
+PA_MODEL        ?= pasw_rda6231
+SW_MODEL        ?= 
+FLSH_MODEL      ?= flsh_m36l0r7050u3zs
+LCD_MODEL       ?= otm2201h ili9225br R61503vr
+LCD_IF          ?= gouda
+AD_MODEL        ?= codec_gallite
+MCD_IF          ?= sdmmc
+CAMERA_MODEL    ?= gc0307 byd3603
+TSD_MODEL       ?= 
+FM_MODEL        ?= rda5802e_gallite
+BT_MODEL        ?= rda5868 rda5870 rda5872
+DUALSIM_MODEL   ?= rda1203_gallite
+I2C_MODEL       ?= 
+GSENSOR_MODEL   ?= 
+ATV_MODEL       ?= 
+
+ifneq (${DUALSIM_MODEL},)
+DUAL_SIM_SUPPORT := 1
+endif # (${DUALSIMD_MODEL},)
+
+ifneq (${ATV_MODEL},)
+ANALOG_TV_SUPPORT := 1
+endif # (${ATV_MODEL},)
+
+ifneq (${I2C_MODEL},)
+TARGET_EXPORT_FLAG    += I2C_BASED_ON_GPIO
+endif # (${I2C_MODEL},)
+
+# GPRS capability
+WAPMMS_SUPPORT   ?= 1
+
+include ${SOFT_WORKDIR}/platform/edrv/memd/${FLSH_MODEL}/memd.def
+
+# Define BT crystal flag
+BT_SHARE_CRYSTAL := 1
+
+# MMI flags
+MMI_EXPORT_FLAG       += __MMI_USE_LSK_AS_SEND2__
+MMI_EXPORT_FLAG       += __MMI_PROJECT_T33__
+MMI_EXPORT_FLAG       += __MMI_RUNNING_LED__
+
+# Define screen resolution
+TARGET_EXPORT_FLAG    += LCDSIZE_176_220
+
+ifeq "${SOFTROM}" "1"
+TARGET_EXPORT_FLAG    += REWRITE_ROM_AT_BOOT
+endif
+
+# Register all the available modules
+#TARGET_EXPORT_FLAG    += TGT_REGISTER_PLATFORM_VERSIONS
+
+# Enable profile stub
+ifneq "${NO_PROFILE}" "1"
+# Buffer profile
+TARGET_EXPORT_FLAG    += HAL_PROFILE_ON_BUFFER
+#TARGET_EXPORT_FLAG    += HAL_PROFILE_NOT_ON_ROMULATOR
+
+# Enable profile on HAL/PAL/SX
+TARGET_EXPORT_FLAG    += HAL_PROFILING PAL_PROFILING
+TARGET_EXPORT_FLAG    += SX_PROFILING
+endif
+
+# Enable SPI register debug
+ifneq "${NO_SPI_REG_DEBUG}" "1"
+TARGET_EXPORT_FLAG    += SPI_REG_DEBUG
+LDPPFLAGS += -DSPI_REG_DEBUG
+endif
+
+# Enable trace in hal_Open
+ifneq "${NO_EARLY_TRACE_OPEN}" "1"
+TARGET_EXPORT_FLAG    += EARLY_TRACE_OPEN
+endif
+
+# Receiver uses one speaker line (using left line by default)
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE
+# If using right line, the following macro should be added as well
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE_R
+
+TARGET_EXPORT_FLAG    += MEMD_RAM_IS_ADMUX
+TARGET_EXPORT_FLAG    += MEMD_FLASH_IS_ADMUX
+TARGET_EXPORT_FLAG    += MEMD_RAM_IS_BURST
+TARGET_EXPORT_FLAG    += MEMD_FLASH_IS_BURST
+
+# Define the ML language support
+GLOBAL_EXPORT_FLAG += ML_SUPPORT
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP0	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_1
+
+##这个宏开关，用来控制是否支持自动记录按键信息，通常用于记录出问题之前的按键信息，方便工程人员复现问题#######
+##打开这个宏会额外占用大约9KByte的空间，可以根据实际情况考虑是否打开这个功能##
+GLOBAL_EXPORT_FLAG += AUTO_TEST_KEYPRESS_RECORD_SUPPORT
+
+##定义短消息和电话本的条目
+##PHONE_SMS_ENTRY_COUNT表征FLASH上多卡项目总计SMS容量，单卡数目为PHONE_SMS_ENTRY_COUNT/SIM_COUNT
+##SIM_SMS_ENTRY_COUNT表征SIM卡上最大SMS容量，请勿修改
+GLOBAL_EXPORT_FLAG += PHONE_SMS_ENTRY_COUNT=200
+GLOBAL_EXPORT_FLAG += SIM_SMS_ENTRY_COUNT=255
+GLOBAL_EXPORT_FLAG += PHONE_PHB_ENTRY_COUNT=250
+#################################################################

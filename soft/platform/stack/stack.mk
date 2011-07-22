@@ -1,0 +1,59 @@
+MYCPPFLAGS :=-D__RRI_C__ \
+-D__RRI_P__ \
+-D__RRD__ \
+-D__TEST_LIST__ \
+-D__TARGET__ \
+-D__DEBUG__ \
+-DMARQUAGE="\"${MARQUAGE}\"" \
+-D__L1_WIN_TRC__ \
+-DNO__NO_AMR__ \
+-D__NO_PFI__ \
+-Dno__SXS_STR_TO_ID__ \
+-DNO__SXS_RAM_LOADED__ \
+-D__SXS_NO_FLASH_HANDLER__\
+-D__RR_SPY__ \
+-D__RLU_SPY__ \
+-D__MM_SPY__ \
+-D__CB_SPY__ \
+-D__LLC_SPY__ \
+-D__RLU_NO_TRAP__ \
+-Dno__ONE_PHASE_ACCESS_PREFERED__ \
+-Dno__AUTO_GPRS_ATT__ \
+-D__CS_DATA__ \
+-D__NOABORT__ \
+-D__TEMP_FLOW_CONTROL__\
+-D__L1_CCH_RX_OPT__ \
+-DSTK_PROFILING_TO_STK
+
+ifeq "${NUMBER_OF_SIM}" "1"
+MYCPPFLAGS += -DSTK_SINGLE_SIM
+endif
+
+ifeq "${NUMBER_OF_SIM}" "2"
+MYCPPFLAGS += -DSTK_DUAL_SIM
+endif
+
+ifeq "${NUMBER_OF_SIM}" "3"
+MYCPPFLAGS += -DSTK_THREE_SIM
+endif
+
+ifeq "${NUMBER_OF_SIM}" "4"
+MYCPPFLAGS += -DSTK_FOUR_SIM
+endif
+
+ifeq "${WAPMMS_SUPPORT}" "1"
+MYCPPFLAGS += -D__GPRS__ -D__RRP__
+else
+MYCPPFLAGS += -D__NO_GPRS__
+endif
+
+
+MYCPPFLAGS += -D__L1_MULTI_AFCDAC__
+
+#ifeq "$(CT_ASIC)" "gallite"
+#MYCPPFLAGS += -D__L1_FCCH_FOF_THRESHOLD__
+#endif
+
+ifneq ($(findstring GALLITE_IS_CT1129,${TARGET_EXPORT_FLAG}),)
+MYCPPFLAGS += -D__L1_DUMMY_DETECTION__
+endif
