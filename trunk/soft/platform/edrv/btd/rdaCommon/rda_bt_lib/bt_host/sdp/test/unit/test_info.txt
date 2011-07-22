@@ -1,0 +1,51 @@
+/*
+  $id$
+ */
+
+Test Number    : Description
+--------------------------------------------------------------------------------
+TP_SDP_V_001_U : A simple test to see that a service search and a service attribute
+search result in the correct data being passed back through the state machine.
+TP_SDP_V_002_U : A Service browse test.
+TP_SDP_V_003_U : A Service search test with two devices.
+TP_SDP_V_004_U : A Service browse with two devices.
+TP_SDP_V_005_U : A service search with a continue.
+TP_SDP_V_006_U : A service search with a continue for the attribute part.
+TP_SDP_V_007_U : A service browse with a continue.
+TP_SDP_V_008_U : A service search with 2 matchine services.
+TP_SDP_V_009_U : A service borwse with overlapped calls
+TP_SDP_V_010_U : 
+TP_SDP_V_011_U
+TP_SDP_V_012_U
+TP_SDP_V_013_U
+TP_SDP_V_014_U
+TP_SDP_V_015_U
+TP_SDP_V_016_U
+TP_SDP_V_017_U
+TP_SDP_V_018_U
+TP_SDP_V_019_U
+TP_SDP_V_020_U
+TP_SDP_V_021_U
+TP_SDP_V_022_U
+TP_SDP_V_023_U
+TP_SDP_V_024_U
+TP_SDP_V_025_U
+TP_SDP_V_026_U
+TP_SDP_V_027_U
+TP_SDP_V_028_U
+TP_SDP_V_029_U
+TP_SDP_V_030_U
+TP_SDP_V_031_U
+TP_SDP_V_032_U
+TP_SDP_V_033_U : A service browse with an results freeing.
+TP_SDP_V_034_U
+TP_SDP_V_035_U
+TP_SDP_V_036_U
+TP_SDP_V_037_U
+TP_SDP_V_038_U
+TP_SDP_V_039_U
+TP_SDP_V_040_U
+TP_SDP_V_041_U
+TP_SDP_V_042_U
+TP_SDP_V_043_U
+TP_SDP_V_044_U

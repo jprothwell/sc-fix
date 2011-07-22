@@ -1,0 +1,38 @@
+# This target is not a full plain target it s just a change to the 
+# gallite_fpga target
+
+# first define the variable with ?= to change
+
+LINKER_MASTER ?= modem2G_fpga_master.ld
+
+# include the original target
+include ${SOFT_WORKDIR}/target/gallite_fpga/target.def
+
+# overload the variable defined with :=
+# add to the variables with += 
+
+TARGET_EXPORT_FLAG += REWRITE_ROM_AT_BOOT
+    
+# We don't want to use the ROM, recompile and
+# link all the ROM source code.
+USED_SRC_IN_ROM := ""
+STRIP_ROM_OBJ2KEEP_FILE :=
+STRIP_ROM_OBJ2STRIP_FILE :=
+CHIP_ROM_ELF_FILE :=
+
+# Use the current spc if
+SPC_IF_VER ?= 0xFF
+
+
+# Define the ML language support
+GLOBAL_EXPORT_FLAG += ML_SUPPORT
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP0	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_1
+
+##定义短消息和电话本的条目
+##PHONE_SMS_ENTRY_COUNT表征FLASH上多卡项目总计SMS容量，单卡数目为PHONE_SMS_ENTRY_COUNT/SIM_COUNT
+##SIM_SMS_ENTRY_COUNT表征SIM卡上最大SMS容量，请勿修改
+GLOBAL_EXPORT_FLAG += PHONE_SMS_ENTRY_COUNT=200
+GLOBAL_EXPORT_FLAG += SIM_SMS_ENTRY_COUNT=255
+GLOBAL_EXPORT_FLAG += PHONE_PHB_ENTRY_COUNT=250
+#################################################################

@@ -1,0 +1,25 @@
+# this file is to be included in target.def by dev targets that use the 
+# en71pl064b0 flash/ram combo
+#    EN = Eon silicon solution Inc.
+#    71gl   = Multi-chip Product MCP 3.0V page mode flash memory and Ram
+#     064    64Mb(4M X 16) Flash
+#     b0    32Mb Ram
+#     B = Bottom
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x00800000
+ ifeq "${CT_COMPRESS_CODE_SECTION}" "yes"
+    RAM_SIZE:=              0x003a8000
+    XCPU_OVERLAY_BASE:=     ${RAM_SIZE}
+ else
+    RAM_SIZE:=              0x00400000
+ endif
+    CODE_BASE:=             0x00000800
+    USER_DATA_BASE:=       0x00700000
+    USER_DATA_SIZE:=        0x000F0000
+    USER_DATA_BLOCK_SIZE:=  0x00000200
+    EXTRA_CODE_BASE:=	    0x007F0000
+    EXTRA_CODE_SIZE:=	    0x0000C000
+    CALIB_BASE:=            0x007FC000
+    FACT_SETTINGS_BASE:=    0x007FE000

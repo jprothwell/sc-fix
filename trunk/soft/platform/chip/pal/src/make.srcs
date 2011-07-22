@@ -1,0 +1,13 @@
+# make.srcs for drivers, to include at end of test's make.srcs
+S_SRC := 
+C_SRC :=    pal_gsmr.c \
+            pal_gsms.c \
+	        pal_flsh.c \
+	        pal_sim.c \
+	        pal_map.c
+
+# all files can be compiled with CT_MIPS16
+#CT_MIPS16_CFLAGS= $(CT_MIPS16)
+
+# Overwrite the normal optimisation to fit in the internal SRAM
+%/pal_gsmr.o: MYCFLAGS=-O2

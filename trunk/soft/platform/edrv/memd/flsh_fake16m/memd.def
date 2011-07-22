@@ -1,0 +1,13 @@
+# this file is to be included in target.def by dev targets that use the 
+# fake16m flash/ram combo
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x01000000
+    RAM_SIZE:=              0x00800000
+    CALIB_BASE:=            0x00002000
+    FACT_SETTINGS_BASE:=    0x00004000
+    CODE_BASE:=             0x00006000
+    USER_DATA_BASE:=        0x00E00000
+    USER_DATA_SIZE:=        0x00200000
+    USER_DATA_BLOCK_SIZE:=  0x00000200
+

@@ -1,0 +1,24 @@
+C_SRC =                  \
+    boot_bist.c          \
+    boot_host.c          \
+    boot_march_c_bbcp2.c \
+    boot_monitor.c       \
+    boot_romstring.c     \
+    boot_sector_chip.c   \
+    boot_uart_monitor.c  \
+
+
+ifeq ($(CHIP_HAS_USB),1)
+C_SRC +=                 \
+    boot_usb.c           \
+    boot_usb_monitor.c   \
+
+endif
+
+S_SRC =         \
+    boot_ram.S  \
+    boot_rom.S  \
+    boot_test.S \
+
+%/boot_loader.o: CT_MIPS16_CFLAGS=
+%/boot_march_c_bbcp2.o: CT_MIPS16_CFLAGS=

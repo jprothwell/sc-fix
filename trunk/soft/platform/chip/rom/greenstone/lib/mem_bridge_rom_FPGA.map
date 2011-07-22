@@ -1,0 +1,737 @@
+Archive member included because of file (symbol)
+
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(atoi.o)
+                              (atoi)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(ctype.o)
+                              (_ctype)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memchr.o)
+                              (memchr)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memcmp.o)
+                              (memcmp)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memcpy.o)
+                              (memcpy)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memmove.o)
+                              (memmove)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memscan.o)
+                              (memscan)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(rand.o)
+                              (srand)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strcat.o)
+                              (strcat)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strchr.o)
+                              (strchr)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strcmp.o)
+                              (strcmp)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strcpy.o)
+                              (strcpy)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strlen.o)
+                              (strlen)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strncat.o)
+                              (strncat)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strncmp.o)
+                              (strncmp)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strncpy.o)
+                              (strncpy)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strnicmp.o)
+                              (strnicmp)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strsep.o)
+                              (strsep)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strstr.o)
+                              (strstr)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strtok.o)
+                              (strtok)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strtol.o)
+                              (strtol)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strtoul.o)
+                              (strtoul)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(vsprintf.o)
+                              (vsprintf)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(vsscanf.o)
+                              (vsscanf)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(bcpu_rom.o)
+                              (__bcpu_start)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cache.o)
+                              (spal_InvalidateDcache)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cfg.o)
+                              (spal_Open)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_irq.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cfg.o) (g_spalIrqRegistry)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_irq_handler.o)
+                              (__bb_int_handler)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_itlv.o)
+                              (spal_ItlvItlv)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_vitac.o)
+                              (spal_VitacBusy)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_xcor.o)
+                              (spal_XcorTscxcNb)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_amr_rx.o)
+                              (spc_AmrDecode)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_amr_tx.o)
+                              (spc_UpdateAmrCfg)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_irq_handler.o)
+                              (spc_IrqHandler)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_mailbox.o)
+                              (g_mailbox)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_rx.o)
+                              (spc_RxProcess)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_scheduler.o)
+                              (g_spcCtxStruct)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_tables.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_rx.o) (AHSfilterCI)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_tx.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_scheduler.o) (spc_UpdateOnFint)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_cipher.o)
+                              (spp_CipherCountInit)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_fcchDetect.o)
+                              (spp_FcchDetectAsm)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_amr_rx.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_amr_rx.o) (spp_GetAmrIc)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_decoder.o)
+                              (spp_DecodeBlock)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_equalizer.o)
+                              (spp_EqualizeNBurst)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_rx.o)
+                              (spp_SearchFcch)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_tables.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_decoder.o) (g_sppCsPuncturingTable)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_tx.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_tx.o) (spp_EncodeABurst)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_math.o)
+                              (spp_10log10)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_misc.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_equalizer.o) (spp_FullBurstReady)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(bcpu_ram.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_irq_handler.o) (bcpu_sp_context)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cap_cp2.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_decoder.o) (spal_CapDecodeCrc)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cipher.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_cipher.o) (spal_CipherCountInit)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_gdb.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_irq_handler.o) (spal_GdbGBreak)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_gdb_stub.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_gdb.o) (spal_GdbBreaks)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_ifc.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_tx.o) (spal_IfcTxFifoRead)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_cfg.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_decoder.o) (g_sppGlobalParams)
+/tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_debug.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_gdb_stub.o) (spal_DbgHstSendEvent)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_rom.o)
+                              (__xcpu_start)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_test.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_rom.o) (boot_FunctionalTest)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_monitor.o)
+                              (boot_monitor)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_host.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_rom.o) (boot_HstMonitor)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_uart_monitor.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_monitor.o) (boot_UartMonitorOpen)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_romstring.o)
+                              (boot_romCsString)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb.o)
+                              (boot_UsbSend)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb_monitor.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_monitor.o) (boot_HostUsbDeviceCallback)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_bist.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_test.o) (boot_BistStep1)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_march_c_bbcp2.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_bist.o) (boot_MarchCBBCp2)
+/tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_ram.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_rom.o) (xcpu_stack_base)
+/tmp/jba_obj/Granite/soft/build/platform/vpp/lib/libvpp_cool_profile.a(vpp_speech_asm.o)
+                              (g_vppAmrCode)
+/tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memset.o)
+                              /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_tx.o) (memset)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /tmp/jba_obj/Granite/soft/build/platform_test/hal/int_rom_programmer/obj/cool_profile/stub.o
+
+.internal_rom   0x0000000080e00000    0x13a60
+                0x0000000080e00000                __int_rom_main = .
+                0x0000000080e00000                _int_rom_start = .
+ *boot_rom.o(.text)
+ .text          0x0000000080e00000      0x500 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_rom.o)
+                0x0000000080e00320                boot_DbgExlTrigFunction0
+                0x0000000080e00180                _boot_IrqHandler
+                0x0000000080e002c0                boot_HstMonitorX
+                0x0000000080e00484                initial_stack_top_var
+                0x0000000080e00480                monitor_entry
+                0x0000000080e004a8                boot_DisableInterrupt
+                0x0000000080e00000                __xcpu_start
+                0x0000000080e0048c                boot_FlushCache
+ *boot_rom.o(.rdata)
+ *boot_rom.o(.rodata)
+ *boot_monitor.o(.text)
+ .text          0x0000000080e00500      0x110 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_monitor.o)
+                0x0000000080e00501                boot_monitor
+ *boot_monitor.o(.rdata)
+ *boot_monitor.o(.rodata)
+ *boot_host.o(.text)
+ .text          0x0000000080e00610      0x180 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_host.o)
+                0x0000000080e00611                mon_Event
+                0x0000000080e00661                boot_HstCmdBasicHandler
+                0x0000000080e006f1                boot_HstMonitor
+ *boot_host.o(.rdata)
+ *boot_host.o(.rodata)
+ *memcpy.o(.text .rdata .rodata)
+ .text          0x0000000080e00790       0x60 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memcpy.o)
+                0x0000000080e00791                memcpy
+ *memset.o(.text .rdata .rodata)
+ .text          0x0000000080e007f0       0x60 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memset.o)
+                0x0000000080e007f1                memset
+ *vsscanf.o(.text .rdata .rodata)
+ .text          0x0000000080e00850      0x710 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(vsscanf.o)
+                0x0000000080e00851                vsscanf
+                0x0000000080e00f41                sscanf
+ .rodata        0x0000000080e00f60       0x24 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(vsscanf.o)
+                0x0000000080e00ff8                . = ALIGN (0x80e00ff8)
+ *fill*         0x0000000080e00f84 0x80e00f8400000074 00
+ *boot_usb.o(.usbFixptr)
+ .usbFixptr     0x0000000080e00ff8        0x4 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb.o)
+                0x0000000080e00ffc                . = ALIGN (0x80e00ffc)
+ *boot_usb_monitor.o(.usbmonitorFixptr)
+ .usbmonitorFixptr
+                0x0000000080e00ffc        0x4 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb_monitor.o)
+                0x0000000080e01000                . = ALIGN (0x80e01000)
+ *bcpu_rom.o(.text)
+ .text          0x0000000080e01000       0x54 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(bcpu_rom.o)
+                0x0000000080e01024                __bcpu_init
+                0x0000000080e01000                __bcpu_start
+ *bcpu_rom.o(.rdata)
+ *bcpu_rom.o(.rodata)
+                0x0000000080e01180                . = ALIGN (0x80e01180)
+ *fill*         0x0000000080e01054 0x80e010540000012c 00
+ *spal_irq_handler.o(.text .rdata .rodata)
+ .text          0x0000000080e01180      0x304 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_irq_handler.o)
+                0x0000000080e01180                __bb_int_handler
+                0x0000000080e01450                spal_BbGetSp
+                0x0000000080e01458                spal_IrqInit
+ *boot_uart_monitor.o(.text .rodata)
+ *fill*         0x0000000080e01484 0x80e014840000000c 00
+ .text          0x0000000080e01490      0xb80 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_uart_monitor.o)
+                0x0000000080e01491                boot_UartMonitorGetBaudRate
+                0x0000000080e01e51                boot_UartMonitor
+                0x0000000080e01701                boot_UartMonitorTimeOut
+                0x0000000080e01741                boot_UartMonitorWriteProcess
+                0x0000000080e01581                boot_UartMonitorGet
+                0x0000000080e01661                boot_UartMonitorAck
+                0x0000000080e01611                boot_UartMonitorOpen
+                0x0000000080e01651                boot_UartMonitorClose
+                0x0000000080e01d61                boot_UartMonitorProcess
+                0x0000000080e01cd1                boot_UartMonitorExitProcess
+                0x0000000080e01911                boot_UartMonitorRpcProcess
+                0x0000000080e01ab1                boot_UartMonitorReadProcess
+                0x0000000080e014b1                boot_UartSetDivider
+                0x0000000080e014e1                boot_UartMonitorSend
+ *boot_usb.o(.text .rodata)
+ .text          0x0000000080e02010     0x16e0 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb.o)
+                0x0000000080e03151                boot_UsbInitVar
+                0x0000000080e02681                boot_UsbSend
+                0x0000000080e02721                boot_UsbEpStall
+                0x0000000080e03181                boot_UsbIrqHandler
+                0x0000000080e03691                boot_UsbClose
+                0x0000000080e034a1                boot_UsbOpen
+                0x0000000080e03541                boot_UsbEpEnableInterrupt
+                0x0000000080e035c1                boot_UsbEpRxTransferedSize
+                0x0000000080e034d1                boot_UsbCompletedCommand
+                0x0000000080e026d1                boot_UsbRecv
+                0x0000000080e035e1                boot_UsbEpTransfertDone
+                0x0000000080e036d1                boot_UsbReset
+ *boot_usb_monitor.o(.text .rdata .rodata)
+ .text          0x0000000080e036f0      0x8e0 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb_monitor.o)
+                0x0000000080e03d91                boot_HostUsbClose
+                0x0000000080e037e1                boot_HostUsbEvent
+                0x0000000080e03da1                boot_HostUsbSend
+                0x0000000080e03731                boot_HostUsbInit
+                0x0000000080e03d11                boot_HostUsbClockEnable
+                0x0000000080e03d61                boot_HostUsbOpen
+                0x0000000080e037d1                boot_HostUsbDeviceCallback
+                0x0000000080e03f11                boot_HostUsbRecv
+ .rodata        0x0000000080e03fd0       0x70 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb_monitor.o)
+                0x0000000080e03fd0                boot_HostUsbInterface
+ *spal_gdb*.o(.text .rdata .rodata)
+ .text          0x0000000080e04040        0x8 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_gdb.o)
+                0x0000000080e04041                spal_DbgGdbPrintf
+ .rodata        0x0000000080e04048       0x40 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_gdb.o)
+                0x0000000080e04048                spal_GdbGBreak
+ *fill*         0x0000000080e04088 0x80e0408800000008 00
+ .text          0x0000000080e04090      0x810 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_gdb_stub.o)
+                0x0000000080e040e1                spal_GdbBreakPrint
+                0x0000000080e04621                spal_GdbLoop
+                0x0000000080e044e1                spal_Gdb_16EndStep
+                0x0000000080e04801                spal_GdbBreakBreakPoint
+                0x0000000080e04551                spal_GdbStep
+                0x0000000080e046e1                spal_GdbIrqDebug
+                0x0000000080e04221                spal_Gdb_16Step
+                0x0000000080e04841                spal_GdbBreakDivBy0
+                0x0000000080e04521                spal_Gdb_32EndStep
+                0x0000000080e045c1                spal_GdbHandle
+                0x0000000080e040c1                spal_GdbStrLen
+                0x0000000080e04141                spal_GdbPrepare
+                0x0000000080e04481                spal_Gdb_32Step
+                0x0000000080e047a1                spal_GdbBreakSoftBreakPoint
+                0x0000000080e04161                spal_GdbSendcmd
+                0x0000000080e04741                spal_GdbBreakRaise
+                0x0000000080e04191                spal_GdbUndoStep
+                0x0000000080e04091                spal_GdbBreaks
+                0x0000000080e04661                spal_GdbException
+ *spal_debug.o(.text .rdata .rodata)
+ .text          0x0000000080e048a0       0x60 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_debug.o)
+                0x0000000080e048a1                spal_DbgHstSendEvent
+ *spp_cipher.o(.text .rodata)
+ .text          0x0000000080e04900       0x50 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_cipher.o)
+                0x0000000080e04901                spp_CipherCountInit
+                0x0000000080e04941                spp_CipherDecipherNb
+                0x0000000080e04911                spp_CipherStart
+                0x0000000080e04931                spp_CipherCipherNb
+ *spp_*.o(.text .rodata)
+ .text          0x0000000080e04950      0x3fc /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_fcchDetect.o)
+                0x0000000080e04950                spp_FcchDetectAsm
+ *fill*         0x0000000080e04d4c 0x80e04d4c00000004 00
+ .text          0x0000000080e04d50      0x5b0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_amr_rx.o)
+                0x0000000080e04d51                spp_GetAmrIc
+                0x0000000080e04e71                spp_SearchAmrMarker
+ .text          0x0000000080e05300     0x1c00 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_decoder.o)
+                0x0000000080e05301                spp_ReorderFR_EFR
+                0x0000000080e05791                spp_DecodeBlock
+ .text          0x0000000080e06f00      0xcf0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_equalizer.o)
+                0x0000000080e07a31                spp_EqualizeDecodeSch
+                0x0000000080e078b1                spp_EqualizeNBurst
+ .text          0x0000000080e07bf0      0x850 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_rx.o)
+                0x0000000080e081d1                spp_GetMonPower
+                0x0000000080e08221                spp_GetChannelType
+                0x0000000080e08091                spp_DecodeStealingBits
+                0x0000000080e07f21                spp_DeinterleaveBlock
+                0x0000000080e07f71                spp_GetUSF
+                0x0000000080e07bf1                spp_SearchFcch
+ .rodata        0x0000000080e08440       0x18 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_rx.o)
+ .rodata        0x0000000080e08458     0x1f40 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_tables.o)
+                0x0000000080e093c4                g_sppConvOutLengthBitAhs
+                0x0000000080e09460                g_sppImAfsSid
+                0x0000000080e09f70                g_sppVitacDecParam
+                0x0000000080e0a228                g_sppCsCrcParam
+                0x0000000080e094cc                g_sppGsmTscSch
+                0x0000000080e09a4c                g_sppAhsReorderTables
+                0x0000000080e094d4                g_sppNbBwequStartSt
+                0x0000000080e09764                g_sppMatrixFrInv
+                0x0000000080e09440                g_sppImAhsSid
+                0x0000000080e09480                g_sppIcAfsSpeech
+                0x0000000080e09d60                g_sppInputLengthBitAhs
+                0x0000000080e09720                g_sppMatrixEfr1
+                0x0000000080e09d68                g_sppAfsReorderTables
+                0x0000000080e09484                g_sppIcSidRatscch
+                0x0000000080e08bf0                g_sppChestTab
+                0x0000000080e093ac                g_sppConvOutMaskAhs
+                0x0000000080e08458                g_sppCsPuncturingTable
+                0x0000000080e0948c                g_spp_UsfCs4
+                0x0000000080e09f48                g_sppInputLengthBitAfs
+                0x0000000080e0947c                g_sppIcAhsSpeech
+                0x0000000080e094dc                g_sppNbFwequStartSt
+                0x0000000080e0996c                g_sppMatrixHr
+                0x0000000080e093e8                g_sppAhsSidMarker
+                0x0000000080e0a028                g_sppCsSrcParam
+                0x0000000080e0a0b8                g_sppCsConvParam
+                0x0000000080e094c4                g_sppGsmTscAburst
+                0x0000000080e093cc                g_sppRatscchMarker
+                0x0000000080e09420                g_sppImRatscch
+                0x0000000080e0949c                g_sppUsfCs2Cs3
+                0x0000000080e09404                g_sppAfsSidMarker
+                0x0000000080e096dc                g_sppMatrixEfr1Inv
+                0x0000000080e094e4                g_sppMatrixEfr2Inv
+                0x0000000080e094a4                g_sppGsmTscNburst
+                0x0000000080e09f50                g_sppVitacPolyres
+ *fill*         0x0000000080e0a398 0x80e0a39800000008 00
+ .text          0x0000000080e0a3a0     0x1ea0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_tx.o)
+                0x0000000080e0bfa1                spp_BuildNBurst
+                0x0000000080e0c081                spp_Modulation
+                0x0000000080e0a3a1                spp_EncodeABurst
+                0x0000000080e0a4f1                spp_EncodeBlock
+ .text          0x0000000080e0c240      0x100 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_math.o)
+                0x0000000080e0c241                spp_10log10
+                0x0000000080e0c2c1                spp_Log2
+ .text          0x0000000080e0c340       0x60 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_misc.o)
+                0x0000000080e0c351                spp_ResetFullBurstReady
+                0x0000000080e0c341                spp_FullBurstReady
+                0x0000000080e0c381                spp_OneFullBurstDone
+                0x0000000080e0c361                spp_OneFullBurstReady
+ .text          0x0000000080e0c3a0       0x50 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_cfg.o)
+                0x0000000080e0c3a1                spp_Open
+ *spal_*.o(.text .rodata)
+ .text          0x0000000080e0c3f0       0x60 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cache.o)
+                0x0000000080e0c3f0                spal_InvalidateDcache
+                0x0000000080e0c420                spal_InvalidateCache
+ .text          0x0000000080e0c450       0x30 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cfg.o)
+                0x0000000080e0c451                spal_Open
+ .text          0x0000000080e0c480       0xe0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_irq.o)
+                0x0000000080e0c481                spal_IrqSetMask
+                0x0000000080e0c4a1                spal_IrqHandler
+ .text          0x0000000080e0c560       0xd0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_itlv.o)
+                0x0000000080e0c581                spal_ItlvItlv
+                0x0000000080e0c621                spal_ItlvIntClear
+                0x0000000080e0c561                spal_ItlvBusy
+                0x0000000080e0c5d1                spal_ItlvDitlv
+ .text          0x0000000080e0c630      0x280 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_vitac.o)
+                0x0000000080e0c631                spal_VitacBusy
+                0x0000000080e0c651                spal_VitacEqualize
+                0x0000000080e0c741                spal_VitacFullDecoding
+ .text          0x0000000080e0c8b0      0x730 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_xcor.o)
+                0x0000000080e0ccc1                spal_XcorErrCalc
+                0x0000000080e0cdb1                spal_XcorDcoc
+                0x0000000080e0c921                spal_XcorTscxcSch
+                0x0000000080e0cd11                spal_XcorIcorCalc
+                0x0000000080e0cb21                spal_XcorSrec
+                0x0000000080e0c8d1                spal_XcorTscxcNb
+                0x0000000080e0ca71                spal_XcorChest
+                0x0000000080e0cd61                spal_XcorHvextract
+                0x0000000080e0cb91                spal_XcorBmsum
+                0x0000000080e0cf61                spal_XcorDcocHburst
+                0x0000000080e0ca21                spal_XcorBiterror
+                0x0000000080e0c971                spal_XcorFchxc
+ .text          0x0000000080e0cfe0      0x3f0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cap_cp2.o)
+                0x0000000080e0d240                spal_CapConvSrc
+                0x0000000080e0d150                spal_CapConvoluate
+                0x0000000080e0cfe0                spal_CapDecodeCrc
+                0x0000000080e0d090                spal_CapEncodeCrc
+                0x0000000080e0d310                spal_CapFireCorrection
+ .text          0x0000000080e0d3d0       0xe0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_cipher.o)
+                0x0000000080e0d471                spal_CipherDecipherNb
+                0x0000000080e0d3d1                spal_CipherCountInit
+                0x0000000080e0d421                spal_CipherCipherNb
+                0x0000000080e0d3f1                spal_CipherStart
+ .text          0x0000000080e0d4b0       0x40 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_ifc.o)
+                0x0000000080e0d4d1                spal_IfcParamRf
+                0x0000000080e0d4c1                spal_IfcDisableRf
+                0x0000000080e0d4b1                spal_IfcTxFifoRead
+ *spc_amr_tx.o(.text .rdata .rodata)
+ .text          0x0000000080e0d4f0      0x9b0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_amr_tx.o)
+                0x0000000080e0dcb1                spc_AmrEncode
+                0x0000000080e0d4f1                spc_UpdateAmrCfg
+                0x0000000080e0da11                spc_AFSencoding
+                0x0000000080e0d641                spc_AHSencoding
+ *spc_amr_rx.o(.text .rdata .rodata)
+ .text          0x0000000080e0dea0     0x11f0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_amr_rx.o)
+                0x0000000080e0ea51                spc_AmrDecode
+                0x0000000080e0e641                spc_AFSdecoding
+                0x0000000080e0dea1                spc_AmrRatscch
+                0x0000000080e0dfd1                spc_UpdateCMR
+                0x0000000080e0e0b1                spc_AHSdecoding
+ .rodata        0x0000000080e0f090        0x8 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_amr_rx.o)
+ *spc_irq_handler.o(.text .rdata .rodata)
+ *fill*         0x0000000080e0f098 0x80e0f09800000008 00
+ .text          0x0000000080e0f0a0      0x2c0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_irq_handler.o)
+                0x0000000080e0f0a1                bb_prog_rx_win
+                0x0000000080e0f1e1                spc_IrqHandler
+ *spc_mailbox.o(.text .rdata .rodata)
+ *spc_rx.o(.text .rdata .rodata)
+ .text          0x0000000080e0f360     0x1590 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_rx.o)
+                0x0000000080e0f3b1                spc_RxProcess
+ .rodata        0x0000000080e108f0       0x10 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_rx.o)
+ *spc_scheduler.o(.text .rdata .rodata)
+ .text          0x0000000080e10900      0x3d0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_scheduler.o)
+                0x0000000080e10901                spc_SchedulerMain
+ *spc_tables.o(.text .rdata .rodata)
+ .rodata        0x0000000080e10cd0      0x1a0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_tables.o)
+                0x0000000080e10d34                MutedFrame_AMR
+                0x0000000080e10d24                MutedFrame_HR
+                0x0000000080e10cd0                spcSizeFromMCS
+                0x0000000080e10da4                AFSfilterCI
+                0x0000000080e10d04                MutedFrame_EFR
+                0x0000000080e10d3c                AHSfilterCI
+                0x0000000080e10ce0                MutedFrame_FR
+ *spc_tx.o(.text .rdata .rodata)
+ .text          0x0000000080e10e70     0x1050 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_tx.o)
+                0x0000000080e113b1                spc_CCHTxProcess
+                0x0000000080e115c1                spc_EgprsCCHTxProcess
+                0x0000000080e11241                spc_MboxToSppSpeechMode
+                0x0000000080e115d1                spc_TCHTxProcess
+                0x0000000080e11e11                spc_TxProcess
+                0x0000000080e10e71                spc_UpdateOnFint
+                0x0000000080e112c1                spc_RACHTxProcess
+ *strlen.o(.text .rdata .rodata)
+ .text          0x0000000080e11ec0       0x30 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strlen.o)
+                0x0000000080e11ed1                strnlen
+                0x0000000080e11ec1                strlen
+ *memmove.o(.text .rdata .rodata)
+ .text          0x0000000080e11ef0       0xd0 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memmove.o)
+                0x0000000080e11ef1                memmove
+ *atoi.o(.text .rdata .rodata)
+ .text          0x0000000080e11fc0       0x60 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(atoi.o)
+                0x0000000080e11fc1                atoi
+ *ctype.o(.text .rdata .rodata)
+ .rodata        0x0000000080e12020      0x100 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(ctype.o)
+                0x0000000080e12020                _ctype
+ *memchr.o(.text .rdata .rodata)
+ .text          0x0000000080e12120       0x20 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memchr.o)
+                0x0000000080e12121                memchr
+ *memcmp.o(.text .rdata .rodata)
+ .text          0x0000000080e12140       0x30 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memcmp.o)
+                0x0000000080e12141                memcmp
+ *memscan.o(.text .rdata .rodata)
+ .text          0x0000000080e12170       0x20 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(memscan.o)
+                0x0000000080e12171                memscan
+ *rand.o(.text .rdata .rodata)
+ .text          0x0000000080e12190       0x30 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(rand.o)
+                0x0000000080e121a1                rand
+                0x0000000080e12191                srand
+ *strcat.o(.text .rdata .rodata)
+ .text          0x0000000080e121c0       0x20 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strcat.o)
+                0x0000000080e121c1                strcat
+ *strchr.o(.text .rdata .rodata)
+ .text          0x0000000080e121e0       0x50 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strchr.o)
+                0x0000000080e12211                strrchr
+                0x0000000080e121e1                strchr
+ *strcmp.o(.text .rdata .rodata)
+ .text          0x0000000080e12230       0x40 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strcmp.o)
+                0x0000000080e12231                strcmp
+ *strcpy.o(.text .rdata .rodata)
+ .text          0x0000000080e12270       0x20 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strcpy.o)
+                0x0000000080e12271                strcpy
+ *strncat.o(.text .rdata .rodata)
+ .text          0x0000000080e12290       0x40 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strncat.o)
+                0x0000000080e12291                strncat
+ *strncmp.o(.text .rdata .rodata)
+ .text          0x0000000080e122d0       0x40 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strncmp.o)
+                0x0000000080e122d1                strncmp
+ *strncpy.o(.text .rdata .rodata)
+ .text          0x0000000080e12310       0x30 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strncpy.o)
+                0x0000000080e12311                strncpy
+ *strnicmp.o(.text .rdata .rodata)
+ .text          0x0000000080e12340       0x80 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strnicmp.o)
+                0x0000000080e12341                strnicmp
+ *strsep.o(.text .rdata .rodata)
+ .text          0x0000000080e123c0       0x40 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strsep.o)
+                0x0000000080e123c1                strsep
+ *strstr.o(.text .rdata .rodata)
+ .text          0x0000000080e12400       0x50 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strstr.o)
+                0x0000000080e12401                strstr
+ *strtok.o(.text .rdata .rodata)
+ .text          0x0000000080e12450       0xb0 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strtok.o)
+                0x0000000080e12451                strtok_r
+                0x0000000080e124e1                strtok
+ *strtol.o(.text .rdata .rodata)
+ .text          0x0000000080e12500      0x190 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strtol.o)
+                0x0000000080e12501                strtol
+ *strtoul.o(.text .rdata .rodata)
+ .text          0x0000000080e12690      0x130 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strtoul.o)
+                0x0000000080e12691                strtoul
+ *vsprintf.o(.text .rdata .rodata)
+ .text          0x0000000080e127c0      0x500 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(vsprintf.o)
+                0x0000000080e12ca1                vsprintf
+                0x0000000080e12c61                snprintf
+                0x0000000080e12951                vsnprintf
+                0x0000000080e12c81                sprintf
+ *boot_romstring.o(.text .rdata .rodata)
+ .rodata        0x0000000080e12cc0      0x154 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_romstring.o)
+                0x0000000080e12ddc                boot_romCsString
+                0x0000000080e12cc0                boot_romDT
+ *(.internal_rom)
+ *boot_test.o(.text .rdata .rodata)
+ .text          0x0000000080e12e14       0x30 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_test.o)
+                0x0000000080e12e14                boot_FunctionalTest
+ *boot_bist.o(.text .rdata .rodata)
+ *fill*         0x0000000080e12e44 0x80e12e440000000c 00
+ .text          0x0000000080e12e50      0x970 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_bist.o)
+                0x0000000080e132a1                boot_MarchCPa
+                0x0000000080e13481                boot_BistSysScheduler
+                0x0000000080e13591                boot_BistMemScheduler
+                0x0000000080e13691                boot_BistStep1
+                0x0000000080e13781                boot_BistBCpu
+                0x0000000080e13631                boot_BistMemStep1
+                0x0000000080e12e51                boot_BistBBScheduler
+                0x0000000080e12f31                boot_MarchCTcu
+                0x0000000080e13721                boot_BistStep2
+ .rodata        0x0000000080e137c0       0xb0 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_bist.o)
+                0x0000000080e13820                g_bootBistBBConf
+                0x0000000080e137c0                g_bootBistSysConf
+ *boot_march_c_bbcp2.o(.text .rdata .rodata)
+ .text          0x0000000080e13870      0x1f0 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_march_c_bbcp2.o)
+                0x0000000080e13870                boot_MarchCBBCp2
+                0x0000000080e13a60                . = ALIGN (0x10)
+                0x0000000080e13a60                __int_rom_end = .
+
+.rom_entries_cached
+                0x0000000080c000a0      0x158
+                0x0000000080c000a0                _hstMonitorXCtx_start = .
+ *boot_host.o(.sram_hst_monitor_ctx)
+ .sram_hst_monitor_ctx
+                0x0000000080c000a0       0x18 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_host.o)
+                0x0000000080c000b4                boot_HstMonitorExtendedHandler
+                0x0000000080c000a0                boot_HstMonitorXCtx
+ *boot_host.o(.data .bss .boot.globalvars.c)
+ *boot_ram.o(.data)
+ *fill*         0x0000000080c000b8 0x80c000b800000008 00
+ .data          0x0000000080c000c0       0x20 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_ram.o)
+                0x0000000080c000d8                g_bootResetCause
+                0x0000000080c000d0                xcpu_main_entry
+                0x0000000080c000c4                xcpu_error_status
+                0x0000000080c000d4                sxr_IrqStack_pointer
+                0x0000000080c000c8                xcpu_sp_context
+                0x0000000080c000c0                xcpu_error_code
+                0x0000000080c000cc                xcpu_stack_base
+                0x0000000080c000dc                g_bootBootMode
+ *boot_uart_monitor.o(.data .bss .boot.globalvars.c)
+ .boot.globalvars.c
+                0x0000000080c000e0        0x8 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_uart_monitor.o)
+                0x0000000080c000e0                g_bootUartMonitorBrDetected
+                0x0000000080c000e4                g_bootUartMonitorBaudRate
+ *boot_rom.o(.data .bss)
+ *boot_monitor.o(.data .bss)
+ *boot_ram.o(.data .bss)
+ *memcpy.o(.data .bss)
+ *memset.o(.data .bss)
+ *boot_uart_monitor.o(.data .bss)
+ *strlen.o(.data .bss)
+ *memmove.o(.data .bss)
+ *atoi.o(.data .bss)
+ *ctype.o(.data .bss)
+ *memchr.o(.data .bss)
+ *memcmp.o(.data .bss)
+ *memscan.o(.data .bss)
+ *rand.o(.data .bss)
+ .data          0x0000000080c000e8        0x4 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(rand.o)
+ *strcat.o(.data .bss)
+ *strchr.o(.data .bss)
+ *strcmp.o(.data .bss)
+ *strcpy.o(.data .bss)
+ *strncat.o(.data .bss)
+ *strncmp.o(.data .bss)
+ *strncpy.o(.data .bss)
+ *strnicmp.o(.data .bss)
+ *strsep.o(.data .bss)
+ *strstr.o(.data .bss)
+ *strtok.o(.data .bss)
+ .bss           0x0000000080c000ec        0x4 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(strtok.o)
+ *strtol.o(.data .bss)
+ *strtoul.o(.data .bss)
+ *vsprintf.o(.data .bss)
+ .bss           0x0000000080c000f0        0x8 /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a(vsprintf.o)
+ *vsscanf.o(.data .bss)
+ *boot_usb.o(.bss .sramdata .data)
+ .bss           0x0000000080c000f8       0xd8 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb.o)
+ *boot_usb_monitor.o(.bss .data)
+ .bss           0x0000000080c001d0       0x28 /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a(boot_usb_monitor.o)
+                0x0000000080c001f8                _int_sram_romed_for_bcpu_start = .
+ *spp*.o(.data .bss COMMON)
+ *spal_*.o(.data .bss COMMON)
+ *spc_*.o(.data .bss COMMON)
+ *bcpu_*.o(.data .bss COMMON)
+                0x0000000080c001f8                _int_sram_romed_for_bcpu_end = .
+                0x0000000080c001f8                __int_rom_reserved_end = .
+                *undef*                           ASSERT ((<code 336> (__int_rom_reserved_end) <= 0x80c00200), RRRO)
+
+.bbsram         0x0000000080aa0000     0x13c0
+                0x0000000080aa0000                _bb_sram_romed_start = .
+                0x0000000080aa0000                _bb_sram_romed_cached_start = .
+ *(BB_ITLV_SECTION)
+ BB_ITLV_SECTION
+                0x0000000080aa0000      0xf20 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_scheduler.o)
+                0x0000000080aa0000                g_spcItlvBufTab
+                0x0000000080aa0f20                . = ALIGN (0x4)
+                0x0000000080aa0f20                _bb_sram_romed_itlv_buf_end = .
+ *(BB_SPC_CTX_SECTION)
+ BB_SPC_CTX_SECTION
+                0x0000000080aa0f20      0x498 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_scheduler.o)
+                0x0000000080aa0f20                g_spcCtxStruct
+                0x0000000080aa13c0                . = ALIGN (0x10)
+ *fill*         0x0000000080aa13b8 0x80aa13b800000008 00
+                0x0000000080aa13c0                _bb_sram_romed_cached_end = .
+                0x00000000000013c0                _bb_sram_romed_cached_size = (_bb_sram_romed_cached_end - _bb_sram_romed_cached_start)
+                0x00000000a0aa13c0                . = (. + 0x20000000)
+
+.bbsramu        0x00000000a0aa13c0      0xcc0
+                0x00000000a0aa13c0                _bb_sram_romed_uncached_start = .
+                0x00000000a0aa13c0                . = ALIGN (0x10)
+                0x00000000a0aa13c0                _mbbsramu = .
+ *(BB_STATIC_SECTION)
+ BB_STATIC_SECTION
+                0x00000000a0aa13c0      0xcc0 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_scheduler.o)
+                0x00000000a0aa13c0                g_spcStaticBufTab
+                0x00000000a0aa2080                . = ALIGN (0x10)
+                0x00000000a0aa2080                _bb_sram_romed_uncached_end = .
+                0x0000000000000cc0                _bb_sram_romed_uncached_size = (_bb_sram_romed_uncached_end - _bb_sram_romed_uncached_start)
+                0x0000000000002080                _bb_sram_romed_size = (_bb_sram_romed_cached_size + _bb_sram_romed_uncached_size)
+                0x0000000080aa2080                _bb_sram_romed_end = (_bb_sram_romed_start + _bb_sram_romed_size)
+
+.bbsram_globals
+                0x0000000080aa3338       0x88
+                0x0000000080aa3338                _bb_sram_romed_globals_start = .
+ *(BB_SRAM_GLOBALS)
+ BB_SRAM_GLOBALS
+                0x0000000080aa3338       0x14 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(bcpu_ram.o)
+                0x0000000080aa3340                bcpu_sp_context
+                0x0000000080aa3344                bcpu_stack_base
+                0x0000000080aa3338                bcpu_error_code
+                0x0000000080aa333c                bcpu_error_status
+                0x0000000080aa3348                bcpu_main_entry
+ *(.bbsram_globals)
+ .bbsram_globals
+                0x0000000080aa334c        0x4 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_irq.o)
+                0x0000000080aa334c                g_spalIrqRegistry
+ .bbsram_globals
+                0x0000000080aa3350        0x8 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_xcor.o)
+ .bbsram_globals
+                0x0000000080aa3358        0x8 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_amr_tx.o)
+                0x0000000080aa3358                g_spcAmrState
+ .bbsram_globals
+                0x0000000080aa3360       0x2c /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_gsm_rx.o)
+ .bbsram_globals
+                0x0000000080aa338c        0x1 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_misc.o)
+                0x0000000080aa338c                g_sppFullBurstReady
+ *fill*         0x0000000080aa338d 0x80aa338d00000003 00
+ .bbsram_globals
+                0x0000000080aa3390       0x18 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spal_gdb_stub.o)
+                0x0000000080aa3390                spal_GdbGData
+ .bbsram_globals
+                0x0000000080aa33a8       0x18 /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spp_cfg.o)
+                0x0000000080aa33a8                g_sppGlobalParams
+                0x0000000080aa33c0                _bb_sram_romed_globals_end = .
+                *undef*                           ASSERT ((SIZEOF (.bbsram_globals) <= 0xc8), BBSO)
+
+.sram_romed_top
+                0x0000000080c07d7c        0x0
+                0x0000000080c07d7c                _sys_sram_non_romed_top = .
+
+.sramucdata     0x00000000a0c07d80      0x260
+                0x00000000a0c07d80                _sys_sram_romed_mbx_start = .
+ *spc_mailbox.o(.ucdata)
+ .ucdata        0x00000000a0c07d80      0x25c /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a(spc_mailbox.o)
+                0x00000000a0c07d80                g_mailbox
+                0x00000000a0c07fe0                . = ALIGN (0x10)
+ *fill*         0x00000000a0c07fdc 0xa0c07fdc00000004 00
+                *undef*                           ASSERT ((SIZEOF (.sramucdata) <= 0x280), MBXO)
+
+.internal_rom.crc
+                0x0000000080e13ffc        0x4
+                0x0000000080e13ffc                __int_rom_crc = .
+                0x0000000080e13ffc        0x4 LONG 0xc001c001
+
+/DISCARD/
+ *.o()
+START GROUP
+LOAD /tmp/jba_obj/Granite/soft/build/platform/base/std/lib/libstd_cool_profile.a
+LOAD /tmp/jba_obj/Granite/soft/build/platform/chip/bcpu/lib/libbcpu_cool_profile.a
+LOAD /tmp/jba_obj/Granite/soft/build/platform/chip/boot/lib/libboot_cool_profile.a
+LOAD /tmp/jba_obj/Granite/soft/build/platform/chip/hal/lib/libhal_cool_profile.a
+LOAD /tmp/jba_obj/Granite/soft/build/platform/vpp/lib/libvpp_cool_profile.a
+LOAD /tmp/jba_obj/Granite/soft/build/target/lib/libtarget_cool_profile.a
+END GROUP
+OUTPUT(/tmp/jba_obj/Granite/soft/build/platform_test/hal/int_rom_programmer/int_rom_programmer_greenstone_fpga_cool_profile.elf elf32-littlemips)
+
+.text           0x0000000080e14000        0x0
+
+.data           0x0000000080e14000        0x0
+
+.bss            0x0000000080e14000        0x0
+
+.reginfo        0x0000000000000000       0x18
+ .reginfo       0x0000000000000000       0x18 /tmp/jba_obj/Granite/soft/build/platform_test/hal/int_rom_programmer/obj/cool_profile/stub.o
+
+.pdr            0x0000000000000000        0x0
+
+.mdebug.abi32   0x0000000000000000        0x0

@@ -1,0 +1,503 @@
+#######下面是gallite集成配置，不能随意改动##################
+CT_ASIC         ?= gallite
+CT_ASIC_CFG     ?= chip
+3GPP_MODE       ?= gsm
+ROM_TYPE        ?= chip
+CT_ROMULATOR     ?= no
+PM_MODEL        ?= rda1203_gallite
+XCV_MODEL       ?= xcv_rda6220_gallite
+LCD_IF          ?= gouda
+AD_MODEL        ?= codec_gallite
+
+######触屏驱动 gallite集成，需要则配rda1203_gallite，否则为空#######
+TSD_MODEL       ?=rda1203_gallite
+
+######FM驱动 gallite集成，需要则配rda5802e_gallite，特别注意的是若是使用ATV RDA5888S或RDA5888E中集成的FM时，需要配成rda5888e####### 
+FM_MODEL        ?= rda5802e_gallite
+
+#######上面是gallite集成配置，不能随意改动###################
+
+##注意1：除非特别说明，module的名字必须和edrv目录下面的目录名保持一致，
+##否则编译的时候找不到对应的目标。如果edrv下面没有相关的目录，
+##说明暂时没有这个设备的驱动，需要驱动工程师自己去开发一个新的驱动，
+##驱动程序可以根据设备的SPEC参考已有的驱动进行修改。
+
+
+## 1 ##
+#######RF PA型号 驱动程序在edrv/rfd目录###################
+## pa_rda6212  
+## pa_rda6216 
+## pasw_rda6218   
+## pasw_rda6231   
+## pasw表示集成PA和Switch
+## 推荐使用pasw_rda6231 
+
+PA_MODEL         ?= pasw_rda6231
+
+##Switch型号
+SW_MODEL        ?= 
+#################################################################
+
+
+
+## 2 ##
+#######选择FLASH型号，驱动程序edrv/memd###################
+##ADMUX MCP
+##1 Numonyx M36L0R7050U3ZS 128+32
+##  Numonyx M36L0R7050L3ZS 128+32
+##  Numonyx M36L0R7050T4 128+32
+##  Numonyx M36L0R7050T3 128+32
+##  Numonyx M36P0R8060N0ZS 256+64
+##  Numonyx M36W0R6050U4ZS 64+32
+
+##2 Spansion S71NS128PB0 128+32
+##  Spansion S71NS256NB0 256+32
+##  Spansion S71NS256PC0 256+64
+##  Spansion S71WS256NC0 256+32
+##  Spansion S71WS256PD0 256+32
+
+##3 TOSHIBA TY5701111183KC 128+32
+##  TOSHIBA TY671111184KC 128+64
+
+##Normal MCP
+##1 Samsung K5L6331CAA_D270 64+32
+##  Samsung K5L2731CAA_D770 128+32
+##  Samsung K5J6332CTM-D770 64+32
+##  Samsung K5L3316CAM 32+16
+
+##2 TOSHIBA TV00560002EDGB 64+32
+##  TOSHIBA TV00570002ARGQ 128+32
+
+##3 EON EN71PL0640B0 64+32
+##  EON EN71GL064B0 64+32
+##  EON EN71PL032A0 32+16
+##  EON EN71GL032A0 32+16
+
+##4 Spansion S71PL064JB0 64+32
+##  Spansion S71PL064JA0 64+16
+##  Spansion S71PL127NB0 128+32
+##  Spansion S71PL256NC0 256+64
+##5 ESMT FM91L03216UA 32+16
+##6 Silicon7 SVME3216UTA 32+16
+##7 Numonyx M36W0T60x0xTB3 64+16/32
+
+#FLSH_MODEL      ?= flsh_m36wor6050u4zs
+#FLSH_MODEL      ?= flsh_m36l0r7050u3zs
+FLSH_MODEL      ?= flsh_m36l0r7050u3zs_twn
+
+##ram is ADMUX or not 
+GLOBAL_EXPORT_FLAG    += MEMD_RAM_IS_ADMUX
+##flash is ADMUX or not 
+GLOBAL_EXPORT_FLAG    += MEMD_FLASH_IS_ADMUX
+## ram support burst mode or not
+GLOBAL_EXPORT_FLAG    += MEMD_RAM_IS_BURST
+##flash support burst mode or not
+GLOBAL_EXPORT_FLAG    += MEMD_FLASH_IS_BURST
+##使用flsh_k5l2731caa_d770时， ebc clock use 78MHz
+#TARGET_EXPORT_FLAG    += MEM_FREQ_78M
+#################################################################
+
+
+## 3 ##
+##配置底层是否支持WAP/MMS，1为支持，0为不支持#######
+WAPMMS_SUPPORT   ?= 1
+
+##对于读写速度较慢的flash，需要定义这个宏，
+##定义这个宏后，当运行camera/video player/video recorder等应用时不自动下载彩信内容，只下载彩信通知，用户可以之后手动下载彩信内容
+#GLOBAL_EXPORT_FLAG += MANUAL_DOWNLOAD_MMS
+#################################################################
+
+## 4 ##
+#######选择LCD型号，驱动程序edrv/lcdd###################
+##	1 QVGA	240*320
+##	Hx8347 Lgdp4532 St7781 Ssd1297 Spfd5408b
+##	Hx8367 S6d1121 St7787 Ili9320
+##	Otm3225 Ili9325 Ili9328 Ili9340
+##	s6d04h0a01(无id寄存器)
+##	2 QCIF	176*220
+##	Hx8340b Kc20 R61503v Otm2201a
+##	Ili9225 lgb4525b R61503vr Otm2201h
+##	Ili9225b Ili9225br S6d0164 Dc2200
+##	3 QQVGA	128*160
+##	Ili9163 S6b33bf St7669v S6d0144
+##	St7735 Hx8345a Fd54124bv
+
+LCD_MODEL       ?= hx8347g st7781 ili9325
+
+
+#主屏的尺寸
+#  Option1:	240X320
+#  Option2:	240X400
+#  Option3:	176X220
+#  Option4:	220X176
+MAINLCD_SIZE       ?= 240X320 
+# Define screen resolution
+TARGET_EXPORT_FLAG    += LCDSIZE_240_320
+#################################################################
+
+
+## 4 ##
+#######选择CAMERA型号，驱动程序edrv/camdold###################
+##1 OmniVision OV7660 VGA
+##  OmniVision OV7670 VGA
+##  OmniVision OV7675 VGA
+##2 GalaxyCore GC0306 VGA
+##  GalaxyCore GC0307 VGA
+##  GalaxyCore GC0309 VGA
+##3 BYD BYD3503 VGA
+##  BYD BYD3603 VGA
+##  BYD BYD3703 VGA
+##4 HYNIX YACBAA0SDDAS VGA
+##  HYNIX HYA10S VGA
+##5 SET SIV100B VGA
+##6 Superpix SP80818 VGA  
+
+CAMERA_MODEL    := byd3703 gc0309
+
+##支持双camera
+GLOBAL_EXPORT_FLAG += SUPPORT_DUAL_CAMERA
+##拍照时候闪光灯功能
+#GLOBAL_EXPORT_FLAG += __CAMERA_FEATURE_FLASH__
+##使用camera模拟2d sensor
+GLOBAL_EXPORT_FLAG += CAM_MD_SUPPORT
+#################################################################
+
+## 6 ##
+#######选择Blue Tooth型号，驱动程序edrv/btd###################
+##RDA5868+ 6x6
+##RDA5872 6x6
+##RDA5870 6x6
+##RDA5875 4x4
+##推荐使用RDA5872,RDA5870兼容设计,Gallite平台支持BT免晶体设计
+
+BT_MODEL        ?= rda5872
+
+ifneq (${BT_MODEL},)
+## 当不支持A2DP的时候需要定义这个宏
+#3216 When flash size not enough, a2dp profile is needed to cut because flash size 
+#GLOBAL_EXPORT_FLAG += __BT_NO_A2DP_PROFILE__
+
+# Define BT crystal flag
+BT_SHARE_CRYSTAL := 1
+endif # (${BT_MODEL},)
+#################################################################
+
+## 7 ##
+#######选择ATV型号，驱动程序edrv/analogtvd###################
+##RDA5888S 8x8
+##RDA5888E 6x6
+##推荐使用RDA5888E,Gallite平台支持ATV免晶体设计
+
+ATV_MODEL       ?= 
+
+ifneq (${ATV_MODEL},)
+ANALOG_TV_SUPPORT := 1
+endif # (${ATV_MODEL},)
+
+#################################################################
+
+## 8 ##
+##配置T卡接口为sdmmc，使用PSI接口时候可以配置为spi####
+MCD_IF          ?= sdmmc
+#################################################################
+
+## 9 ##
+##umss_storage_flashmc表示支持FLASH和T卡U盘，umss_storage_mc 表示仅支持T卡U盘###
+UCTLS_SERVICE   ?= umss_storage_flashmc
+#################################################################
+
+## 10 ##
+##配置I2C类型，当配置了这项为i2c_gpio之后，I2C接口将作为GPIO来使用，用GPIO10和GPIO11来软件模拟I2C接口###
+
+I2C_MODEL       ?= 
+
+ifeq "${I2C_MODEL}" "i2c_gpio"
+TARGET_EXPORT_FLAG  += I2C_BASED_ON_GPIO
+endif
+#################################################################
+
+## 11 ##
+#######选择gsensor型号，驱动程序edrv/gsensor###################
+##	mma7660fc
+##	mma7660fc_gpio
+GSENSOR_MODEL   ?= 
+#################################################################
+
+## 12 ##
+##选择多卡模式，rda1203_gallite（2卡驱动）；threesimd（3卡驱动）；fourdimd（4卡驱动），驱动程序在edrv/dual_sim中##
+
+DUALSIM_MODEL   ?= rda1203_gallite
+
+##3卡驱动需要定义此宏
+#TARGET_EXPORT_FLAG    += TGT_THREE_SIM
+##支持的多卡的数量***
+NUMBER_OF_SIM   ?=2
+
+
+##支持多卡的卡序排列***
+USER_SIM_ORDER := 1 2 3 4
+
+##如果用了SIM switch开关，就打开此宏
+#TARGET_EXPORT_FLAG    += SIM_SWITCH_USED
+
+ifneq (${USER_SIM_ORDER},)
+TARGET_EXPORT_FLAG    += USER_SIM_SWAP
+endif # (${USER_SIM_ORDER},)
+#################################################################
+
+
+## 13 ##
+##定义资源包#######
+CT_ERES :=6432_qvga_dovi
+#################################################################
+
+## 14 ##
+# Define the ML language support多国语言设置
+##	ML_SUPPORT_CP0  		印地语
+##	ML_SUPPORT_CP1256 		波斯语
+##	ML_SUPPORT_CP1258 		越南语
+##	ML_SUPPORT_CP874 		泰语
+##	ML_SUPPORT_CP936     		中文
+##	ML_SUPPORT_ISO8859_1    	阿尔巴尼亚语、巴斯克语、布列塔尼语、加泰罗尼亚语、
+##					丹麦语、荷兰语、法罗语、弗里西语、加利西亚语、德语、
+##					格陵兰语、冰岛语、爱尔兰盖尔语、意大利语、拉丁语、
+##					卢森堡语、挪威语、葡萄牙语、里托罗曼斯语、苏格兰盖尔语、西班牙语及瑞典语 
+##	ML_SUPPORT_ISO8859_5	 	斯拉夫语 俄语
+##	ML_SUPPORT_ISO8859_6	 	阿拉伯语
+##多国语言设置总控制宏，目前需要常开
+GLOBAL_EXPORT_FLAG += ML_SUPPORT
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP936
+#GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_1
+#################################################################
+
+## 15 ##
+##当使用的FLASH为单BANKFLASH的时候，需要打开这个宏#######
+#GLOBAL_EXPORT_FLAG += USER_DATA_CACHE_SUPPORT
+#################################################################
+
+## 16 ##
+##RMVB播放解码需求的内存较大，MDI视频播放器总共约760KB#######
+TARGET_MEDIA_RM_MODEL :=1
+ifeq "${TARGET_MEDIA_RM_MODEL}" "1"
+TARGET_EXPORT_FLAG    +=TARGET_MEDIA_RM_SUPPORT
+endif
+#################################################################
+
+## 17 ##
+##支持video recorder功能 
+GLOBAL_EXPORT_FLAG  += VIDEO_RECORDER_SUPPORT
+##video record 时，内存分配控制。不支持video record时，可以关闭此宏节省内存。
+GLOBAL_EXPORT_FLAG += MEM_3216_CAMERA_LARGE_MODE
+#################################################################
+
+## 18 ##
+##支持sound recorder功能  
+TARGET_EXPORT_FLAG  += SOUND_RECORDER_SUPPORT
+#################################################################
+
+## 19 ##
+##增加单位时间内检测电池电压的次数，1500ma以上的电池可以不加这个宏
+TARGET_EXPORT_FLAG  += PM_INCREASE_BATTERY_DETECT
+#################################################################
+
+## 20 ##
+##启动camera ISP功能，在所有3216平台上必须打开，而在所有非3216平台上须关闭
+#GLOBAL_EXPORT_FLAG += _CAM_SMALL_MEM_
+#################################################################
+
+## 21 ##
+##将文件系统REG区和sms区合并为CSW区，节省代码空间，客户无需修改,若存储的SMS数较多则需要注销此宏
+GLOBAL_EXPORT_FLAG += _REG_SMS_MERGE
+#################################################################
+
+## 22 ##
+##将QQVGA 放大到 QCIF.
+#GLOBAL_EXPORT_FLAG    += LCD_SCALE_128_160_TO_176_220
+#################################################################
+
+## 23 ##
+# Receiver uses one speaker line (using left line by default)
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE
+
+# If using right line, the following macro should be added as well
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE_R
+#################################################################
+
+## 24 ##
+# RF优化选项: 若XCV直接控制PA与SW的可以打开此宏，若TCO控制则必须关掉此宏（请先咨询FAE）
+TARGET_EXPORT_FLAG += INTERNAL_XCV_CONTROL_PASW
+#################################################################
+
+## 25 ##
+##关闭了魔音功能
+#GLOBAL_EXPORT_FLAG += TARGET_MAGIC_SOUND_OFF
+#################################################################
+
+## 26 ##
+##关闭midi支持
+#GLOBAL_EXPORT_FLAG += MIDI_NOT_SUPPORT
+#GLOBAL_EXPORT_FLAG += TARGET_MIDI_SUPPORT_OFF
+#################################################################
+
+## 27 ##
+##强制将FM设为单声道
+GLOBAL_EXPORT_FLAG += FMRDO_SINGLEVOLUMECHANNEL_SUPPORT
+#################################################################
+
+## 28 ##
+##禁止提前显示开机LOGO，打开后节约部分空间，默认128x60x2字节
+GLOBAL_EXPORT_FLAG += NO_CS_LOGO
+#################################################################
+
+## 29 ## 
+##应用于压缩code yes ; no
+CT_COMPRESS_CODE_SECTION ?= yes
+##应用于压缩字符串资源
+MMI_EXPORT_FLAG += COMPRESS_OPTIMIZE_FLASH_SIZE
+MMI_EXPORT_FLAG += COMPRESS_USE_LZMA
+
+##编译优化选项，节约部分空间
+CT_OPT:=dbg_size
+##编译时候遇到warnning不停止编译
+WITHOUT_WERROR:=1
+##################################################################
+
+## 30 ##
+##支持T卡热插拔
+#MMI_EXPORT_FLAG       += __TFLASH_MOUNT_DYNAMIC__
+#################################################################
+
+############################################
+## 31 ##
+# trace 设置
+GLOBAL_EXPORT_FLAG += MMI_NO_TRACE
+GLOBAL_EXPORT_FLAG += EDRV_NO_TRACE
+GLOBAL_EXPORT_FLAG += HAL_NO_PRINTF
+GLOBAL_EXPORT_FLAG += PAL_NO_TRACE
+GLOBAL_EXPORT_FLAG += SXS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += APS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += ARS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += SXS_NO_DUMP
+GLOBAL_EXPORT_FLAG += MCI_NO_TRACE
+GLOBAL_EXPORT_FLAG += CSW_NO_TRACE
+GLOBAL_EXPORT_FLAG += CALIB_NO_PRINTF
+GLOBAL_EXPORT_FLAG += UMSS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += UCTLS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += VOIS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += STACK_NO_PRINTF
+############################################
+
+## 32 ##
+##这个宏开关，用来控制是否支持自动记录按键信息，通常用于记录出问题之前的按键信息，方便工程人员复现问题#######
+##打开这个宏会额外占用大约9KByte的空间，可以根据实际情况考虑是否打开这个功能##
+GLOBAL_EXPORT_FLAG += AUTO_TEST_KEYPRESS_RECORD_SUPPORT
+
+## 33 ##
+##该文件主要定义了一些宏开关，用于裁剪代码使用，主要用于3216项目使用  gallite_ulc.def#######
+TARGET_MEM_ULC_3216:= NO
+include ${SOFT_WORKDIR}/target/include/gallite_ulc.def
+include ${SOFT_WORKDIR}/platform/edrv/memd/${FLSH_MODEL}/memd.def
+#################################################################
+
+## 34 ##
+##定义短消息和电话本的条目
+##PHONE_SMS_ENTRY_COUNT表征FLASH上多卡项目总计SMS容量，单卡数目为PHONE_SMS_ENTRY_COUNT/SIM_COUNT
+##SIM_SMS_ENTRY_COUNT表征SIM卡上最大SMS容量，请勿修改
+GLOBAL_EXPORT_FLAG += PHONE_SMS_ENTRY_COUNT=200
+GLOBAL_EXPORT_FLAG += SIM_SMS_ENTRY_COUNT=255
+GLOBAL_EXPORT_FLAG += PHONE_PHB_ENTRY_COUNT=250
+#################################################################
+
+## 35 ##
+#有些音频放大芯片使用1线脉冲控制
+#  Option1:1	1级放大
+#  Option2:2	2级放大
+#  Option3:4	4级放大
+AUDIO_AMPLIFYER_PULSE      ?= 2
+
+ifeq "${AUDIO_AMPLIFYER_PULSE}" "1"
+GLOBAL_EXPORT_FLAG  += DRV_AUDIO_AMPLIFYER_PULSE_1
+endif
+
+ifeq "${AUDIO_AMPLIFYER_PULSE}" "2"
+GLOBAL_EXPORT_FLAG  += DRV_AUDIO_AMPLIFYER_PULSE_2
+endif
+
+ifeq "${AUDIO_AMPLIFYER_PULSE}" "4"
+GLOBAL_EXPORT_FLAG  += DRV_AUDIO_AMPLIFYER_PULSE_4
+endif
+#################################################################
+
+
+## 36 ##
+##手电筒灯
+# Option1:TRUE
+# Option2:FALSE
+TORCH_LED       ?= FALSE
+ifeq "${TORCH_LED}" "TRUE"
+GLOBAL_EXPORT_FLAG  += __MOD_FLASHLIGHT__
+endif
+#################################################################
+
+
+########以下用于抓去信息使用，建议不要修改########################
+ifeq "${CT_RELEASE}" "debug"                                        
+#GLOBAL_EXPORT_FLAG += DUALSIMD_PROFILING                                        
+#GLOBAL_EXPORT_FLAG += STK_PROFILING                                        
+#GLOBAL_EXPORT_FLAG += TSD_PROFILING                                        
+#GLOBAL_EXPORT_FLAG += PMD_PROFILING                                        
+#GLOBAL_EXPORT_FLAG += RFD_NO_TRACE                                        
+#GLOBAL_EXPORT_FLAG += SX_PROFILING                                        
+#GLOBAL_EXPORT_FLAG += HAL_PROFILE_ON_BUFFER                                        
+#GLOBAL_EXPORT_FLAG += PAL_PROFILING                                        
+#GLOBAL_EXPORT_FLAG += HAL_PROFILING                                        
+#GLOBAL_EXPORT_FLAG += SPC_FUNC_PROFILING                                        
+#GLOBAL_EXPORT_FLAG += SPAL_IRQ_PROFILING 
+########for FS debug ,open ASSERT in FS layer
+#GLOBAL_EXPORT_FLAG += _FS_DEBUG 
+##系统启动时，尽早打开trace，需要时置0
+#TARGET_EXPORT_FLAG    += EARLY_TRACE_OPEN        
+endif
+##通过SPI调试射频寄存器参数时需要把此宏置0
+#TARGET_EXPORT_FLAG    += SPI_REG_DEBUG
+#################################################################
+
+
+
+
+GLOBAL_EXPORT_FLAG += __DRV_PROJECT_HK603__
+GLOBAL_EXPORT_FLAG += __MMI_PROJECT_HK603__
+GLOBAL_EXPORT_FLAG += __SENDKEY2_SUPPORT__
+
+#wjj
+GLOBAL_EXPORT_FLAG += __MMI_KEYRED_TRIGGER_BL__
+GLOBAL_EXPORT_FLAG += __MMI_LOCK_RSK__
+
+# RF driver uses APC table
+#TARGET_EXPORT_FLAG    += DIGRF_APC_TABLE
+
+GLOBAL_EXPORT_FLAG += TARGET_MAGIC_SOUND_OFF
+
+
+
+
+
+
+ifeq "${AUDIO_AMPLIFYER_PULSE}" "1"
+GLOBAL_EXPORT_FLAG  += DRV_AUDIO_AMPLIFYER_PULSE_1
+endif
+
+ifeq "${AUDIO_AMPLIFYER_PULSE}" "2"
+GLOBAL_EXPORT_FLAG  += DRV_AUDIO_AMPLIFYER_PULSE_2
+endif
+
+ifeq "${AUDIO_AMPLIFYER_PULSE}" "4"
+GLOBAL_EXPORT_FLAG  += DRV_AUDIO_AMPLIFYER_PULSE_4
+endif
+
+##打开这个宏，在正常开关机的情况下可以节省一个RTC大电容
+#GLOBAL_EXPORT_FLAG += __MMI_SAVE_CURRENT_TIME__
+
+
+
+

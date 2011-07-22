@@ -1,0 +1,265 @@
+<module name="HAL">
+
+<!-- TASK LIST FOR XCPU -->
+
+<fn name="* TASK :  0"      id="0x3f00" group="_TASK"/>
+<fn name="* TASK :  1"      id="0x3f01" group="_TASK"/> 
+<fn name="* TASK :  2"      id="0x3f02" group="_TASK"/>
+<fn name="* TASK :  3"      id="0x3f03" group="_TASK"/>
+<fn name="* TASK :  4"      id="0x3f04" group="_TASK"/>
+<fn name="* TASK :  5"      id="0x3f05" group="_TASK"/>
+<fn name="* TASK :  6"      id="0x3f06" group="_TASK"/>
+<fn name="* TASK :  7"      id="0x3f07" group="_TASK"/>
+<fn name="* TASK :  8"      id="0x3f08" group="_TASK"/>
+<fn name="* TASK :  9"      id="0x3f09" group="_TASK"/>
+<fn name="* TASK : 10"      id="0x3f0a" group="_TASK"/>
+<fn name="* TASK : 11"      id="0x3f0b" group="_TASK"/>
+<fn name="* TASK : 12"      id="0x3f0c" group="_TASK"/>
+<fn name="* TASK : 13"      id="0x3f0d" group="_TASK"/>
+<fn name="* TASK : 14"      id="0x3f0e" group="_TASK"/>
+<fn name="* TASK : 15"      id="0x3f0f" group="_TASK"/>
+<fn name="* TASK : 16"      id="0x3f10" group="_TASK"/>
+<fn name="* TASK : 17"      id="0x3f11" group="_TASK"/>
+<fn name="* TASK : 18"      id="0x3f12" group="_TASK"/>
+<fn name="* TASK : 19"      id="0x3f13" group="_TASK"/>
+<fn name="* TASK : 20"      id="0x3f14" group="_TASK"/>
+<fn name="* TASK : 21"      id="0x3f15" group="_TASK"/>
+<fn name="* TASK : 22"      id="0x3f16" group="_TASK"/>
+<fn name="* TASK : 23"      id="0x3f17" group="_TASK"/>
+<fn name="* TASK : 24"      id="0x3f18" group="_TASK"/>
+<fn name="* TASK : 25"      id="0x3f19" group="_TASK"/>
+<fn name="* TASK : 26"      id="0x3f1a" group="_TASK"/>
+<fn name="* TASK : 27"      id="0x3f1b" group="_TASK"/>
+<fn name="* TASK : 28"      id="0x3f1c" group="_TASK"/>
+<fn name="* TASK : 29"      id="0x3f1d" group="_TASK"/>
+<fn name="* TASK : 30"      id="0x3f1e" group="_TASK"/>
+
+<!-- This is for profiling when task is unknown (start or no task) -->
+<fn name="* TASK : Init"    id="0x3f1f" group="_TASK"/>
+<fn name="* TASK : BCPU Fake"    id="0x7f1f" group="_TASK"/>
+
+<!-- IRQ LIST FOR XCPU -->
+<!-- IRQ LIST FOR BCPU -->
+<!-- Moved into regs/$CT_ASIC/include -->
+
+
+
+
+
+<!-- JOB LIST FOR XCPU -->
+
+<fn name="*** JOB : 0"                  id="0x3f40" group="_JOB"/>
+<fn name="*** JOB : 1"                  id="0x3f41" group="_JOB"/>
+<fn name="*** JOB : 2"                  id="0x3f42" group="_JOB"/>
+<fn name="*** JOB : 3"                  id="0x3f43" group="_JOB"/>
+<fn name="*** JOB : 4"                  id="0x3f44" group="_JOB"/>
+<fn name="*** JOB : 5"                  id="0x3f45" group="_JOB"/>
+<fn name="*** JOB : 6"                  id="0x3f46" group="_JOB"/>
+<fn name="*** JOB : 7"                  id="0x3f47" group="_JOB"/>
+<fn name="*** JOB : 8"                  id="0x3f48" group="_JOB"/>
+<fn name="*** JOB : 9"                  id="0x3f49" group="_JOB"/>
+<fn name="*** JOB : 10"                 id="0x3f4a" group="_JOB"/>
+<fn name="*** JOB : 11"                 id="0x3f4b" group="_JOB"/>
+<fn name="*** JOB : 12"                 id="0x3f4c" group="_JOB"/>
+<fn name="*** JOB : 13"                 id="0x3f4d" group="_JOB"/>
+<fn name="*** JOB : 14"                 id="0x3f4e" group="_JOB"/>
+<fn name="*** JOB : 15"                 id="0x3f4f" group="_JOB"/>
+<fn name="*** JOB : 16"                 id="0x3f50" group="_JOB"/>
+<fn name="*** JOB : 17"                 id="0x3f51" group="_JOB"/>
+<fn name="*** JOB : 18"                 id="0x3f52" group="_JOB"/>
+<fn name="*** JOB : 19"                 id="0x3f53" group="_JOB"/>
+<fn name="*** JOB : 20"                 id="0x3f54" group="_JOB"/>
+<fn name="*** JOB : 21"                 id="0x3f55" group="_JOB"/>
+<fn name="*** JOB : 22"                 id="0x3f56" group="_JOB"/>
+<fn name="*** JOB : 23"                 id="0x3f57" group="_JOB"/>
+<fn name="*** JOB : 24"                 id="0x3f58" group="_JOB"/>
+<fn name="*** JOB : 25"                 id="0x3f59" group="_JOB"/>
+<fn name="*** JOB : 26"                 id="0x3f5a" group="_JOB"/>
+<fn name="*** JOB : 27"                 id="0x3f5b" group="_JOB"/>
+<fn name="*** JOB : 28"                 id="0x3f5c" group="_JOB"/>
+<fn name="*** JOB : 29"                 id="0x3f5d" group="_JOB"/>
+<fn name="*** JOB : 30"                 id="0x3f5e" group="_JOB"/>
+<fn name="*** JOB : 31"                 id="0x3f5f" group="_JOB"/>
+
+
+
+
+<!-- XCPU function list -->
+
+
+
+<!-- Other functions: use id in different number range -->
+<fn name="Util_KeyCallback"             id="100" group="Util"/>
+<fn name="Util_LCM_Power_On"            id="101" group="Util"/>
+<fn name="test_loop"                    id="200" group="Test"/>
+
+<fn name="_sxr_HMalloc"                 id="1000" group="sx"/>
+
+<fn name="sxr_StartJob_0"               id="1050" group="sx"/>
+<fn name="sxr_StartJob_1"               id="1051" group="sx"/>
+<fn name="sxr_StartJob_2"               id="1052" group="sx"/>
+<fn name="sxr_StartJob_3"               id="1053" group="sx"/>
+<fn name="sxr_StartJob_4"               id="1054" group="sx"/>
+<fn name="sxr_StartJob_5"               id="1055" group="sx"/>
+<fn name="sxr_StartJob_6"               id="1056" group="sx"/>
+<fn name="sxr_StartJob_7"               id="1057" group="sx"/>
+<fn name="sxr_StartJob_8"               id="1058" group="sx"/>
+<fn name="sxr_StartJob_9"               id="1059" group="sx"/>
+<fn name="sxr_StartJob_10"              id="1060" group="sx"/>
+<fn name="sxr_StartJob_11"              id="1061" group="sx"/>
+<fn name="sxr_StartJob_12"              id="1062" group="sx"/>
+<fn name="sxr_StartJob_13"              id="1063" group="sx"/>
+<fn name="sxr_StartJob_14"              id="1064" group="sx"/>
+<fn name="sxr_StartJob_15"              id="1065" group="sx"/>
+<fn name="sxr_StartJob_16"              id="1066" group="sx"/>
+<fn name="sxr_StartJob_17"              id="1067" group="sx"/>
+<fn name="sxr_StartJob_18"              id="1068" group="sx"/>
+<fn name="sxr_StartJob_19"              id="1069" group="sx"/>
+<fn name="sxr_StartJob_20"              id="1070" group="sx"/>
+<fn name="sxr_StartJob_21"              id="1071" group="sx"/>
+
+<fn name="sxr_StopJob_0"               id="1080" group="sx"/>
+<fn name="sxr_StopJob_1"               id="1081" group="sx"/>
+<fn name="sxr_StopJob_2"               id="1082" group="sx"/>
+<fn name="sxr_StopJob_3"               id="1083" group="sx"/>
+<fn name="sxr_StopJob_4"               id="1084" group="sx"/>
+<fn name="sxr_StopJob_5"               id="1085" group="sx"/>
+<fn name="sxr_StopJob_6"               id="1086" group="sx"/>
+<fn name="sxr_StopJob_7"               id="1087" group="sx"/>
+<fn name="sxr_StopJob_8"               id="1088" group="sx"/>
+<fn name="sxr_StopJob_9"               id="1089" group="sx"/>
+<fn name="sxr_StopJob_10"              id="1090" group="sx"/>
+<fn name="sxr_StopJob_11"              id="1091" group="sx"/>
+<fn name="sxr_StopJob_12"              id="1092" group="sx"/>
+<fn name="sxr_StopJob_13"              id="1093" group="sx"/>
+<fn name="sxr_StopJob_14"              id="1094" group="sx"/>
+<fn name="sxr_StopJob_15"              id="1095" group="sx"/>
+<fn name="sxr_StopJob_16"              id="1096" group="sx"/>
+<fn name="sxr_StopJob_17"              id="1097" group="sx"/>
+<fn name="sxr_StopJob_18"              id="1098" group="sx"/>
+<fn name="sxr_StopJob_19"              id="1099" group="sx"/>
+<fn name="sxr_StopJob_20"              id="1100" group="sx"/>
+<fn name="sxr_StopJob_21"              id="1101" group="sx"/>
+<!-- This code is hardcoded in romulator board -->
+<fn name="XCPU_ERROR"                       id="0x2F02" group="HAL"/>
+
+<!-- XCPU Pulses -->
+<fn name="hal_UsbEndInTransfert"            id="0x2F51" group="HAL"/>
+<fn name="hal_UsbEndOutTransfert"           id="0x2F52" group="HAL"/>
+<fn name="hal_UsbAhbError"                  id="0x2F53" group="HAL"/>
+<fn name="hal_UsbTimeOutIn"                 id="0x2F54" group="HAL"/>
+<fn name="hal_TimWatchDogKeepAlive"         id="0x2F55" group="HAL"/>
+<fn name="hal_LpsInvalidateCalib"           id="0x2F56" group="HAL"/>
+<fn name="hal_SysRequestFreq"               id="0x2F57" group="HAL"/>
+<fn name="hal_Gdb"                          id="0x2F58" group="HAL"/>
+<fn name="HAL_USB_MONITOR_EVENT_TIMEOUT"    id="0x2F59" group="HAL"/>
+<fn name="HAL_LCDC_START_BLOCK_PULSE"       id="0x2F5A" group="HAL"/>
+
+<!-- HAL Windows -->
+<fn name="CALIB_RUNNING"                    id="0x3700" group="X_WIN"/>
+<fn name="CALIB_VALID"                      id="0x3701" group="X_WIN"/>
+<fn name="DEEP_SLEEP"                       id="0x3702" group="X_WIN"/>
+<fn name="LIGHT_SLEEP"                      id="0x3703" group="X_WIN"/>
+<fn name="XCV_WAKEUP"                       id="0x3704" group="X_WIN"/>
+<fn name="RES_RF"                           id="0x3710" group="X_WIN"/>
+<fn name="RES_UART0"                        id="0x3711" group="X_WIN"/>
+<fn name="RES_UART1"                        id="0x3712" group="X_WIN"/>
+<fn name="RES_UART2"                        id="0x3713" group="X_WIN"/>
+<fn name="RES_SPI"                          id="0x3714" group="X_WIN"/>
+<fn name="RES_AUDIO"                        id="0x3715" group="X_WIN"/>
+<fn name="RES_SIM"                          id="0x3716" group="X_WIN"/>
+<fn name="RES_DMA"                          id="0x3717" group="X_WIN"/>
+<fn name="RES_GPADC"                        id="0x3718" group="X_WIN"/>
+<fn name="RES_JDS"                          id="0x3719" group="X_WIN"/>
+<fn name="RES_CLKOUT"                       id="0x371a" group="X_WIN"/>
+<fn name="RES_KEY"                          id="0x371b" group="X_WIN"/>
+<fn name="RES_USER0"                        id="0x371c" group="X_WIN"/>
+<fn name="RES_USER1"                        id="0x371d" group="X_WIN"/>
+<fn name="RES_USER2"                        id="0x371e" group="X_WIN"/>
+<fn name="RES_USER3"                        id="0x371f" group="X_WIN"/>
+<!-- SPI CS Activation windows: Keep them in THAT order ! -->
+<fn name="ACTIVATE_SPI1_CS0"                id="0x3720" group="X_WIN"/>
+<fn name="ACTIVATE_SPI1_CS1"                id="0x3721" group="X_WIN"/>
+<fn name="ACTIVATE_SPI1_CS2"                id="0x3722" group="X_WIN"/>
+<fn name="ACTIVATE_SPI1_CS3"                id="0x3723" group="X_WIN"/>
+<fn name="ACTIVATE_SPI2_CS0"                id="0x3724" group="X_WIN"/>
+<fn name="ACTIVATE_SPI2_CS1"                id="0x3725" group="X_WIN"/>
+<fn name="ACTIVATE_SPI2_CS2"                id="0x3726" group="X_WIN"/>
+<fn name="ACTIVATE_SPI2_CS3"                id="0x3727" group="X_WIN"/>
+<!-- SYS CLK : Keep them in THAT order ! -->
+<fn name="SYS_CLK_IS_32K"                   id="0x3728" group="X_WIN"/>
+<fn name="SYS_CLK_IS_13M"                   id="0x3729" group="X_WIN"/>
+<fn name="SYS_CLK_IS_26M"                   id="0x372a" group="X_WIN"/>
+<fn name="SYS_CLK_IS_39M"                   id="0x372b" group="X_WIN"/>
+<fn name="SYS_CLK_IS_52M"                   id="0x372c" group="X_WIN"/>
+<fn name="SYS_CLK_IS_78M"                   id="0x372d" group="X_WIN"/>
+<fn name="SYS_CLK_IS_104M"                  id="0x372e" group="X_WIN"/>
+<fn name="SYS_CLK_IS_OTHER"                 id="0x372f" group="X_WIN"/>
+<!-- LCDC Benchmarking -->
+<fn name="hal_LcdcWriteDataBlockBenchCpu"   id="0x3740" group="X_WIN"/>
+<fn name="hal_LcdcWriteDataBlockBenchDma"   id="0x3741" group="X_WIN"/>
+
+
+<!-- HAL Functions -->
+<fn name="hal_SetResourceActivity"          id="0x0032" group="HAL"/>
+<fn name="hal_Test"                         id="0x0033" group="HAL"/>
+<!-- Usb Host -->
+<fn name="hal_HostUsbDecode"                id="0x0039" group="HAL"/>
+<fn name="hal_HostUsbGenerateReadPacket"    id="0x003A" group="HAL"/>
+<fn name="hal_HostUsbSendReadPacket"        id="0x003B" group="HAL"/>
+<fn name="hal_HostUsbWriteInternal"         id="0x003C" group="HAL"/>
+<fn name="hal_HostUsbInit"                  id="0x003D" group="HAL"/>
+
+<fn name="hal_RfspiFillFifo"                id="0x0100" group="HAL"/>
+<fn name="hal_HstTraceSendData"             id="0x0101" group="HAL"/>
+<fn name="hal_HstTraceGetData"              id="0x0102" group="HAL"/>
+<fn name="hal_HstTraceTxDmaDone"            id="0x0103" group="HAL"/>
+<fn name="hal_TimSetExpirationTime"         id="0x0104" group="HAL"/>
+<fn name="hal_TimSetReminderTime"           id="0x0105" group="HAL"/>
+<fn name="hal_TimTickOpen"                  id="0x0106" group="HAL"/>
+<fn name="hal_SpeechPushRxPopTx"            id="0x0107" group="HAL"/>
+<fn name="hal_SpeechPopRxPushTx"            id="0x0108" group="HAL"/>
+<fn name="hal_SpeechReset"                  id="0x0109" group="HAL"/>
+<fn name="hal_UsbIrqHandler"                id="0x010A" group="HAL"/>
+
+<fn name="hal_UsbIrqHandlerI"               id="0x010B" group="HAL"/>
+<fn name="hal_UsbIrqHandlerO"               id="0x010C" group="HAL"/>
+<fn name="hal_UsbIrqHandlerIcp"             id="0x010D" group="HAL"/>
+<fn name="hal_UsbIrqHandlerIto"             id="0x010E" group="HAL"/>
+<fn name="hal_UsbIrqHandlerOsp"             id="0x010F" group="HAL"/>
+<fn name="hal_UsbIrqHandlerOcp"             id="0x0110" group="HAL"/>
+<fn name="hal_TimGetReminderTime"           id="0x0111" group="HAL"/>
+<fn name="hal_UsbIrqHandlerReset"           id="0x0113" group="HAL"/>
+<fn name="hal_UsbIrqHandlerEnum"            id="0x0114" group="HAL"/>
+
+<fn name="hal_UsbFlushTxFifo"               id="0x0115" group="HAL"/>
+<fn name="hal_UsbFlushAllTxFifos"           id="0x0116" group="HAL"/>
+<fn name="hal_UsbResetTransfert"            id="0x0117" group="HAL"/>
+<fn name="hal_UsbCancelTransfert"           id="0x0118" group="HAL"/>
+<fn name="hal_UsbContinueTransfert"         id="0x0119" group="HAL"/>
+<fn name="hal_UsbDisableEp"                 id="0x0121" group="HAL"/>
+<fn name="hal_UsbEnableEp"                  id="0x0122" group="HAL"/>
+<fn name="hal_UsbStatusIn"                  id="0x0123" group="HAL"/>
+<fn name="hal_UsbStatusOut"                 id="0x0124" group="HAL"/>
+<fn name="hal_UsbEpStall"                   id="0x0125" group="HAL"/>
+<fn name="hal_UsbRecv"                      id="0x0126" group="HAL"/>
+<fn name="hal_UsbSend"                      id="0x0127" group="HAL"/>
+<fn name="hal_UsbClose"                     id="0x0128" group="HAL"/>
+<fn name="hal_UsbReset"                     id="0x0129" group="HAL"/>
+<fn name="hal_UsbFlushRxFifo"               id="0x012A" group="HAL"/>
+<fn name="hal_UsbStartTransfert"            id="0x012B" group="HAL"/>
+<fn name="hal_UsbOpen"                      id="0x012C" group="HAL"/>
+<fn name="hal_UsbNewTransfert"              id="0x012E" group="HAL"/>
+
+<fn name="hal_AnaAudioStereoTrackVolume"    id="0x012D" group="HAL"/>
+
+<fn name="hal_SimTxByteRxByte"    id="0x1150" group="HAL"/>
+<fn name="hal_SimTxByteRxByte_nRxBytebl4"    id="0x1151" group="HAL"/>
+<fn name="hal_SimTxByteRxByte_nRxByteab4"    id="0x1152" group="HAL"/>
+<fn name="hal_SimIrqHandler_argEnd"          id="0x1153" group="HAL"/>
+<fn name="hal_SimIrqHandler_rxDone"          id="0x1154" group="HAL"/>
+<fn name="hal_SimIrqHandler_wwtTimeout"      id="0x1155" group="HAL"/>
+<fn name="hal_SimIrqHandler_resendOvfl"      id="0x1156" group="HAL"/>
+<fn name="hal_SimIrqHandler_extraRx"         id="0x1157" group="HAL"/>
+
+</module>

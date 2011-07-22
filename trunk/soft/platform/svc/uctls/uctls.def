@@ -1,0 +1,44 @@
+# The coding number used for UCTLS_SERVICE flag must be synchrnonized with
+# the file include/uctls_tgt_params.h
+#
+
+ifeq ($(UCTLS_SERVICE),no)
+LOCAL_EXPORT_FLAG += UCTLS_SERVICE=0
+else
+
+ifeq ($(UCTLS_SERVICE),utraces)
+LOCAL_EXPORT_FLAG += UCTLS_SERVICE=1
+else
+
+ifeq ($(UCTLS_SERVICE),umss_storage_mc)
+LOCAL_EXPORT_FLAG += UCTLS_SERVICE=2
+else
+
+ifeq ($(UCTLS_SERVICE),umss_storage_ram)
+LOCAL_EXPORT_FLAG += UCTLS_SERVICE=3
+else
+
+ifeq ($(UCTLS_SERVICE),umss_storage_flashmc)
+LOCAL_EXPORT_FLAG += UCTLS_SERVICE=4
+else
+
+ifeq ($(UCTLS_SERVICE),umss_storage_flashmc_video)
+LOCAL_EXPORT_FLAG += UCTLS_SERVICE=5
+else
+
+ifeq ($(UCTLS_SERVICE),umss_storage_flashmc2)
+LOCAL_EXPORT_FLAG += UCTLS_SERVICE=6
+else
+
+ifdef UCTLS_SERVICE
+LOCAL_EXPORT_FLAG += UCTLS_SERVICE=$(UCTLS_SERVICE)
+endif
+
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+

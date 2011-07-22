@@ -1,0 +1,110 @@
+CT_ASIC         ?= gallite
+CT_ASIC_CFG     ?= chip
+3GPP_MODE       ?= gsm
+ROM_TYPE        ?= chip
+CT_ROMULATOR    ?= no
+UCTLS_SERVICE   ?= umss_storage_flashmc
+
+PM_MODEL        ?= rda1203_gallite
+XCV_MODEL       ?= xcv_rda6220_gallite
+PA_MODEL        ?= pasw_rda6231
+SW_MODEL        ?= 
+#FLSH_MODEL      := flsh_k5l6331caa_d770
+FLSH_MODEL      := flsh_tv00570002cdgb
+LCD_MODEL       ?= ili9325
+LCD_IF          ?= gouda
+AD_MODEL        ?= codec_gallite
+MCD_IF          ?= sdmmc
+CAMERA_MODEL    ?= gc0309
+TSD_MODEL       ?= rda1203_gallite
+FM_MODEL        ?= rda5802e_gallite
+#FM_MODEL        ?= rda5802e_gallite
+BT_MODEL        ?= rda5872
+DUALSIM_MODEL   ?= rda1203_gallite
+I2C_MODEL       ?= 
+ATV_MODEL       ?= 
+GSENSOR_MODEL   ?= 
+NUMBER_OF_SIM   ?=2
+CT_ERES         ?= 6432_qvga
+CT_OPT:=dbg_size
+CES_DISPLAY := 0
+
+CT_COMPRESS_CODE_SECTION ?= yes
+ifeq "$(strip ${CT_COMPRESS_CODE_SECTION})" "yes" 
+MMI_EXPORT_FLAG += COMPRESS_OPTIMIZE_FLASH_SIZE
+MMI_EXPORT_FLAG += COMPRESS_USE_LZMA
+endif
+ifneq (${DUALSIM_MODEL},)
+DUAL_SIM_SUPPORT := 1
+endif # (${DUALSIMD_MODEL},)
+
+ifneq (${ATV_MODEL},)
+ANALOG_TV_SUPPORT := 1
+endif # (${ATV_MODEL},)
+
+ifneq (${I2C_MODEL},)
+TARGET_EXPORT_FLAG    += I2C_BASED_ON_GPIO
+endif # (${I2C_MODEL},)
+
+# GPRS capability
+WAPMMS_SUPPORT   ?= 1
+
+include ${SOFT_WORKDIR}/platform/edrv/memd/${FLSH_MODEL}/memd.def
+
+# Define BT crystal flag
+BT_SHARE_CRYSTAL := 1
+
+# Define screen resolution
+TARGET_EXPORT_FLAG    += LCDSIZE_240_320
+
+# Receiver uses one speaker line (using left line by default)
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE
+# If using right line, the following macro should be added as well
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE_R
+
+GLOBAL_EXPORT_FLAG += TARGET_MAGIC_SOUND_OFF
+GLOBAL_EXPORT_FLAG += MANUAL_DOWNLOAD_MMS
+
+ifeq "${I2C_MODEL}" "i2c_gpio"
+TARGET_EXPORT_FLAG  += I2C_BASED_ON_GPIO
+endif
+
+GLOBAL_EXPORT_FLAG += FMRDO_SINGLEVOLUMECHANNEL_SUPPORT 
+
+GLOBAL_EXPORT_FLAG += MMI_NO_TRACE
+GLOBAL_EXPORT_FLAG += EDRV_NO_TRACE
+GLOBAL_EXPORT_FLAG += HAL_NO_PRINTF
+GLOBAL_EXPORT_FLAG += PAL_NO_TRACE
+GLOBAL_EXPORT_FLAG += SXS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += APS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += ARS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += SXS_NO_DUMP
+GLOBAL_EXPORT_FLAG += MCI_NO_TRACE
+GLOBAL_EXPORT_FLAG += CSW_NO_TRACE
+GLOBAL_EXPORT_FLAG += CALIB_NO_PRINTF
+GLOBAL_EXPORT_FLAG += UMSS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += UCTLS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += VOIS_NO_PRINTF
+GLOBAL_EXPORT_FLAG += STACK_NO_PRINTF
+
+#GLOBAL_EXPORT_FLAG += TARGET_MIDI_SUPPORT_OFF
+#GLOBAL_EXPORT_FLAG += NO_CS_LOGO
+GLOBAL_EXPORT_FLAG += NO_FMG_DISPLAY
+
+# Define the ML language support
+GLOBAL_EXPORT_FLAG += ML_SUPPORT
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP0	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_1
+
+
+##打开这个宏，在正常开关机的情况下可以节省一个RTC大电容
+#GLOBAL_EXPORT_FLAG += __MMI_SAVE_CURRENT_TIME__
+
+##定义短消息和电话本的条目
+##PHONE_SMS_ENTRY_COUNT表征FLASH上多卡项目总计SMS容量，单卡数目为PHONE_SMS_ENTRY_COUNT/SIM_COUNT
+##SIM_SMS_ENTRY_COUNT表征SIM卡上最大SMS容量，请勿修改
+GLOBAL_EXPORT_FLAG += PHONE_SMS_ENTRY_COUNT=200
+GLOBAL_EXPORT_FLAG += SIM_SMS_ENTRY_COUNT=255
+GLOBAL_EXPORT_FLAG += PHONE_PHB_ENTRY_COUNT=250
+#################################################################
+

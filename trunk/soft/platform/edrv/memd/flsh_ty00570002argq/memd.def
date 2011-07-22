@@ -1,0 +1,15 @@
+# this file is to be included in target.def by dev targets that use the 
+# flsh_ty00570002argq flash/ram combo
+# ty00570002argq(Top Boot Block)
+
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x01000000
+    RAM_SIZE:=              0x00400000
+    CALIB_BASE:=            0x00020000
+    FACT_SETTINGS_BASE:=    0x00040000
+    CODE_BASE:=             0x00060000
+    USER_DATA_BASE:=        0x00e00000
+    USER_DATA_SIZE:=        0x00200000
+    USER_DATA_BLOCK_SIZE:=  0x00000200

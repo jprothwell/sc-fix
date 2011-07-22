@@ -1,0 +1,16 @@
+# Assembly / C code
+S_SRC := 
+
+ifeq (${CSW_EXTENDED_API_PMD},1)
+C_SRC := pm_mmi_stub.c
+
+LOCAL_API_DEPENDS += platform/edrv/pmd
+LOCAL_API_DEPENDS += platform/svc/uctls \
+                     platform/svc/umss \
+
+else
+C_SRC := chage_util.c \
+         charge_mon.c \
+         pm_mmi.c \
+
+endif

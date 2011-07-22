@@ -1,0 +1,387 @@
+#ifndef __FS_H__
+#define __FS_H__
+
+
+// Open flag define
+#define FS_O_RDONLY	            0       // Read only.
+#define FS_O_WRONLY	            1       // Write only.
+#define FS_O_RDWR	            2       // Read and Write. 
+#define FS_O_ACCMODE	        3       // Access. 
+
+#define FS_O_CREAT		        00100   // If the file exists, this flag has no effect except as noted under FS_O_EXCL below. Otherwise, the file shall be created.
+#define FS_O_EXCL		        00200   // If FS_O_CREAT and FS_O_EXCL are set, the function shall fail if the file exists.
+#define FS_O_TRUNC		        01000   // If the file exists, and is a regular file, and the file is successfully opened FS_O_WRONLY or FS_O_RDWR, its length shall be truncated to 0.
+#define FS_O_APPEND	            02000   // If set, the file offset shall be set to the end of the file prior to each write.
+
+#define FS_SEEK_SET             0       // Seek from beginning of file.
+#define FS_SEEK_CUR             1       // Seek from current position.
+#define FS_SEEK_END             2       // Set file pointer to EOF plus "offset"
+
+// for Flash File System Query 
+#define FS_Q_FREE_SECTORS       1    // 4 byte
+#define FS_Q_FLASH_SIZE         2    // 4 bytes
+#define FS_Q_FREE_SIZE          3    // 4 bytes
+#define FS_Q_USED_SIZE          4    // 4 bytes
+#define FS_Q_LOST_SIZE          5    // 4 bytes
+#define FS_Q_PATH_DEPTH_MAX     6    // 4 bytes        
+#define FS_Q_INODES_MAX         7    // 4 bytes
+#define FS_Q_DEV_MANUFACTURER   8    // 4 bytes
+#define FS_Q_FS_SIZE_IN_FALSH   9    // 4 bytes
+#define FS_Q_FS_OFFSET_IN_FALSH 10   // 4 bytes
+// for Flash File System Query 
+
+// 
+// 用16bit来记录inode的mode。
+// 其中15-12bit用于记录inode的type。
+//
+#define INODE_TYPE_BITMASK     0xF000     
+#define INODE_TYPE_UNKNOWN	   0x0000      
+#define INODE_TYPE_REGULAR     0x8000     
+#define INODE_TYPE_DIRECTORY   0x4000     
+#define FS_INODE_IS_REG(m)	   (((m) & INODE_TYPE_BITMASK) == INODE_TYPE_REGULAR)
+#define FS_INODE_IS_DIR(m)	   (((m) & INODE_TYPE_BITMASK) == INODE_TYPE_DIRECTORY)
+#define FS_INODE_GET_TYPE(m)	((m) & INODE_TYPE_BITMASK)
+
+#define FS_FILE_NAME_LEN       255 // Folder or File name size in byts, to support fat long file name.
+#define FS_PATH_LEN            260 // max path length,to support fat long file name.
+
+#define FS_SHORT_FILE_NAME_LEN   12 // 8-3 format file name length.
+#define FS_SHORT_PATH_LEN        80 // 8-3 format file name max path length .
+
+#define LEN_FOR_NULL_CHAR       1         // Length of terminated character('\0').
+
+#define FS_TYPE_FAT             0x01      // File system type -- FAT.
+#define FS_TYPE_FFS             0x02      // File system type -- FFS.
+
+#define FS_FORMAT_NORMAL        0X01      // format type -- normal(full). 
+#define FS_FORMAT_QUICK         0X00      // format type -- quick.
+
+#define FS_POWER_ON             0x01      // fs status is power on.
+#define FS_POWER_OFF            0x00      // fs status is power off.
+
+// The file attribute struct.
+typedef struct _FS_FILE_ATTR 
+{
+    UINT32  i_no;         // inode number 
+    UINT32  i_size;       // For regular files, the file size in bytes
+    UINT16  i_mode;       // Mode of file 
+    UINT16  i_count;      // has opened count. 
+    UINT32  i_atime;      // Time of last access to the file
+    UINT32  i_mtime;      // Time of last data modification
+    UINT32  i_ctime;      // Time of last status(or inode) change    
+}FS_FILE_ATTR;
+
+// Storage information.
+typedef struct _FS_INFO
+{
+	UINT32 iTotalSize;    // Total size
+    UINT32 iUsedSize;     // Has used  size 
+}FS_INFO;
+
+// Find file information.
+typedef struct _FS_FIND_DATA
+{
+    UINT16  st_mode;       // Mode of file 
+    UINT32  st_size;       // For regular files, the file size in bytes
+    UINT32  st_atime;      // Time of last access to the file
+    UINT32  st_mtime;      // Time of last data modification
+    UINT32  st_ctime;      // Time of last status(or inode) change
+    UINT8   st_name[ FS_FILE_NAME_LEN + LEN_FOR_NULL_CHAR ]; // The name of file. 
+}FS_FIND_DATA,*PFS_FIND_DATA;
+
+
+INT32 SRVAPI FS_HasFormatted(
+    PCSTR pszDevName, 
+    UINT8 iFsType
+);
+
+INT32 SRVAPI FS_Format(
+    PCSTR pszDevName, 
+    UINT8 iFsType, 
+    UINT8 iFlag
+);
+
+INT32 SRVAPI FS_MountRoot(
+    PCSTR pszRootDevName 
+);
+
+INT32 FS_Mount
+( 
+    PCSTR pszDevName, 
+    PCSTR pszMountPoint, 
+    INT32 iFlag, 
+    UINT8 iType 
+);
+
+INT32 FS_Unmount( 
+    PCSTR pszMountPoint,
+    BOOL  bForce
+);
+
+INT32 SRVAPI FS_Open(
+    PCSTR pszFilename, 
+    UINT32 iFlag, 
+    UINT32 iMode
+);
+    
+INT32 SRVAPI FS_Create(
+    PCSTR pszFilename, 
+    UINT32 iMode
+);
+
+INT32 SRVAPI FS_Close(
+    INT32 iFd
+);
+
+INT32 SRVAPI FS_Read(
+    INT32 iFd, 
+    UINT8 *pBuf, 
+    UINT32 iLen
+);
+
+INT32 SRVAPI FS_Write(
+    INT32 iFd, 
+    UINT8 *pBuf, 
+    UINT32 iLen
+);
+
+INT32 SRVAPI FS_Delete(
+    PCSTR pszFileName
+);
+
+INT32 SRVAPI FS_Seek(
+    INT32 iFd, 
+    INT32 iOffset, 
+    UINT8 iOrigin
+);
+
+INT32 SRVAPI FS_MakeDir(
+    PCSTR pszDirName, 
+    UINT32 iMode
+);
+
+INT32 SRVAPI FS_RemoveDir(
+    PCSTR pszDirName
+);
+
+INT32 SRVAPI FS_FindFirstFile( 
+    PCSTR pszFileName, 
+    PFS_FIND_DATA  pFindData
+);
+
+INT32 SRVAPI FS_FindNextFile(
+    INT32 iFd, 
+    PFS_FIND_DATA pFindData
+);
+
+INT32 SRVAPI FS_FindClose(
+    INT32 iFd
+);
+
+INT32 SRVAPI FS_GetFileAttr(
+    PCSTR     pszFileName,
+    FS_FILE_ATTR* pFileAttr
+);
+
+INT32 SRVAPI FS_GetFSInfo(
+    PCSTR pszDevName,
+    FS_INFO* psFSInfo
+);
+
+INT32 SRVAPI FS_IsEndOfFile(
+    INT32 iFd
+);
+
+INT32 SRVAPI FS_Rename( 
+    PCSTR pszOldname, 
+    PCSTR pszNewname 
+);
+
+INT32 SRVAPI FS_PowerOn(
+    PCSTR pszDevName
+);
+
+INT32 SRVAPI FS_PowerOff(
+    PCSTR pszDevName
+);
+// Error code
+/******************************************************************************/
+//"The named file is a directory. The functions that use it include: FS_open();
+//FS_link();FS_unlink()"
+#define ERR_FS_IS_DIRECTORY                              -4200001
+/******************************************************************************/
+
+/******************************************************************************/
+//"The named file is not a directory. The functions that use it include: FS_rmd
+//ir();FS_chdir();FS_readdir()"
+#define ERR_FS_NOT_DIRECTORY                             -4200002
+/******************************************************************************/
+
+/******************************************************************************/
+//FS_mkdir(),FS_rmdir(),FS_chdir(), FS_link(), FS_unlink(),FS_readdir():  
+//A component of the path prefix does not name an existing directory or path is 
+// an empty string. FS_open():O_CREAT is not set and the named file does not ex
+//ist; or O_CREAT is set and either the path prefix does not exist or the path a
+//rgument points to an empty string.
+#define ERR_FS_NO_DIR_ENTRY                              -4200003
+/******************************************************************************/
+
+
+/******************************************************************************/
+//operation is not granted
+#define ERR_FS_OPERATION_NOT_GRANTED                     -4200005
+/******************************************************************************/
+
+/******************************************************************************/
+//directory is not empty
+#define ERR_FS_DIR_NOT_EMPTY                             -4200006
+/******************************************************************************/
+
+/******************************************************************************/
+//No file descriptor is available
+#define ERR_FS_FDS_MAX                                   -4200007
+/******************************************************************************/
+
+/******************************************************************************/
+//open files too many for a process
+#define ERR_FS_PROCESS_FILE_MAX                          -4200008
+/******************************************************************************/
+
+/******************************************************************************/
+//file has existed
+#define ERR_FS_FILE_EXIST                                -4200009
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_NO_BASENAME                               -4200011
+/******************************************************************************/
+
+/******************************************************************************/
+//Bad file descriptor
+#define ERR_FS_BAD_FD                                    -4200012
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_NO_MORE_FILES                            -4200013
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_HAS_MOUNTED                               -4200014
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_MOUNTED_FS_MAX                           -4200015
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_UNKNOWN_FILESYSTEM                       -4200016
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_INVALID_DIR_ENTRY                       -4200018
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_INVALID_PARAMETER                       -4200019
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_NOT_SUPPORT							   -4200020
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_UNMOUNT_FAILED							   -4200021
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_NO_MORE_MEMORY				    	   -4200025
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_DEVICE_NOT_REGISTER	     			   -4200027
+
+/******************************************************************************/
+#define ERR_FS_NO_MORE_INODE                           -4200029
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_DISK_FULL                               -4200030
+/******************************************************************************/
+
+
+/******************************************************************************/
+#define ERR_FS_NOT_FORMAT							   -4200032
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_HAS_FORMATED							   -4200033
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_UNMOUNT_NOT_FIND_SB     					   -4200035
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_UNMOUNT_FS_BUSY     					   -4200037
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_OPEN_DEV_FAILED     					   -4200038
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_ROOT_FULL       					       -4200039
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_ACCESS_REG_FAILED       				   -4200040
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_PATHNAME_PARSE_FAILED                    -4200041
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_READ_DIR_FAILED                          -4200048
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_MOUNT_READ_ROOT_INODE_FAILED				-4200050
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_UNMOUNT_INVALID_DEV_NUMBER               -4200051
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_REMOVE_DIRECTORY_BY_RENAME               -4200052
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_FORMAT_MOUNTING_DEVICE                   -4200053
+/******************************************************************************/
+
+/******************************************************************************/
+#define ERR_FS_FORMAT_ROOT_DEV_HAS_MOUNTPOINT           -4200054
+/******************************************************************************/
+
+
+/******************************************************************************/
+#define ERR_FS_DATA_DESTROY                                -4200056 
+/******************************************************************************/
+#define ERR_FS_READ_SECTOR_FAILED                          -4200057
+#define ERR_FS_WRITE_SECTOR_FAILED                         -4200058  
+#define ERR_FS_READ_FILE_EXCEED                            -4200059
+#define ERR_FS_WRITE_FILE_EXCEED                           -4200060
+#define ERR_FS_FILE_TOO_MORE                               -4200061 
+#define ERR_FS_FILE_NOT_EXIST                              -4200062
+#define ERR_FS_DEVICE_DIFF                                 -4200063
+#define ERR_FS_GET_DEV_INFO_FAILED                         -4200064
+#define ERR_FS_NO_MORE_SB_ITEM                             -4200065 
+#define ERR_FS_NOT_MOUNT                                   -4200066 
+/******************************************************************************/
+#define ERR_FS_NOT_REGULAR       		    			   -42000100
+/******************************************************************************/
+
+#endif // _H_
+

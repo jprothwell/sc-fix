@@ -1,0 +1,22 @@
+# this file is to be included in target.def by dev targets that use the
+# s71ws256pd0 flash/ram combo
+# S71WS256(P/N)(B/C/D)0 flash/ram combo
+#     S71WS    1.8V Burst Mode Flash
+#     256      256M Bit (32M Byte) Flash
+#     P/N      P: 90nm MirrorBit
+#              N: 110nm MirrorBit
+#     B/C/D    B: 32M Bit (4M Byte) Ram
+#              C: 64M Bit (8M Byte) Ram
+#              D: 128M Bit (16M Byte) Ram
+
+# form factor models can define the values directly in their target.def
+# Should be the physical address of flash
+
+    FLASH_SIZE:=            0x02000000
+    RAM_SIZE:=              0x01000000
+    CALIB_BASE:=            0x00008000
+    FACT_SETTINGS_BASE:=    0x00010000
+    CODE_BASE:=             0x00020000
+    USER_DATA_BASE:=        0x01C00000
+    USER_DATA_SIZE:=        0x00400000
+    USER_DATA_BLOCK_SIZE:=  0x00000200

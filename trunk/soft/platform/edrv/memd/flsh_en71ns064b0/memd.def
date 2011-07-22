@@ -1,0 +1,23 @@
+# this file is to be included in target.def by dev targets that use the 
+# flsh_en71ns064b0 flash/ram combo
+#     EN    = Eon Silicon Solution Inc.
+#     71ns  = Multi-chip Product     admux
+#     064   = 64M Bit
+#     B0    32M pSram
+#        
+
+# form factor models can define the values directly in their target.def
+
+    FLASH_SIZE:=            0x00800000
+ifeq "${CT_COMPRESS_CODE_SECTION}" "yes"
+    RAM_SIZE:=              0x003a8000
+    XCPU_OVERLAY_BASE:=     ${RAM_SIZE}
+else
+    RAM_SIZE:=              0x00400000
+endif
+    CODE_BASE:=             0x00006000
+    USER_DATA_BASE:=        0x00700000
+    USER_DATA_SIZE:=        0x000F0000
+    USER_DATA_BLOCK_SIZE:=  0x00000200
+    CALIB_BASE:=            0x007FC000
+    FACT_SETTINGS_BASE:=    0x007FE000

@@ -1,0 +1,18 @@
+
+
+GPIO 22 23 在哪里？
+
+// GPIO(22) // M_CS2
+#define TGT_HAL_GPIO_22_USED NOT_CONNECTED
+// GPIO(23) // M_CS3
+#define TGT_HAL_GPIO_23_USED NOT_CONNECTED
+
+
+GPO 7 10 在哪里？
+
+// GPO(7)   // TCO_1, DIGRF: CLK_RF_26M_EN
+#define TGT_HAL_GPO_7_USED 0
+// GPO(10)  // TCO_2
+#define TGT_HAL_GPO_10_USED 0
+
+

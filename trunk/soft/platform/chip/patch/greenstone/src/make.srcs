@@ -1,0 +1,4 @@
+S_SRC :=
+C_SRC := patch_open.c \
+	patch_spc_irq_handler_bb_prog_rx_win.c \
+    patch_spp_gsm_rx_fcch_detection.c

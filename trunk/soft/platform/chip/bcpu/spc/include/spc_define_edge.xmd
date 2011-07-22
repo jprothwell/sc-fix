@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive asm="no">
+
+<comment>
+Contains defines for spc.xmd
+</comment>
+
+<alias name='SPC_PDCH_DATA_BLOCK'>
+    <uint32 name='unused' count='39'>
+        <comment>Global Context Structure</comment>
+    </uint32>
+</alias>
+
+<var name='SPC_ITLV_BUFF_TX_DEDICATED' value='176'></var>
+
+<var name='SPC_ITLV_BUFF_RX_DEDICATED' value='1392'></var>
+
+<var name='SPC_ITLV_RX_BUFF_OFFSET' value='348'>
+</var>
+
+<var name='SPC_ITLV_TX_BUFF_OFFSET' value='44'>
+</var>
+
+<var name='SPC_TMP_ITLV_RX_BUFF_OFFSET' value='128'>
+</var>
+
+<var name='SPC_PDCH_DATA_BLOCK_SIZE' value='39'>
+</var>
+
+<cjoker>
+EXPORT PROTECTED UINT32 g_Egprs_Softbit_Buff[87*2];
+</cjoker>
+
+</archive>

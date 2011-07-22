@@ -1,0 +1,204 @@
+CT_ASIC         ?= gallite
+CT_ASIC_CFG     ?= chip
+3GPP_MODE       ?= gsm
+ROM_TYPE        ?= chip
+CT_ROMULATOR     ?= no
+PM_MODEL        ?= rda1203_gallite
+XCV_MODEL       ?= xcv_rda6220_gallite
+PA_MODEL         ?= pasw_rda6231
+SW_MODEL        ?= 
+FLSH_MODEL      ?= flsh_k5l2731caa_d770
+LCD_MODEL       ?= ili9163c
+LCD_IF          ?= gouda
+AD_MODEL        ?= codec_gallite
+MCD_IF          ?= sdmmc
+CAMERA_MODEL    := gc0307 gc0309
+TSD_MODEL       ?= 
+FM_MODEL        ?= rda5802e_gallite
+UCTLS_SERVICE   ?= umss_storage_flashmc
+BT_MODEL        ?= rda5872
+DUALSIM_MODEL   ?= foursimd
+I2C_MODEL       ?= 
+ATV_MODEL       ?= 
+GSENSOR_MODEL   ?= 
+CT_COMPRESS_CODE_SECTION := no
+NUMBER_OF_SIM   ?=3
+# used to set sim mapping 
+USER_SIM_ORDER := 1 2 3 4
+GLOBAL_EXPORT_FLAG += __PROJECT_G021BQ__
+
+
+TARGET_EXPORT_FLAG    += __SIM_MOUNT_DYNAMIC__
+TARGET_EXPORT_FLAG    += SIM_SWITCH_USED
+
+ifneq (${USER_SIM_ORDER},)
+TARGET_EXPORT_FLAG    += USER_SIM_SWAP
+endif # (${USER_SIM_ORDER},)
+
+ifneq (${DUALSIM_MODEL},)
+DUAL_SIM_SUPPORT := 1
+endif # (${DUALSIMD_MODEL},)
+
+ifneq (${ATV_MODEL},)
+ANALOG_TV_SUPPORT := 1
+endif # (${ATV_MODEL},)
+
+ifneq (${I2C_MODEL},)
+TARGET_EXPORT_FLAG    += I2C_BASED_ON_GPIO
+endif # (${I2C_MODEL},)
+
+# GPRS capability
+WAPMMS_SUPPORT   ?= 1
+
+#Define dual sim card swap flag
+#DUALSIM_SWAP :=1
+
+NO_SPI_REG_DEBUG   ?= 1
+NO_EARLY_TRACE_OPEN   ?= 1
+CT_OPT := dbg_size
+WITHOUT_WERROR := 1
+
+#include ${SOFT_WORKDIR}/target/include/greenstone_ulc.def
+include ${SOFT_WORKDIR}/platform/edrv/memd/${FLSH_MODEL}/memd.def
+
+GLOBAL_EXPORT_FLAG += PRJ_F021
+#GLOBAL_EXPORT_FLAG += USER_DATA_CACHE_SUPPORT
+GLOBAL_EXPORT_FLAG += FMRDO_SINGLEVOLUMECHANNEL_SUPPORT
+GLOBAL_EXPORT_FLAG += __VIDEO_RAM_SLIM_SUPPORT
+GLOBAL_EXPORT_FLAG += MANUAL_DOWNLOAD_MMS
+
+ifneq (${BT_MODEL},)
+#3216 When support chinese, a2dp profile is needed to cut because flash size 
+#GLOBAL_EXPORT_FLAG += __BT_NO_A2DP_PROFILE__
+
+# Define BT crystal flag
+BT_SHARE_CRYSTAL := 1
+endif # (${BT_MODEL},)
+
+# for full MMI
+export MMI_SUPPORT_TOUCHPANEL := NO
+export MMI_SUPPORT_SENDKEY2 := NO
+export MMI_PARAM_LCDSIZE := LCDSIZE_128_160
+
+# Define screen resolution
+TARGET_EXPORT_FLAG    += LCDSIZE_128_160
+#GLOBAL_EXPORT_FLAG    += LCD_SCALE_128_160_TO_176_220
+
+ifeq "${SOFTROM}" "1"
+TARGET_EXPORT_FLAG    += REWRITE_ROM_AT_BOOT
+endif
+
+# Register all the available modules
+#TARGET_EXPORT_FLAG    += TGT_REGISTER_PLATFORM_VERSIONS
+
+# Enable profile stub
+ifneq "${NO_PROFILE}" "1"
+# Buffer profile
+#TARGET_EXPORT_FLAG    += HAL_PROFILE_ON_BUFFER
+#TARGET_EXPORT_FLAG    += HAL_PROFILE_NOT_ON_ROMULATOR
+
+# Enable profile on HAL/PAL
+#TARGET_EXPORT_FLAG    += HAL_PROFILING PAL_PROFILING SX_PROFILING
+#TARGET_EXPORT_FLAG    += HAL_PROFILING PAL_PROFILING
+endif
+
+# Enable SPI register debug
+ifneq "${NO_SPI_REG_DEBUG}" "1"
+TARGET_EXPORT_FLAG    += SPI_REG_DEBUG
+LDPPFLAGS += -DSPI_REG_DEBUG
+endif
+
+# Enable trace in hal_Open
+ifneq "${NO_EARLY_TRACE_OPEN}" "1"
+TARGET_EXPORT_FLAG    += EARLY_TRACE_OPEN
+endif
+
+# Receiver uses one speaker line (using left line by default)
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE
+# If using right line, the following macro should be added as well
+#TARGET_EXPORT_FLAG    += RECV_USE_SPK_LINE_R
+
+#GLOBAL_EXPORT_FLAG    += MEMD_RAM_IS_ADMUX
+#GLOBAL_EXPORT_FLAG    += MEMD_FLASH_IS_ADMUX
+#GLOBAL_EXPORT_FLAG    += MEMD_RAM_IS_BURST
+#GLOBAL_EXPORT_FLAG    += MEMD_FLASH_IS_BURST
+
+# Flag used by CSW (and the MMI) to define whether
+# there are two SIM card connectors or not.
+#TARGET_EXPORT_FLAG    += SIM_SWITCH_ENABLE
+
+#TARGET_EXPORT_FLAG += __MMI_USE_LSK_AS_SEND2__
+
+# Macros for different CT_RELEASE. Should be in env, put here temporarily
+ifeq "${CT_RELEASE}" "release"
+GLOBAL_EXPORT_FLAG += PAL_NO_TRACE
+GLOBAL_EXPORT_FLAG += PAL_NO_DBGTRC
+GLOBAL_EXPORT_FLAG += RFD_NO_TRACE
+else
+ifeq "${CT_RELEASE}" "debug"                                        
+GLOBAL_EXPORT_FLAG += DUALSIMD_PROFILING                                        
+GLOBAL_EXPORT_FLAG += STK_PROFILING                                        
+GLOBAL_EXPORT_FLAG += TSD_PROFILING                                        
+GLOBAL_EXPORT_FLAG += PMD_PROFILING                                        
+GLOBAL_EXPORT_FLAG += RFD_NO_TRACE                                        
+GLOBAL_EXPORT_FLAG += SX_PROFILING                                        
+GLOBAL_EXPORT_FLAG += HAL_PROFILE_ON_BUFFER                                        
+GLOBAL_EXPORT_FLAG += PAL_PROFILING                                        
+GLOBAL_EXPORT_FLAG += HAL_PROFILING                                        
+GLOBAL_EXPORT_FLAG += SPC_FUNC_PROFILING                                        
+GLOBAL_EXPORT_FLAG += SPAL_IRQ_PROFILING                                              
+else
+ifeq "${CT_RELEASE}" "cool_profile"
+#GLOBAL_EXPORT_FLAG += CSW_PROFILING
+GLOBAL_EXPORT_FLAG += DUALSIMD_PROFILING
+GLOBAL_EXPORT_FLAG += STK_PROFILING
+GLOBAL_EXPORT_FLAG += TSD_PROFILING
+GLOBAL_EXPORT_FLAG += PMD_PROFILING
+GLOBAL_EXPORT_FLAG += RFD_NO_TRACE
+GLOBAL_EXPORT_FLAG += SX_PROFILING
+GLOBAL_EXPORT_FLAG += PAL_PROFILING
+GLOBAL_EXPORT_FLAG += HAL_PROFILING
+GLOBAL_EXPORT_FLAG += SPC_FUNC_PROFILING
+GLOBAL_EXPORT_FLAG += SPAL_IRQ_PROFILING	                                       
+endif
+endif
+endif
+
+# Enable the GPRS mode of the stack.
+#TARGET_EXPORT_FLAG    += __GPRS__
+
+# Define the ML language support
+
+# Define the ML language support
+GLOBAL_EXPORT_FLAG += ML_SUPPORT
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP936	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP0	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP1256	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP1258	                                       
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_CP874
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_1
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_5
+GLOBAL_EXPORT_FLAG += ML_SUPPORT_ISO8859_6
+
+
+#GLOBAL_EXPORT_FLAG += __MMI_PROJECT_D700__
+TARGET_EXPORT_FLAG  += PM_INCREASE_BATTERY_DETECT
+#TARGET_EXPORT_FLAG  += _CAM_SMALL_MEM_
+TARGET_EXPORT_FLAG  += _CAM_SLOW_MEM_
+TARGET_EXPORT_FLAG  += SOUND_RECORDER_SUPPORT
+GLOBAL_EXPORT_FLAG += VIDEO_RECORDER_SUPPORT
+#TARGET_EXPORT_FLAG    += SPI_REG_DEBUG   
+##打开这个宏，在正常开关机的情况下可以节省一个RTC大电容
+
+##这个宏开关，用来控制是否支持自动记录按键信息，通常用于记录出问题之前的按键信息，方便工程人员复现问题#######
+##打开这个宏会额外占用大约9KByte的空间，可以根据实际情况考虑是否打开这个功能##
+GLOBAL_EXPORT_FLAG += AUTO_TEST_KEYPRESS_RECORD_SUPPORT
+
+##定义短消息和电话本的条目
+##PHONE_SMS_ENTRY_COUNT表征FLASH上多卡项目总计SMS容量，单卡数目为PHONE_SMS_ENTRY_COUNT/SIM_COUNT
+##SIM_SMS_ENTRY_COUNT表征SIM卡上最大SMS容量，请勿修改
+GLOBAL_EXPORT_FLAG += PHONE_SMS_ENTRY_COUNT=200
+GLOBAL_EXPORT_FLAG += SIM_SMS_ENTRY_COUNT=255
+GLOBAL_EXPORT_FLAG += PHONE_PHB_ENTRY_COUNT=50
+#################################################################
+
