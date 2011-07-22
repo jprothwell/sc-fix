@@ -3378,7 +3378,7 @@ void ShowCategory420Screen(
 
 }
 
-
+#ifdef __MMI_UI_TAB_PANE__
 /*****************************************************************************
  * FUNCTION
  *  RedrawCategory425Screen
@@ -3928,7 +3928,7 @@ void Category425UnBlinkTab(S8 tab)
 
     wgui_horizontal_tab_bar_stop_blinking(tab);
 }
-
+#endif
 #if (defined(__MMI_SMART_MESSAGE_MO__) && !defined(__MMI_MESSAGES_EMS__)) || defined(__MMI_SMART_MESSAGE_MT__) || defined(__MMI_MYPICTURE__)
 
 

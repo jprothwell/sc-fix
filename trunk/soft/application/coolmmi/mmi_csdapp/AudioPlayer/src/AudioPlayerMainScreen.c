@@ -2371,18 +2371,6 @@ void mmi_audply_fast_forward_time_handel(void)
 	mmi_audply_redraw_main_time();
 	coolsand_UI_start_timer(100, mmi_audply_fast_forward_time_handel);
 }
-void mmi_audply_fast_forward(void)
-{
-	g_audply_main_selected_button = (signed char) AUDPLY_MAIN_FORWARD_LONG_PRESS;
-	mmi_audply_cancel_fast_timer_no_condition();
-if(mmi_audply_get_state() == STATE_PLAY)
-	{
-	audply_main_progressbar.PlayProgress = mmi_audply_get_progress();
-}
-       mmi_audply_do_before_seek_action(audply_main_progressbar.PlayProgress);
-	mmi_audply_fast_forward_time_handel();
-//	mmi_audply_do_seek_action(audply_main_progressbar.PlayProgress);
-}
 
 /*************************************************************
 * function:   mmi_audply_fast_backward
@@ -2403,6 +2391,24 @@ void mmi_audply_fast_backward_time_handel(void)
 	mmi_audply_do_seeking_action(audply_main_progressbar.PlayProgress);
 	mmi_audply_redraw_main_time();
 	coolsand_UI_start_timer(100, mmi_audply_fast_backward_time_handel);
+}
+
+void mmi_audply_cancel_fast_timer_no_condition(void)
+{
+	coolsand_UI_cancel_timer(mmi_audply_fast_backward_time_handel);
+	coolsand_UI_cancel_timer(mmi_audply_fast_forward_time_handel);
+}
+void mmi_audply_fast_forward(void)
+{
+	g_audply_main_selected_button = (signed char) AUDPLY_MAIN_FORWARD_LONG_PRESS;
+	mmi_audply_cancel_fast_timer_no_condition();
+if(mmi_audply_get_state() == STATE_PLAY)
+	{
+	audply_main_progressbar.PlayProgress = mmi_audply_get_progress();
+}
+       mmi_audply_do_before_seek_action(audply_main_progressbar.PlayProgress);
+	mmi_audply_fast_forward_time_handel();
+//	mmi_audply_do_seek_action(audply_main_progressbar.PlayProgress);
 }
 void mmi_audply_fast_backward(void)
 {   
@@ -2426,11 +2432,6 @@ void mmi_audply_cancel_fast_timer_handel(void)
 			coolsand_UI_cancel_timer(mmi_audply_fast_forward_time_handel);
 		}
 	mmi_audply_do_seek_action(audply_main_progressbar.PlayProgress);
-}
-void mmi_audply_cancel_fast_timer_no_condition(void)
-{
-	coolsand_UI_cancel_timer(mmi_audply_fast_backward_time_handel);
-	coolsand_UI_cancel_timer(mmi_audply_fast_forward_time_handel);
 }
 
 void mmi_audply_fast_timer_redraw_icon(void)

@@ -4481,10 +4481,11 @@ void FM_UpdateADCHdlr()
 	S8 buffer[32];
 	U16 adc_value;
     const char *netname; 
-    CONST UINT32 vmicChannel = pmd_GetEarpieceGpadcChannel();
 #ifdef MMI_ON_HARDWARE_P
+	CONST UINT32 vmicChannel = pmd_GetEarpieceGpadcChannel();
 	CONST UINT32 vbatChannel = pmd_GetBatteryGpadcChannel();
 #else
+	CONST UINT32 vmicChannel = 0;
 	CONST UINT32 vbatChannel =  0;
 #endif
 #if 1
