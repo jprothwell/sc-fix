@@ -6764,7 +6764,8 @@ extern void (*wgui_inline_edit_DONE_function) (void);
 extern S32 HINDI_PRESENT;
 extern S32 ARABIC_PRESENT;
 #endif /* defined __MMI_LANG_HINDI__ && defined __MMI_LANG_ARABIC__ */ 
- 
+void gui_show_multi_line_input_box_ext_new(multi_line_input_box *b, S32 move_to_x, S32 move_to_y);
+
 void gui_show_multi_line_input_box(multi_line_input_box *b)
 {
     /*----------------------------------------------------------------*/
@@ -16234,7 +16235,6 @@ static multi_line_input_box *cursor_multiline_input = NULL;
 static multi_line_input_box *backup_b;
 
 
-void gui_show_multi_line_input_box_ext_new(multi_line_input_box *b, S32 move_to_x, S32 move_to_y);
 void gui_show_multi_line_input_box_ext_internal(multi_line_input_box *b, S32 move_to_x, S32 move_to_y);
 void gui_multiline_predefined_cursor_move_timer_hdlr(void);
 S32 gui_multi_line_input_box_is_in_shown(multi_line_input_box *b);

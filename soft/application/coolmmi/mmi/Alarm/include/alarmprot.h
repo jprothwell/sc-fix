@@ -101,7 +101,7 @@ extern void ExitAlmEditScreen(void);
 extern void AlmSaveInlineEdit(void);
 extern BOOL AlmIsInlineEditorChanged(S32 index);
 extern void ExitAlmSubLcdScreen(void);
-extern U8 AlmIsAnyAlarmActivated(void);
+extern BOOL AlmIsAnyAlarmActivated(void);
 extern void AlmHandleEndKey(void);
 
  

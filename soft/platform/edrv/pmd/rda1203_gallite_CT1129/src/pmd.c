@@ -1200,6 +1200,9 @@ PUBLIC VOID pmd_Close(VOID)
     pmd_RegIrqSettingSet(RDA1203_EOMIRQ_MASK|RDA1203_PENIRQ_MASK|RDA1203_INT_CHR_MASK);
 
     hal_SysExitCriticalSection(scStatus);
+#ifdef __PRJ_WITH_SPIFLSH__
+    memd_FlashClose();
+#endif
 }
 
 

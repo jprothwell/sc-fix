@@ -994,6 +994,10 @@ PHB_CM_INTERFACE mmi_phb_call_get_data_for_call_mgnt(PU8 number)
 }
 
 extern MMI_PHB_LOOKUP_NODE_STRUCT LookUpTable[];
+#ifdef MMI_ON_WIN32
+#define NVRAM_EF_PHB_PIC_SIZE 25600
+#define NVRAM_PHB_IDS_TOTAL	 10	
+#endif
 UINT8 mmi_phb_get_callergroup_by_number(PUINT8 number)
 {
     UINT8 number_ASCII[MAX_PB_NUMBER_LENGTH+1+1];
@@ -1173,9 +1177,6 @@ void mmi_phb_call_set_dial_from_list(U8 value)
 #if defined(__PHB_CALLER_IMAGE_SAVE_PATH_ONLY__)
 #include "nvram_user_defs.h"
 #include "nvramtype.h"
-#ifdef MMI_ON_WIN32
-#define NVRAM_EF_PHB_PIC_SIZE 25600
-#endif
 
 BOOL mmi_phb_image_read_nvram(U16 record_index, S8* path)
 {

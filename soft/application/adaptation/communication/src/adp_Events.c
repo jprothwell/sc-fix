@@ -195,6 +195,9 @@ extern const KeyPadMap nKeyPadMap[];
 #endif
 #define __KEYPADBACKLIGHT_DARK__ 0x00
 
+#ifdef MMI_ON_WIN32
+#define KP_NB        'Z' // no button
+#endif
 
 extern void VibratePlayRepeat();
 extern void VibratePlayOnce();
@@ -3470,6 +3473,7 @@ static BOOL ADP_DispatchSettingMsg(COS_EVENT *pCosEvent)
 **************************************************************/
 static BOOL ADP_DispatchRMCMsg(COS_EVENT *pCosEvent)
 {
+#ifdef MMI_ON_HARDWARE_P
 	ilm_struct SendMes;
        mmi_rmc_pc_ind_struct *p;
 	ASSERT(pCosEvent != NULL);
@@ -3492,6 +3496,9 @@ static BOOL ADP_DispatchRMCMsg(COS_EVENT *pCosEvent)
        else{
             return FALSE;
         }
+#else
+       return FALSE;
+#endif
     
 }
 

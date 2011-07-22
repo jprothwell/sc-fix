@@ -2524,8 +2524,9 @@ void mmi_camera_init_app(void)
 	#ifdef __MMI_BI_DEGREE_MAIN_MENU_STYLE__
 		SetHiliteHandler(MAIN_MENU_OPTION_CAMERA_APP, mmi_camera_hilight_app);
 	#endif
-	
+	#ifdef MMI_ON_HARDWARE_P
 	g_camera_image_is_convert = camera_ImageIsConvert();
+	#endif
 	/* init Option Menu */
 	mmi_camera_init_option_menu();
 

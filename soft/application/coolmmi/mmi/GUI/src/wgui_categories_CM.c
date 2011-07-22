@@ -4715,7 +4715,7 @@ static void ExitMOMTCallScreen(void)
     GetCategoryHistorySize = dummy_get_history_size;
 }
 
-
+#ifdef __MMI_UI_TAB_PANE__
 /*****************************************************************************
  * FUNCTION
  *  Cat403ListHighliteHandler
@@ -4994,7 +4994,7 @@ void ExitCategory403Screen(void)
     reset_pop_up_descriptions();
     wgui_close_horizontal_tab_bar();
 }
-
+#endif
 UI_filled_area cat404_fibox={
 UI_FILLED_AREA_TYPE_COLOR,
 UI_IMAGE_ID_NULL,

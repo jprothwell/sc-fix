@@ -1385,7 +1385,8 @@ void EarphoneDetect(UINT16 pLevel)   //Added by Jinzh:20070617
 	REMARKS				:
 **************************************************************/
 void MusicStartAudioMode() //Added by Jinzh:20070616
-{	
+{
+#ifdef MMI_ON_HARDWARE_P
 	/*Jinzh Modify Start For 6225 Ver: TBM780  on 2007-8-14 10:11 */
 #ifdef TGT_GALLITE_G800              
 	if (1 == GetHandsetInPhone() && cameraAppOnOff ==  FALSE
@@ -1412,6 +1413,7 @@ void MusicStartAudioMode() //Added by Jinzh:20070616
 		SendAudioModeRequest( AUD_MODE_LOUDSPK );  //Changed by jinzh:20070730
 	}
 	SetSpeakerWorkStatus(AUD_MODE_LOUDSPK);   //changed by jinzh:20070730
+#endif
 }
 
 /**************************************************************

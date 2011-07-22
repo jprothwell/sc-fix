@@ -161,29 +161,19 @@ PUBLIC void wait_flash_read(void)
 
 PRIVATE void SPI_Flash_Disable_Read(void)
 {
-    return ;
-    UINT32 data_tmp_32;
-    UINT32 addr_tmp;
-//    addr_tmp = SPI_FLASH_REG_BASE + DUAL_SPI_OFFSET;
-    addr_tmp = SPI_BLOCK_SIZE;
-//    data_tmp_32 = 0x10;   
-    data_tmp_32 = 0x100;   
-    MWRITE_32(addr_tmp,addr_tmp);        
+#ifdef SPI_FLASH_CONTINUOUS_READ
+    MWRITE_32(SPI_CS_SIZE_REG, (0x10));
+#endif
     return ;
 }
 
 
 PRIVATE void SPI_Flash_Enable_Read(void)
 {
-    return ;
-    UINT32 data_tmp_32;
-    UINT32 addr_tmp;
-//    addr_tmp = SPI_FLASH_REG_BASE + DUAL_SPI_OFFSET;
-//    data_tmp_32 = 0;   
-    addr_tmp = SPI_BLOCK_SIZE;
-    data_tmp_32 = 0x100;   
-    MWRITE_32(addr_tmp,addr_tmp);      
+#ifdef SPI_FLASH_CONTINUOUS_READ   
+    MWRITE_32(SPI_CS_SIZE_REG, (0x0));
     wait_flash_busy();    
+#endif
     return ;
 }
 
@@ -671,6 +661,20 @@ PUBLIC BOOL spi_flash_ini(BOOL quard_flag, UINT8 clk_offset_val, UINT8 clkdiv_va
 
     return TRUE;
 }	
+
+
+#ifdef SPI_FLASH_CONTINUOUS_READ
+PUBLIC VOID spi_flash_open_continuous_read(VOID)
+{
+    MWRITE_32(SPI_BLOCK_SIZE_REG, (0xaf << SPI_FLASH_MODEBIT_BIT));
+}
+
+PUBLIC VOID spi_flash_close_continuous_read(VOID)
+{
+    MWRITE_32(SPI_BLOCK_SIZE_REG, (0x00 << SPI_FLASH_MODEBIT_BIT));
+}
+
+#endif
 
 PUBLIC BOOL spi_flash_block_erase(UINT32 flash_addr)
 {
@@ -1232,6 +1236,14 @@ if(!g_memdFlashBaseAddress)
 */    
 
     return ((MEMD_FLASH_LAYOUT_T*) &g_memdFlashLayout);
+}
+
+PUBLIC VOID memd_FlashClose(VOID)
+{
+#ifdef SPI_FLASH_CONTINUOUS_READ
+    spi_flash_close_continuous_read();
+#endif
+	return;
 }
 
 PUBLIC void SPI_Flash_Open()

@@ -617,11 +617,15 @@ void adp_SAT_SENDUSSD_rsp(UINT32 nParam1, UINT32 nParam2, UINT8 nType, UINT16 nU
         {
             pMmiSendUSSDRsp1->res = SAT_USSD_SS_TRANSACTION_TERMINATION_BY_USER;
         }
-        
+
         memset(&adp_sat_ussd_rsp, 0x00, sizeof(mmi_sat_send_ussd_stage1_rsp_struct));
-        adp_sat_ussd_rsp.length = pUSSDInd->nStingSize + 1;
-        adp_sat_ussd_rsp.addition_info[0] = pUSSDInd->nDcs;
-        memcpy(adp_sat_ussd_rsp.addition_info + 1, pUSSDInd->pUsdString, pUSSDInd->nStingSize);
+
+        if(nType == 0 && pUSSDInd != NULL)
+        {
+            adp_sat_ussd_rsp.length = pUSSDInd->nStingSize + 1;
+            adp_sat_ussd_rsp.addition_info[0] = pUSSDInd->nDcs;
+            memcpy(adp_sat_ussd_rsp.addition_info + 1, pUSSDInd->pUsdString, pUSSDInd->nStingSize);
+        }
         
         adp_SAT_SendMessageToMMI((local_para_struct *)pMmiSendUSSDRsp1, 
                                                             PRT_MMI_SAT_SEND_USSD_STAGE1_RSP, ADP_SAT_MSG_SRC_MOD);

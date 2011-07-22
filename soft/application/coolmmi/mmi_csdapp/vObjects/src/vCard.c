@@ -950,7 +950,9 @@ static void mmi_vcard_exit_forward_option(void)
  * RETURNS
  *  void
  *****************************************************************************/
+ #ifdef MMI_ON_HARDWARE_P
 extern BOOL MMI_FS_IsExist(const UINT8 * FileName);
+ #endif
 static U8 mmi_vcard_forward_option_delete_cb(void)
 {
     /*----------------------------------------------------------------*/
@@ -961,11 +963,13 @@ static U8 mmi_vcard_forward_option_delete_cb(void)
     /*----------------------------------------------------------------*/
     /* Code Body                                                      */
     /*----------------------------------------------------------------*/
-    mmi_vcard_util_get_default_file(path);   
+    mmi_vcard_util_get_default_file(path);  
+    #ifdef MMI_ON_HARDWARE_P
     if(MMI_FS_IsExist(path))
     {
         MMI_FS_Delete(path);
     }    
+    #endif
     return MMI_FALSE;
 }
 
