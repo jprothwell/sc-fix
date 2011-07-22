@@ -1,0 +1,76 @@
+##############################################
+# [xxx] project, with features: [xxx, xxx]
+#---------------------------------------------
+# Edit Notes:
+# 1. Use TAB instead of SPACE;
+# 2. Aline items;
+# 3. Do NOT delete ANY items; Set the un-supported items to "NO".
+##############################################
+
+##############################################
+# select mmi function
+#---------------------------------------------
+# 
+##############################################
+MMI_SUPPORT_SIM_NUMBER		:= 3	 #this should be 1,2,3,4
+MMI_SUPPORT_BLUETOOTH           := YES   #Bluetooth
+MMI_SUPPORT_GPRS                := YES   #include GPRS/TCPIP/DATA ACCOUNT
+MMI_SUPPORT_WAPMMS              := YES   #WAP/MMS
+MMI_SUPPORT_WAP                 := YES
+MMI_SUPPORT_MMS                 := YES
+MMI_SUPPORT_JAT_OTA              := NO
+MMI_SUPPORT_JAT_OMA_DLD          := NO
+MMI_SUPPORT_JAT_SEC              := NO
+MMI_SUPPORT_WAPPUSH           := NO          #wap push support
+MMI_SUPPORT_USB                 := YES   #USB
+MMI_SUPPORT_FM                  := YES   #FM
+MMI_SUPPORT_FM_RECORD           := YES   #FM
+MMI_SUPPORT_TOUCHPANEL          := NO   #Touch screen
+
+MMI_SUPPORT_LANG_FRENCH         := NO    #French
+MMI_SUPPORT_LANG_ITALIAN        := NO    #Italian
+MMI_SUPPORT_LANG_VIETNAMESE     := NO    #Vietnamese
+MMI_SUPPORT_LANG_RUSSIAN        := NO    #Russian
+MMI_SUPPORT_LANG_ARABIC         := NO   #Arabic
+MMI_SUPPORT_LANG_THAI           := NO    #Thai
+MMI_SUPPORT_LANG_SM_CHINESE     := YES   #SM Chinese,NOTE: can't work together with TR chinese
+MMI_SUPPORT_LANG_TR_CHINESE     := NO    #TR Chinese,NOTE: can't work together with SM chinese
+MMI_SUPPORT_LANG_GERMAN         := NO    #German
+MMI_SUPPORT_LANG_SPANISH        := NO    #Spanish
+MMI_SUPPORT_LANG_PORTUGUESE     := NO    #Portuguese
+MMI_SUPPORT_LANG_PERSIAN        := NO    #Persian
+MMI_SUPPORT_LANG_TURKISH        := NO    #Turkish
+MMI_SUPPORT_LANG_INDONESIAN     := NO    #Indonesian
+MMI_SUPPORT_LANG_MALAY          := NO    #Malay
+#hindi ~ marathi support need open IndicLanguages macro
+MMI_SUPPORT_INDIC_LANGUAGES := NO
+MMI_SUPPORT_LANG_HINDI          := NO   #Hindi, no input method
+MMI_SUPPORT_LANG_TELUGU          := NO    #Malay
+MMI_SUPPORT_LANG_PUNJABI          := NO    #Malay
+MMI_SUPPORT_LANG_ORIYA          := NO    #Malay
+MMI_SUPPORT_LANG_TAMIL          := NO    #Malay
+MMI_SUPPORT_LANG_KANNADA         := NO    #Malay
+MMI_SUPPORT_LANG_MALAYALAM         := NO    #Malay
+MMI_SUPPORT_LANG_MARATHI          := NO    #Malay
+
+MMI_SUPPORT_SIDEKEY             := NO    #sidekey
+MMI_SUPPORT_SENDKEY2            := YES   #sendkey2
+MMI_SUPPORT_CAMERAKEY           := NO    #camera key
+
+MMI_SUPPORT_DUAL_SENSOR         := NO               #To disable dual sensor
+MMI_SUPPORT_GSENSOR             := NO          #gsensor
+MMI_SUPPORT_WEBCAM              :=NO    #WEBCAMERA
+MMI_SUPPORT_MAGIC_SOUND         := YES   #magic audio effect
+MMI_SUPPORT_JME                      := YES  #QQ,MSN,GEO
+##############################################
+# LCD dimension 
+#---------------------------------------------
+# Options:
+#            LCDSIZE_128_160
+#            LCDSIZE_176_220
+#            LCDSIZE_240_320
+##############################################
+MMI_PARAM_LCDSIZE                := LCDSIZE_128_128
+
+
+
